@@ -21,7 +21,7 @@ sudo cat /dev/<your sd card> > pi-node.img
 ```
 
 {% hint style="info" %}
-cat is better than dd for this. cat will use all of your systems cpu cores, whereas dd uses one core. cat is faster 🙀
+cat is better than dd for this. cat will use all of your systems cpu cores, whereas dd uses one core. cat is faster 🙀 
 {% endhint %}
 
 Once that completes we will use [PiShrink.sh](https://github.com/Drewsif/PiShrink) to deflate partitions and compress \(among a few other tricks\).
@@ -40,7 +40,7 @@ sudo pishrink.sh -az pi-node.img Pi-Node.img.gz
 
 > pishrink.sh: Shrunk Pi-Node.img.gz from 7.5G to 1.3G ...
 
-And there you have it! 🧙♂
+And there you have it! 🧙♂ 
 
 Download [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz)
 

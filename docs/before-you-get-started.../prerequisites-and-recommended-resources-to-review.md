@@ -7,7 +7,7 @@ description: Stake pool operator resources.
 ## Cardano Community Provided Resources
 
 {% hint style="success" %}
-### A Special thank you to all the great community members and their tutorials 🙏 🤗
+#### A Special thank you to all the great community members and their tutorials 🙏 🤗
 {% endhint %}
 
 {% tabs %}
@@ -33,9 +33,9 @@ description: Stake pool operator resources.
 {% tab title="Community Forums" %}
 |  |  |
 | :--- | :--- |
-| \[[https://forum.cardano.org/\]\(https://forum.cardano.org/](https://forum.cardano.org/]%28https://forum.cardano.org/) |  |
-
-\) \| \| \| \| [Arming Cardano Telegram ](https://github.com/rekuenkdr/master/tree/44e80aa783ef319f1f88f701f497d59f81d033cd/joinchat/FeKTCBu-pn5OUZUz4joF2w/README.md) \|
+| [https://forum.cardano.org/](https://forum.cardano.org/
+) |  |
+|  | [Arming Cardano Telegram ](%20https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w%20) |
 {% endtab %}
 {% endtabs %}
 
@@ -68,9 +68,8 @@ description: Stake pool operator resources.
 {% tab title="Cardano Forum" %}
 |  |  |
 | :--- | :--- |
-| \[[https://forum.cardano.org/\]\(https://forum.cardano.org/](https://forum.cardano.org/]%28https://forum.cardano.org/) |  |
-
-\) \| \|
+| [https://forum.cardano.org/](https://forum.cardano.org/
+) |  |
 {% endtab %}
 {% endtabs %}
 

@@ -6,7 +6,7 @@ description: >-
 
 # Hardware Purchase Links
 
-![GeeekPi Cluster Case](../.gitbook/assets/photo_2021-03-09-13.42.42.jpeg)
+![GeeekPi Cluster Case](../.gitbook/assets/photo_2021-03-09-13.42.42%20%281%29.jpeg)
 
 {% tabs %}
 {% tab title="Raspberry Pi Computers" %}
@@ -51,7 +51,7 @@ You must use a power supply that can output the needed 5V at 3AMPs for the Pi4
 | Product Name & Description | Price in USD | Verified by RPI SPOs | Purchase links |
 | :--- | :--- | :--- | :--- |
 | StarTech USB 3.0 to 2.5" SSD Cable w/UASP | 10.99 | YES | [Amazon](https://www.amazon.com/StarTech-com-SATA-USB-Cable-USB3S2SAT3CB/dp/B00HJZJI84/ref=sr_1_15?dchild=1&keywords=startech+usb+3.0&qid=1617056177&sr=8-15) |
-| UGREEN Micro HDMI to HDMI Cable | 8.99 | YES | [Amazon](https://www.amazon.com/gp/product/B06WWQ7KLV/ref=ppx_yo_dt_b_asin_title_o05_s00?ie=UTF8&psc=1) |
+| UGREEN Micro HDMI to HDMI Cable  | 8.99 | YES | [Amazon](https://www.amazon.com/gp/product/B06WWQ7KLV/ref=ppx_yo_dt_b_asin_title_o05_s00?ie=UTF8&psc=1) |
 {% endtab %}
 
 {% tab title="Cases" %}

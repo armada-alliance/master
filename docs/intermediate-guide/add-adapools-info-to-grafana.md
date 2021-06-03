@@ -10,7 +10,7 @@ You have set up a Cardano node using one of the tutorials provided [here](pi-poo
 
 ## Make New Directory
 
-To start, pick a location on the machine that is running Grafana where you will create a new directory for the node exporter to use. The node exporter is likely located in /opt/cardano/monitoring/**node\_exporter** given the pi-pool default location. \_\_If not, see if you can find it using the "which node\_exporter" command. If that doesn't find it, the directory where it's located is not on your $PATH and you'll need to dig deeper. [Check this git](https://github.com/prometheus/node_exporter) for more information.
+To start, pick a location on the machine that is running Grafana where you will create a new directory for the node exporter to use. The node exporter is likely located in /opt/cardano/monitoring/**node\_exporter** given the pi-pool default location. __If not, see if you can find it using the "which node\_exporter" command. If that doesn't find it, the directory where it's located is not on your $PATH and you'll need to dig deeper. [Check this git](https://github.com/prometheus/node_exporter) for more information.
 
 Change to the location for the new directory, here I'm selecting the local bin for my user.
 
@@ -79,7 +79,7 @@ http://<YOUR GRAFANA NODE IP>:9100/metrics
 ```
 
 {% hint style="info" %}
-There are other methods you could use to implement this approach. Basically, if you can create a text file with key/value pairs and put it into this new directory, the node exporter should pull the data into Grafana. It opens up a vast array of possibilities. Just ensure you prefix the label names with a unique value \(the **adapools\_** \_\_part in the adapools.prom file above\) per file.
+There are other methods you could use to implement this approach. Basically, if you can create a text file with key/value pairs and put it into this new directory, the node exporter should pull the data into Grafana. It opens up a vast array of possibilities. Just ensure you prefix the label names with a unique value \(the **adapools\_** __part in the adapools.prom file above\) per file.
 {% endhint %}
 
 Was this information helpful? Earn rewards with us! [Consider delegating some ADA](../delegate/).

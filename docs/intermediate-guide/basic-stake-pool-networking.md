@@ -67,6 +67,7 @@ Your **relay nodes** should be pointed to other remote relay nodes and your bloc
     }
   ]
 }
+
 ```
 {% endcode %}
 
@@ -111,6 +112,7 @@ When you create your stake pool's **pool.json** metadata file you will notice a 
       "relayPort": "6002"
     }
   ],
+
 ```
 {% endcode %}
 
@@ -120,7 +122,7 @@ A typical home network will only expose a single external IP address to the worl
 
 Unless you have a static IP address assigned by your ISP, at some point you're going to have to consider setting up a dynamic DNS client that runs on your internal network and broadcasts your external IP address assigned by your ISP to your dynamic dns domain provider, such as Google domains. Then whenever your ISP changes your external dynamic IP address, your DNS client will see that, push the new IP address to your domain provider and there should be next to no impact to your domain addresses.
 
-### DNS Client Examples
+#### DNS Client Examples 
 
 * [ddclient](https://support.google.com/domains/answer/6147083?hl=en)
 * no-ip

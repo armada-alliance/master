@@ -465,7 +465,7 @@ cd $NODE_HOME/scripts
 ./gLiveView.sh
 ```
 
-![](../../../.gitbook/assets/pi-node-glive.png)
+![](../../../.gitbook/assets/pi-node-glive%20%281%29.png)
 
 ## Prometheus, Node Exporter & Grafana
 
@@ -477,7 +477,7 @@ You can connect a Telegram bot to Grafana which can alert you of problems with t
 
 {% embed url="https://github.com/prometheus" caption="" %}
 
-![](../../../.gitbook/assets/pi-pool-grafana%20%281%29.png)
+![](../../../.gitbook/assets/pi-pool-grafana%20%282%29.png)
 
 ### Install Prometheus & Node Exporter.
 
@@ -625,29 +625,29 @@ At this point you may want to start cardano-service and get synced up before we 
 
 ### Configure Grafana
 
-On your local machine open your browser and got to \[\[[http://&lt;Pi-Node's\]\(http://\]\(http://](http://<Pi-Node's]%28http://]%28http://)&lt;Pi-Node's\]%28[http://\)&lt;Pi-Node's\](http://%29<Pi-Node's\)\) private ip&gt;:5000
+On your local machine open your browser and got to \[[http://&lt;Pi-Node's\]\(http://](http://<Pi-Node's]%28http://)&lt;Pi-Node's\) private ip&gt;:5000
 
 Log in and set a new password. Default username and password is **admin:admin**.
 
 #### Configure data source
 
-In the left hand vertical menu go to **Configure** &gt; **Datasources** and click to **Add data source**. Choose Prometheus. Enter [http://localhost:9090](http://localhost:9090) where it is grayed out, everything can be left default. At the bottom save & test. You should get the green "Data source is working" if cardano-monitor has been started. If for some reason those services failed to start issue **cardano-service restart**.
+In the left hand vertical menu go to **Configure** &gt; **Datasources** and click to **Add data source**. Choose Prometheus. Enter **http://localhost:9090** where it is grayed out, everything can be left default. At the bottom save & test. You should get the green "Data source is working" if cardano-monitor has been started. If for some reason those services failed to start issue **cardano-service restart**.
 
 #### Import dashboards
 
 Save the dashboard json files to your local machine.
 
-{% embed url="https://github.com/armada-alliance/dashboards" caption="" %}
+{% embed url="https://github.com/armada-alliance/dashboards" %}
 
 In the left hand vertical menu go to **Dashboards** &gt; **Manage** and click on **Import**. Select the file you just downloaded/created and save. Head back to **Dashboards** &gt; **Manage** and click on your new dashboard.
 
-![](../../../.gitbook/assets/pi-pool-grafana%20%281%29.png)
+![](../../../.gitbook/assets/pi-pool-grafana%20%282%29.png)
 
 ### Configure poolDataLive
 
 Here you can use the poolData api to bring your pools data into Grafana.
 
-{% embed url="https://api.pooldata.live/dashboard" caption="" %}
+{% embed url="https://api.pooldata.live/dashboard" %}
 
 Follow the instructions to install the Grafana plugin, configure your datasource and import the dashboard.
 

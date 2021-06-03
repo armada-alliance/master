@@ -24,7 +24,7 @@ description: >-
 6. Run the basic passive relay node to connect to the testnet
 7. Monitor the relay node with [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/) 
 
-![](../../.gitbook/assets/download-10-%20%281%29.jpeg)
+![](../../.gitbook/assets/download-10-%20%281%29%20%281%29.jpeg)
 
 ## Setting up our environment
 
@@ -111,7 +111,7 @@ sudo reboot
 | :--- | :--- |
 | [**ZW3RK**](https://adapools.org/pool/e2c17915148f698723cb234f3cd89e9325f40b89af9fd6e1f9d1701a) **1PCT Haskell CI Support Pool** | \*\*\*\*[**https://ci.zw3rk.com/build/1758**](https://ci.zw3rk.com/build/1758)\*\*\*\* |
 
-* A[ **static build**](https://en.wikipedia.org/wiki/Static_build) is a **\*\*\[**compiled**\]\(**[https://en.wikipedia.org/wiki/Compiler](https://en.wikipedia.org/wiki/Compiler)**\) \*\***version of a program that has been statically linked against libraries.
+* A[ **static build**](https://en.wikipedia.org/wiki/Static_build) is a ****[**compiled**](https://en.wikipedia.org/wiki/Compiler) ****version of a program that has been statically linked against libraries.
 
 Now we need to simply download the zip file above to our Pi's home directory and then move it to the right location so we can call on it later to start the node.
 
@@ -329,7 +329,7 @@ We have been provided a snapshot of the testnet database thanks to Star Forge Po
 **Make sure you have not started a Cardano node before proceeding.** 🛑
 {% endhint %}
 
-First, make sure the cardano-service we created earlier is stopped, then we download the database in our testnet-relay/files. You can run the following commands to begin our download.
+First, make sure the cardano-service we created earlier is stopped, then we download the database in our testnet-relay/files. You can run the following commands to begin our download. 
 
 ```bash
 # Make sure you do not have the cardano-node running in the background

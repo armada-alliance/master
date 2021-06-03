@@ -2,7 +2,7 @@
 description: Style Guide for participating in this project.
 ---
 
-# Style Guide
+# Guía de Estilo
 
 _**From the GitHub Manual of Style, which this style guide inherits from:**_
 
@@ -16,7 +16,7 @@ All written content should follow these principles:
 
 * **Approachability:** Don't assume the reader has prior knowledge
 * **Brevity:** Keep it simple, link to outside content for deeper dives
-* **Curation:** Amplify community best practices vs. an individual's point of view
+* **Curation:** Amplify community best practices vs. any individual's point of view
 
 Content should maintain a light-hearted and welcoming tone. Open source is fun! Readers should feel inspired, not discouraged, by the tone of your writing, and they should trust you to help them get started.
 
@@ -30,5 +30,5 @@ When referring to people that use GitHub, use @mentions of their username instea
 When referring to a project on GitHub, link to the repository so others can dive deeper, if they choose.
 
 * 😄 @AstroWa3l took a similar approach to [dat](https://github.com/datproject/dat)...
-* 😢 AstroWa3l took a similar approach to [dat](https://github.com/datproject/dat)...
+* 😢 @AstroWa3l took a similar approach to[ dat](https://github.com/datproject/dat)...
 

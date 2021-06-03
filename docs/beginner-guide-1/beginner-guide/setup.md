@@ -13,6 +13,8 @@ description: In this tutorial we walk through basic Raspberry Pi and Linux Set U
 5. Insert external SSD and copy the SD card to it
 6. Shutdown and reboot from SSD
 
+
+
 {% hint style="info" %}
 ### DON’T SKIP STEPS
 {% endhint %}
@@ -23,15 +25,16 @@ description: In this tutorial we walk through basic Raspberry Pi and Linux Set U
 
 We are going to now download the latest official release of Raspberry Pi 64bit Debian OS. This is the official Linux 64bit OS distribution that is designed for the Raspberry Pi and its ARM64 CPU. This makes it stable and very easy to get started with the Raspberry Pi.
 
-**1. Download the Debian “buster” Raspberry Pi 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2020-08-24/2020-08-20-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
+**1. Download the Debian “buster” Raspberry Pi 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2020-08-24/2020-08-20-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**  
 
-**2. Next, download the Raspberry Pi Imager software that we will use in order to install the OS onto our Raspberry Pi. This software is located on the** [**Raspberry Pi website**](https://www.raspberrypi.org/software/)**. Please download the correct version for your computer.**
+
+**2. Next, download the Raspberry Pi Imager software that we will use in order to install the OS onto our  Raspberry Pi. This software is located on the** [**Raspberry Pi website**](https://www.raspberrypi.org/software/)**. Please download the correct version for your computer.** 
 
 ![](../../.gitbook/assets/screen-shot-2021-03-12-at-5.36.30-pm.png)
 
-**3. Insert the SD card into your computer and open the "Raspberry Pi Imager".**
+ **3. Insert the SD card into your computer and open the "Raspberry Pi Imager".**
 
-* **Click on "CHOOSE OS"  then find the "2020-08-20-raspios-buster-arm64.zip" file you have downloaded in step \(1\) of this tutorial and select it.** 
+*  **Click on "CHOOSE OS"  then find the "2020-08-20-raspios-buster-arm64.zip" file you have downloaded in step \(1\) of this tutorial and select it.** 
 * **Next, click on the "CHOOSE SD" and find the SD card you inserted into the computer** 
 * **Now, the "WRITE" button will appear and you can click on it to begin writing/verifying the OS onto the SD card.**  
 * **Finally, once it has finished the writing/verifying process, you will see a pop-up window saying that the OS was successfully written to the SD card, click "CONTINUE" and remove your SD card from the computer.** 
@@ -61,20 +64,20 @@ If this is your first time booting up the Raspberry Pi OS you will have to follo
 * [ ] Update Raspberry Pi \(skip this if you want to update via command line\)
 
 {% hint style="success" %}
-#### After you are done with these initial setup steps, it is time to proceed to get the Rasberry Pi to boot from its USB so that way we can use our external SSD.
+#### After you are done with these initial setup steps, it is time to proceed to get the Rasberry Pi to boot from its USB so that way we can use our external SSD. 
 {% endhint %}
 
 ### Part 3:
 
 ### Getting the Pi to Boot from USB
 
-**This is the final step in this tutorial. We are going to first insert our external SSD into one of the USB 3.0 slots marked blue.**
+**This is the final step in this tutorial. We are going to first insert our external SSD into one of the USB 3.0 slots marked blue.**  
 
-![](../../.gitbook/assets/pi4.jpeg)
+![](../../.gitbook/assets/pi4%20%281%29.jpeg)
 
 Open the Raspberry Pi applications menu and then click on the **SD Card Copier** application.
 
-![](../../.gitbook/assets/screen-shot-2021-03-29-at-9.11.39-pm.png)
+![](../../.gitbook/assets/screen-shot-2021-03-29-at-9.11.39-pm%20%281%29.png)
 
 Then we want to select **COPY FROM DEVICE** - **\(mmcblk0\) SD CARD.**
 
@@ -88,17 +91,17 @@ sudo raspi-config
 
 This will bring you to the Raspberry Pi's system configuration settings where you can access the **Advanced Options.**
 
-![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.13.19-pm.png)
+![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.13.19-pm%20%281%29.png)
 
 Next select **Boot Order.**
 
-![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.13.40-pm.png)
+![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.13.40-pm%20%281%29.png)
 
 \*\*\*\*
 
 Then choose the **USB Boot**.
 
-![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.14.05-pm.png)
+![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.14.05-pm%20%281%29.png)
 
 Now you can select **&lt;Ok&gt;** then **&lt;Finish&gt;**, close the Raspberry Pi system configuration menu, and reboot the Pi.
 
@@ -107,4 +110,8 @@ You should now be able to shut down the Pi after it reboots up, remove the SD Ca
 {% hint style="success" %}
 #### Now that we have finished most of the initial set-up we can continue getting the Pi ready and move to the next [tutorial](tutorial-2-relaynode.md).
 {% endhint %}
+
+#### 
+
+
 

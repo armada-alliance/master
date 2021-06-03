@@ -1,14 +1,14 @@
 ---
-description: Contributing Guide for participating in this project.
+description: Guía de Contribución para participar en este proyecto
 ---
 
-# Contributing Guide
+# Guía de Contribución
 
-_**What we are looking for in our Contributors.**_
+_**Lo que estamos buscando en nuestros Colaboradores.**_ 
 
 Firstly, we at Armada-Alliance would like to thank you for your consideration in contributing to us! We can't wait to hear your ideas and experiences. However, we do have some guidelines that we all must be familiar with and adhere to before submitting your contributions.
 
-## Table of Contents
+## Tabla de Contenidos
 
 1. What we are looking for
 2. Rules and Expectations
@@ -16,7 +16,7 @@ Firstly, we at Armada-Alliance would like to thank you for your consideration in
 4. Style Guide
 5. Community
 
-**What we are looking for**
+_**What we are looking for**_
 
 _We appreciate all contributions but we do have aspects of the project that take priority._
 
@@ -24,7 +24,7 @@ _We appreciate all contributions but we do have aspects of the project that take
 * Translating the guides into different languages
 * Help explain guides to others from different various backgrounds and knowledge levels
 
-**Rules and Expectations**
+_**Rules and Expectations**_
 
 _As an open-source project we expect a certain standard from you:_
 
@@ -50,7 +50,7 @@ Discussions about the Open Source Guides take place on this repository's Issues 
 
 Wherever possible, do not take these conversations to private channels, including contacting the maintainers directly. Keeping communication public means everyone can benefit and learn from the conversation.
 
-Attribution
+_**Attribution**_
 
 This contributing guide is adapted from the [open-source guide](https://github.com/github/opensource.guide).
 

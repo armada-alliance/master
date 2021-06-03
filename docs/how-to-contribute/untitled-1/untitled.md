@@ -1,4 +1,4 @@
-# Code of Conduct
+# Código de Conducta
 
 ## Our Pledge
 
@@ -29,7 +29,7 @@ Examples of unacceptable behavior include:
 
 * Trolling, insulting or derogatory comments, and personal or political attacks
 * Public or private harassment
-* Publishing other's private information, such as a physical or email
+* Publishing others' private information, such as a physical or email
 
   address, without their explicit permission
 

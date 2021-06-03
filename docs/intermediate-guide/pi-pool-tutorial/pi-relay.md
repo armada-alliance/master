@@ -58,6 +58,7 @@ ff02::3 ip6-allhosts
 192.168.1.150 c1.example.com
 #192.168.1.151 r1.example.com
 192.168.1.152 r2.example.com
+
 ```
 
 Save and exit.
@@ -142,6 +143,7 @@ cardano-node run \
   --host-addr ${HOSTADDR} \
   --port ${PORT} \
   --config ${CONFIG}
+
 ```
 
 Enable cardano-service at boot.
@@ -171,7 +173,7 @@ If you are using IPv4 leave CNODE\_HOSTNAME the way it is. The service will pick
 {% endhint %}
 
 ```bash
-cd /home/ada/pi-pool/scripts/
+cd /home/ada/pi-pool/scripts/topologyUpdater.sh
 ```
 
 ```bash
@@ -219,7 +221,7 @@ curl -4 -s -o /home/ada/pi-pool/files/mainnet-topology.json "https://api.clio.on
 
 Save and exit.
 
-After four hours of on boarding your relay\(s\) will start to be available to other peers on the network. **topologyUpdater.sh** will create a list in /home/ada/pi-pool/logs.
+After four hours of on boarding your relay\(s\) will start to be available to other peers on the network. **topologyUpdater.sh** will create a list in /home/ada/pi-pool/logs. 
 
 relay-topology\_pull.sh will replace the contents of your relays mainnet-topology file.
 
@@ -240,13 +242,6 @@ Remember to remove the last entries comma in your list or cardano-node will fail
 nano /home/ada/pi-pool/files/mainnet-topology.json
 ```
 
-### Enable blockfetch tracing
-
-```bash
-sed -i ${NODE_FILES}/mainnet-config.json \
-    -e "s/TraceBlockFetchDecisions\": false/TraceBlockFetchDecisions\": true/g"
-```
-
 ## Update gLiveView port
 
 Open the env file in the scripts directory.
@@ -259,20 +254,20 @@ Update the port number to match the one set in the cardano-service file. 3001 in
 
 Reboot your new relay and let it sync back to the tip of the chain.
 
-Use gLiveView.sh to view peer info.
+Use gLiveView.sh to view peer info. 
 
 ```bash
 cd /home/ada/pi-pool/scripts
 ./gLiveView.sh
 ```
 
-Many operators block icmp syn packets\(ping\) because of a security flaw that was patched a decade ago. So expect to see --- for RTT because we are not receiving a response from that server.
+Many operators block icmp syn packets\(ping\) because of a security flaw that was patched a decade ago. So expect to see --- for RTT because we are not receiving a response from that server.  
 
-More incoming connections is generally a good thing, it increases the odds that you will get network data sooner. Though you may want to put a limit on how many connect. The only way to stop incoming connections would be to block the IPv4 address with ufw.
+More incoming connections is generally a good thing, it increases the odds that you will get network data sooner. Though you may want to put a limit on how many connect.  The only way to stop incoming connections would be to block the IPv4 address with ufw.
 
 ## Prometheus
 
-Last thing we should do is change the name Prometheus is serving to Grafana.
+Last thing we should do is change the {{alias}} name Prometheus is serving to Grafana.
 
 ```bash
 sudo nano /etc/prometheus/prometheus.yml
@@ -339,5 +334,5 @@ scrape_configs:
           type:  'node'
 ```
 
-Reboot the server and give it a while to sync back up. That is just about it. Please feel free to join our Telegram channel for support. [https://t.me/armada\_alli](https://t.me/armada_alli)
+Reboot the server and give it a while to sync back up. That is just about it. Please feel free to join our Telegram channel for support. [https://t.me/armada\_alli](https://t.me/armada_alli) 
 
