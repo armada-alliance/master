@@ -97,6 +97,17 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
+Run the following to modify ${NODE_CONFIG}-config.json and update TraceBlockFetchDecisions to "true"
+
+```bash
+sed -i ${NODE_CONFIG}-config.json \
+    -e "s/TraceBlockFetchDecisions\": false/TraceBlockFetchDecisions\": true/g"
+```
+
+{% hint style="info" %}
+**Tip for relay nodes**: It's possible to reduce memory and cpu usage by setting "TraceMemPool" to "false" in **mainnet-config.json**
+{% endhint %}
+
 ### Retrieve aarch64 binaries
 
 {% hint style="info" %}
@@ -357,28 +368,6 @@ blockNo=$(/home/ada/.local/bin/cardano-cli query tip ${NETWORK_IDENTIFIER} | jq 
 # Note:
 # if you run your node in IPv4/IPv6 dual stack network configuration and want announced the
 # IPv4 address only please add the -4 parameter to the curl command below  (curl -4 -s ...)
-if [ "${CNODE_HOSTNAME}" != "CHANGE ME" ]; then
-  T_HOSTNAME="&hostname=${CNODE_HOSTNAME}"
-else
-  T_HOSTNAME=''
-fi
-
-if [ ! -d ${LOG_DIR} ]; then
-  mkdir -p ${LOG_DIR};
-fi
-
-curl -s -f -4 "https://api.clio.one/htopology/v1/?port=${CNODE_PORT}&blockNo=${blockNo}&valency=${CNODE_VALENCY}&magic=${NWMAGIC}${T_HOSTNAME}" | tee -a "${LOG_DIR}"/topologyUpdater_lastresult.json
-if [ "${CNODE_HOSTNAME}" != "CHANGE ME" ]; then
-  T_HOSTNAME="&hostname=${CNODE_HOSTNAME}"
-else
-  T_HOSTNAME=''
-fi
-
-if [ ! -d ${LOG_DIR} ]; then
-  mkdir -p ${LOG_DIR};
-fi
-
-curl -s -f -4 "https://api.clio.one/htopology/v1/?port=${CNODE_PORT}&blockNo=${blockNo}&valency=${CNODE_VALENCY}&magic=${NWMAGIC}${T_HOSTNAME}" | tee -a "${LOG_DIR}"/topologyUpdater_lastresult.json
 if [ "${CNODE_HOSTNAME}" != "CHANGE ME" ]; then
   T_HOSTNAME="&hostname=${CNODE_HOSTNAME}"
 else
