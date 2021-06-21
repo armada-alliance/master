@@ -22,10 +22,8 @@
 5\) Exécutez la commande `setup-alpine` et suivez les instructions.
 
 {% hint style="info" %}
-Lorsque vous êtes dans `setup-alpine`  vous serez invité à choisir le disque système. Une fois que vous êtes à ce stade, saisissez, `y`, pour configurer le disque et créer la partition pour `sys`.
+When you are in `setup-alpine` you will be prompted to choose the system disk. Une fois que vous êtes à ce stade, saisissez, `y`, pour configurer le disque et créer la partition pour `sys`.
 {% endhint %}
-
-
 
 6\) Redémarrez.
 
@@ -88,6 +86,7 @@ addgroup cardano video
 ```text
     sudo rc-update add local default
 ```
+
 Then reboot the system.
 
 ### Installer les exécutables statiques 'cardano-node' et 'cardano-cli' \\(AlpineOS utilise presque exclusivement des exécutables statiques, donc vous devriez éviter les compilations non statiques\\)
@@ -233,12 +232,10 @@ sudo nano /etc/ssh/sshd_config
 * Modifier la ligne `AllowTcpForwarding no` pour `AllowTcpForwarding yes`
 
 {% hint style="info" %}
-  Assurez-vous que cette ligne n'est pas commentée avec un`#`
+Assurez-vous que cette ligne n'est pas commentée avec un`#`
 {% endhint %}
 
 {% hint style="success" %}
 Nous aimerions souligner spécialement notre [membre d'alliance](https://armada-alliance.com) Sayshar, opérateur de [\[SRN\] Pool](https://www.adasrn.com/), pour fournir ce tutoriel 🏴‍☠️ 🙏 😎
 {% endhint %}
-
-
 
