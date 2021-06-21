@@ -97,7 +97,7 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-Run the following to modify ${NODE_CONFIG}-config.json and update TraceBlockFetchDecisions to "true"
+Run the following to modify ${NODE\_CONFIG}-config.json and update TraceBlockFetchDecisions to "true"
 
 ```bash
 sed -i ${NODE_CONFIG}-config.json \
@@ -105,7 +105,7 @@ sed -i ${NODE_CONFIG}-config.json \
 ```
 
 {% hint style="info" %}
-**Tip for relay nodes**: It's possible to reduce memory and cpu usage by setting "TraceMemPool" to "false" in **mainnet-config.json**
+**Tip for relay nodes**: It's possible to reduce memory and cpu usage by setting "TraceMemPool" to "false" in **mainnet-config.json.** This will turn off mempool data in Grafana and gLiveView.sh.
 {% endhint %}
 
 ### Retrieve aarch64 binaries
@@ -170,7 +170,7 @@ Allow execution of our new startup script.
 chmod +x $HOME/.local/bin/cardano-service
 ```
 
-Open /etc/systemd/system/cardano-node.service
+Open /etc/systemd/system/cardano-node.service.
 
 ```bash
 sudo nano /etc/systemd/system/cardano-node.service
@@ -630,7 +630,7 @@ At this point you may want to start cardano-service and get synced up before we 
 
 ### Configure Grafana
 
-On your local machine open your browser and got to \[\[\[[http://&lt;Pi-Node's\]\(http://\]\(http://\]\(http://](http://<Pi-Node's]%28http://]%28http://]%28http://)&lt;Pi-Node's\]%28[http://\]%28http://\)&lt;Pi-Node's\]%28\[http://\)&lt;Pi-Node's\]\(http://%29](http://]%28http://%29<Pi-Node's]%28[http://%29<Pi-Node's]%28http://%29)&lt;Pi-Node's\)\) private ip&gt;:5000
+On your local machine open your browser and got to \[\[\[\[[http://&lt;Pi-Node's\]\(http://\]\(http://\]\(http://\]\(http://](http://<Pi-Node's]%28http://]%28http://]%28http://]%28http://)&lt;Pi-Node's\]%28[http://\]%28http://\]%28http://\)&lt;Pi-Node's\]%28\[http://\]%28http://\)&lt;Pi-Node's\]%28\[http://\)&lt;Pi-Node's\]\(http://%29\]\(http://\]%28http://%29](http://]%28http://]%28http://%29<Pi-Node's]%28[http://]%28http://%29<Pi-Node's]%28[http://%29<Pi-Node's]%28http://%29]%28http://]%28http://%29)&lt;Pi-Node's\]%28\[[http://%29](http://%29){\[--lt--]}Pi-Node's\]%28[http://%29\)&lt;Pi-Node's\)\\](http://%29%29<Pi-Node's%29\)\) private ip&gt;:5000
 
 Log in and set a new password. Default username and password is **admin:admin**.
 
