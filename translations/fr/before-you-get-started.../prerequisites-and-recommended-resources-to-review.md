@@ -1,18 +1,18 @@
 ---
-description: Stake pool operator resources.
+description: Ressources pour opérateurs de "Stake Pool".
 ---
 
-# Resource Library🏫
+# Bibliothèque de ressources
 
-## Cardano Community Provided Resources
+## Ressources fournies par la communauté Cardano
 
 {% hint style="success" %}
-### A Special thank you to all the great community members and their tutorials 🙏 🤗
+### Un merci spécial à tous les membres de la communauté et à leurs tutoriels 🙏 🤗
 {% endhint %}
 
 {% tabs %}
 {% tab title="Youtube and Video Resources" %}
-| Video link                                                                                                                                                                                                                                                                         |
+| Lien Vidéo                                                                                                                                                                                                                                                                         |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [**\*\*\*\*[**Armada Alliance Community Tutorials**](https://www.youtube.com/channel/UCligunhcmbMYaBUMvONsKwg)**](https://www.youtube.com/channel/UCligunhcmbMYaBUMvONsKwg)                                                                                                |
 | [**\*\*\*\*[**\[Easy 1\] Raspberry Pi Stake Pool Tutorial Youtube Videos**](https://www.youtube.com/watch?v=tZykFS5D-jk&list=PLBhbLwOuj0DfTnneuG3vyoDHY7Dv_aiyq)\*\*\*\***](https://www.youtube.com/watch?v=tZykFS5D-jk&list=PLBhbLwOuj0DfTnneuG3vyoDHY7Dv_aiyq) |
@@ -57,7 +57,7 @@ description: Stake pool operator resources.
 {% endtab %}
 
 {% tab title="Youtube and Video Resources" %}
-| Video link                                                                                                           |
+| Lien Vidéo                                                                                                           |
 |:-------------------------------------------------------------------------------------------------------------------- |
 | \*\*\*\*[**IOHK Youtube Channel**](https://www.youtube.com/channel/UCBJ0p9aCW-W82TwNM-z3V2w)\*\*\*\* |
 {% endtab %}
