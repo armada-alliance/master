@@ -1,23 +1,23 @@
 ---
 description: >-
-  Collection of tutorials focused for the beginner Raspberry Pi Stake Pool Operator
+  Aloittelevalle Raspberry Pi Stake Pool operaattorille suunnattuja ohjeita
 ---
 
 # Raspberry Pi OS 🍓
 
-## What hardware you'll need for these lessons
+## Mitä laitteistoa tarvitset näitä oppitunteja varten
 
-| Required Item                                                | Quantity |
-|:------------------------------------------------------------ |:-------- |
-| TV or Monitor with an HDMI input                             | 1        |
-| 1 Mini HDMI to HDMI cable                                    | 1        |
-| Laptop or Desktop Computer \(macOS, Linux PC, Windows PC\) | 1        |
-| Raspberry Pi 4 Model B 8GB RAM                               | 2        |
-| Micro SD Card                                                | 1        |
-| External Solid State Drive                                   | 2        |
-| USB 3.0 to SATA III adapter                                  | 2        |
-| Wired or wireless mouse                                      | 1        |
-| wired or wireless keyboard                                   | 1        |
-| Ethernet Cable \(CAT6\)                                    | 2        |
-| Network Router for ethernet connection                       | 1        |
+| Vaadittu Tuote                                                               | Määrä |
+|:---------------------------------------------------------------------------- |:----- |
+| TV tai näyttö HDMI-syötteellä                                                | 1     |
+| 1 Mini HDMI HDMI-kaapeli                                                     | 1     |
+| Kannettava tietokone tai työpöytätietokone \(macOS, Linux PC, Windows PC\) | 1     |
+| Raspberry Pi 4 Model B 8GB RAM                                               | 2     |
+| Mikro SD-kortti                                                              | 1     |
+| Ulkoinen Kovalevy                                                            | 2     |
+| USB 3.0 - SATA III -adapteri                                                 | 2     |
+| Langallinen tai langaton hiiri                                               | 1     |
+| langallinen tai langaton näppäimistö                                         | 1     |
+| Ethernet Kaapeli \(CAT6\)                                                  | 2     |
+| Verkon reititin ethernet-yhteyttä varten                                     | 1     |
 
