@@ -1,6 +1,6 @@
-# Table of contents
+# Sisällys
 
-* [Welcome ARM Operators 🦾](README.md)
+* [Tervetuloa ARM-operaattorit 🦾](README.md)
 
 ## Cardano Node <a id="beginner-guide-1"></a>
 
