@@ -1,5 +1,5 @@
 ---
-description: In this tutorial we walk through basic Raspberry Pi and Linux Set Up
+description: Tässä tutoriaalissa käymme läpi Raspberry Pin ja Linuxin asentamisen perusteita
 ---
 
 # Setting up the Raspberry Pi
