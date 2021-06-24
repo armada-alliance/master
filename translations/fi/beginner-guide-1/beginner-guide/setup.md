@@ -2,14 +2,14 @@
 description: Tässä tutoriaalissa käymme läpi Raspberry Pin ja Linuxin asentamisen perusteita
 ---
 
-# Setting up the Raspberry Pi
+# Raspberry Pin asennus
 
-## Summary <a id="h.vrhvb96nxxe9"></a>
+## Yhteenveto <a id="h.vrhvb96nxxe9"></a>
 
-1. Download an Operating system \(OS\). For this tutorial, we will be using the Raspberry Pi OS.
-2. Install Raspberry Pi OS using Raspberry Pi Imager
-3. Flash the OS onto the SD card
-4. Boot up the Pi and configure the settings
+1. Lataa käyttöjärjestelmä \(OS\). Tässä ohjeessa käytämme Raspberry Pi OS -käyttöjärjestelmää.
+2. Asenna Raspberry Pi OS käyttäen Raspberry Pi Imager ohjelmaa
+3. Asenna käyttöjärjestelmä SD-kortille
+4. Käynnistä Pi ja määritä asetukset
 5. Insert external SSD and copy the SD card to it
 6. Shutdown and reboot from SSD
 
