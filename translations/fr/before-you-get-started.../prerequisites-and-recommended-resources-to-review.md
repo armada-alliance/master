@@ -22,7 +22,7 @@ description: Ressources pour opérateurs de "Stake Pool".
 {% endtab %}
 
 {% tab title="Community Tutorials/GitHubs" %}
-| Author               | Link to Tutorial                                                                                                                |
+| Auteur               | Liens vers le tutoriel                                                                                                          |
 |:-------------------- |:------------------------------------------------------------------------------------------------------------------------------- |
 | \[Berry\] Pool     | [https://github.com/alessandrokonrad/Pi-Pool](https://github.com/alessandrokonrad/Pi-Pool)                                      |
 | \[Easy 1\] Pool    | [https://github.com/speedwing/cardano-staking-pool-edu](https://github.com/speedwing/cardano-staking-pool-edu)                  |
@@ -32,7 +32,7 @@ description: Ressources pour opérateurs de "Stake Pool".
 {% endtab %}
 
 {% tab title="RPi Community" %}
-| Link                                                                                                                                                                  |
+| Lien                                                                                                                                                                  |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Arming Cardano Telegram](https://github.com/rekuenkdr/master/tree/44e80aa783ef319f1f88f701f497d59f81d033cd/joinchat/FeKTCBu-pn5OUZUz4joF2w/README.md)                |
 | [Power Consumption Benchmarks](https://www.pidramble.com/wiki/benchmarks/power-consumption)                                                                           |
@@ -42,18 +42,18 @@ description: Ressources pour opérateurs de "Stake Pool".
 {% endtab %}
 {% endtabs %}
 
-## Official Cardano Foundation Resources
+## Ressources officielles de la Fondation Cardano
 
 {% tabs %}
 {% tab title="Official Cardano Foundation" %}
-| Documentation                                                                             |
-|:----------------------------------------------------------------------------------------- |
-| [Stake Pool Operation and General Information](https://cardano.org/stake-pool-operation/) |
-| :---------------------------------------------------------------------------------------- |
-| [Testnet Documentation](https://developers.cardano.org/en/testnets/cardano/overview/)     |
-| :------------------------------------------------------------------------------------     |
-| [https://roadmap.cardano.org/en/goguen/](https://roadmap.cardano.org/en/goguen/)          |
-| :-------------------------------------------------------------------------------          |
+| Documentation                                                                                  |
+|:---------------------------------------------------------------------------------------------- |
+| [Opération de Stake Pool et informations générales](https://cardano.org/stake-pool-operation/) |
+| :----------------------------------------------------------------------------------------      |
+| [Documentation du Testnet](https://developers.cardano.org/en/testnets/cardano/overview/)       |
+| :------------------------------------------------------------------------------------          |
+| [https://roadmap.cardano.org/en/goguen/](https://roadmap.cardano.org/en/goguen/)               |
+| :-------------------------------------------------------------------------------               |
 {% endtab %}
 
 {% tab title="Youtube and Video Resources" %}
@@ -63,7 +63,7 @@ description: Ressources pour opérateurs de "Stake Pool".
 {% endtab %}
 
 {% tab title="Cardano Forum" %}
-| Link                                                                                                                                                                                       |
+| Lien                                                                                                                                                                                       |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [https://forum.cardano.org/t/staking-and-delegating-for-beginners-a-step-by-step-guide/36681](https://forum.cardano.org/t/staking-and-delegating-for-beginners-a-step-by-step-guide/36681) |
 {% endtab %}
