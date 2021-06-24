@@ -21,12 +21,12 @@ Yoroi lompakko on mobiililompakko Android- ja Apple-laitteille. Daedalus ei ole 
 {% tab %}
 {% endtab %}
 
-{% tab title="Yoroi Lightweight Wallet and Mobile App" %}
+{% tab title="Yoroi Lompakko ja Mobiili appi" %}
 {% embed url="https://yoroi-wallet.com/\#/" caption="" %}
 
-### The video below will walk you through using the Yoroi Wallet and how to delegate your ADA.
+### Alla oleva video opastaa Yoroi lompakon käyttöön ja kertoo miten voit delegoida ADAsi sen avulla.
 
-{% embed url="https://www.youtube.com/watch?v=3ypcYjjJNns&t=330s" %}
+{% upotettu url="https://www.youtube.com/watch?v=3ypcYjjJNns&t=330s" %}
 {% endtab %}
 {% endtabs %}
 
