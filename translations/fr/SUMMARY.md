@@ -39,5 +39,5 @@
 ## Resources <a id="before-you-get-started..."></a>
 
 * [Bibliothèque de ressources](before-you-get-started.../prerequisites-and-recommended-resources-to-review.md)
-* [Hardware Purchase Links🏪](before-you-get-started.../hardware.md)
+* [Liens d'achat de matériel 🏪](before-you-get-started.../hardware.md)
 
