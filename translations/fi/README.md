@@ -1,12 +1,12 @@
-# Welcome ARM Operators 🦾
+# Tervetuloa ARM-operaattorit 🦾
 
-## You want to become a Raspberry Pi Stake Pool Operator on Cardano...but where should you start!?  😳
+## Haluat aloittaa urasi Cardano lohkoketjun Stake Pool operaattorina käyttäen Raspberry Pi:tä ...mutta mistä aloittaa!?  😳
 
 ![](.gitbook/assets/download-6-.jpeg)
 
-### **Welcome to the Armada Alliance's information and tutorials section.** We are a community of ARM-based Cardano Stake Pool Operators who aim to provide support and free educational resources to future Stake Pool Operators.
+### Tervetuloa Armada Allianssin info ja opas -osioon. Me olemme RPi-ARM Cardano Stake Pool Operaattoreiden yhteisö, jonka tavoitteena on tarjota tukea, opastusta ja ilmaisia vinkkejä tuleville Stake Pool Operaattoreille.
 
-### Although our focus is ARM stake pool operations, we will provide a wide range of information, tutorials, and resources for developing on the Cardano blockchain. If you would like to know more about the project and our goals, please see our Fund4 proposal on _Project Catalyst_ for details or join our _Discord_.
+### Vaikka keskiössämme on RPi-ARM pohjaisten stake poolien toiminta ja ylläpito, tarjoamme myös laajan kattauksen tietoa, oppaita ja resursseja Cardanon kehittämiseen. Jos haluat tietää enemmän projektista ja tavoitteistamme, käy tutustumassa meidän Fund4 ehdotukseemme _Project Catalystissä_ tai voit liittyä _Discord_ -kanavallemme.
 
 | Ota yhteyttä:                                                                                          |
 |:------------------------------------------------------------------------------------------------------ |
