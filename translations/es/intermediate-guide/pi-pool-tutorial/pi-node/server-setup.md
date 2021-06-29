@@ -146,8 +146,8 @@ sudo nano /etc/sysctl.conf
 ```text
 ## Pi Pool ##
 
-# swap less                      
-#vm.swappiness=10
+# swap more to zram                      
+vm.swappiness=100
 #vm.vfs_cache_pressure=50
 
 fs.file-max = 10000000
