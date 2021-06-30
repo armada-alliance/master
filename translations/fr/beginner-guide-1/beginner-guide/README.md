@@ -1,23 +1,23 @@
 ---
 description: >-
-  Collection of tutorials focused for the beginner Raspberry Pi Stake Pool Operator
+  Collection de tutoriels centrés pour l'opérateur de Stake Pool sur Raspberry Pi pour débutant
 ---
 
 # Raspberry Pi OS 🍓
 
-## What hardware you'll need for these lessons
+## Quel matériel vous aurez besoin pour ces leçons
 
-| Required Item                                                | Quantity |
-|:------------------------------------------------------------ |:-------- |
-| TV or Monitor with an HDMI input                             | 1        |
-| 1 Mini HDMI to HDMI cable                                    | 1        |
-| Laptop or Desktop Computer \(macOS, Linux PC, Windows PC\) | 1        |
-| Raspberry Pi 4 Model B 8GB RAM                               | 2        |
-| Micro SD Card                                                | 1        |
-| External Solid State Drive                                   | 2        |
-| USB 3.0 to SATA III adapter                                  | 2        |
-| Wired or wireless mouse                                      | 1        |
-| wired or wireless keyboard                                   | 1        |
-| Ethernet Cable \(CAT6\)                                    | 2        |
-| Network Router for ethernet connection                       | 1        |
+| Éléments requis                                                                   | Quantité |
+|:--------------------------------------------------------------------------------- |:-------- |
+| TV ou moniteur avec une entrée HDMI                                               | 1        |
+| 1 mini-câble HDMI vers HDMI                                                       | 1        |
+| Ordinateur portable ou ordinateur de bureau \\(macOS, PC Linux, PC Windows\\) | 1        |
+| Raspberry Pi 4 Model B 8GB RAM                                                    | 2        |
+| Carte mémoire micro-SD                                                            | 1        |
+| Storage SSD Externe                                                               | 2        |
+| Adaptateur USB 3.0 vers SATA III                                                  | 2        |
+| Souris avec ou sans fil                                                           | 1        |
+| souris avec ou sans fil                                                           | 1        |
+| Câble Ethernet \\(CAT6\\)                                                     | 2        |
+| Routeur réseau pour la connexion Ethernet                                         | 1        |
 
