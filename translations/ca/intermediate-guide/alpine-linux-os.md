@@ -72,10 +72,6 @@ addgroup cardano video
 ```
 
 ```text
-    cd alpine-rpi-os
-```
-
-```text
     sudo cp alpine-rpi-os/alpine_cnode_scripts_and_services/etc/local.d/cpufreq.start /etc/local.d/
 ```
 
