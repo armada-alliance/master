@@ -2,12 +2,30 @@
 
 ![](../.gitbook/assets/image%20%281%29.png)
 
-### Pourquoi utiliser AlpineOS sur le Raspberry Pi ? Voici quelques raisons :
+## Pourquoi utiliser AlpineOS sur le Raspberry Pi ? Voici quelques raisons :
 
 * **Très faible consommation de mémoire \(~50Mo utilisés pendant l'inactivité vs ~350Mo pour Ubuntu 20.04\\).**
 * **Diminuer la surcharge CPU** **\(27 tâches/ 31 threads actifs pour Alpine vs 57 tâches / 111 threads pour Ubuntu lorsque cardano-node est en cours d'exécution\).**
 * **Pi plus cool 😎 \(Litéralement, la réduction de la surcharge garde le Processeur plus frais\\).**
 * **Et finalement, pourquoi pas? Si vous planifiez d'utiliser des exécutables statiques, vous pourriez aussi tirer parti de AlpineOS 😜**
+
+## If you have previously used this guide and intend to update the scripts. Follow these steps. Then follow the rest of the steps outlined in this guide accordingly 🙂.
+
+1) Update the git local repo.
+```text
+cd ~/alpine-rpi-os
+```
+```text
+git fetch --recurse-submodules --tags --all
+```
+2) Identify the latest tag.
+```text
+git tag
+```
+3) Replace \<tag\> in this step with the latest tag such as `v1.1.0`.
+```text
+git checkout tags/<tag>
+```
 
 ## Configuration initiale pour AlpineOS sur Raspberry Pi 4B 8GB :
 
@@ -83,9 +101,48 @@ addgroup cardano video
     sudo rc-update add local default
 ```
 
-Then reboot the system.
+12\) **[CPU Governor - Optional]** By default, AlpineOS uses the powersave governor which sets CPU frequency at the lowest. To use the ondemand governor which scales CPU frequency according to system load, `cpufreq.start` is included in this repo which should be added to /etc/local.d/. You may run the following commands to do this for you.
 
-### Installer les exécutables statiques 'cardano-node' et 'cardano-cli' \\(AlpineOS utilise presque exclusivement des exécutables statiques, donc vous devriez éviter les compilations non statiques\\)
+```text
+    cd ~
+```
+
+```text
+    git clone https://github.com/armada-alliance/alpine-rpi-os
+```
+
+```text
+    cd alpine-rpi-os
+```
+
+```text
+    sudo cp alpine-rpi-os/alpine_cnode_scripts_and_services/etc/local.d/cpufreq.start /etc/local.d/
+```
+
+```text
+    sudo chmod +x /etc/local.d/cpufreq.start
+```
+
+```text
+    sudo rc-update add local default
+```
+13\) **[ZRAM - Optional]** To alleviate RAM limitation on RPi, ZRAM is recommended to enable RAM compression. Use the following steps to install zram-init and install the scripts. The scripts provided will enable a 50% boost in useable RAM capacity. This step assumes you have followed step 12.
+
+```text
+    sudo apk add zram-init
+```
+
+```text
+    sudo cp alpine-rpi-os/alpine_cnode_scripts_and_services/etc/local.d/zram.* /etc/local.d/
+```
+
+```text
+    sudo chmod +x /etc/local.d/zram.*
+```
+
+14\) Reboot the system. For the Raspberry Pi 4B 8GB, you should expect around 3.81GB of swap via ZRAM when checking with `htop` (`sudo apk add htop` if htop is unavailable).
+
+## Installer les exécutables statiques 'cardano-node' et 'cardano-cli' \\(AlpineOS utilise presque exclusivement des exécutables statiques, donc vous devriez éviter les compilations non statiques\\)
 
 {% hint style="info" %}
 **Vous pouvez obtenir les exécutables statiques pour la version 1.27. via ce lien** [****](https://ci.zw3rk.com/build/1758) **grâce à la courtoisie de Moritz Angermann, le SPO du pool ZW3RK 🙏**
