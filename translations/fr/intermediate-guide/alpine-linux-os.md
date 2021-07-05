@@ -22,7 +22,7 @@ git fetch --recurse-submodules --tags --all
 ```text
 git tag
 ```
-3) Replace \<tag\> in this step with the latest tag such as `v1.1.0`.
+3) Replace `<tag>` in this step with the latest tag such as `v1.1.0`.
 ```text
 git checkout tags/<tag>
 ```
@@ -87,6 +87,15 @@ addgroup cardano video
 
 ```text
     git clone https://github.com/armada-alliance/alpine-rpi-os
+```
+
+```text
+    git tag
+```
+Replace `<tag>` with the latest tag in the next command.
+
+```text
+    git checkout tags/<tag>
 ```
 
 ```text
@@ -182,6 +191,15 @@ addgroup cardano video
 
 ```text
     git clone https://github.com/armada-alliance/alpine-rpi-os
+```
+
+```text
+    git tag
+```
+Replace `<tag>` with the latest tag in the next command.
+
+```text
+    git checkout tags/<tag>
 ```
 
 2\) Exécutez les commandes suivantes pour installer le dossier **cnode** , les scripts et les services dans les bons dossiers. The **cnode** folder contains everything a **Cardano node** needs to start as a functional relay node.
