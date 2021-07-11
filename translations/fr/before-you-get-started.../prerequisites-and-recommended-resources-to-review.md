@@ -2,7 +2,7 @@
 description: Ressources pour opérateurs de "Stake Pool".
 ---
 
-# Bibliothèque de ressources
+# Resource Library 🏫
 
 ## Ressources fournies par la communauté Cardano
 
