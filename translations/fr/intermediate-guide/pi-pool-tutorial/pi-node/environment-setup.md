@@ -47,6 +47,7 @@ Changes to this file require reloading .bashrc or logging out then back in.
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
 echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
+echo export NODE_CONFIG=mainnet >> $HOME/.bashrc
 echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.bashrc
 echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.bashrc
 echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
@@ -63,7 +64,7 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-Run the following to modify ${NODE\_CONFIG}-config.json and update TraceBlockFetchDecisions to "true"
+Run the following to modify mainnet-config.json and update TraceBlockFetchDecisions to "true"
 
 ```bash
 sed -i ${NODE_CONFIG}-config.json \
@@ -232,20 +233,10 @@ cd $NODE_HOME
 rm -r db/
 ```
 
-{% hint style="danger" %}
-Download either the mainnet db folder or testnet. Not Both!!
-{% endhint %}
-
 For mainnet chain use.
 
 ```bash
 wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/
-```
-
-For testnet.
-
-```bash
-wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online/db/
 ```
 
 Once wget completes enable & start cardano-node.
@@ -355,6 +346,10 @@ chmod +x topologyUpdater.sh
 
 {% hint style="warning" %}
 You will not be able to successfully execute ./topologyUpdater.sh until you are fully synced up to the tip of the chain.
+{% endhint %}
+
+{% hint style="info" %}
+Choose nano when prompted for editor.
 {% endhint %}
 
 Create a cron job that will run the script every hour.
@@ -639,10 +634,6 @@ sudo tail -f /var/log/syslog
 Let's put Grafana behind Nginx with self signed\(snakeoil\) certificate. The certificate was generated when we installed the ssl-cert package.
 
 You will get a warning from your browser. This is because ca-certificates cannot follow a trust chain to a trusted \(centralized\) source. The connection is however encrypted and will protect your passwords flying around in plain text.
-
-```bash
-sudo apt install nginx
-```
 
 ```bash
 sudo nano /etc/nginx/sites-available/default
