@@ -2,7 +2,7 @@
 description: Laita ADAsi työskentelemään sinulle jo tänään!
 ---
 
-# Staking Guide🚀
+# Staking Guide 🚀
 
 * **Tästä linkistä pääset lukemaan lisää delegoinnista:**  [**https://cardano.org/stake-pool-delegation/**](https://cardano.org/stake-pool-delegation/)\*\*\*\*
 * **ADAsi täysi hallinta pysyy aina sinulla eikä valuutta siirry pois lompakostasi delegoidessasi.**
