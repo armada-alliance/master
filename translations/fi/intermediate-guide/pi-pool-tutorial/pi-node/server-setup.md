@@ -136,7 +136,7 @@ Add the following to the bottom of /etc/sysctl.conf. Save and exit.
 {% endhint %}
 
 {% hint style="warning" %}
-I am disabling IPv6 and IPv4 forwarding. You may want these. I have seen claims that IPv6 is slower and gets in the way. &lt;find this later&gt;
+I am disabling IPv6 and IPv4 forwarding. You may want these. I have seen claims that IPv6 is slower and gets in the way.
 {% endhint %}
 
 ```text
@@ -146,7 +146,7 @@ sudo nano /etc/sysctl.conf
 ```text
 ## Pi Pool ##
 
-# swap more                      
+# swap more to zram                     
 vm.vfs_cache_pressure=500
 vm.swappiness=100
 vm.dirty_background_ratio=1
@@ -285,6 +285,10 @@ sudo service chrony restart
 ```
 
 ### Zram swap
+
+{% hint style="info" %}
+We have found that cardano-node can safely use this compressed swap in ram essentially giving us around 20gb of ram. We already set kernel parameters for zram in /etc/sysctl.conf
+{% endhint %}
 
 Swapping to disk is slow, swapping to compressed ram space is faster and gives us some overhead before out of memory \(oom\).
 
