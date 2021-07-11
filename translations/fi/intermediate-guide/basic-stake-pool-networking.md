@@ -3,7 +3,7 @@ description: >-
   This section will help with understanding the relay and block producer topology.
 ---
 
-# Basic Stake Pool Networking💫
+# Basic Stake Pool Networking 💫
 
 ## Assumptions
 
