@@ -80,7 +80,7 @@ sudo nano /etc/ssh/sshd_config
 ```
 
 {% hint style="info" %}
-You can use ctrl+k to clip lines in nano. From the top of the file you can use it to cut out the whole file and paste this one in with ctrl+v or ctrl+shift+v depending on your system. ctrl+o to save and ctrl+x to exit.
+Turn off password authentication. You
 {% endhint %}
 
 ```bash
@@ -117,7 +117,7 @@ Include /etc/ssh/sshd_config.d/*.conf
 # Authentication:
 
 #LoginGraceTime 2m
-PermitRootLogin no
+#PermitRootLogin prohibit-password
 #StrictModes yes
 #MaxAuthTries 2
 #MaxSessions 10
