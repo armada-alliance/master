@@ -21,26 +21,6 @@ sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
          zlib1g-dev g++ libncursesw5 libtool autoconf -y
 ```
 
-Install NodeJS.
-
-```bash
-sudo snap install node --classic
-```
-
-Install Certbot.
-
-{% embed url="https://certbot.eff.org/lets-encrypt/snap-nginx" caption="" %}
-
-```bash
-sudo snap install --classic certbot
-```
-
-Dynamically link Certbot binary into our path.
-
-```bash
-sudo ln -s /snap/bin/certbot /usr/bin/certbot
-```
-
 ## Environment
 
 Make some directories.
@@ -60,26 +40,12 @@ mkdir $HOME/tmp
 [Environment Variables in Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
 {% endhint %}
 
-Create a .pienv file and choose which network you want to connect to.
-
-```bash
-nano $HOME/.pienv
-```
-
 {% hint style="warning" %}
 Changes to this file require reloading .bashrc or logging out then back in.
 {% endhint %}
 
 ```bash
-# testnet or mainnet
-NODE_CONFIG=mainnet
-```
-
-Save and exit.
-
-```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
-source $HOME/.pienv
 echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
 echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.bashrc
 echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.bashrc
@@ -673,6 +639,10 @@ sudo tail -f /var/log/syslog
 Let's put Grafana behind Nginx with self signed\(snakeoil\) certificate. The certificate was generated when we installed the ssl-cert package.
 
 You will get a warning from your browser. This is because ca-certificates cannot follow a trust chain to a trusted \(centralized\) source. The connection is however encrypted and will protect your passwords flying around in plain text.
+
+```bash
+sudo apt install nginx
+```
 
 ```bash
 sudo nano /etc/nginx/sites-available/default
