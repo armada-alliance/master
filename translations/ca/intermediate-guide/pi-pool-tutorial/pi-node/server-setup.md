@@ -146,9 +146,11 @@ sudo nano /etc/sysctl.conf
 ```text
 ## Pi Pool ##
 
-# swap more to zram                      
+# swap more                      
+vm.vfs_cache_pressure=500
 vm.swappiness=100
-#vm.vfs_cache_pressure=50
+vm.dirty_background_ratio=1
+vm.dirty_ratio=50
 
 fs.file-max = 10000000
 fs.nr_open = 10000000
@@ -288,8 +290,45 @@ Swapping to disk is slow, swapping to compressed ram space is faster and gives u
 
 {% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters/" caption="" %}
 
+{% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" %}
+
 ```text
 sudo apt install zram-config
+```
+
+```bash
+sudo nano /usr/bin/init-zram-swapping
+```
+
+Multiply default config by 3. This will give you 12.5GB of virtual compressed swap in ram.
+
+{% hint style="info" %}
+mem=$\(\(\(totalmem / 2 / ${NRDEVICES}\) \* 1024 \* 3\)\)
+{% endhint %}
+
+```bash
+#!/bin/sh
+# load dependency modules
+NRDEVICES=$(grep -c ^processor /proc/cpuinfo | sed 's/^0$/1/')
+if modinfo zram | grep -q ' zram_num_devices:' 2>/dev/null; then
+  MODPROBE_ARGS="zram_num_devices=${NRDEVICES}"
+elif modinfo zram | grep -q ' num_devices:' 2>/dev/null; then
+  MODPROBE_ARGS="num_devices=${NRDEVICES}"
+else
+  exit 1
+fi
+modprobe zram $MODPROBE_ARGS
+# Calculate memory to use for zram (1/2 of ram)
+totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`
+mem=$(((totalmem / 2 / ${NRDEVICES}) * 1024 * 3))
+# initialize the devices
+for i in $(seq ${NRDEVICES}); do
+  DEVNUMBER=$((i - 1))
+  echo zstd > /sys/block/zram${DEVNUMBER}/comp_algorithm
+  echo $mem > /sys/block/zram${DEVNUMBER}/disksize
+  mkswap /dev/zram${DEVNUMBER}
+  swapon -p 5 /dev/zram${DEVNUMBER}
+done
 ```
 
 ### Raspberry Pi & entropy
