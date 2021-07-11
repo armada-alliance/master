@@ -2,7 +2,7 @@
 description: How to Contribute to this guide
 ---
 
-# Contribute🐱‍🚀
+# Contribute 🐱‍🚀
 
 ## Great to see you here!
 
