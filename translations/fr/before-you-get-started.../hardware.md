@@ -3,7 +3,7 @@ description: >-
   Voici la liste actuelle du matériel qui peut être utilisé pour construire un Stake Pool sur Raspberry Pi, n'inclus pas un ordinateur portable séparé ou un PC pour l'administration.
 ---
 
-# Hardware Purchase Links 🏪
+# Liens d'achat de matériel 🏪
 
 ![GeeekPi Cluster Case](../.gitbook/assets/photo_2021-03-09-13.42.42.jpeg)
 
@@ -61,7 +61,7 @@ Vous devez utiliser une alimentation qui peut soutenir à 3AMP à 5V nécessaire
 {% endtab %}
 {% endtabs %}
 
-## Star Forge parts list.
+## Liste des pièces de la Star Forge.
 
 ![](../.gitbook/assets/photo_2021-03-09-13.40.29.jpeg)
 
