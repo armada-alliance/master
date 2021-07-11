@@ -171,10 +171,10 @@ ChallengeResponseAuthentication no
 # and ChallengeResponseAuthentication to 'no'.
 UsePAM yes
 
-AllowAgentForwarding no
-AllowTcpForwarding no
+#AllowAgentForwarding yes
+#AllowTcpForwarding yes
 #GatewayPorts no
-X11Forwarding no
+X11Forwarding yes
 #X11DisplayOffset 10
 #X11UseLocalhost yes
 #PermitTTY yes
@@ -199,14 +199,15 @@ PrintMotd no
 AcceptEnv LANG LC_*
 
 # override default of no subsystems
-Subsystem sftp    /usr/lib/openssh/sftp-server
+Subsystem sftp  /usr/lib/openssh/sftp-server
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs
-#    X11Forwarding no
-#    AllowTcpForwarding no
-#    PermitTTY no
-#    ForceCommand cvs server
+#       X11Forwarding no
+#       AllowTcpForwarding no
+#       PermitTTY no
+#       ForceCommand cvs server
+
 ```
 
 {% hint style="info" %}
