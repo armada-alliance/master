@@ -11,18 +11,24 @@
 
 ## If you have previously used this guide and intend to update the scripts. Follow these steps. Then follow the rest of the steps outlined in this guide accordingly 🙂.
 
-1) Update the git local repo.
+1\) Update the git local repo.
+
 ```text
 cd ~/alpine-rpi-os
 ```
+
 ```text
 git fetch --recurse-submodules --tags --all
 ```
-2) Identify the latest tag.
+
+2\) Identify the latest tag.
+
 ```text
 git tag
 ```
-3) Replace `<tag>` in this step with the latest tag such as `v1.1.0`.
+
+3\) Replace `<tag>` in this step with the latest tag such as `v1.1.0`.
+
 ```text
 git checkout tags/<tag>
 ```
@@ -92,6 +98,7 @@ addgroup cardano video
 ```text
     git tag
 ```
+
 Replace `<tag>` with the latest tag in the next command.
 
 ```text
@@ -110,7 +117,7 @@ Replace `<tag>` with the latest tag in the next command.
     sudo rc-update add local default
 ```
 
-12\) **[CPU Governor - Optional]** By default, AlpineOS uses the powersave governor which sets CPU frequency at the lowest. To use the ondemand governor which scales CPU frequency according to system load, `cpufreq.start` is included in this repo which should be added to /etc/local.d/. You may run the following commands to do this for you.
+12\) **\[CPU Governor - Optional\]** By default, AlpineOS uses the powersave governor which sets CPU frequency at the lowest. To use the ondemand governor which scales CPU frequency according to system load, `cpufreq.start` is included in this repo which should be added to /etc/local.d/. You may run the following commands to do this for you.
 
 ```text
     cd ~
@@ -135,7 +142,8 @@ Replace `<tag>` with the latest tag in the next command.
 ```text
     sudo rc-update add local default
 ```
-13\) **[ZRAM - Optional]** To alleviate RAM limitation on RPi, ZRAM is recommended to enable RAM compression. Use the following steps to install zram-init and install the scripts. The scripts provided will enable a 50% boost in useable RAM capacity. This step assumes you have followed step 12.
+
+13\) **\[ZRAM - Optional\]** To alleviate RAM limitation on RPi, ZRAM is recommended to enable RAM compression. Use the following steps to install zram-init and install the scripts. The scripts provided will enable a 50% boost in useable RAM capacity. This step assumes you have followed step 12.
 
 ```text
     sudo apk add zram-init
@@ -149,7 +157,7 @@ Replace `<tag>` with the latest tag in the next command.
     sudo chmod +x /etc/local.d/zram.*
 ```
 
-14\) Reboot the system. For the Raspberry Pi 4B 8GB, you should expect around 3.81GB of swap via ZRAM when checking with `htop` (`sudo apk add htop` if htop is unavailable).
+14\) Reboot the system. For the Raspberry Pi 4B 8GB, you should expect around 3.81GB of swap via ZRAM when checking with `htop` \(`sudo apk add htop` if htop is unavailable\).
 
 ## Installer les exécutables statiques 'cardano-node' et 'cardano-cli' \\(AlpineOS utilise presque exclusivement des exécutables statiques, donc vous devriez éviter les compilations non statiques\\)
 
@@ -176,11 +184,11 @@ Replace `<tag>` with the latest tag in the next command.
 ## Installer le service de l'Alliance Armada pour Alpine Linux Cardano Node
 
 {% hint style="success" %}
-#### Si vous avez décidé d'utiliser AlpineOS pour vos opérations de stake pool Cardano, vous trouverez peut-être cette collection de scripts et de services utiles.
+### Si vous avez décidé d'utiliser AlpineOS pour vos opérations de stake pool Cardano, vous trouverez peut-être cette collection de scripts et de services utiles.
 {% endhint %}
 
 {% hint style="info" %}
-#### Pour installer correctement les scripts et les services, ne sautez pas les étapes 🏴‍☠️😎
+### Pour installer correctement les scripts et les services, ne sautez pas les étapes 🏴‍☠️😎
 {% endhint %}
 
 1\) Clone this repo to obtain the neccessary folder and scripts to quickly start your cardano node. You may skip this step if you have already clonned this repo from step 12 when setting up AlpineOS.
@@ -196,6 +204,7 @@ Replace `<tag>` with the latest tag in the next command.
 ```text
     git tag
 ```
+
 Replace `<tag>` with the latest tag in the next command.
 
 ```text
