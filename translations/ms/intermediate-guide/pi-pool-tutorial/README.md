@@ -3,7 +3,7 @@ description: >-
   A guide to building a 4 watt per Pi, Cardano Stake Pool. A reference guide for the Pi-Node.img.gz.
 ---
 
-# Pi-Node Image & Guides 🍰
+# Pi-Node Image & Guide 🍰
 
 The [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz) is a pre configured Cardano node that can be used for minting NFT's, submitting transactions and can be further configured into a relay or core node for stake pool creation. It is configured with everything you need to quickly bootstrap a synced node with Nginx proxypass of Grafana for TLS encryption with a self signed certificate, working topology updater and gLiveView.
 
