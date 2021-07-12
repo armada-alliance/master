@@ -65,7 +65,7 @@ If that was successful we can delete the default ubuntu user and it's home direc
 sudo deluser --remove-home ubuntu
 ```
 
-## Harden ssh
+## ssh
 
 Edit OpenSSH's configuration file and make the following changes with Nano text editor.
 
@@ -79,8 +79,8 @@ All the \# commented out values in sshd\_config are the default values. Remove t
 sudo nano /etc/ssh/sshd_config
 ```
 
-{% hint style="info" %}
-Turn off password authentication. You
+{% hint style="warning" %}
+Turn off password authentication.
 {% endhint %}
 
 ```bash
