@@ -21,7 +21,6 @@
   * [Pi-Relay](intermediate-guide/pi-pool-tutorial/pi-relay.md)
   * [Pi-Core/Kylmä](intermediate-guide/pi-pool-tutorial/pi-core-and-pi-cold.md)
   * [KES-avainten uusiminen](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
-  * [Luo .img-tiedosto](intermediate-guide/pi-pool-tutorial/create-.img-file.md)
 * [Basic Stake Pool Networking 💫](intermediate-guide/basic-stake-pool-networking.md)
 * [Lisää adapoolien mittareita Grafanaan 📊](intermediate-guide/add-adapools-info-to-grafana.md)
 
@@ -29,12 +28,13 @@
 
 * [Cardano Native Asset \(NFT\) 💰](cardano-developer-guides/nft-native-assets.md)
 * [Cardano NFT Collection Tutorial 👛](cardano-developer-guides/cardano-nft-collection-tutorial-coming-soon.md)
+* [Create .img file](cardano-developer-guides/create-.img-file.md)
 * [Staking Guide 🚀](cardano-developer-guides/how-to-delegate-ada.md)
 * [Delegate 🤗](cardano-developer-guides/delegate.md)
 * [Contribute 🐱‍🚀](cardano-developer-guides/how-to-contribute/README.md)
   * [Osallistumisohje](cardano-developer-guides/how-to-contribute/untitled-1/README.md)
     * [Tyyliohjeet](cardano-developer-guides/how-to-contribute/untitled-1/style-guide.md)
-    * [Ohjesääntö](cardano-developer-guides/how-to-contribute/untitled-1/code-of-conduct.md)
+    * [Code of Conduct](cardano-developer-guides/how-to-contribute/untitled-1/code-of-conduct.md)
 
 ## Resursseja <a id="before-you-get-started..."></a>
 
