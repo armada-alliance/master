@@ -4,9 +4,9 @@ description: Cómo contribuir con esta guía
 
 # Contribute 🐱‍🚀
 
-## ¡Qué bien verte aquí!
+## ¡Qué alegría verte aquí!
 
-### We appreciate all community members that help us improve our educational resources with their contribution.
+### Apreciamos a todos los miembros de la Comunidad que nos ayuden a mejorar nuestro contenido educativo con sus propias contribuciones.
 
-### If you would like to contribute to this project, we have linked a [contributing guide](untitled-1/) where you can get started. 
+### Si te gustaría contribuir a este proyecto, te dejamos en enlace [Guía de Contribución](untitled-1/) donde puedes empezar. 
 
