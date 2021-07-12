@@ -2,11 +2,11 @@
 description: Flash image
 ---
 
-# Descargar & Flash
+# Descargar y Flashear
 
-## Flash Image
+## Flashea la imagen
 
-Download, install & open [Raspberry Pi Imager](https://github.com/raspberrypi/rpi-imager/releases/latest). Plug in your target USB drive.
+Descarga, instala y abre [ Raspberry pi Imager ](https://github.com/raspberrypi/rpi-imager/releases/latest). Conecte su unidad USB de destino.
 
 {% tabs %}
 {% tab title="Local Machine \(Ubuntu\)" %}
@@ -20,43 +20,43 @@ sudo snap install rpi-imager
 {% endtabs %}
 
 {% hint style="danger" %}
-Older models of the Pi4B 8GB need to have their boot loader updated to boot from USB. If your image won't boot remove the USB3 drive and use rpi-imager to flash Pi 4 EEPROM boot recovery to an sd card.
+Los modelos más antiguos del Pi4B 8GB necesitan tener su cargador de arranque (boot loader) actualizado para arrancar desde un USB. Si tu imagen no arranca, retire la unidad USB3 y usa rpi-imager para flashear el recovery de arranque Pi 4 EEPROM a una tarjeta SD.
 
-Plug the Pi into a monitor, insert the sd card and power up. Once you see a green screen you should be good to boot from your USB3 drive. Newer versions are shipping with a USB boot capable boot loader. **Feeling lucky?**
+Conecta el Pi a un monitor, inserta la tarjeta SD y enciéndela. Una vez que vea una pantalla verde sería buen momento para arrancar desde tu unidad USB3. Las versiones más recientes vienen con un cargador de arranque compatible con USB. **Feeling lucky?**
 
-**Choose OS -&gt; Misc utility images -&gt; Raspberry Pi 4 EEPROM boot recovery** [https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
+**Elige OS -&gt; Misc utility images -&gt; Raspberry Pi 4 EEPROM boot recovery** [https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
 {% endhint %}
 
 ![](../../../.gitbook/assets/otgpoltut%20%281%29%20%281%29%20%281%29.png)
 
 {% tabs %}
 {% tab title="Pre configured Pi-Node.img.gz" %}
-### Obtain Pi-Pool .img.gz file
+### Obtén el archivo Pi-Pool .img.gz
 
 | [Pi-Node](https://db.adamantium.online/Pi-Node.img.gz) |
 |:------------------------------------------------------ |
 |                                                        |
 
 
-### Within Raspberry Pi Imager
+### Dentro de Raspberry Pi Imager
 
-**Choose OS -&gt; Use custom**
+**Elige SO -&gt; Usar personalizado**
 
-Locate the .img.gz file you downloaded & wish to flash.
+Localiza el archivo .img.gz que descargaste & y flashealo.
 
-Locate your target drive & write it to disk.
+Localiza tu unidad de destino & y grábala al disco.
 
 ![](../../../.gitbook/assets/image-2-.png)
 {% endtab %}
 
 {% tab title="Fresh Ubuntu 21.04 installation" %}
-### Within Raspberry Pi Imager
+### Dentro de Raspberry Pi Imager
 
-### Select  Ubuntu Server 21.04 \(RPI 3/4/400\)
+### Selecciona Ubuntu Server 21.04 \(RPI 3/4/400\)
 
-**Choose OS -&gt; Other general purpose OS -&gt; Ubuntu -&gt; Ubuntu Server 21.04 \(RPI 3/4/400\)**. The 64 bit server option.
+**Elige OS -&gt; Other general purpose OS -&gt; Ubuntu -&gt; Ubuntu Server 21.04 \(RPI 3/4/400\)**. Opción de servidor de 64 bits.
 
-Locate your target drive & write it to disk.
+Localiza tu unidad de destino & y grábala al disco.
 
 ![](../../../.gitbook/assets/21.04-rpi-imager.png)
 {% endtab %}
