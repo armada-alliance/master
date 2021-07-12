@@ -1,6 +1,6 @@
-# Sumario
+# Índice
 
-* [Welcome ARM Operators 🦾](README.md)
+* [Bienvenidos Operadores ARM 🦾](README.md)
 
 ## Cardano Node <a id="beginner-guide-1"></a>
 
@@ -21,14 +21,14 @@
   * [Pi-Relay](intermediate-guide/pi-pool-tutorial/pi-relay.md)
   * [Pi-Core/Frío](intermediate-guide/pi-pool-tutorial/pi-core-and-pi-cold.md)
   * [Rotate KES](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
-  * [Crear archivo .img](intermediate-guide/pi-pool-tutorial/create-.img-file.md)
 * [Basic Stake Pool Networking 💫](intermediate-guide/basic-stake-pool-networking.md)
 * [Add adapools Metrics to Grafana 📊](intermediate-guide/add-adapools-info-to-grafana.md)
 
-## Other Cardano Guides <a id="cardano-developer-guides"></a>
+## Otras Guías sobre Cardano <a id="cardano-developer-guides"></a>
 
 * [Cardano Native Asset \(NFT\) 💰](cardano-developer-guides/nft-native-assets.md)
 * [Cardano NFT Collection Tutorial 👛](cardano-developer-guides/cardano-nft-collection-tutorial-coming-soon.md)
+* [Crear archivo .img](cardano-developer-guides/create-.img-file.md)
 * [Staking Guide 🚀](cardano-developer-guides/how-to-delegate-ada.md)
 * [Delegate 🤗](cardano-developer-guides/delegate.md)
 * [Contribute 🐱‍🚀](cardano-developer-guides/how-to-contribute/README.md)
