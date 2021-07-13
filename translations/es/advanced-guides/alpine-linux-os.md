@@ -2,14 +2,14 @@
 
 ![](../.gitbook/assets/image%20%281%29.png)
 
-### Why use AlpineOS on the Raspberry Pi? Here are some reasons:
+### ¿Por qué usar AlpineOS en el Raspberry Pi? Estas son algunas razones:
 
-* **Very low memory consumption \(~50MB utilized during idle vs ~350MB for Ubuntu 20.04\).**
-* **Lower CPU overhead** **\(27 tasks/ 31 threads active for Alpine vs 57 tasks / 111 threads for Ubuntu when cardano-node is running\).**
-* **Cooler Pi 😎 \(Literally, CPU runs cooler because of the lower CPU overhead\).**
-* **And finally, why not? If you're gonna use static binaries, might as well take advantage of AlpineOS 😜**
+* **Consumo de memoria muy bajo \(~50MB utilizado durante inactividad vs ~350MB para Ubuntu 20.04\).**
+* **Baja sobrecarga de la CPU** **\(27 tareas/ 31 hilos activos para Alpine vs 57 tareas / 111 hilos para Ubuntu cuando se está ejecutando un nodo de Cardano\).**
+* **Pi más frío 😎 \(Literalmente, la CPU se mantiene más fría debido a la menor sobrecraga de la misma\).**
+* **Y por último, ¿por qué no? Si usas binarios estáticos, también podrías aprovechar AlpineOS 😜**
 
-## Initial Setup for AlpineOS on Raspberry Pi 4B 8GB:
+## Configuración inicial para AlpineOS en Raspberry Pi 4B 8GB:
 
 1\) Download the AlpineOS for RPi 4 aarch64 here: [https://dl-cdn.alpinelinux.org/alpine/v3.13/releases/aarch64/alpine-rpi-3.13.5-aarch64.tar.gz](https://dl-cdn.alpinelinux.org/alpine/v3.13/releases/aarch64/alpine-rpi-3.13.5-aarch64.tar.gz)
 
