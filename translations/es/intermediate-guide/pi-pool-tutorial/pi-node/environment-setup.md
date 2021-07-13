@@ -455,6 +455,13 @@ Prometheus can scrape the http endpoints of other servers running node exporter.
 sudo apt-get install -y prometheus prometheus-node-exporter
 ```
 
+Disable them in systemd for now.
+
+```bash
+sudo systemctl disable prometheus.service
+sudo systemctl disable prometheus-node-exporter.service
+```
+
 ### Configure Prometheus
 
 Open prometheus.yml.
