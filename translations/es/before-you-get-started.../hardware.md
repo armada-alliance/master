@@ -3,7 +3,7 @@ description: >-
   Esta es la lista actual de hardware que puede ser usada para construir el grupo de apuestas Raspberry Pi, no incluye un ordenador portátil o PC independiente para administración.
 ---
 
-# Hardware Purchase Links 🏪
+# Enlaces de compra de hardware 🏪
 
 ![GeeekPi Cluster Case](../.gitbook/assets/photo_2021-03-09-13.42.42.jpeg)
 
