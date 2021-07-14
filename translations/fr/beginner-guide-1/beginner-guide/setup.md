@@ -100,11 +100,11 @@ Choisissez ensuite **USB Boot**.
 
 ![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.14.05-pm%20%281%29.png)
 
-Now you can select **&lt;Ok&gt;** then **&lt;Finish&gt;**, close the Raspberry Pi system configuration menu, and reboot the Pi.
+Vous pouvez maintenant sélectionner **&lt;Ok&gt;** puis **&lt;Finish&gt;**, fermer le menu de configuration du système Raspberry Pi et redémarrer le Pi.
 
-You should now be able to shut down the Pi after it reboots up, remove the SD Card, then you can power up the Pi and it should boot from your external USB storage device.
+Vous devriez maintenant pouvoir éteindre le Pi après le redémarrage, retirer la carte SD, vous pouvez alors allumer le Raspberry Pi et il devrait démarrer à partir de votre périphérique de stockage USB externe.
 
 {% hint style="success" %}
-#### Now that we have finished most of the initial set-up we can continue getting the Pi ready and move to the next [tutorial](tutorial-2-relaynode.md).
+#### Maintenant que nous avons terminé la majeure partie de la configuration initiale, nous pouvons continuer à préparer le Pi et passer au [tutoriel](tutorial-2-relaynode.md) suivant.
 {% endhint %}
 
