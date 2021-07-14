@@ -44,59 +44,59 @@ Nous allons maintenant télécharger la dernière version officielle de Raspberr
 
 ### Configuration du Raspberry Pi
 
-The first thing that we want to do is get the Raspberry Pi booted up and configured for our use.
+La première chose que nous voulons faire est de faire démarrer le Raspberry Pi et de le configurer pour notre utilisation.
 
-To do this we will need to insert the SD card we flashed earlier with the Raspberry Pi OS into the bottom of the Raspberry Pi. Then we can insert our HDMI, Keyboard, Mouse, and power supply.
+Pour ce faire, nous devrons insérer la carte SD que nous avons flashée plus tôt avec le Raspberry Pi OS dans le bas du Raspberry Pi. Puis nous pouvons insérer notre HDMI, Clavier, Souris et alimentation électrique.
 
-Once the Raspberry Pi startup screen is finished and you have booted into the Raspberry Pi OS Desktop screen we can now begin to set up our Raspberry Pi configuration and settings.
+Une fois que le démarrage du Raspberry Pi est terminé et que vous voyez l'écran de bureau Raspberry Pi OS, nous pouvons maintenant commencer à modifier notre configuration et nos paramètres Raspberry Pi.
 
 {% hint style="info" %}
-If this is your first time booting up the Raspberry Pi OS you will have to follow some initial configurations listed below
+Si c'est la première fois que vous démarrez le Raspberry Pi OS, vous aurez à suivre quelques configurations initiales listées ci-dessous
 {% endhint %}
 
-* [ ] First, you need to change the Raspberry Pi's Hostname and Password, this will make sure you are not just running the basic login information.
-* [ ] Enter Wifi login information \(**you** **may** **skip this if you are using Ethernet**\)
-* [ ] Set your local time zone.
-* [ ] Choose language and keyboard settings.
-* [ ] Update Raspberry Pi \(skip this if you want to update via command line\)
+* [ ] Tout d'abord, vous devez changer le nom d'hôte et le mot de passe du Raspberry Pi cela vous assurera que vous n'utilisez pas seulement les informations de base de connexion.
+* [ ] Entrer les informations de connexion au Wifi \(**vous** **pouvez** **sauter cela si vous utilisez Ethernet**\)
+* Régler le fuseau horaire.
+* [ ] Choisir la langue et les paramètres du clavier.
+* [ ] Mettre à jour le Raspberry Pi \(sauter ceci si vous désirez mettre à jour via la ligne de commande\)
 
 {% hint style="success" %}
-#### After you are done with these initial setup steps, it is time to proceed to get the Rasberry Pi to boot from its USB so that way we can use our external SSD.
+#### Une fois que vous avez terminé ces étapes initiales, Il est temps de procéder pour que le Rasberry Pi démarre à partir de son port USB afin que nous puissions utiliser notre SSD externe.
 {% endhint %}
 
-### Part 3:
+### Partie 3:
 
-### Getting the Pi to Boot from USB
+### Forcer le démarrage du RPI à partir du port USB
 
-**This is the final step in this tutorial. We are going to first insert our external SSD into one of the USB 3.0 slots marked blue.**
+**Il s'agit de la dernière étape de ce tutoriel. Nous allons tout d'abord insérer notre SSD externe dans l'une des fentes USB 3.0 marquées en bleues.**
 
 ![](../../.gitbook/assets/pi4.jpeg)
 
-Open the Raspberry Pi applications menu and then click on the **SD Card Copier** application.
+Ouvrez le menu des applications Raspberry Pi, puis cliquez sur l'application **SD Card Copier**.
 
 ![](../../.gitbook/assets/screen-shot-2021-03-29-at-9.11.39-pm%20%281%29.png)
 
-Then we want to select **COPY FROM DEVICE** - **\(mmcblk0\) SD CARD.**
+Ensuite, nous voulons sélectionner **COPY FROM DEVICE** - **\(mmcblk0\) SD CARD.**
 
-Next, select **COPY TO DEVICE - \(sda\) SSD Device.**
+Ensuite, sélectionnez **COPY TO DEVICE - \(sda\) SSD Device.**
 
-Once the copy process is complete open a new terminal window and enter the following command.
+Une fois le processus de copie terminé, ouvrez une nouvelle fenêtre de terminal et entrez la commande suivante:
 
 ```text
 sudo raspi-config
 ```
 
-This will bring you to the Raspberry Pi's system configuration settings where you can access the **Advanced Options.**
+Cela vous ramènera aux paramètres de configuration système du Raspberry Pi où vous pourrez accéder aux **Options Avancées.**
 
 ![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.13.19-pm.png)
 
-Next select **Boot Order.**
+Sélectionnez ensuite **Boot Order.**
 
 ![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.13.40-pm%20%281%29.png)
 
 \*\*\*\*
 
-Then choose the **USB Boot**.
+Choisissez ensuite **USB Boot**.
 
 ![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.14.05-pm%20%281%29.png)
 
