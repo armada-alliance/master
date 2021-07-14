@@ -1,6 +1,6 @@
 ---
 description: >-
-  Esta es la lista actual de hardware que puede ser usada para construir el grupo de apuestas Raspberry Pi, no incluye un ordenador portátil o PC independiente para administración.
+  Esta es la lista actual de hardware que puede ser usada para construir el stake pool basado Raspberry Pi, no incluye un ordenador portátil o PC independiente para administración.
 ---
 
 # Enlaces de compra de hardware 🏪
@@ -61,7 +61,7 @@ Debes usar una fuente de alimentación que pueda producir los 5V necesarios en 3
 {% endtab %}
 {% endtabs %}
 
-## Star Forge parts list.
+## Lista de partes de Star Forge.
 
 ![](../.gitbook/assets/photo_2021-03-09-13.40.29.jpeg)
 
