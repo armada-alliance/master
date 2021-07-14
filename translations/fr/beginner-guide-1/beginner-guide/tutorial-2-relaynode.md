@@ -1,12 +1,12 @@
 ---
 description: >-
-  After completing the Raspberry Pi setup we are now ready to download the files needed for the testnet.
+  Une fois la configuration du Raspberry Pi complétée, nous sommes prêts à télécharger les fichiers nécessaires au testnet.
 ---
 
-# Set up a Relay Node
+# Configurer un Relay Node
 
 {% hint style="warning" %}
-**This tutorial is meant to get a single node syncing to the Cardano blockchain! We have skipped certain steps and security in order to make this tutorial as easy as possible - DO NOT USE this tutorial to form a mainnet stake pool. Please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **for the mainnet.**
+**Ce tutoriel est conçu pour synchroniser un seul node avec la blockchain Cardano ! Certaines étapes de sécurité ont été volontairement ignorées afin de rendre ce tutoriel aussi facile que possible - NE PAS UTILISER ce tutoriel pour créer une stake pool sur le mainnet. Veuillez utiliser nos**[ **guides intermédiaires**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **pour le mainnet.**
 {% endhint %}
 
 {% hint style="warning" %}
