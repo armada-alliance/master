@@ -6,7 +6,7 @@
 
 * [Raspberry Pi OS 🍓](beginner-guide-1/beginner-guide/README.md)
   * [Configurer le Raspberry Pi](beginner-guide-1/beginner-guide/setup.md)
-  * [Set up a Relay Node](beginner-guide-1/beginner-guide/tutorial-2-relaynode.md)
+  * [Configurer un Relay Node](beginner-guide-1/beginner-guide/tutorial-2-relaynode.md)
 
 ## Stake Pool Guides <a id="intermediate-guide"></a>
 
