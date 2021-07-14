@@ -2,7 +2,7 @@
 description: Let's make some native assets on Cardano ❤️✨
 ---
 
-# Cardano Native Asset \(NFT\) 💰
+# NFT (Tokens no fungibles) en Cardano 💰
 
 ## Who is this guide for?
 
