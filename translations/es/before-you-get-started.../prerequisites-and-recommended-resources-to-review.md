@@ -1,18 +1,18 @@
 ---
-description: Stake pool operator resources.
+description: Recursos para el operador stake pool.
 ---
 
-# Resource Library 🏫
+# Biblioteca de recursos 🏫
 
-## Cardano Community Provided Resources
+## Recursos proporcionados por la comunidad de Cardano
 
 {% hint style="success" %}
-### A Special thank you to all the great community members and their tutorials 🙏 🤗
+### Un agradecimiento especial a todos los grandes miembros de la comunidad y sus tutoriales 🙏 🤗
 {% endhint %}
 
 {% tabs %}
 {% tab title="Youtube and Video Resources" %}
-| Video link                                                                                                                                                                                                                                                                         |
+| Enlaces de vídeo                                                                                                                                                                                                                                                                   |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [**\*\*\*\*[**Armada Alliance Community Tutorials**](https://www.youtube.com/channel/UCligunhcmbMYaBUMvONsKwg)**](https://www.youtube.com/channel/UCligunhcmbMYaBUMvONsKwg)                                                                                                |
 | [**\*\*\*\*[**\[Easy 1\] Raspberry Pi Stake Pool Tutorial Youtube Videos**](https://www.youtube.com/watch?v=tZykFS5D-jk&list=PLBhbLwOuj0DfTnneuG3vyoDHY7Dv_aiyq)\*\*\*\***](https://www.youtube.com/watch?v=tZykFS5D-jk&list=PLBhbLwOuj0DfTnneuG3vyoDHY7Dv_aiyq) |
@@ -22,7 +22,7 @@ description: Stake pool operator resources.
 {% endtab %}
 
 {% tab title="Community Tutorials/GitHubs" %}
-| Author               | Link to Tutorial                                                                                                                |
+| Autor                | Enlace al Tutorial                                                                                                              |
 |:-------------------- |:------------------------------------------------------------------------------------------------------------------------------- |
 | \[Berry\] Pool     | [https://github.com/alessandrokonrad/Pi-Pool](https://github.com/alessandrokonrad/Pi-Pool)                                      |
 | \[Easy 1\] Pool    | [https://github.com/speedwing/cardano-staking-pool-edu](https://github.com/speedwing/cardano-staking-pool-edu)                  |
@@ -32,7 +32,7 @@ description: Stake pool operator resources.
 {% endtab %}
 
 {% tab title="RPi Community" %}
-| Link                                                                                                                                                                  |
+| Enlaces                                                                                                                                                               |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Arming Cardano Telegram](https://github.com/rekuenkdr/master/tree/44e80aa783ef319f1f88f701f497d59f81d033cd/joinchat/FeKTCBu-pn5OUZUz4joF2w/README.md)                |
 | [Power Consumption Benchmarks](https://www.pidramble.com/wiki/benchmarks/power-consumption)                                                                           |
@@ -42,11 +42,11 @@ description: Stake pool operator resources.
 {% endtab %}
 {% endtabs %}
 
-## Official Cardano Foundation Resources
+## Recursos oficiales de la Fundación Cardano
 
 {% tabs %}
 {% tab title="Official Cardano Foundation" %}
-| Documentation                                                                             |
+| Documentación                                                                             |
 |:----------------------------------------------------------------------------------------- |
 | [Stake Pool Operation and General Information](https://cardano.org/stake-pool-operation/) |
 | :---------------------------------------------------------------------------------------- |
@@ -57,13 +57,13 @@ description: Stake pool operator resources.
 {% endtab %}
 
 {% tab title="Youtube and Video Resources" %}
-| Video link                                                                                                           |
+| Enlaces de vídeo                                                                                                     |
 |:-------------------------------------------------------------------------------------------------------------------- |
 | \*\*\*\*[**IOHK Youtube Channel**](https://www.youtube.com/channel/UCBJ0p9aCW-W82TwNM-z3V2w)\*\*\*\* |
 {% endtab %}
 
 {% tab title="Cardano Forum" %}
-| Link                                                                                                                                                                                       |
+| Enlaces                                                                                                                                                                                    |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [https://forum.cardano.org/t/staking-and-delegating-for-beginners-a-step-by-step-guide/36681](https://forum.cardano.org/t/staking-and-delegating-for-beginners-a-step-by-step-guide/36681) |
 {% endtab %}
