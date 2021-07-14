@@ -1,31 +1,31 @@
 ---
-description: In this tutorial we walk through basic Raspberry Pi and Linux Set Up
+description: En este tutorial recorreremos la configuración básica de Raspberry Pi y Linux
 ---
 
 # Configurando el Raspberry Pi
 
-## Summary <a id="h.vrhvb96nxxe9"></a>
+## Resumen <a id="h.vrhvb96nxxe9"></a>
 
-1. Download an Operating system \(OS\). For this tutorial, we will be using the Raspberry Pi OS.
-2. Install Raspberry Pi OS using Raspberry Pi Imager
-3. Flash the OS onto the SD card
-4. Boot up the Pi and configure the settings
-5. Insert external SSD and copy the SD card to it
-6. Shutdown and reboot from SSD
+1. Descargue un sistema operativo \(OS\). Para este tutorial, usaremos el sistema operativo de Raspberry Pi.
+2. Instalar Raspberry Pi OS usando Raspberry Pi Imager
+3. Flashear el sistema operativo en la tarjeta SD
+4. Inicia el Pi y configura los ajustes
+5. Inserte el disco SSD externo y copie la tarjeta SD a él
+6. Apague y reinicie desde el disco SSD
 
 {% hint style="info" %}
-### DON’T SKIP STEPS
+### NO SALTAR NINGÚN PASO
 {% endhint %}
 
-### **Part One:**
+### **Parte Uno:**
 
-### Installing the Raspberry Pi Debian "buster" OS <a id="h.lpv6ciisjqp3"></a>
+### Instalando el sistema operativo «buster» de Raspberry Pi Debian <a id="h.lpv6ciisjqp3"></a>
 
-We are going to now download the latest official release of Raspberry Pi 64bit Debian OS. This is the official Linux 64bit OS distribution that is designed for the Raspberry Pi and its ARM64 CPU. This makes it stable and very easy to get started with the Raspberry Pi.
+Ahora vamos a descargar la última versión oficial de Debian OS de Raspberry Pi de 64 bits. Esta es la distribución oficial del sistema operativo Linux 64bit que está diseñada para Raspberry Pi y su CPU ARM64. Esto hace que sea estable y muy fácil empezar con el Raspberry Pi.
 
-**1. Download the Debian “buster” Raspberry Pi 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2020-08-24/2020-08-20-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
+**1. Descargue la imagen del sistema operativo Raspberry Pi de 64 bits** [**aquí**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2020-08-24/2020-08-20-raspios-buster-arm64.zip) **y guárdelo en una ubicación accesible por ahora en su ordenador.**
 
-**2. Next, download the Raspberry Pi Imager software that we will use in order to install the OS onto our Raspberry Pi. This software is located on the** [**Raspberry Pi website**](https://www.raspberrypi.org/software/)**. Please download the correct version for your computer.**
+**2. A continuación, descargue el software Raspberry Pi Imager que utilizaremos para instalar el sistema operativo en nuestro Raspberry Pi. Este software se encuentra en el sitio web** [**Raspberry Pi**](https://www.raspberrypi.org/software/)**. Please download the correct version for your computer.**
 
 ![](../../.gitbook/assets/screen-shot-2021-03-12-at-5.36.30-pm.png)
 
