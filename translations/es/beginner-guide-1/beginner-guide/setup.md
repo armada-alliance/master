@@ -25,24 +25,24 @@ Ahora vamos a descargar la última versión oficial de Debian OS de Raspberry Pi
 
 **1. Descargue la imagen del sistema operativo Raspberry Pi de 64 bits** [**aquí**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2020-08-24/2020-08-20-raspios-buster-arm64.zip) **y guárdelo en una ubicación accesible por ahora en su ordenador.**
 
-**2. A continuación, descargue el software Raspberry Pi Imager que utilizaremos para instalar el sistema operativo en nuestro Raspberry Pi. Este software se encuentra en el sitio web** [**Raspberry Pi**](https://www.raspberrypi.org/software/)**. Please download the correct version for your computer.**
+**2. A continuación, descargue el software Raspberry Pi Imager que utilizaremos para instalar el sistema operativo en nuestro Raspberry Pi. Este software se encuentra en el sitio web** [**Raspberry Pi**](https://www.raspberrypi.org/software/)**. Por favor, descargue la versión correcta para su computadora.**
 
 ![](../../.gitbook/assets/screen-shot-2021-03-12-at-5.36.30-pm.png)
 
-**3. Insert the SD card into your computer and open the "Raspberry Pi Imager".**
+**3. Inserta la tarjeta SD en tu computadara y abre "Raspberry Pi Imager".**
 
-* **Click on "CHOOSE OS"  then find the "2020-08-20-raspios-buster-arm64.zip" file you have downloaded in step \(1\) of this tutorial and select it.**
-* **Next, click on the "CHOOSE SD" and find the SD card you inserted into the computer**
-* **Now, the "WRITE" button will appear and you can click on it to begin writing/verifying the OS onto the SD card.**
-* **Finally, once it has finished the writing/verifying process, you will see a pop-up window saying that the OS was successfully written to the SD card, click "CONTINUE" and remove your SD card from the computer.**
+* **Haga clic en "CHOSE OS" y luego encuentre el archivo "2020-08-20-raspios-buster-arm64.zip" que ha descargado en el paso \(1\) de este tutorial y selecciónelo.**
+* **Luego, haz clic en el "CHOSE SD" y encuentra la tarjeta SD que has introducido en la computadora**
+* **Ahora, el botón "Escribir" aparecerá y puedes hacer clic en él para comenzar a escribir o verificar el sistema operativo en la tarjeta SD.**
+* **Finalmente, una vez que haya terminado el proceso de escritura/verificación, verás una ventana emergente que dice que el sistema operativo se ha escrito con éxito en la tarjeta SD, haz clic en "CONTINUE" y retira tu tarjeta SD de la computadora.**
 
 {% hint style="info" %}
-#### **If you still have issues following the written instructions,** [**here**](https://www.youtube.com/watch?v=J024soVgEeM) **is a short video of this process.**
+#### **Si aún tienes problemas siguiendo las instrucciones,** [**aquí**](https://www.youtube.com/watch?v=J024soVgEeM) **hay un breve vídeo del proceso.**
 {% endhint %}
 
-### Part 2:
+### Parte 2:
 
-### Configuring the Raspberry Pi
+### Configurando el Raspberry Pi
 
 The first thing that we want to do is get the Raspberry Pi booted up and configured for our use.
 
