@@ -1,4 +1,4 @@
-# Cardano NFT Collection Tutorial 👛
+# Colección de Tutoriales NFT en Cardano
 
 ## Prerequisites
 
