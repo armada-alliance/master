@@ -10,64 +10,64 @@ description: >-
 {% endhint %}
 
 {% hint style="warning" %}
-**This tutorial is for only use with Raspberry Pi OS 64bit and is solely for educational purposes to get a Cardano node syncing to the blockchain.**
+**Tämä tutoriaali on tarkoitettu vain Raspberry Pi 64bit OS versiolle ja ainoa tarkoitus on saada Cardano node synkronoitumaan lohkoketjun kanssa.**
 {% endhint %}
 
-## Summary
+## Tiivistelmä
 
-1. Environment Setup
-2. Downloading the binaries needed to build a Cardano node relay
-3. Download configuration files from IOHK/Cardano-node
-4. Edit the config settings
-5. Download a database snapshot to speed up the sync process
-6. Run the basic passive relay node to connect to the testnet
-7. Monitor the relay node with [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/)
+1. Ympäristön asetukset
+2. Cardano relay noden rakentamiseen tarvittavien binääritiedostojen lataaminen
+3. Konfiguraatiotiedostojen lataaminen IOHK/Cardano-nodelta
+4. Config-asetuksien muokkaus
+5. Tietokannan tilannekuvan lataaminen synkronointiprosessin nopeuttamiseksi
+6. Perus passiivi relay noden käynnistäminen ja yhdistäminen testiverkkoon
+7. Relay noden monitorointi [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/) -ohjelmalla
 
 ![](../../.gitbook/assets/download-10-%20%281%29.jpeg)
 
 {% hint style="info" %}
-This tutorial can be used for **mainnet** if you would like. Just replace all instances of the word "**testnet**" with "**mainne**t" throughout this tutorial.
+Tätä opetusohjelmaa voidaan käyttää myös **mainnetissa** jos haluat. Korvaa vain kaikki sanat "**testnet**" sanalla "**mainnet**" tutoriaalin joka vaiheessa.
 {% endhint %}
 
-## Setting up our environment
+## Ympäristön luominen
 
-* We must first update our OS and install needed upgrades if available.
+* Meidän täytyy ensin päivittää käyttöjärjestelmämme ja asentaa tarvittavat päivitykset, jos saatavilla.
 
 {% hint style="info" %}
-It is highly recommended to update the operating system every time you boot up and log in to your **Raspberry Pi** to prevent security vulnerabilities.
+On erittäin suositeltavaa päivittää käyttöjärjestelmä aina kun käynnistät ja kirjaudu sisään **Raspberry Pi:lle** estääksesi tietoturvahaavoittuvuuksia.
 {% endhint %}
 
 ```text
-# We are using the sudo prefix to run commands as non-root-user  
+# Käytämme sudo etuliitettä komentojen suorittamiseen ei-root-userina  
 
 sudo apt update
 sudo apt upgrade -y
 ```
 
-* We can now reboot the Pi and let the updates take effect by running this command in a terminal.
+* Voimme nyt käynnistää Pi uudelleen ja antaa päivitysten tulla voimaan suorittamalla tämän komennon terminaalissa.
 
 ```text
 sudo reboot
 ```
 
-### Make our directories
+### Tee hakemistot
 
 ```bash
 mkdir -p $HOME/.local/bin
 mkdir -p $HOME/testnet-relay/files
 ```
 
-### Add ~/.local/bin to our $PATH
+### Lisää ~/.local/bin meidän $PATH
 
 {% hint style="info" %}
-[How to Add a Directory to Your $PATH in Linux](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)
+[Kuinka lisätä hakemisto kansioon $PATH Linuxissa](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)
 {% endhint %}
 
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
 ```
 
-### Create our bash variables
+### Luo bash muuttujat
 
 ```bash
 echo export NODE_HOME=$HOME/testnet-relay >> $HOME/.bashrc
@@ -82,31 +82,31 @@ source $HOME/.bashrc
 sudo reboot
 ```
 
-### Download the Cardano-node static build
+### Lataa Cardano-solmun staattinen versio
 
-| Provided By                                                                                                                      | Link to Cardano Static Build                                                                           |
+| Palvelun Toimittaja                                                                                                              | Linkki Cardano Static Buildiin                                                                         |
 |:-------------------------------------------------------------------------------------------------------------------------------- |:------------------------------------------------------------------------------------------------------ |
 | [**ZW3RK**](https://adapools.org/pool/e2c17915148f698723cb234f3cd89e9325f40b89af9fd6e1f9d1701a) **1PCT Haskell CI Support Pool** | \*\*\*\*[**https://ci.zw3rk.com/build/1755**](https://ci.zw3rk.com/build/1755)\*\*\*\* |
 
-* A[ **static build**](https://en.wikipedia.org/wiki/Static_build) is a ****[**compiled**](https://en.wikipedia.org/wiki/Compiler) ****version of a program that has been statically linked against libraries.
+* A[ **staattinen versio**](https://en.wikipedia.org/wiki/Static_build) on ****[**kasattu**](https://en.wikipedia.org/wiki/Compiler) ****versio ohjelmasta, joka on staattisesti yhdistetty kirjastoihin.
 
-Now we need to simply download the zip file above to our Pi's home directory and then move it to the right location so we can call on it later to start the node.
+Nyt meidän täytyy yksinkertaisesti ladata edellä mainittu zip-tiedosto Pi's kotihakemistoon ja sitten siirtää se oikeaan paikkaan, jotta voimme myöhemmin käyttää sitä ja käynnistää node.
 
 ```bash
-# First change to the home directory
+# Ensin mene kotihakemistoon
 cd $HOME
 
-# Now we can download the cardano-node 
+# Nyt voimme ladata cardano-noden 
 wget https://ci.zw3rk.com/build/1755/download/1/aarch64-unknown-linux-musl-cardano-node-1.26.2.zip
 ```
 
-* Use [**unzip**](https://linux.die.net/man/1/unzip) command on the downloaded zip file and extract its contents.
+* Käytä [**unzip**](https://linux.die.net/man/1/unzip) komentoa ladattuun zip-tiedostoon ja pura sen sisältö.
 
   ```bash
   unzip aarch64-unknown-linux-musl-cardano-node-1.26.1.zip
   ```
 
-* Next, we need to make sure the newly downloaded "cardano-node" folder and its contents are present.
+* Seuraavaksi meidän on varmistettava, että äskettäin ladattu "cardano-node" kansio ja sen sisältö ovat läsnä.
 
 {% hint style="info" %}
 If you are unsure if the file downloaded properly or need the name of the folder/files, we can use the Linux [**ls**](https://www.man7.org/linux/man-pages/man1/ls.1.html) command.
