@@ -28,7 +28,7 @@
 
 * [Cardano Native Asset \(NFT\) 💰](cardano-developer-guides/nft-native-assets.md)
 * [Cardano NFT Collection Tutorial 👛](cardano-developer-guides/cardano-nft-collection-tutorial-coming-soon.md)
-* [Create .img file](cardano-developer-guides/create-.img-file.md)
+* [Luo .img-tiedosto](cardano-developer-guides/create-.img-file.md)
 * [Staking Guide 🚀](cardano-developer-guides/how-to-delegate-ada.md)
 * [Delegoi 🤗](cardano-developer-guides/delegate.md)
 * [Ota osaa 🐱 🚀](cardano-developer-guides/how-to-contribute/README.md)
