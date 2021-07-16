@@ -6,9 +6,9 @@ description: Materiaalin tyyliohje ohjeistusten laatimiseen.
 
 _**Ote GitHub Manual of Style dokumentaatiosta, jonka pohjalta tämäkin ohje on laadittu:**_
 
-> Words are an important part of how software works. Just as we have a style guide for our code, we have a style guide for our tone and our voice. Even though there may be dozens of people creating a product, it should still sound like we speak in one consistent voice.
+> Sanat ovat tärkeä osa sitä, miten ohjelmistot toimivat. Aivan kuten meillä on tyyliopas meidän koodille, meillä on tyyliopas sisällön sävyyn ja ääneen. Vaikka tuotetta voi syntyä kymmeniä ihmisiä, sen pitäisi silti kuulostaa siltä, että puhumme yhdellä johdonmukaisella äänellä.
 > 
-> In other words, the way we write is just as important as the way we design. Consider these things when writing copy.
+> Toisin sanoen tapa, jolla kirjoitamme, on aivan yhtä tärkeä kuin tapa, jolla suunnittelemme. Ota nämä asiat huomioon kopioita kirjoitettaessasi.
 
 ## Sisältöperiaatteet
 
@@ -18,7 +18,7 @@ Kaiken kirjoitetun sisällön tulee noudattaa näitä periaatteita:
 * **Ytimekäs:** Pidä teksti yksinkertaisena, ohjaa linkeillä kohti syvempää tietoa
 * **Tietojen suodatus:** Vahvista yhteisön parasta toiminta tapaa, ei yksilöllistä näkökantaa
 
-Content should maintain a light-hearted and welcoming tone. Open source is fun! Readers should feel inspired, not discouraged, by the tone of your writing, and they should trust you to help them get started.
+Sisällön pitäisi säilyttää kevyt ja tervetullut sävy. Avoin lähdekoodi on hauska! Lukijoiden pitäisi inspiroitua, ei lannistua, jo kirjoituksen sävystä, lisäksi heidän pitäisi luottaa siihen, että autat heitä pääsemään alkuun.
 
 ## Maininnat
 
