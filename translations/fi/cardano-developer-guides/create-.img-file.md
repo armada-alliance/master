@@ -1,8 +1,8 @@
 ---
-description: This is how you create an image you can flash to other Pi's
+description: Näin voit luoda imagen, jonka voit siirtää uuteen Raspberry Pi:hin
 ---
 
-# Create .img file
+# Luo .img-tiedosto
 
 ## Make the Pi-Node base .img.gz file for reuse
 
