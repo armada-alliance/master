@@ -4,9 +4,9 @@ description: Näin voit luoda imagen, jonka voit siirtää uuteen Raspberry Pi:h
 
 # Luo .img-tiedosto
 
-## Make the Pi-Node base .img.gz file for reuse
+## Tee Pi-Node base .img.gz tiedosto uudelleenkäyttöä varten
 
-Put your micro sd card in your local machine and locate what it's called in /dev. For my laptop it is /dev/mmcblk0. Yours will likely be different.
+Laita micro SD-kortti koneeseen ja etsi mikä se on nimeltään /dev. Minun kannettavassani se on /dev/mmcblk0. Sinulla todennäköisesti eriniminen.
 
 ```text
 sudo fdisk -l
