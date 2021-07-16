@@ -223,7 +223,7 @@ Meidän pitää nyt käynnistää järjestelmäpalvelu uudelleen varmistaaksemme
 sudo systemctl daemon-reload
 ```
 
-**If we don't want to call "sudo systemctl" everytime we want to start, stop, or restart the cardano-node service we can create a "function" that will be added into our .bashrc shell script that will do this for us** [https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/](https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/)
+**Jos emme halua käyttää "sudo systemctl" joka kerta kun haluamme aloittaa, lopettaa, tai uudelleenkäynnistää cardano-node palvelun, voimme luoda "funktion", joka lisätään meidän .bashrc shell skriptiin, ja tekee tämän meidän puolestamme** [https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/](https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/)
 
 ```bash
 nano $HOME/.bashrc
@@ -239,17 +239,17 @@ cardano-service() {
 source $HOME/.bashrc
 ```
 
-## Download a snapshot of the blockchain to speed the sync process
+## Lataa tilannekuva lohkoketjusta ja nopeuta synkronointiprosessia
 
 {% hint style="info" %}
-We have been provided a snapshot of the testnet database thanks to Star Forge Pool \[OTG\]. If you don't want to download a database, **you may skip this step**. Beware, if you skip downloading our snapshot it may take up to 8 hours to get the node fully synced.
+Olemme saaneet tilannekuvan testnet tietokannasta Star Forge Pool \[OTG\] ansiosta. Jos et halua ladata tietokantaa, **voit ohittaa tämän vaiheen**. Huomaa että, jos jätät tilannekuvan lataamisen väliin, saattaa kestää jopa 8 tuntia, jotta solmu on täysin synkronoitu.
 {% endhint %}
 
 {% hint style="danger" %}
-**Make sure you have not started a Cardano node before proceeding.** 🛑
+**Varmista, ettet ole aloittanut Cardano nodea ennen jatkamista.**🛑
 {% endhint %}
 
-First, make sure the cardano-service we created earlier is stopped, then we download the database in our testnet-relay/files. You can run the following commands to begin our download.
+Ensinnäkin, varmista, että Cardano-palvelu loimme aiemmin on pysäytetty, niin me ladata tietokannan testiverkon releyn tiedostoja. Voit suorittaa seuraavat komennot aloittaaksesi lataamisen.
 
 ```bash
 # Make sure you do not have the cardano-node running in the background
@@ -262,18 +262,18 @@ wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online
 ```
 
 {% hint style="info" %}
-This download will take anywhere from 25 min to 2 hours depending on your internet speeds.
+Tämä lataus kestää 25 minuutista 2 tuntiin riippuen internetin nopeudesta.
 {% endhint %}
 
-* After the database has finished downloading, it is a good idea to add a clean file to it before we start the relay. Copy/paste the following command into your terminal window.
+* Kun tietokannan lataus on valmis, on hyvä idea lisätä puhdas tiedosto siihen ennen kuin käynnistämme relayn. Kopioi/liitä seuraava komento pääteikkunaan.
 
 ```bash
 touch db/clean
 ```
 
-## Finish syncing to the blockchain
+## Viimeistele synkronointi lohkoketjuun
 
-* Now we can start the "passive" relay node to begin syncing to the blockchain.
+* Nyt voimme käynnistää "passiivisen" relay noden aloittaaksemme synkronoinnin lohkoketjuun.
 
 ```bash
 cardano-service enable
@@ -281,9 +281,9 @@ cardano-service start
 cardano-service status
 ```
 
-## Setting up gLiveView to monitor the node during its syncing process
+## gLiveView-ohjelman asennus, noden seuraamiseksi synkronointiprosessin aikana
 
-#### Now you can change to the $NODE\_FILES folder and then download the gLiveView monitor service
+#### Nyt voit siirtyä $NODE\_FILES kansioon ja sitten ladata gLiveView- monitoripalvelun
 
 ```bash
 cd $NODE_Files
@@ -292,20 +292,20 @@ curl -s -o env https://raw.githubusercontent.com/cardano-community/guild-operato
 chmod 755 gLiveView.sh
 ```
 
-* Need to change the "**CNODE\_PORT**" to the port you set on your cardano-node, in our case let's change it to **3001.**
+* Päivitä "**CNODE\_PORT**" porttiin jonka asetit cardano nodelle, tässä tapauksessa vaihdetaan siihen **3001.**
 
 ```bash
 sudo nano env
 ```
 
-* Finally, we can exit the nano editor and just run the gLiveView script.
+* Lopuksi, voimme poistua nanoeditorista ja vain käynnistää gLiveViewen skripti.
 
 ```bash
 ./gLiveView.sh
 ```
 
 {% hint style="success" %}
-If you want to monitor your Raspberry Pi performance you can use the following commands.
+Jos haluat seurata Raspberry Pi suorituskykyä voit käyttää seuraavia komentoja.
 {% endhint %}
 
 {% tabs %}
@@ -315,14 +315,14 @@ vcgencmd measure_temp
 ```
 {% endtab %}
 
-{% tab title="Use htop for CPU and RAM Performance" %}
+{% tab title="Käytä htop komentoa CPU ja RAM käytön monitorointiin" %}
 ```bash
 htop
 ```
 {% endtab %}
 {% endtabs %}
 
-## References:
+## Viitteet:
 
 {% tabs %}
 {% tab title="📚" %}
