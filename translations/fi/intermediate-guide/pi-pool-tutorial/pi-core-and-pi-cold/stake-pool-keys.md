@@ -18,7 +18,7 @@ sudo apt-get install rng-tools
 sudo reboot
 ```
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 The block-producer node requires only these 3 files as defined in the [Shelley ledger specs](https://hydra.iohk.io/build/2473732/download/1/ledger-spec.pdf):
 
 1. stake pool cold key \(node.cert\)
@@ -110,7 +110,7 @@ echo startKesPeriod: ${startKesPeriod}
 
 Move **kes.vkey** to your **cold environment**.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Replace &lt;startKesPeriod&gt; below to match.
 {% endhint %}
 
@@ -218,7 +218,7 @@ Restart your block producer as a core node.
 cardano-service start
 ```
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Wait for the core node to sync back up to the tip of the chain.
 
 gLiveView.sh
