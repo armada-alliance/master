@@ -68,7 +68,7 @@ Save and exit.
 
 Open **50-cloud-init.yaml** and replace the contents of the file with below.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Be sure to use an address on your LAN subnet. In this example I am using **192.168.1.xxx**. Your network may very well be using a different private range.
 {% endhint %}
 
@@ -166,7 +166,7 @@ cd $NODE_HOME/scripts
 
 Configure the script to match your environment.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 If you are using IPv4 leave CNODE\_HOSTNAME the way it is. The service will pick up your public IP address on it's own. I repeat only change the port to 3001. For DNS change only the first instance. Do not edit "CHANGE ME" further down in the file.
 {% endhint %}
 
@@ -232,7 +232,7 @@ cd /home/ada/pi-pool/scripts/relay-topology_pull.sh
 
 Open your topolgy file and use **ctrl+k** to cut the entire line of any peer over 5,000 miles away.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Remember to remove the last entries comma in your list or cardano-node will fail to start.
 {% endhint %}
 
@@ -278,7 +278,7 @@ Last thing we should do is change the name Prometheus is serving to Grafana.
 sudo nano /etc/prometheus/prometheus.yml
 ```
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 You can change.
 
 ```bash
