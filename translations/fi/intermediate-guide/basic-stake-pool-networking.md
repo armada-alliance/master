@@ -3,9 +3,9 @@ description: >-
   This section will help with understanding the relay and block producer topology.
 ---
 
-# Basic Stake Pool Networking 💫
+# Stake Pool -verkosto: Perusteita
 
-## Assumptions
+## Oletukset
 
 For the sake of this tutorial we are assuming that the Raspberry Pi nodes you are running are in your home and connected to either your ISP's internet router or a separate switch connected to your ISP's internet router. Your nodes should have a firewall configured with as few ports open as possible and with your firewall rules as specific as possible. Furthermore, your ISP's internet router should also have firewall settings configured. If you are not familiar with them, leaving the firewall defaults from your ISP are generally okay.
 
