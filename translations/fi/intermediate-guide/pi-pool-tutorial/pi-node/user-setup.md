@@ -4,7 +4,7 @@ description: 'Create the ada user, add to group sudo'
 
 # User Setup
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 If you are using a Pi-Node image you need only reference this material until we start configuring the Relay & Core.
 {% endhint %}
 
@@ -24,7 +24,7 @@ You can change the ada users password at anytime with.
 passwd
 ```
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Careful where you use sudo. For example issuing 'sudo passwd' would change the root password. This seems to be a place where new users get confused.
 {% endhint %}
 
@@ -51,7 +51,7 @@ ssh ada@<server-ip>
 
 Test that ada is in the sudo group by updating your package lists and upgrading the system.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Updating Ubuntu is going to take 10 minutes or more unless they update the image used with rpi-imager.
 {% endhint %}
 
@@ -79,7 +79,7 @@ All the \# commented out values in sshd\_config are the default values. Remove t
 sudo nano /etc/ssh/sshd_config
 ```
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Turn off password authentication.
 {% endhint %}
 
