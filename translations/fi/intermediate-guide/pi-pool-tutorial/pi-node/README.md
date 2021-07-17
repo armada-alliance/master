@@ -38,7 +38,7 @@ wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/
 
 ### 5. Enable & start the cardano-service.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Wait for wget to finish downloading the chain before starting the cardano-service. While you are waiting update Ubuntu by entering the server from another terminal.
 
 ```bash
