@@ -5,7 +5,7 @@ description: >-
 
 # Logging in Securely
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 It is assumed that you are using a Linux or Mac operating system with native support for ssh as your local machine. Or, if using Windows have a tool set that will work with this guide. Perhaps now is the time to switch to Linux and not look back. [https://elementary.io/](https://elementary.io/).
 {% endhint %}
 
@@ -41,7 +41,7 @@ Plug in a network cable connected to your router and boot your new image.
 | username = ada                | username = ubuntu            |
 | password = lovelace           | password = ubuntu            |
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Upon successful login you will be prompted to change your password & login with new credentials.
 {% endhint %}
 
