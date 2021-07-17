@@ -13,7 +13,7 @@ The [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz) is a pre confi
 It is strongly recommended to work through the [Stake Pool School](https://cardano-foundation.gitbook.io/stake-pool-course/) course presented by the Cardano Foundation.
 {% endhint %}
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 If you would like to create a .img file of your work that can be flashed for reuse on other Raspberry Pi's you should build on an 8GB sd card. It will take less time to make an image. See [image creation section](https://app.gitbook.com/@ada-pi/s/raspi-spo/intermediate-guide/pi-pool-tutorial/create-.img-file).
 {% endhint %}
 
@@ -27,7 +27,7 @@ The most popular guides out there are aimed at x86 architecture and '_knowing wh
 
 ## Hardware
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 The cardano-node & cardano-cli binaries linked to in this guide require aarch64 architecture to run. You **must** use Pi4B 8GB for the Core & Relays, you can use the Pi3B+ or PI4B 4GB or 8GB version with a micro sd card for your cold offline machine.
 {% endhint %}
 
