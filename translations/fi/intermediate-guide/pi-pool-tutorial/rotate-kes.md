@@ -4,7 +4,7 @@
 It is best to rename the old **kes.vkey**, **kes.skey** & **node.cert** files beforehand. Append the date. I tend to use mv instead of cp. This way I do not start creating copies of files.
 {% endhint %}
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 You only need **kes.skey**, **node.cert** and **vrf.vkey** on your Core node.
 {% endhint %}
 
@@ -53,7 +53,7 @@ chmod a-rwx $HOME/cold-keys
 {% endtab %}
 {% endtabs %}
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 The cold.counter in your cold-keys folder keeps track of how many times you have rotated your kes pair.
 {% endhint %}
 
