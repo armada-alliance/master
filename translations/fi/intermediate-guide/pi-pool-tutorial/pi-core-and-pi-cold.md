@@ -12,7 +12,7 @@ You do not enable the topology updater service on a core node so feel free to de
 Make sure your core node is synced to the tip of the blockchain.
 {% endhint %}
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 There exists a way to create your pool wallets **payment keypair** by creating a wallet in Yoroi and using cardano-wallet to extract the key pair from the mnemonic seed from Yoroi. This allows you to have a seed backup of the wallet and to also easily extract rewards or send funds elsewhere. You can do this with any shelley era mnemonic seed. I prefer Yoroi because it is quick.
 
 [https://gist.github.com/ilap/3fd57e39520c90f084d25b0ef2b96894​](https://gist.github.com/ilap/3fd57e39520c90f084d25b0ef2b96894)
@@ -31,7 +31,7 @@ sed -i ${NODE_FILES}/mainnet-config.json \
 
 ## Generate Keys & Issue Operational Certificate
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 #### Rotating the KES keys
 
 KES keys need to be regenerated and a new **pool.cert** needs to be issued and submitted to the chain every 90 days. The **node.counter** file keeps track of how many times this has been done.
@@ -339,7 +339,7 @@ Copy **payment.addr** to a thumb drive and move it to the core nodes pi-pool fol
 
 Add funds to the wallet. This is the only wallet the pool uses so your pledge goes here as well. There is a 2 ada staking registration fee and a 500 ada pool registration deposit that you can get back when retiring your pool.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Test the wallet by sending a small amount waiting a few minutes and querying it's balance.
 {% endhint %}
 
@@ -449,7 +449,7 @@ echo stakeAddressDeposit : ${stakeAddressDeposit}
 Stake address registration is 2,000,000 lovelace or 2 ada.
 {% endhint %}
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Take note of the invalid-hereafter input. We are taking the current slot number\(tip of the chain\) and adding 1,000 slots. If we do not issue the signed transaction before the chain reaches this slot number the tx will be invalidated. A slot is one second so you have 16.666666667 minutes to get this done. 🐌
 {% endhint %}
 
@@ -547,7 +547,7 @@ cardano-cli transaction submit \
 
 Create a **poolMetaData.json** file. It will contain important information about your pool. You will need to host this file somewhere online forevermore. It must be online and you cannot edit it without resubmitting/updating your pool.cert. In the next couple steps we will hash
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 metadata-url must be less than 64 characters.
 {% endhint %}
 
@@ -564,7 +564,7 @@ nano poolMetaData.json
 {% endtab %}
 {% endtabs %}
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 The **extendedPoolMetaData.json** file is used by adapools and others to scrape information like where to find your pool logo and social media links. Unlike the **poolMetaData.json** this files hash is not stored in your registration certificate and can be edited without having to rehash and resubmit **pool.cert**.
 {% endhint %}
 
