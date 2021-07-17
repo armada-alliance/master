@@ -8,7 +8,7 @@ description: 'optimize hardware, optimize Ubuntu'
 
 Let's save some power, raise the governor on the CPU a bit, and set GPU ram as low as we can.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Here are some links for overclocking and testing your drive speeds. If you have heat sinks you can safely go to 2000. Just pay attention to over volt recommendations to go with your chosen clock speed.
 
 * [https://www.raspberrypi.org/documentation/configuration/config-txt/overclocking.md](https://www.raspberrypi.org/documentation/configuration/config-txt/overclocking.md)
@@ -135,7 +135,7 @@ Add the following to the bottom of /etc/sysctl.conf. Save and exit.
 [https://gist.github.com/lokhman/cc716d2e2d373dd696b2d9264c0287a3](https://gist.github.com/lokhman/cc716d2e2d373dd696b2d9264c0287a3)
 {% endhint %}
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 I am disabling IPv6 and IPv4 forwarding. You may want these. I have seen claims that IPv6 is slower and gets in the way.
 {% endhint %}
 
