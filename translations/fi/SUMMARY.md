@@ -11,7 +11,7 @@
 ## Stake Pool -oppaat <a id="intermediate-guide"></a>
 
 * [Alpine Linux OS](intermediate-guide/alpine-linux-os.md)
-* [Pi-Node Image & Guide 🍰](intermediate-guide/pi-pool-tutorial/README.md)
+* [Pi-Node Image & Ohjeet 🍰](intermediate-guide/pi-pool-tutorial/README.md)
   * [Pi-Node \(quick start\)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
     * [Download & Flash](intermediate-guide/pi-pool-tutorial/pi-node/download-and-write-it.md)
     * [Suojattu kirjautuminen](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
@@ -21,23 +21,23 @@
   * [Pi-Relay](intermediate-guide/pi-pool-tutorial/pi-relay.md)
   * [Pi-Core/Kylmä](intermediate-guide/pi-pool-tutorial/pi-core-and-pi-cold.md)
   * [KES-avainten uusiminen](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
-* [Basic Stake Pool Networking 💫](intermediate-guide/basic-stake-pool-networking.md)
+* [Stake Pool -verkosto: Perusteita](intermediate-guide/basic-stake-pool-networking.md)
 * [Lisää adapoolien mittareita Grafanaan 📊](intermediate-guide/add-adapools-info-to-grafana.md)
 
 ## Muuita Cardano Oppaita <a id="cardano-developer-guides"></a>
 
 * [Cardano Native Asset \(NFT\) 💰](cardano-developer-guides/nft-native-assets.md)
-* [Cardano NFT Collection Tutorial 👛](cardano-developer-guides/cardano-nft-collection-tutorial-coming-soon.md)
+* [Cardano NFT Collection Tutorial](cardano-developer-guides/cardano-nft-collection-tutorial-coming-soon.md)
 * [Luo .img-tiedosto](cardano-developer-guides/create-.img-file.md)
 * [Staking Guide 🚀](cardano-developer-guides/how-to-delegate-ada.md)
 * [Delegoi 🤗](cardano-developer-guides/delegate.md)
 * [Ota osaa 🐱 🚀](cardano-developer-guides/how-to-contribute/README.md)
   * [Osallistumisohje](cardano-developer-guides/how-to-contribute/untitled-1/README.md)
     * [Tyyliohjeet](cardano-developer-guides/how-to-contribute/untitled-1/style-guide.md)
-    * [Code of Conduct](cardano-developer-guides/how-to-contribute/untitled-1/code-of-conduct.md)
+    * [Ohjesääntö](cardano-developer-guides/how-to-contribute/untitled-1/code-of-conduct.md)
 
 ## Resursseja <a id="before-you-get-started..."></a>
 
-* [Resource Library 🏫](before-you-get-started.../prerequisites-and-recommended-resources-to-review.md)
-* [Hardware Purchase Links 🏪](before-you-get-started.../hardware.md)
+* [Resurssikirjasto](before-you-get-started.../prerequisites-and-recommended-resources-to-review.md)
+* [Hyödyllisiä linkkeja laitteiston hankintaan 🏪](before-you-get-started.../hardware.md)
 
