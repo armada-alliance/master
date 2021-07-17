@@ -5,11 +5,11 @@ description: >-
 
 # Set up a Relay Node
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 **Tämän tutoriaalin tarkoitus on saada yksi node synkronoitua Cardano lohkoketjuun! Olemme ohittaneet tiettyjä vaiheita ja turvallisuuskäytäntöjä, jotta tämä tutoriaali olisi mahdollisimman helppo - ÄLÄ KÄYTÄ tätä tutoriaalia rakentaessasi mainnet stake poolia. Ole hyvä ja käytä**[ **keskitason oppaitamme**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **mainnettia varten.**
 {% endhint %}
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 **This tutorial is for use with the official Raspberry Pi 64-bit OS and is solely for development educational purposes to get a Raspberry Pi Cardano node syncing to the blockchain.**
 {% endhint %}
 
