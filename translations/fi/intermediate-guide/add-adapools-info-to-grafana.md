@@ -45,7 +45,7 @@ curl https://js.adapools.org/pools/<YOUR POOL ID>/summary.json 2>/dev/null \
 Nyt kun **getAdaPoolsSummary.sh** on suoritettu, se päivittää tiedoston nimeltä **adapools.prom** uudessa hakemistossamme. Tämä tiedosto sisältää mittareita, jotka alkavat termillä **adapools** ja näkyvät Grafana kyselyn rakentajan mittariosiossa sellaisenaan.
 
 {% hint style="Huomaa" %}
-It's important that the results in the file do not include string values. The node exporter will throw an error and you won't see the adapools metrics.
+On tärkeää, että tiedoston tulokset eivät sisällä merkkijonon arvoja. Node exporter ilmoittaa virheestä etkä näe adapoolsin metriikkaa.
 {% endhint %}
 
 If you discover string values, you can remove them by adding a new key to the "del" section in the script above. For example, to remove the **adapools\_db\_description** metric \(has a string value\), you'd add **.db\_description** to the **del\( \)** section.
