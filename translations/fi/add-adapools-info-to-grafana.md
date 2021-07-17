@@ -1,32 +1,32 @@
 ---
-description: How to add adapools.org summary.json info to your Grafana instance.
+description: Miten lisätä adapools.org summary.json tiedot Grafana tapahtumaksi.
 ---
 
-# Add adapools Metrics to Grafana
+# Lisää adapoolien mittareita Grafanaan
 
-## Assumptions
+## Oletukset
 
-You have setup a node using one of the tutorials provided here. If so, you should have the necessary dependencies installed that the steps below utilize. If not, see the apt install [Environment Setup](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md#install-packages) section of the Pi-Pool Tutorial.
+Olet määrittänyt solmun käyttäen yhtä täällä esitetyistä opetusohjelmista. Jos näin on, sinulla pitäisi olla tarvittavat riippuvuudet asennettuna, joita alla olevat ohjeet käyttävät. Jos näin ei ole, katso apt install [Environment Setup](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md#install-packages) -osio Pi-pool-tutorialissa.
 
-Lets go!
+Ei kun menoksi!
 
-## Make New Directory
+## Luo uusi hakemisto
 
-To start, pick a location on the machine that is running Grafana where you will create a new directory for the node exporter to use. The node exporter is likely located in /opt/cardano/monitoring/**node\_exporter** given the pi-pool default location. __If not, see if you can find it using the "which node\_exporter" command. If that doesn't find it, the directory where it's located is not on your $PATH and you'll need to dig deeper. [Check this git](https://github.com/prometheus/node_exporter) for more information.
+Aloittaaksesi, valitse sijainti koneessa, jossa on Grafana. Täällä voit luoda uuden hakemiston node exporterin käyttöön. Solmun viejä sijaitsee todennäköisesti /opt/cardano/monitoring/**node\_exporter** pi-poolin oletussijainnin vuoksi. __Jos tämä ei pidä paikkansa, koita löydätkö sen käyttämällä komentoa "which node\_exporter" Jos tämä ei löydä sitä, hakemisto, jossa se sijaitsee, ei ole sinun $PATH ja sinun täytyy kaivaa syvemmälle. [Tarkista tämä git](https://github.com/prometheus/node_exporter) saadaksesi lisätietoja.
 
-Change to the location for the new directory, here I'm selecting the local bin for my user.
+Muuta uuden hakemiston sijaintia, tässä olen valinnut paikallisen bin käyttäjälleni.
 
 ```text
 > cd $HOME/.local/bin
 ```
 
-Now make a new directory here where we can store custom text file stats that the node\_exporter will parse. I'm calling the directory **customStats**, but you can name it whatever you like.
+Nyt tee uusi hakemisto, täällä voimme tallentaa mukautetun tekstitiedoston tilastot joita node\_exporter jäsentää. Kutsun hakemistoa **customStats**, mutta voit nimetä sen haluamallasi tavalla.
 
 ```text
 > mkdir customStats
 ```
 
-## Get adapools Summary File
+## Hae adapoolien Yhteenvetotiedosto
 
 The adapools.org site provides a **summary.json** file for every registered pool. We'll use this file to parse out the data we want and store it in our directory we just created. We can create a bash script to handle this for us. I'm in my $HOME/.local/bin directory:
 
