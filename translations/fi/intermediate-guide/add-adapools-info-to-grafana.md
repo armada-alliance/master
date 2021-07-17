@@ -26,13 +26,13 @@ Nyt tee uusi hakemisto, täällä voimme tallentaa mukautetun tekstitiedoston ti
 
 ## Hae adapoolien Yhteenvetotiedosto
 
-The adapools.org site provides a **summary.json** file for every registered pool. We'll use this file to parse out the data we want and store it in our directory we just created. We can create a bash script to handle this for us. I'm in my $HOME/.local/bin directory:
+adapools.org sivusto tarjoaa **summary.json** tiedoston jokaiselle rekisteröidylle poolille. Käytämme tätä tiedostoa jäsentääksemme haluamamme tiedot ja tallentaaksemme sen juuri luomaamme hakemistoon. Voimme luoda bash skriptin, joka käsittelee tämän meille. Olen $HOME/.local/bin hakemistossa:
 
 ```text
 > nano getAdaPoolsSummary.sh
 ```
 
-Add this content below, replace **YOUR POOL ID** with your pool's ID, save and exit. Essentially this pulls a copy of the **summary.json** file for your pool, removes some things that the node exporter cannot parse \(string values\) and saves a copy in our new directory.
+Lisää tämä sisältö alla, korvaa **POOLIDI** oman poolisi ID-tunnuksella, tallenna ja poistu. Pohjimmiltaan tämä vetää kopion poolisi **summary. json** tiedostosta, poistaa joitakin asioita, joita node exporter ei voi jäsentää \(string values\) ja tallentaa kopion uuteen hakemistoon.
 
 ```text
 curl https://js.adapools.org/pools/<YOUR POOL ID>/summary.json 2>/dev/null \
@@ -42,9 +42,9 @@ curl https://js.adapools.org/pools/<YOUR POOL ID>/summary.json 2>/dev/null \
 | sed -e 's/^[ \t]*/adapools_/' > $HOME/.local/bin/customStats/adapools.prom
 ```
 
-Now when the **getAdaPoolsSummary.sh** is run it'll refresh a file called **adapools.prom** in our new directory. This file will contain metrics that start with the term **adapools** and will be visible in the Grafana query builder metrics section as such.
+Nyt kun **getAdaPoolsSummary.sh** on suoritettu, se päivittää tiedoston nimeltä **adapools.prom** uudessa hakemistossamme. Tämä tiedosto sisältää mittareita, jotka alkavat termillä **adapools** ja näkyvät Grafana kyselyn rakentajan mittariosiossa sellaisenaan.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 It's important that the results in the file do not include string values. The node exporter will throw an error and you won't see the adapools metrics.
 {% endhint %}
 
