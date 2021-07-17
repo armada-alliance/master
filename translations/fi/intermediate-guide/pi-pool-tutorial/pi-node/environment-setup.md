@@ -40,7 +40,7 @@ mkdir $HOME/tmp
 [Environment Variables in Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
 {% endhint %}
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Changes to this file require reloading .bashrc or logging out then back in.
 {% endhint %}
 
@@ -90,7 +90,7 @@ rm -r cardano*
 cd $HOME
 ```
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 If binaries already exist you will have to confirm overwriting the old ones.
 {% endhint %}
 
@@ -296,7 +296,7 @@ nano topologyUpdater.sh
 
 Paste in the following, save & exit.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 The port number here must match the port cardano-node is running on. If you are using dns records you can add the FQDN that matches on line 6\(line 6 only\). Leave it as is if you are not using dns. The service will pick up the public IP and use that.
 {% endhint %}
 
@@ -344,7 +344,7 @@ Save, exit and make it executable.
 chmod +x topologyUpdater.sh
 ```
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 You will not be able to successfully execute ./topologyUpdater.sh until you are fully synced up to the tip of the chain.
 {% endhint %}
 
@@ -414,7 +414,7 @@ You can use gLiveView.sh to view ping times in relation to the peers in your mai
 
 Changes to this file will take affect upon restarting the cardano-service.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Don't forget to remove the last comma in your topology file!
 {% endhint %}
 
@@ -472,7 +472,7 @@ sudo nano /etc/prometheus/prometheus.yml
 
 Replace the contents of the file with.
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Indentation must be correct YAML format or Prometheus will fail to start.
 {% endhint %}
 
@@ -592,7 +592,7 @@ cardano-monitor enable
 cardano-monitor start
 ```
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 At this point you may want to start cardano-service and get synced up before we continue to configure Grafana. Skip ahead to [syncing the chain section](https://app.gitbook.com/@wcatz/s/pi-pool-guide/~/drafts/-MYFtFDZp-rTlybgAO71/pi-node/environment-setup/@drafts#syncing-the-chain). Choose whether you want to wait 30 hours or download my latest chain snapshot. Return here once gLiveView.sh shows you are at the tip of the chain.
 {% endhint %}
 
