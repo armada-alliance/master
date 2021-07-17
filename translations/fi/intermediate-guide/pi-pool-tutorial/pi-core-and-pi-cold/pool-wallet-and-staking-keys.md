@@ -8,7 +8,7 @@ description: Create the stake pools wallet and and staking key.
 not done yet sorry.
 {% endhint %}
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 On erittäin kätevää luoda lompakon avaimet mnemonic seed:istä. This will allow you to manage the pools wallet from Yoroi or Daedalus & easily restore the pools wallet into any compatible wallet and manage rewards.
 
 cardano-wallet will not build on arm. Below is how to do it with an x86 machine running cardano-wallet and then transfer the keys to your cold offline machine.
