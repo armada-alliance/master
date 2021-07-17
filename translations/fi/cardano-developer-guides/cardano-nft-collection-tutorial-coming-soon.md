@@ -327,7 +327,7 @@ main()
 node src/pin-images-to-ipfs.js
 ```
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 ### Before you continue to the minting process, please understand the importance of minting policies and their scripts!
 {% endhint %}
 
