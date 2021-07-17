@@ -2,7 +2,7 @@
 description: Stake pool -operaattorin resurssit.
 ---
 
-# Resource Library 🏫
+# Resurssikirjasto
 
 ## Cardanoyhteisön Toimittamia Resursseja
 
