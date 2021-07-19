@@ -2,9 +2,9 @@
 description: Tue Desentralisaatiota
 ---
 
-# Delegate🤗
+# Delegoi🤗
 
-## Please consider delegating to any of our alliance members if you enjoy these tutorials and resources. Thank You! 🙏 😊
+## Pyydän teitä harkitsemaan delegoimista jollekin allianssin jäsenistämme, jos nautitte näistä tutoriaaleista ja resursseista. Kiitos! 🙏 😊
 
 {% embed url="https://armada-alliance.com" caption="" %}
 
