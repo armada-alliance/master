@@ -2,31 +2,31 @@
 description: Laita ADAsi työskentelemään sinulle jo tänään!
 ---
 
-# How to delegate ADA
+# Kuinka delegoida ADAsi
 
 * **Tästä linkistä pääset lukemaan lisää delegoinnista:**  [**https://cardano.org/stake-pool-delegation/**](https://cardano.org/stake-pool-delegation/)\*\*\*\*
 * **ADAsi täysi hallinta pysyy aina sinulla eikä valuutta siirry pois lompakostasi delegoidessasi.**
 * **Ensimmäinen askel ADAn delegoimiseen on virallisen Cardano lompakon lataaminen, ellet ole jo sellaista ladannut.**
 
 {% hint style="danger" %}
-Yoroi wallet is a mobile wallet available for Android and Apple devices. Daedalus is not a mobile wallet!
+Yoroi lompakko on mobiililompakko Android- ja Apple-laitteille. Daedalus ei ole mobiilipakko!
 
-## Beware of fake wallets! If you have questions, check [cardano.org](https://cardano.org/stake-pool-delegation#wallets).
+## Varo väärennettyjä lompakkoja! Jos sinulla on kysyttävää, katso [cardano.org](https://cardano.org/stake-pool-delegation#wallets).
 {% endhint %}
 
 {% tabs %}
 {% tab title="Daedulus lompakko" %}
-### I have included some video walkthroughs for using Daedulus Wallet and how to delegate/stake your ADA below:
+### Alla olevasta linkistä pääset katsomaan video-ohjeita \(ohjeistus englanniksi\) Daedalus lompakon käyttöön ja ADAn delegointiin sen avulla:
 
 {% tab %}
 {% endtab %}
 
-{% tab title="Yoroi Lightweight Wallet and Mobile App" %}
+{% tab title="Yoroi Lompakko ja Mobiili appi" %}
 {% embed url="https://yoroi-wallet.com/\#/" caption="" %}
 
-### The video below will walk you through using the Yoroi Wallet and how to delegate your ADA.
+### Alla oleva video opastaa Yoroi lompakon käyttöön ja kertoo miten voit delegoida ADAsi sen avulla.
 
-{% embed url="https://www.youtube.com/watch?v=3ypcYjjJNns&t=330s" %}
+{% upotettu url="https://www.youtube.com/watch?v=3ypcYjjJNns&t=330s" %}
 {% endtab %}
 {% endtabs %}
 
