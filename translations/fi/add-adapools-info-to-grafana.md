@@ -50,11 +50,11 @@ Nyt kun **getAdaPoolsSummary.sh** on suoritettu, se päivittää tiedoston nimel
 On tärkeää, että tiedoston tulokset eivät sisällä merkkijonon arvoja. Node exporter ilmoittaa virheestä etkä näe adapoolsin metriikkaa.
 {% endhint %}
 
-If you discover string values, you can remove them by adding a new key to the "del" section in the script above. For example, to remove the **adapools\_db\_description** metric \(has a string value\), you'd add **.db\_description** to the **del\( \)** section.
+Jos huomaat merkkijonon arvoja, voit poistaa ne lisäämällä uuden avaimen "del" osioon skriptin yllä. Esimerkiksi poistaaksesi **adapools\_db\_description** mittarin \(sisältää merkkijonoarvon\), lisäisit **.db\_description** **del\( \)** -osioon.
 
-## Create crontab Entry
+## Luo crontab Sääntö
 
-Depending on how often you want to refresh a copy of these stats, you can create a local crontab entry to pull a fresh copy of the adapools.prom file.
+Riippuen siitä, kuinka usein haluat päivittää kopion näistä tilastoista, voit luoda paikallisen crontab merkinnän ja vetää tuoreen kopion adapools.prom tiedostosta.
 
 ```text
 > crontab -e
