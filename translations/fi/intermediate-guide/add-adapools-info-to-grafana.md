@@ -58,29 +58,29 @@ Riippuen siitä, kuinka usein haluat päivittää kopion näistä tilastoista, v
 > crontab -e
 ```
 
-The following line **runs the script we created every 5 minutes**. Add the line, save and exit. Since this data doesn't change that often, you shouldn't need to pull it that often. Don't piss off the adapools.org folks by pulling this data every 5 seconds - it's not necessary. For other examples of crontab run times, [see this lovely link](https://crontab.tech/examples).
+Seuraava rivi **ajaa luomamme skriptin 5 minuutin välein**. Lisää rivi, tallenna ja poistu. Koska nämä tiedot eivät muutu kovin usein, sinun ei pitäisi myöskään vetää päivitystä kovin usein. Älä suututa adapools.org:n väkeä vetämällä tätä tietoa 5 sekunnin välein - se ei ole tarpeen. Muita esimerkkejä crontab ajoajoista, [katso tämä ihana linkki](https://crontab.tech/examples).
 
 ```text
 */5 * * * * $HOME/.local/bin/getAdaPoolsSummary.sh
 ```
 
-## Run node exporter Command
+## Suorita node exporter käsky
 
-Now that we are generating the **adapools.prom** file, we need to tell the node exporter where to find our custom text file. Depending on how you are running your node exporter instance, you'll need to add the following command line parameters. This might be found in the **startMonitor** script included with the pi-pool default build.
+Nyt kun olemme luomassa **adapools.prom** tiedostoa, meidän täytyy kertoa node exporterille mistä se löytää mukautetun tekstitiedostomme. Riippuen siitä, miten käytät node exporteria, sinun täytyy lisätä seuraavat komentoriviparametrit. Tämä saattaa löytyä **startMonitor** skriptistä, joka sisältyy pi-poolin oletusversioon.
 
 ```text
 > node_exporter --collector.textfile.directory=$HOME/.local/bin/customStats --collector.textfile
 ```
 
-If all goes as planned, you should be able to pull up this URL in your browser and see the new **adapools** metrics. If this worked, your new metrics should be visible in the Grafana query builder.
+Jos kaikki menee suunnitelmien mukaisesti, sinun pitäisi pystyä nostamaan tämä URL selaimessasi ja nähdä uusia **adapools** mittareita. Jos tämä toimi, uusien mittareidesi pitäisi näkyä Grafana kyselyn rakentajassa.
 
 ```text
 http://<YOUR GRAFANA NODE IP>:9100/metrics
 ```
 
 {% hint style="info" %}
-There are other methods you could use to implement this approach. Basically, if you can create a text file with key/value pairs and put it into this new directory, the node exporter should pull the data into Grafana. It opens up a vast array of possibilities. Just ensure you prefix the label names with a unique value \(the **adapools\_** \_\_part in the adapools.prom file above\) per file.
+On olemassa muitakin menetelmiä, joita voit käyttää tämän lähestymistavan toteuttamiseen. Periaatteessa, jos luot tekstitiedoston avaimen/arvon pareilla ja laitat sen tähän uuteen kansioon, node exporterin pitäisi vetää tiedot Grafanaan. Se avaa laajan valikoiman mahdollisuuksia. Just ensure you prefix the label names with a unique value \(the **adapools\_** \_\_part in the adapools.prom file above\) per file.
 {% endhint %}
 
-Was this information helpful? Earn rewards with us! [Consider delegating some ADA](../cardano-developer-guides/delegate.md).
+Oliko tämä tieto hyödyllistä? Ansaitse palkintoja kanssamme! [Consider delegating some ADA](../cardano-developer-guides/delegate.md).
 
