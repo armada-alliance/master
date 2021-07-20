@@ -1,23 +1,23 @@
 ---
-description: Let's make some native assets on Cardano ❤️✨
+description: Tehdään uusia Cardano alkuperäisresursseja ❤️✨
 ---
 
-# Cardano Native Asset \(NFT\) 💰
+# Cardano alkuperäisresurssit (Native Assets) \(NFT\) 💰
 
-## Who is this guide for?
+## Kenelle tämä opas on tarkoitettu?
 
-* For people who want to make NFT's or Native Assets on Cardano
-* For people who know about Cardano
+* Ihmisille, jotka haluavat tehdä NFT:n tai alkuperäisresursseja (native assets/tokens) Cardano lohkoketjuun
+* Ihmisille, jotka tietävät Cardanosta
 
-## Benefits of NFT's on Cardano
+## NFT:n edut Cardanossa lohkoketjussa
 
-* Low transaction fees
-* Native on the blockchain
+* Alhaiset käsittelymaksut
+* Alkuperäinen lohkoketjussa
 
 ## Edellytykset
 
 {% hint style="danger" %}
-We made this tutorial for use with **Raspberry-Pi-ARM** machines running on **Linux OS** so make sure to download the **correct** node.js for your **local machine/CPU and OS**. Currently, the Cardano-node and Cardano-cli are meant to be built from source on Linux machines. Any other OS will have its own build complexities, and we do not cover them in any of our tutorials as of right now. [How to build Cardano Node from source](https://docs.cardano.org/projects/cardano-node/en/latest/getting-started/install.html)
+Teimme tämän tutoriaalin käytettäväksi **Raspberry-Pi-ARM** koneiden kanssa, jotka toimivat **Linux käyttöjärjestelmällä** joten muista ladata **oikea** node.js **paikalliseen koneeseen/suorittimeen ja OS**. Tällä hetkellä Cardano-node ja Cardano-cli on tarkoitus rakentaa lähteestä Linux-koneilla. Any other OS will have its own build complexities, and we do not cover them in any of our tutorials as of right now. [How to build Cardano Node from source](https://docs.cardano.org/projects/cardano-node/en/latest/getting-started/install.html)
 {% endhint %}
 
 {% hint style="info" %}
