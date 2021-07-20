@@ -14,7 +14,7 @@ description: Let's make some native assets on Cardano ❤️✨
 * Low transaction fees
 * Native on the blockchain
 
-## Prerequisites
+## Edellytykset
 
 {% hint style="danger" %}
 We made this tutorial for use with **Raspberry-Pi-ARM** machines running on **Linux OS** so make sure to download the **correct** node.js for your **local machine/CPU and OS**. Currently, the Cardano-node and Cardano-cli are meant to be built from source on Linux machines. Any other OS will have its own build complexities, and we do not cover them in any of our tutorials as of right now. [How to build Cardano Node from source](https://docs.cardano.org/projects/cardano-node/en/latest/getting-started/install.html)
