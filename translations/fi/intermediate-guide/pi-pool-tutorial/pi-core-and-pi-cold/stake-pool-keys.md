@@ -2,7 +2,7 @@
 
 ## Raspberry Pi & entropia
 
-Before we start generating keys with a headless server we should create a safe amount of entropy.
+Ennen kuin alamme tuottaa avaimia palvelimella meidän pitää luoda turvallinen määrä entropy.
 
 {% hint style="info" %}
 [https://hackaday.com/2017/11/02/what-is-entropy-and-how-do-i-get-more-of-it/](https://hackaday.com/2017/11/02/what-is-entropy-and-how-do-i-get-more-of-it/)
