@@ -1,14 +1,14 @@
-# Cardano NFT Collection Tutorial
+# Cardano NFT-kokoelma opas
 
-## Prerequisites
+## Edellytykset
 
-* cardano-node / cardano-cli set up on local machine \([https://docs.cardano.org/projects/cardano-node/en/latest](https://docs.cardano.org/projects/cardano-node/en/latest)\)
-* Node.js installed version 14
-* cardano-cli-js package installed
-* cardano-minter repo from the previous tutorial
+* cardano-node / cardano-cli asennettu paikalliseen koneeseen \([https://docs.cardano.org/projects/cardano-node/en/latest](https://docs.cardano.org/projects/cardano-node/en/latest)\)
+* Node.js versio 14 asennettu
+* cardano-cli-js paketti asennettu
+* cardano-minter repo edellisestä tutoriaalista
 
 {% hint style="info" %}
-**If you haven't already, please watch our video from the previous NFT tutorial 😎**
+**Jos et ole jo katsonut, katso meidän edellisen NFT opetusohjelman video 😎**
 {% endhint %}
 
 {% embed url="https://youtu.be/OeOliguGn7Y" caption="" %}
