@@ -1,2 +1,2 @@
-# Register your pool
+# Rekisteröi pooli
 
