@@ -193,7 +193,7 @@ createWallet("ADAPI")
 ```
 
 ```bash
-cd ..
+$ cd ..
 node src/create-wallet.js
 ```
 
@@ -220,7 +220,7 @@ console.log(
 * **Now, Check the balance of our wallet.**
 
 ```text
-cd ..
+$ cd ..
 node src/get-balance.js
 ```
 
@@ -347,7 +347,7 @@ console.log(txHash);
 * **Run the minting script, then wait a few moments to check the balance in our wallet**
 
 ```text
-cd ..
+$ cd ..
 node src/mint-asset.js
 ```
 
@@ -430,7 +430,7 @@ console.log("TxHash: " + txHash);
 ```
 
 ```javascript
-cd ..
+$ cd ..
 node src/send-back-asset-to-wallet.js
 ```
 
