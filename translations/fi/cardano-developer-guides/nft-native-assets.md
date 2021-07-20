@@ -351,25 +351,25 @@ $ cd ..
 node src/mint-asset.js
 ```
 
-## Sending your NFT back to Daedulus or Yoroi wallet
+## NFT:n lähettäminen takaisin Daedalus tai Yoroi lompakkoon
 
-Now we must create a new script to send our newly minted NFT to a wallet.
+Nyt meidän on luotava uusi skripti, jotta voimme lähettää juuri painetun NFT:n lompakkoomme.
 
 ```javascript
 cd cardaon-minter/src
 nano send-back-asset-to-wallet.js
 ```
 
-There are few main parts we have to this script in order to send the asset:
+Tässä skriptissä on muutamia päävaiheita, joiden kautta voimme lähettää NFT:n eteenpäin:
 
-1. Get the wallet
-2. Define the transaction
-3. Build the transaction
-4. Calculate the fee
-5. Pay the fee by subtracting it from the sender's utxo
-6. Build the final transaction
-7. Sign the transaction
-8. Submit the transaction
+1. Hae lompakko
+2. Määrittele tapahtuma
+3. Rakenna tapahtuma
+4. Laske käsittelymaksu
+5. Maksa käsittelymaksu vähentämällä se lähettäjän utxosta
+6. Rakenna lopullinen tapahtuma
+7. Allekirjoita tapahtuma
+8. Lähetä tapahtuma
 
 ```javascript
 const cardano = require("./cardano");
@@ -434,20 +434,20 @@ $ cd ..
 node src/send-back-asset-to-wallet.js
 ```
 
-### Final Steps to view your NFT
+### Lopulliset vaiheet NFT:n katseluun
 
-1. View your nft in your wallet
-2. View your asset on cardanoassets.com
-3. View your asset on pool.pm \(see the actual picture\)
-4. Show the original minting metadata
-5. Open the src and image ipfs links in your browser to prove that it worked
+1. Tarkastele NFT:tä lompakossasi
+2. Tarkastele assettiasi cardanoassets.com -palvelussa
+3. Tarkastele assettiasi pool.pm -sivuilla \(Katso todellinen kuva\)
+4. Näytä alkuperäinen mintingin metatiedot
+5. Avaa src ja kuvan ipfs linkit selaimessasi varmistaaksesi, että prosessi toimi
 
 #### _Video Walk-through:_
 
 {% embed url="https://youtu.be/awxVkFbWoKM" caption="" %}
 
 {% hint style="success" %}
-**If you liked this tutorial and want to see more like it please consider staking your ADA with our** [**PIADA**](https://adapools.org/pool/b8d8742c7b7b512468448429c776b3b0f824cef460db61aa1d24bc65) **Stake Pool, or giving a one-time donation to our Alliance** [**https://cointr.ee/armada-alliance**](https://cointr.ee/armada-alliance)**.**
+**Jos pidit tästä tutoriaalista ja haluat nähdä enemmän samankaltaisia, harkitse ADAn delegoimista meidän** [**PIADA**](https://adapools.org/pool/b8d8742c7b7b512468448429c776b3b0f824cef460db61aa1d24bc65) **Stake Pooliin, tai kertalahjoituksen antamista yhteisöllemme, Armada Allianssille,** [**https://cointr. e/armada-alliance**](https://cointr.ee/armada-alliance)**.**
 {% endhint %}
 
 \*\*\*\*
