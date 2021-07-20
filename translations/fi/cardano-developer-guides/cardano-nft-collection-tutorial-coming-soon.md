@@ -328,16 +328,16 @@ node src/pin-images-to-ipfs.js
 ```
 
 {% hint style="Huomaa" %}
-### Before you continue to the minting process, please understand the importance of minting policies and their scripts!
+### Ennen kuin jatkat painoprosessia (minting process), on hyvä ymmärtää painotoiminnan säännösten ja niiden skriptien tärkeys!
 {% endhint %}
 
-**Read the Cardano Documentation on "**[**Scripts**](https://docs.cardano.org/projects/cardano-node/en/latest/reference/simple-scripts.html#Step-1---construct-the-tx-body)**" and/or watch a video we made discussing the subject:**
+**Lue Cardano Dokumentaatio osoitteesta "**[**Skriptit**](https://docs.cardano.org/projects/cardano-node/en/latest/reference/simple-scripts.html#Step-1---construct-the-tx-body)**" ja/tai katso video, jonka teimme aiheesta:**
 
 {% embed url="https://youtu.be/v6q66zcFqew" caption="" %}
 
-### 7. Create an "open" or "unlocked" minting policy and script \(Optional\)
+### 7. Luo "open" tai "unlocked" minting käytäntö ja skripti \(Valinnainen\)
 
-* We will create an open minting policy script and export it in JSON and TXT format.
+* Luomme avoimen painatussääntö (minting policy) -skriptin ja tallennamme sen JSON ja TXT muodossa.
 
 ```bash
 cd src
@@ -363,9 +363,9 @@ fs.writeFileSync(__dirname + "/mint-policy-id.txt", cardano.transactionPolicyid(
 node src/create-mint-policy.js
 ```
 
-### 8. Create a "time-locked" minting policy and script \(Recommended\)
+### 8. Luo "aika-lukittu" minting käytäntö ja skripti \(Suositeltu\)
 
-* Create a "time-locked" minting policy script and export it in JSON and TXT format.
+* Luo "aika-lukittu" minting policy skripti ja tallenna se JSON ja TXT muodoissa.
 
 ```text
 cd src
@@ -404,9 +404,9 @@ fs.writeFileSync(__dirname + "/mint-policy-id.txt", cardano.transactionPolicyid(
 node src/create-time-locked-mint-policy.js
 ```
 
-### 9. Create a script to get our policy ID
+### 9. Luo skripti, jotta saat policy ID:n
 
-* We want to make a script that can get our Policy ID to be used in other parts of our program
+* Haluamme tehdä skriptin, joka hakee meidän policy ID:n, jotta voimme käyttää sitä tutoriaalimme muissa osissa
 
 ```bash
 cd src
@@ -432,13 +432,13 @@ module.exports = () => {
 node src/get-policy-id.js
 ```
 
-### 9. Define the mint transaction
+### 9. Määritä painatustapahtuma
 
-1. build mint transaction with metadata.json
-2. calc fee
-3. rebuild
-4. sign
-5. submit
+1. luo painatustapahtuma metadata.jsonin kanssa
+2. laske kustannus
+3. luo uudelleen
+4. allekirjoita
+5. lähetä
 
 ```bash
 cd src
@@ -543,9 +543,9 @@ console.log(txHash)
 node src/mint-multiple-assets.js
 ```
 
-### 10. Send assets back to wallet
+### 10. Lähetä assetit takaisin lompakkoon
 
-* Make a script to send multiple assets back to a wallet in a single transaction.
+* Tee skripti lähettääksesi useita assetteja takaisin lompakkoon yhdessä tapahtumassa.
 
 ```bash
 cd src
