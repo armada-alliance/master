@@ -1,48 +1,48 @@
 ---
-description: Create the stake pools wallet and and staking key.
+description: Luo Stake Pool lompakko ja Staking avain.
 ---
 
-# Pool wallet & staking keys
+# Pool lompakko & staking avaimet
 
 {% hint style="danger" %}
-not done yet sorry.
+Tämä osio ei ole vielä valmis, pahoittelumme.
 {% endhint %}
 
 {% hint style="Huomaa" %}
-On erittäin kätevää luoda lompakon avaimet mnemonic seed:istä. This will allow you to manage the pools wallet from Yoroi or Daedalus & easily restore the pools wallet into any compatible wallet and manage rewards.
+On erittäin kätevää luoda lompakon avaimet mnemonic seed:istä. Näin voit hallita poolin lompakkoa Yoroin tai Daedaluksen avulla ja helposti palauttaa poolin lompakon mihin tahansa yhteensopivaan lompakkoon sekä hallinnoida palkkioita.
 
-cardano-wallet will not build on arm. Below is how to do it with an x86 machine running cardano-wallet and then transfer the keys to your cold offline machine.
+cardano-lompakkoa ei voi rakentaa ARM laitteeseen. Alla on ohjeistus miten se tehdään x86 koneessa jossa on cardano-lompakko ja sitten siirretään avaimet kylmään offline kone.
 
-It is recommended to download the cardano-wallet binary, check it's sha256 hash & then go offline until keys are safely on the cold machine.
+On suositeltavaa ladata cardano-lompakko binaari, tarkista sen sha256 hash ja siirry offline tilaan kunnes avaimet ovat turvallisesti kylmässä koneessa.
 {% endhint %}
 
-## Generate
+## Luo
 
-{% hint style="danger" %}
-🔥 **Critical Operational Security Advice:** `payment` and `stake` keys must be generated and used to build transactions in cold environment. In other words, your **air-gapped offline Cold machine**. The only steps performed online in a hot environment are those steps that require live data. Namely the follow type of steps:
+{% hint style="Huomaa" %}
+🔥 **Kriittinen turvallisuusneuvo:** `payment` ja `stake` avaimet on tuotettava ja niitä on käytettävä tapahtumien rakentamiseen kylmässä ympäristössä. Toisin sanoen, vain **ilma-sillatussa offline kylmässä koneessasi**. Ainoat vaiheet jotka toteutetaan verkossa kuumassa ympäristössä ovat ne jotka vaativat reaaaliaikaisia live-tietoja. Näitä ovat seuraavat vaiheet:
 
--   querying the current slot tip
--   querying the balance of an address
--   submitting a transaction
+-   lohkoketjun kärjen kysely
+-   osoitteen saldoa koskeva pyyntö
+-   siirtotapahtuman lähettäminen
     {% endhint %}
 
-Create a 15-word or 24-word length Shelley compatible mnemonic with [Daedalus](https://daedaluswallet.io/) or [Yoroi](https://yoroi-wallet.com) on a offline machine preferred.
+Luo 15-sanan tai 24-sanan pituinen Shelley yhteensopiva mnemonic [Daedalus](https://daedaluswallet.io/) tai [Yoroi](https://yoroi-wallet.com) mieluiten offline-koneella.
 
-### Retrieve x86 cardano-wallet binary
+### Nouda x86 Cardano-lompakko binääri
 
 {% hint style="info" %}
-If you are not using Linux on your local machine you can write Ubuntu to a usb stick and boot from it.
+Jos et käytä Linuxia paikallisessa koneessasi, voit asentaa Ubuntun usb-tikkulle ja käynnistää koneen uudelleen siitä.
 {% endhint %}
 
-Download cardano-wallet to your local machine.
+Lataa cardano-lompakko paikalliseen koneeseen.
 
 <https://github.com/input-output-hk/cardano-wallet/releases>
 
 {% hint style="info" %}
-Credits to [ilap](https://gist.github.com/ilap/3fd57e39520c90f084d25b0ef2b96894) & [Coin Cashew](https://www.coincashew.com/coins/overview-ada/guide-how-to-build-a-haskell-stakepool-node#10-setup-payment-and-stake-keys) for creating this process.
+Kiitokset [ilap:lle](https://gist.github.com/ilap/3fd57e39520c90f084d25b0ef2b96894) & [Coin Cashew:lle](https://www.coincashew.com/coins/overview-ada/guide-how-to-build-a-haskell-stakepool-node#10-setup-payment-and-stake-keys) tämän prosessin luomisesta.
 {% endhint %}
 
-Create the script.
+Luo skripti.
 
 ```bash
 nano extractPoolStakingKeys.sh
@@ -143,7 +143,7 @@ chmod +x extractPoolStakingKeys.sh
 export PATH="$(pwd)/cardano-wallet-shelley-2020.7.28:$PATH"
 ```
 
-Extract your keys. Update the command with your mnemonic phrase.
+Pura avaimesi. Päivitä komento mnemonisen fraasin avulla.
 
 ```bash
 ###
@@ -153,5 +153,5 @@ Extract your keys. Update the command with your mnemonic phrase.
 ```
 
 {% hint style="danger" %}
-**Important**: The **base.addr** and the **base.addr_candidate** must be the same. Review the screen output.
+**Tärkeää**: **base.addr** ja **base.addr_candidate** täytyy olla sama. Tarkastele tuotosta näytöllä.
 {% endhint %}
