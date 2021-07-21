@@ -345,7 +345,7 @@ Before we start generating keys with a headless server we should have a safe amo
 [https://github.com/nhorman/rng-tools](https://github.com/nhorman/rng-tools)
 {% endhint %}
 
-> But consider the fate of a standalone, headless server \(or a micro controller for that matter\) with no human typing or mousing around, and no spinning iron drive providing mechanical irregularity. Where does _it_ get entropy after it starts up? What if an attacker, or bad luck, forces periodic reboots? This is a [real problem](http://www.theregister.co.uk/2015/12/02/raspberry_pi_weak_ssh_keys/).
+> But consider the fate of a standalone, headless server \(or a micro controller for that matter\) with no human typing or mousing around, and no spinning iron drive providing mechanical irregularity. Mistä _se_ saa entropiaa käynnistyttyään? Entä jos hyökkääjä tai huono onni, pakottaa säännöllisiä uudelleenkäynnistyksiä? Tämä on [todellinen ongelma](http://www.theregister.co.uk/2015/12/02/raspberry_pi_weak_ssh_keys/).
 
 ```text
 sudo apt-get install rng-tools
