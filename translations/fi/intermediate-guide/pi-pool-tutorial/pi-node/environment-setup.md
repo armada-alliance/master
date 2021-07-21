@@ -1,18 +1,18 @@
 ---
-description: Install packages needed to run cardano-node and configure our environment
+description: Asenna tarvittavat paketit, joita tarvitaan cardano-noden ylläpitämiseen ja määritetään ympäristömme
 ---
 
-# Environment Setup
+# Ympäristön Asetukset
 
-## Install packages
+## Asenna paketit
 
-Enable automatic security updates.
+Ota käyttöön automaattiset tietoturvapäivitykset.
 
 ```bash
 sudo dpkg-reconfigure -plow unattended-upgrades
 ```
 
-Install the packages we will need.
+Asennetaan tarvittavat paketit.
 
 ```bash
 sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
@@ -21,9 +21,9 @@ sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
          zlib1g-dev g++ libncursesw5 libtool autoconf -y
 ```
 
-## Environment
+## Ympäristö
 
-Make some directories.
+Tee muutamia kansioita.
 
 ```bash
 mkdir -p $HOME/.local/bin
@@ -34,14 +34,14 @@ mkdir $HOME/git
 mkdir $HOME/tmp
 ```
 
-### Create bash variables & add ~/.local/bin to our $PATH 🏃
+### Luo bash muuttujat & lisää ~/.local/bin meidän $PATH🏃
 
 {% hint style="info" %}
-[Environment Variables in Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
+[Ympäristömuuttujat Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
 {% endhint %}
 
-{% hint style="Huomaa" %}
-Changes to this file require reloading .bashrc or logging out then back in.
+{% hint style="warning" %}
+Muutokset tähän tiedostoon vaativat .bashrc:n uudelleenlataamista tai uloskirjautumista ja sitten uuden sisäänkirjautumisen.
 {% endhint %}
 
 ```bash
@@ -54,7 +54,7 @@ echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
-### Retrieve node files
+### Nouda palvelintiedostot
 
 ```bash
 cd $NODE_FILES
