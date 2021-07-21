@@ -2,14 +2,14 @@
 description: Flash image
 ---
 
-# Download & Flash
+# Lataa & Polta
 
 ## Flash Image
 
-Download, install & open [Raspberry Pi Imager](https://github.com/raspberrypi/rpi-imager/releases/latest). Plug in your target USB drive.
+Lataa, asenna & avaa [Raspberry Pi Imager](https://github.com/raspberrypi/rpi-imager/releases/latest). Kytke USB-asema laittteeseen.
 
 {% tabs %}
-{% tab title="Local Machine \(Ubuntu\)" %}
+{% välilehden otsikko="Paikallinen kone \(Ubuntu\)" %}
 ```bash
 # Ubuntu users can download and install with snapd
 sudo apt update
@@ -20,9 +20,9 @@ sudo snap install rpi-imager
 {% endtabs %}
 
 {% hint style="danger" %}
-Older models of the Pi4B 8GB need to have their boot loader updated to boot from USB. If your image won't boot remove the USB3 drive and use rpi-imager to flash Pi 4 EEPROM boot recovery to an sd card.
+Vanhempien Pi4B 8GB mallien bootloader täytyy päivittää, jotta laite käynnistys USB portin kautta. Jos laitteesi ei käynnisty USB3 portista, käytä rpi-imager ohjelmaa ja tee Pi 4 EEPROM boot recovery sd kortti.
 
-Plug the Pi into a monitor, insert the sd card and power up. Once you see a green screen you should be good to boot from your USB3 drive. Newer versions are shipping with a USB boot capable boot loader. **Feeling lucky?**
+Kytke Pi monitoriin, aseta SD-kortti paikoilleen ja laita virta päälle. Kun näet vihreän näytön, laitteesi pitäisi olla valmis käynnistymään USB3 asemasta. Uudemmat RPi4B versiot toimitetaan bootloaderilla joka tukee valmiiksi USB-käynnistystä. **Feeling lucky?**
 
 **Choose OS -&gt; Misc utility images -&gt; Raspberry Pi 4 EEPROM boot recovery** [https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
 {% endhint %}
@@ -31,14 +31,14 @@ Plug the Pi into a monitor, insert the sd card and power up. Once you see a gree
 
 {% tabs %}
 {% tab title="Pre configured Pi-Node.img.gz" %}
-### Obtain Pi-Pool .img.gz file
+### Hanki Pi-Pool .img.gz tiedosto
 
 | [Pi-Node](https://db.adamantium.online/Pi-Node.img.gz) |
 |:------------------------------------------------------ |
 |                                                        |
 
 
-### Within Raspberry Pi Imager
+### Raspberry Pi Imager -ohjelmassa
 
 **Choose OS -&gt; Use custom**
 
@@ -50,13 +50,13 @@ Locate your target drive & write it to disk.
 {% endtab %}
 
 {% tab title="Fresh Ubuntu 21.04 installation" %}
-### Within Raspberry Pi Imager
+### Raspberry Pi Imager -ohjelmassa
 
-### Select  Ubuntu Server 21.04 \(RPI 3/4/400\)
+### Valitse Ubuntu Palvelin 21.04 \(RPI 3/4/400\)
 
-**Choose OS -&gt; Other general purpose OS -&gt; Ubuntu -&gt; Ubuntu Server 21.04 \(RPI 3/4/400\)**. The 64 bit server option.
+**Choose OS -&gt; Other general purpose OS -&gt; Ubuntu -&gt; Ubuntu Server 21.04 \(RPI 3/4/400\)**. 64-bittinen palvelin vaihtoehto.
 
-Locate your target drive & write it to disk.
+Etsi kohdeasema & kirjoita se levylle.
 
 ![](../../../.gitbook/assets/21.04-rpi-imager.png)
 {% endtab %}
