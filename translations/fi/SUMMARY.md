@@ -4,9 +4,9 @@
 
 ## Cardano Node <a id="beginner-guide-1"></a>
 
-* [Raspberry Pi OS 🍓](beginner-guide-1/beginner-guide/README.md)
-  * [Raspberry Pin asennus](beginner-guide-1/beginner-guide/setup.md)
-  * [Määritä Relay Noden asetukset](beginner-guide-1/beginner-guide/tutorial-2-relaynode.md)
+* [Raspberry Pi OS 🍓](beginner-guide-1/rpi-os/README.md)
+  * [Raspberry Pin asennus](beginner-guide-1/rpi-os/setup.md)
+  * [Määritä Relay Noden asetukset](beginner-guide-1/rpi-os/tutorial-2-relaynode.md)
 
 ## Stake Pool -oppaat <a id="intermediate-guide"></a>
 
