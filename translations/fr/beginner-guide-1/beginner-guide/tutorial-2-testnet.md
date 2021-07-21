@@ -13,15 +13,15 @@ description: >-
 **This tutorial is for only use with Raspberry Pi OS 64bit and is solely for educational purposes to get a Cardano node syncing to the blockchain.**
 {% endhint %}
 
-## Summary
+## Résumé
 
-1. Environment Setup
-2. Downloading the binaries needed to build a Cardano node relay
-3. Download configuration files from IOHK/Cardano-node
-4. Edit the config settings
-5. Download a database snapshot to speed up the sync process
-6. Run the basic passive relay node to connect to the testnet
-7. Monitor the relay node with [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/)
+1. Configuration de l'environnement
+2. Téléchargement des exécutables nécessaires à la construction d'un relais de noeud Cardano
+3. Télécharger les fichiers de configuration depuis IOHK/Cardano-node
+4. Modifier la configuration
+5. Télécharger une copie de la base de données pour accélérer le processus de synchronisation
+6. Exécuter le relais passif de base pour se connecter au réseau de test
+7. Surveiller le relais avec [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/)
 
 ![](../../.gitbook/assets/download-10-%20%281%29.jpeg)
 
