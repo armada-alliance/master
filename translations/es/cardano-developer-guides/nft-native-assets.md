@@ -21,7 +21,7 @@ We made this tutorial for use with **Raspberry-Pi-ARM** machines running on **Li
 {% endhint %}
 
 {% hint style="info" %}
-If you are using a Raspberry Pi machine [h](../beginner-guide-1/beginner-guide/tutorial-2-relaynode.md)[ere](../beginner-guide-1/beginner-guide/tutorial-2-relaynode.md) is an easy-to-follow tutorial we made to get a Cardano Relay Node running.
+If you are using a Raspberry Pi machine [h](../beginner-guide-1/rpi-os/tutorial-2-relaynode.md)[ere](../beginner-guide-1/rpi-os/tutorial-2-relaynode.md) is an easy-to-follow tutorial we made to get a Cardano Relay Node running.
 {% endhint %}
 
 * cardano-node / cardano-cli set up on local machine
