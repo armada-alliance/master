@@ -4,9 +4,9 @@
 
 ## Nodo de Cardano <a id="beginner-guide-1"></a>
 
-* [Raspberry Pi OS 🍓](beginner-guide-1/beginner-guide/README.md)
-  * [Configurando el Raspberry Pi](beginner-guide-1/beginner-guide/setup.md)
-  * [Configurando el nodo Relay](beginner-guide-1/beginner-guide/tutorial-2-relaynode.md)
+* [Raspberry Pi OS 🍓](beginner-guide-1/rpi-os/README.md)
+  * [Configurando el Raspberry Pi](beginner-guide-1/rpi-os/setup.md)
+  * [Configurando el nodo Relay](beginner-guide-1/rpi-os/tutorial-2-relaynode.md)
 
 ## Guias de Stake Pools <a id="intermediate-guide"></a>
 
