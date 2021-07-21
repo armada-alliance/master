@@ -10,7 +10,7 @@ Ennen kuin alamme tuottaa avaimia palvelimella meidän pitää luoda turvallinen
 [https://github.com/nhorman/rng-tools](https://github.com/nhorman/rng-tools)
 {% endhint %}
 
-> But consider the fate of a standalone, headless server \(or a microcontroller for that matter\) with no human typing or mousing around, and no spinning iron drive providing mechanical irregularity. Where does _it_ get entropy after it starts up? What if an attacker, or bad luck, forces periodic reboots? This is a [real problem](http://www.theregister.co.uk/2015/12/02/raspberry_pi_weak_ssh_keys/).
+> Mietitäänpä yksittäisen, "headless" palvelimen \(tai mikro-ohjaimenkin\) kohtaloa, ilman ihmisen syöttämiä kirjoituksia tai hiiren liikkeitä, eikä kehräävää asemaa tarjoamassa mekaanista epäsäännöllisyyttä. Mistä _se_ saa entropiaa käynnistyttyään? Entä jos hyökkääjä tai huono onni, pakottaa säännöllisiä uudelleenkäynnistyksiä? Tämä on [todellinen ongelma](http://www.theregister.co.uk/2015/12/02/raspberry_pi_weak_ssh_keys/).
 
 ```bash
 ## install rng-tools on both core & cold
@@ -18,20 +18,20 @@ sudo apt-get install rng-tools
 sudo reboot
 ```
 
-{% hint style="Huomaa" %}
-The block-producer node requires only these 3 files as defined in the [Shelley ledger specs](https://hydra.iohk.io/build/2473732/download/1/ledger-spec.pdf):
+{% hint style="warning" %}
+Lohkontuottaja node vaatii vain nämä kolme tiedostoa, jotka on määritelty [Shelley ledgerin ominaisuuksissa](https://hydra.iohk.io/build/2473732/download/1/ledger-spec.pdf):
 
-1. stake pool cold key \(node.cert\)
-2. stake pool hot key \(kes.skey\)
-3. stake pool VRF key \(vrf.skey\)
+1. stake pool kylmä avain \(node.cert\)
+2. stake pool kuuma avain \(kes.skey\)
+3. stake pool VRF avain \(vrf.skey\)
 {% endhint %}
 
-Generate a KES keypair.
+Luo KES avainpari.
 
 {% hint style="info" %}
-KES \(key evolving signature\) keys are created to secure your stake pool against hackers who might compromise your keys.
+KES \(key evolving signature\) avaimet on luotu suojaamaan stake pooliasi hakkereita vastaan, jotka saattaisivat vaarantaa avaintesi turvallisuuden.
 
-**On mainnet, you will need to regenerate the KES key every 90 days.**
+**Pääverkossa (mainnet), KES avaimet täytyy uudistaa 90 päivän välein.**
 {% endhint %}
 
 {% tabs %}
