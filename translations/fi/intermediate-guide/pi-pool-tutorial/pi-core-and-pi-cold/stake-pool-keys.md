@@ -45,7 +45,7 @@ cardano-cli node key-gen-KES \
 {% endtab %}
 {% endtabs %}
 
-Make a directory to store your cold keys in your offline machine.
+Tee offline-koneeseen hakemisto, johon voit tallentaa kylmät avaimet.
 
 {% tabs %}
 {% tab title="Offline Cold" %}
@@ -56,7 +56,7 @@ cd $HOME/cold-keys
 {% endtab %}
 {% endtabs %}
 
-Make a set of cold keys and create the cold counter file.
+Tee kylmä avainpari ja luo kylmä laskuri-tiedosto.
 
 {% tabs %}
 {% tab title=" Offline Cold" %}
@@ -70,10 +70,10 @@ cardano-cli node key-gen \
 {% endtabs %}
 
 {% hint style="danger" %}
-\*\*\*\*🔥 **Cold keys** **must be generated and stored on your air-gapped offline machine.** The cold keys are the files stored in `$HOME/cold-keys.`
+\*\*\*\*🔥 **Kylmät avaimet** **on tuotettava ja tallennettava ilma-sillatussa offline-tilassa.** Kylmät avaintiedostot, tallennetaan hakemistoon `$HOME/cold-keys.`
 {% endhint %}
 
-Determine the number of slots per KES period from the genesis file.
+Määritä slottien lukumäärä KES-jaksoa kohti genesis-tiedostosta.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -84,7 +84,7 @@ echo slotsPerKESPeriod: ${slotsPerKESPeriod}
 {% endtab %}
 {% endtabs %}
 
-Query chain to determine current slot number or 'tip' of the chain.
+Selvitä ketjun nykyisen slotin numero tai ketjun 'kärki'.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -95,7 +95,7 @@ echo slotNo: ${slotNo}
 {% endtab %}
 {% endtabs %}
 
-Find the kesPeriod by dividing the slot tip by the slotsPerKESPeriod.
+Selvitä kesPeriod jakamalla ketjun kärki slotsPerKESPeriod arvolla.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -108,13 +108,13 @@ echo startKesPeriod: ${startKesPeriod}
 {% endtab %}
 {% endtabs %}
 
-Move **kes.vkey** to your **cold environment**.
+Siirrä **kes.vkey** **kylmään ympäristöön**.
 
-{% hint style="Huomaa" %}
-Replace &lt;startKesPeriod&gt; below to match.
+{% hint style="warning" %}
+Korvaa &lt;startKesPeriod&gt; alapuolella vastaamaan määrittlemääsi arvoa.
 {% endhint %}
 
-Create your operational certificate \(node.crt\).
+Luo toiminnallinen sertifikaatti \(node.crt\).
 
 {% tabs %}
 {% tab title="Offline Cold" %}
@@ -129,9 +129,9 @@ cardano-cli node issue-op-cert \
 {% endtab %}
 {% endtabs %}
 
-Move **node.cert** to your **hot environment**.
+Siirrä **node.cert** **kuumaan ympäristöön**.
 
-Generate the verification \(VRF\) key pair.
+Luo tarkistus\(VRF\) avainpari.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -143,13 +143,13 @@ cardano-cli node key-gen-VRF \
 {% endtab %}
 {% endtabs %}
 
-Update VRF key permission to read-only.
+Päivitä VRF avainten oikeudet arvoon "vain luku".
 
 ```bash
 chmod 400 vrf.skey
 ```
 
-Stop cardano-node.
+Pysäytä cardano-node.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -159,7 +159,7 @@ cardano-service stop
 {% endtab %}
 {% endtabs %}
 
-Update the cardano-service startup script to include your KES, VRF and operational certificate.
+Päivitä cardano-service startup skripti sisältämään KES, VRF ja käyttösertifikaatin.
 
 ```bash
 nano $HOME/.local/bin/cardano-service
@@ -194,7 +194,7 @@ cardano-node run +RTS -N4 -RTS \
 {% endtab %}
 {% endtabs %}
 
-Update your cores mainnet-topology.json file.
+Päivitä blockproducer noden mainnet-topology.json -tiedosto.
 
 ```bash
 nano $NODE_FILES/${NODE_CONFIG}-topology.json
@@ -212,14 +212,14 @@ nano $NODE_FILES/${NODE_CONFIG}-topology.json
   }
 ```
 
-Restart your block producer as a core node.
+Käynnistä lohkon tuottaja node uudelleen ydinpalvelimena.
 
 ```bash
 cardano-service start
 ```
 
-{% hint style="Huomaa" %}
-Wait for the core node to sync back up to the tip of the chain.
+{% hint style="warning" %}
+Odota, että lohkon tuottaja node synkronoituu uudelleen ketjun kärkeen saakka.
 
 gLiveView.sh
 {% endhint %}
