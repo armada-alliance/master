@@ -11,7 +11,7 @@
 ## Guias de Stake Pools <a id="intermediate-guide"></a>
 
 * [Alpine Linux OS 🗻](intermediate-guide/alpine-linux-os.md)
-* [Guía e imagen de disco Pi-Node](intermediate-guide/pi-pool-tutorial/README.md)
+* [Pi-Node Image & Guide 🌟](intermediate-guide/pi-pool-tutorial/README.md)
   * [Pi-Node \(inicio rápido\)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
     * [Descargar y Flashear](intermediate-guide/pi-pool-tutorial/pi-node/download-and-write-it.md)
     * [Iniciando sesión de forma segura](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
