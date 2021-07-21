@@ -17,7 +17,7 @@
     * [Logging in Securely](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
     * [User Setup](intermediate-guide/pi-pool-tutorial/pi-node/user-setup.md)
     * [Server Setup](intermediate-guide/pi-pool-tutorial/pi-node/server-setup.md)
-    * [Environment Setup](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md)
+    * [Configuration de l'environnement](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md)
   * [Pi-Relay](intermediate-guide/pi-pool-tutorial/pi-relay.md)
   * [Pi-Core/Cold](intermediate-guide/pi-pool-tutorial/pi-core-and-pi-cold.md)
   * [Rotate KES](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
