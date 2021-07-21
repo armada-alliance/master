@@ -38,6 +38,6 @@
 
 ## Resources <a id="before-you-get-started..."></a>
 
-* [Resource Library 🏫](before-you-get-started.../prerequisites-and-recommended-resources-to-review.md)
+* [Library 🏫](before-you-get-started.../library.md)
 * [Hardware Purchase Links 🏪](before-you-get-started.../hardware.md)
 
