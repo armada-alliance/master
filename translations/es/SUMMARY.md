@@ -23,6 +23,7 @@
   * [Rotando las claves KES](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
 * [Topología de red de una Stake Pool](intermediate-guide/basic-stake-pool-networking.md)
 * [Cómo añadir las métricas de adapools a Grafana](intermediate-guide/add-adapools-info-to-grafana.md)
+* [Leader Logs📑](intermediate-guide/leader-logs.md)
 
 ## Otras Guías sobre Cardano <a id="cardano-developer-guides"></a>
 
