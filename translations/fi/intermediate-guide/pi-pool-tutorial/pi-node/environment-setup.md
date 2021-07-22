@@ -64,7 +64,7 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-Run the following to modify mainnet-config.json and update TraceBlockFetchDecisions to "true"
+Suorita seuraavat käskyt muokataksesi mainnet-config.json tiedostoa ja päivittääksesi TraceBlockFetchDecisions arvoon "true"
 
 ```bash
 sed -i ${NODE_CONFIG}-config.json \
@@ -72,13 +72,13 @@ sed -i ${NODE_CONFIG}-config.json \
 ```
 
 {% hint style="info" %}
-**Tip for relay nodes**: It's possible to reduce memory and cpu usage by setting "TraceMemPool" to "false" in **mainnet-config.json.** This will turn off mempool data in Grafana and gLiveView.sh.
+**Vinkki relay palvelimille**: On mahdollista vähentää muistin ja cpu:n kuormitusta asettamalla "TraceMemPool" arvoon "false" **mainnet-config.json** tiedostossa. Tämä poistaa mempool datan Grafana ja gLiveView.sh työkalujen käytöstä.
 {% endhint %}
 
-### Retrieve aarch64 binaries
+### Nouda aarch64-binäärit
 
 {% hint style="info" %}
-The **unofficial** cardano-node & cardano-cli binaries available to us are being built by an IOHK engineer in his **spare time**. Please visit the '[Arming Cardano](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w)' Telegram group for more information.
+**Epäviralliset** käyttöön saamamme cardano-node & cardano-cli binäärit on rakentanut IOHK insinööri omalla **vapaa-ajallaan**. Ole hyvä ja tutustu '[Arming Cardano](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w)' Telegram ryhmään saadaksesi lisätietoja.
 {% endhint %}
 
 ```bash
@@ -90,26 +90,26 @@ rm -r cardano*
 cd $HOME
 ```
 
-{% hint style="Huomaa" %}
-If binaries already exist you will have to confirm overwriting the old ones.
+{% hint style="warning" %}
+Jos binäärit ovat jo olemassa, sinun on vahvistettava vanhojen binäärien ylikirjoittaminen.
 {% endhint %}
 
-Confirm binaries are in ada $PATH.
+Vahvista binäärit kohteessa ada $PATH.
 
 ```bash
 cardano-node version
 cardano-cli version
 ```
 
-### Systemd unit files
+### Systemd yksikön tiedostot
 
-Let us now create the systemd unit file and startup script so systemd can manage cardano-node.
+Luodaan nyt systemd yksikön tiedosto ja käynnistyskomentosarja, jotta systemd järjestelmä voi hallita cardano-nodea.
 
 ```bash
 nano $HOME/.local/bin/cardano-service
 ```
 
-Paste the following, save & exit.
+Liitä seuraavat, tallenna & sulje nano.
 
 ```bash
 #!/bin/bash
@@ -131,19 +131,19 @@ cardano-node run +RTS -N4 -RTS \
   --config ${CONFIG}
 ```
 
-Allow execution of our new startup script.
+Salli uuden käynnistyskomentosarjan suorittaminen.
 
 ```bash
-chmod +x $HOME/.local/bin/cardano-service
+sudo chmod +x $HOME/.local/bin/cardano-service
 ```
 
-Open /etc/systemd/system/cardano-node.service.
+Avaa /etc/systemd/system/cardano-node.service.
 
 ```bash
 sudo nano /etc/systemd/system/cardano-node.service
 ```
 
-Paste the following, save & exit.
+Liitä seuraavat, tallenna & sulje nano.
 
 ```bash
 # The Cardano Node Service (part of systemd)
@@ -171,13 +171,13 @@ EnvironmentFile=-/home/ada/.pienv
 WantedBy= multi-user.target
 ```
 
-Set permissions and reload systemd so it picks up our new service file..
+Määritä käyttöoikeudet ja uudelleenlataa systemd niin se poimii uuden palvelutiedostomme.
 
 ```bash
 sudo systemctl daemon-reload
 ```
 
-Let's add a function to the bottom of our .bashrc file to make life a little easier.
+Lisätään funktio .bashrc tiedostomme loppuun, jotta elämä olisi hieman helpompaa.
 
 ```bash
 nano $HOME/.bashrc
@@ -190,24 +190,24 @@ cardano-service() {
 }
 ```
 
-Save & exit.
+Tallenna & poistu.
 
 ```bash
 source $HOME/.bashrc
 ```
 
-What we just did there was add a function to control our cardano-service without having to type out
+Lisäämämme funktio antaa meidän hallita cardano-nodea kirjoittamatta pitkiä komentoja kuten:
 
 > > sudo systemctl enable cardano-node.service sudo systemctl start cardano-node.service sudo systemctl stop cardano-node.service sudo systemctl status cardano-node.service
 
-Now we just have to:
+Nyt meidän täytyy vain:
 
-* cardano-service enable  \(enables cardano-node.service auto start at boot\)
-* cardano-service start      \(starts cardano-node.service\)
-* cardano-service stop       \(stops cardano-node.service\)
-* cardano-service status    \(shows the status of cardano-node.service\)
+* cardano-service enable  \(aktivoi cardano-node.servicen automaattisen käynnistyksen uudelleenkäynnistettäessä\)
+* cardano-service start      \(käynnistä cardano-node.service\)
+* cardano-service stop       \(pysäytä cardano-node.service\)
+* cardano-service status    \(näyttää cardano-node.service tilan\)
 
-## ⛓ Syncing the chain ⛓
+## ⛓ Ketjun synkronointi ⛓
 
 You are now ready to start cardano-node. Doing so will start the process of 'syncing the chain'. This is going to take about 30 hours and the db folder is about 8.5GB in size right now. We used to have to sync it to one node and copy it from that node to our new ones to save time.
 
@@ -519,7 +519,7 @@ scrape_configs:
           type:  'node'
 ```
 
-Save & exit.
+Tallenna & poistu.
 
 Edit mainnet-config.json so cardano-node exports traces on all interfaces.
 
