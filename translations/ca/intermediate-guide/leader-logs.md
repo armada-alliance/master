@@ -4,8 +4,6 @@ description: How to get your Stake Pools Slot Assignments for every Epoch
 
 # Leader Logs📑
 
-
-
 ## Build CNCLI \(thanks to @AndrewWestberg\)
 
 {% hint style="warning" %}
@@ -376,7 +374,7 @@ fi
 {% endtab %}
 {% endtabs %}
 
-Make it executbale
+Make it executable
 
 ```bash
 sudo chmod +x leaderlog-stake-snapshot-v4.sh
@@ -412,7 +410,7 @@ mv /path/to/stake-snapshot.json $HOME/pi-pool/scripts/stake-snapshot.json
 ### Run leaderlog script
 
 {% hint style="warning" %}
-Everytime you run the script you need a fresh stake-snapshot.json, except your stake didn't change for the last few epochs.
+Every time you run the script you need a fresh stake-snapshot.json, except your stake didn't change for the last few epochs.
 {% endhint %}
 
 ```bash
