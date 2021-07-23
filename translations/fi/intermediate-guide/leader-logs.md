@@ -100,7 +100,7 @@ mv path/to/cncli $HOME/.local/bin/cncli
 ## Run cncli sync and deploy it as a service
 
 {% hint style="info" %}
-CNCLI sync creates an sqlite3 database \(cncli.db\), and needs to be connected to a running cardano-node. The guide assumes you have followed the armada-alliance guide so far and use the same folder structure.
+CNCLI sync creates an sqlite3 database \(cncli.db\), and needs to be connected to your running core-node. The guide assumes you have followed the armada-alliance guide so far and use the same folder structure.
 {% endhint %}
 
 ```bash
@@ -123,7 +123,7 @@ Type=simple
 Restart=always
 RestartSec=5
 LimitNOFILE=131072
-ExecStart=$HOME/.local/bin/cncli sync --host <your_relay_ip> --port <your_relay_port> --db $HOME/pi-pool/cncli/cncli.db
+ExecStart=$HOME/.local/bin/cncli sync --host <your_core_ip> --port <your_core_port> --db $HOME/pi-pool/cncli/cncli.db
 KillSignal=SIGINT
 SuccessExitStatus=143
 StandardOutput=syslog
