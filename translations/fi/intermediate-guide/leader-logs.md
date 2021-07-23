@@ -1,5 +1,5 @@
 ---
-description: How to get your Stake Pools Slot Assignments for every Epoch
+description: How to get your Stake Pools Slot Assignments for next Epoch
 ---
 
 # Leader Logs📑
