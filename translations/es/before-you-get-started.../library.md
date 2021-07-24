@@ -2,7 +2,7 @@
 description: Recursos para el operador stake pool.
 ---
 
-# Library 🏫
+# Libreria
 
 ## Recursos proporcionados por la comunidad de Cardano
 
