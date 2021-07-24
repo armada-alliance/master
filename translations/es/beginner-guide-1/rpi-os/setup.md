@@ -44,11 +44,11 @@ Ahora vamos a descargar la última versión oficial de Debian OS de Raspberry Pi
 
 ### Configurando el Raspberry Pi
 
-The first thing that we want to do is get the Raspberry Pi booted up and configured for our use.
+Lo primero que queremos hacer es arrancar y configurar la Raspberry Pi para nuestro uso.
 
-To do this we will need to insert the SD card we flashed earlier with the Raspberry Pi OS into the bottom of the Raspberry Pi. Then we can insert our HDMI, Keyboard, Mouse, and power supply.
+Para hacer esto, necesitaremos insertar la tarjeta SD que mostramos anteriormente con el sistema operativo Raspberry Pi en la parte inferior de la Raspberry Pi. Luego podemos insertar nuestro HDMI, teclado, mouse y fuente de alimentación.
 
-Once the Raspberry Pi startup screen is finished and you have booted into the Raspberry Pi OS Desktop screen we can now begin to set up our Raspberry Pi configuration and settings.
+Si es la primera vez que arranca el sistema operativo Raspberry Pi, tendrá que seguir algunas configuraciones iniciales que se enumeran a continuación.
 
 {% hint style="info" %}
 If this is your first time booting up the Raspberry Pi OS you will have to follow some initial configurations listed below
