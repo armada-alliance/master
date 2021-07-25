@@ -171,7 +171,7 @@ sudo nano testnet-config.json
 We will use the Linux systemd service manager to handle the starting, stopping, and restarting of our Cardano node relay.
 
 {% hint style="info" %}
-If you'd like to find out more about Linux systemd go to the Linux manual page.[https://www.man7.org/linux/man-pages/man1/systemd.1.html](https://www.man7.org/linux/man-pages/man1/systemd.1.html)
+If you'd like to find out more about Linux and systemd go to the [Linux manual page](https://www.man7.org/linux/man-pages/man1/systemd.1.html).
 {% endhint %}
 
 ```bash
@@ -181,7 +181,7 @@ sudo nano $HOME/.local/bin/cardano-service
 **Now we need to make the cardano-node startup script**
 
 {% hint style="info" %}
-How to start the cardano-node can be found here on the Cardano documentation.[https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles\_AND\_Connect.html](https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles_AND_Connect.html)
+How to start the cardano-node can be found here on the [Cardano documentation](https://docs.cardano.org/getting-started/installing-the-cardano-node#gatsby-focus-wrapper).
 {% endhint %}
 
 {% tabs %}
@@ -302,7 +302,9 @@ We now should reload our systemd service to make sure it picks up our cardano-se
 sudo systemctl daemon-reload
 ```
 
-**If we don't want to call "sudo systemctl" everytime we want to start, stop, or restart the cardano-node service we can create a "function" that will be added into our .bashrc shell script that will do this for us** [https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/](https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/)
+**If we don't want to call "sudo systemctl" everytime we want to start, stop, or restart the cardano-node service we can create a "function" that will be added into our .bashrc shell script that will do this for us**
+
+[https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/](https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/)
 
 ```bash
 nano $HOME/.bashrc
@@ -321,14 +323,14 @@ source $HOME/.bashrc
 ## Download a snapshot of the blockchain to speed the sync process
 
 {% hint style="info" %}
-We have been provided a snapshot of the testnet database thanks to Star Forge Pool \[OTG\]. If you don't want to download a database, **you may skip this step**. Beware, if you skip downloading our snapshot it may take up to 28 hours to get the node fully synced.
+Olemme saaneet tilannekuvan testnet tietokannasta Star Forge Pool \[OTG\] ansiosta. Jos et halua ladata tietokantaa, **voit ohittaa tämän vaiheen**. Beware, if you skip downloading our snapshot it may take up to 28 hours to get the node fully synced.
 {% endhint %}
 
 {% hint style="danger" %}
-**Make sure you have not started a Cardano node before proceeding.** 🛑
+**Varmista, ettet ole aloittanut Cardano nodea ennen jatkamista.**🛑
 {% endhint %}
 
-First, make sure the cardano-service we created earlier is stopped, then we download the database in our testnet-relay/files. You can run the following commands to begin our download.
+Ensinnäkin, varmista, että Cardano-palvelu loimme aiemmin on pysäytetty, niin me ladata tietokannan testiverkon releyn tiedostoja. Voit suorittaa seuraavat komennot aloittaaksesi lataamisen.
 
 ```bash
 # Make sure you do not have the cardano-node running in the background
@@ -341,7 +343,7 @@ wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online
 ```
 
 {% hint style="info" %}
-This download will take anywhere from 25 min to 2 hours depending on your internet speeds.
+Tämä lataus kestää 25 minuutista 2 tuntiin riippuen internetin nopeudesta.
 {% endhint %}
 
 * After the database has finished downloading add a clean file to it before we start the relay. Copy/paste the following command into your terminal window.
@@ -386,7 +388,7 @@ sudo nano env
 ```
 
 {% hint style="success" %}
-If you want to monitor your Raspberry Pi performance you can use the following commands.
+Jos haluat seurata Raspberry Pi suorituskykyä voit käyttää seuraavia komentoja.
 {% endhint %}
 
 {% tabs %}
@@ -396,7 +398,7 @@ vcgencmd measure_temp
 ```
 {% endtab %}
 
-{% tab title="Use htop for CPU and RAM Performance" %}
+{% tab title="Käytä htop komentoa CPU ja RAM käytön monitorointiin" %}
 ```bash
 htop
 ```
