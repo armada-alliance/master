@@ -23,7 +23,7 @@ description: In this tutorial we walk through basic Raspberry Pi and Linux Set U
 
 We are going to now download the latest official release of Raspberry Pi 64bit Debian OS. This is the official Linux 64bit OS distribution that is designed for the Raspberry Pi and its ARM64 CPU. This makes it stable and very easy to get started with the Raspberry Pi.
 
-**1. Download the Debian “buster” Raspberry Pi 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2020-05-28/2020-05-27-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
+**1. Download the Debian “buster” Raspberry Pi 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-04-09/2021-03-04-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
 
 **2. Next, download the Raspberry Pi Imager software that we will use in order to install the OS onto our Raspberry Pi. This software is located on the** [**Raspberry Pi website**](https://www.raspberrypi.org/software/)**. This software is located on the</strong> [**Raspberry Pi website**](https://www.raspberrypi.org/software/)**. Please download the correct version for your computer.**
 
@@ -31,14 +31,18 @@ We are going to now download the latest official release of Raspberry Pi 64bit D
 
 **3. Insert the SD card into your computer and open the "Raspberry Pi Imager".**
 
-* **Click on "CHOOSE OS"  then find the "2020-08-20-raspios-buster-arm64.zip" file you have downloaded in step \(1\) of this tutorial and select it.**
+* **Click on "CHOOSE OS"  then find the** _**raspios-buster-arm64.zip**_ **file you have downloaded in step \(1\) of this tutorial and select it.**
 * **Next, click on the "CHOOSE SD" and find the SD card you inserted into the computer**
 * **Now, the "WRITE" button will appear and you can click on it to begin writing/verifying the OS onto the SD card.**
 * **Finally, once it has finished the writing/verifying process, you will see a pop-up window saying that the OS was successfully written to the SD card, click "CONTINUE" and remove your SD card from the computer.**
 
 {% hint style="info" %}
-#### **If you still have issues following the written instructions,** [**here**](https://www.youtube.com/watch?v=J024soVgEeM) **is a short video of this process.**
+#### **If you still have issues following the written instructions, watch the video below.**
 {% endhint %}
+
+{% embed url="https://www.youtube.com/watch?v=ntaXWS8Lk34" %}
+
+
 
 ### Part 2:
 
@@ -46,7 +50,7 @@ We are going to now download the latest official release of Raspberry Pi 64bit D
 
 The first thing that we want to do is get the Raspberry Pi booted up and configured for our use.
 
-To do this we will need to insert the SD card we flashed earlier with the Raspberry Pi OS into the bottom of the Raspberry Pi. Then we can insert our HDMI, Keyboard, Mouse, and power supply. Then we can insert our HDMI, Keyboard, Mouse, and power supply.
+To do this we will need to insert the SD card we flashed earlier with the Raspberry Pi OS into the bottom of the Raspberry Pi. Then we can insert our HDMI, Keyboard, Mouse, and power supply.
 
 Once the Raspberry Pi startup screen is finished and you have booted into the Raspberry Pi OS Desktop screen we can now begin to set up our Raspberry Pi configuration and settings.
 
@@ -93,8 +97,6 @@ This will bring you to the Raspberry Pi's system configuration settings where yo
 Next select **Boot Order.**
 
 ![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.13.40-pm%20%281%29.png)
-
-\*\*\*\*
 
 Then choose the **USB Boot**.
 
