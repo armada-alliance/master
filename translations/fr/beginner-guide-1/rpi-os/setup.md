@@ -23,7 +23,7 @@ description: Dans ce tutoriel, nous couvrerons la configuration de base pour le 
 
 Nous allons maintenant télécharger la dernière version officielle de Raspberry Pi 64 bits Debian OS. C'est la distribution officielle de Linux 64bit OS qui est conçue pour le Raspberry Pi et son processeur ARM64. Cela le rend stable et très facile de commencer avec le Raspberry Pi.
 
-**1. Download the Debian “buster” Raspberry Pi 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-04-09/2021-03-04-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
+**1. Download the Debian “buster” Raspberry Pi 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/2021-05-07-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
 
 **2. Ensuite, téléchargez le logiciel Raspberry Pi Imager que nous utiliserons pour installer l’OS sur notre Raspberry Pi. Ce logiciel est situé sur le site** [**Raspberry Pi**](https://www.raspberrypi.org/software/)**. Veuillez télécharger la version correcte pour votre ordinateur.**
 
