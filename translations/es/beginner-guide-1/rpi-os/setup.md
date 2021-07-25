@@ -23,7 +23,7 @@ description: En este tutorial recorreremos la configuración básica de Raspberr
 
 Ahora vamos a descargar la última versión oficial de Debian OS de Raspberry Pi de 64 bits. Esta es la distribución oficial del sistema operativo Linux 64bit que está diseñada para Raspberry Pi y su CPU ARM64. Esto hace que sea estable y muy fácil empezar con el Raspberry Pi.
 
-**1. Download the Debian “buster” Raspberry Pi 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2020-05-28/2020-05-27-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
+**1. Download the Debian “buster” Raspberry Pi 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-04-09/2021-03-04-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
 
 **2. A continuación, descargue el software Raspberry Pi Imager que utilizaremos para instalar el sistema operativo en nuestro Raspberry Pi. Este software se encuentra en el sitio web** [**Raspberry Pi**](https://www.raspberrypi.org/software/)**. Por favor, descargue la versión correcta para su computadora.**
 
@@ -31,24 +31,28 @@ Ahora vamos a descargar la última versión oficial de Debian OS de Raspberry Pi
 
 **3. Inserta la tarjeta SD en tu computadara y abre "Raspberry Pi Imager".**
 
-* **Haga clic en "CHOSE OS" y luego encuentre el archivo "2020-08-20-raspios-buster-arm64.zip" que ha descargado en el paso \(1\) de este tutorial y selecciónelo.**
+* **Click on "CHOOSE OS"  then find the** _**raspios-buster-arm64.zip**_ **file you have downloaded in step \(1\) of this tutorial and select it.**
 * **Luego, haz clic en el "CHOSE SD" y encuentra la tarjeta SD que has introducido en la computadora**
 * **Ahora, el botón "Escribir" aparecerá y puedes hacer clic en él para comenzar a escribir o verificar el sistema operativo en la tarjeta SD.**
 * **Finalmente, una vez que haya terminado el proceso de escritura/verificación, verás una ventana emergente que dice que el sistema operativo se ha escrito con éxito en la tarjeta SD, haz clic en "CONTINUE" y retira tu tarjeta SD de la computadora.**
 
 {% hint style="info" %}
-#### **Si aún tienes problemas siguiendo las instrucciones,** [**aquí**](https://www.youtube.com/watch?v=J024soVgEeM) **hay un breve vídeo del proceso.**
+#### **If you still have issues following the written instructions, watch the video below.**
 {% endhint %}
+
+{% embed url="https://www.youtube.com/watch?v=ntaXWS8Lk34" %}
+
+
 
 ### Parte 2:
 
 ### Configurando el Raspberry Pi
 
-Lo primero que queremos hacer es arrancar y configurar la Raspberry Pi para nuestro uso.
+The first thing that we want to do is get the Raspberry Pi booted up and configured for our use.
 
-Para hacer esto, necesitaremos insertar la tarjeta SD que mostramos anteriormente con el sistema operativo Raspberry Pi en la parte inferior de la Raspberry Pi. Luego podemos insertar nuestro HDMI, teclado, mouse y fuente de alimentación.
+To do this we will need to insert the SD card we flashed earlier with the Raspberry Pi OS into the bottom of the Raspberry Pi. Then we can insert our HDMI, Keyboard, Mouse, and power supply.
 
-Si es la primera vez que arranca el sistema operativo Raspberry Pi, tendrá que seguir algunas configuraciones iniciales que se enumeran a continuación.
+Once the Raspberry Pi startup screen is finished and you have booted into the Raspberry Pi OS Desktop screen we can now begin to set up our Raspberry Pi configuration and settings.
 
 {% hint style="info" %}
 If this is your first time booting up the Raspberry Pi OS you will have to follow some initial configurations listed below
@@ -93,8 +97,6 @@ This will bring you to the Raspberry Pi's system configuration settings where yo
 Next select **Boot Order.**
 
 ![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.13.40-pm%20%281%29.png)
-
-\*\*\*\*
 
 Then choose the **USB Boot**.
 
