@@ -396,7 +396,7 @@ cardano-cli query utxo \
   --mainnet > fullUtxo.out
 
 tail -n +3 fullUtxo.out | sort -k3 -nr > balance.out
-cat balance.out    
+cat balance.out
 tx_in=""
 total_balance=0
 
@@ -506,7 +506,7 @@ Build the full transaction to register your staking address.
 cardano-cli transaction build-raw \
   ${tx_in} \
   --tx-out $(cat payment.addr)+${txOut} \
-  --invalid-hereafter $(( ${currentSlot} + 10000)) \
+  --invalid-hereafter $(( ${slotNo} + 10000)) \
   --fee ${fee} \
   --certificate-file stake.cert \
   --out-file tx.raw
@@ -722,7 +722,7 @@ cardano-cli query utxo \
   --mainnet > fullUtxo.out
 
 tail -n +3 fullUtxo.out | sort -k3 -nr > balance.out
-cat balance.out    
+cat balance.out
 tx_in=""
 total_balance=0
 
@@ -871,4 +871,3 @@ You should create an account and claim your pool here.
 Get a couple small usb sticks and backup all your files and folders\(except the db/ folder\). Backup your online Core first then the Cold offline files and folders. **Do it now**, not worth the risk! **Do not plug the USB stick into anything online after Cold files are on it!**
 
 ![https://twitter.com/insaladaPool/status/1380087586509709312?s=19](../../.gitbook/assets/insalada.png)
-
