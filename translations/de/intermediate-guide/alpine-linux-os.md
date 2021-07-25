@@ -2,12 +2,12 @@
 
 ![](../.gitbook/assets/image%20%281%29.png)
 
-## Why use AlpineOS on the Raspberry Pi? Here are some reasons:
+## Warum das Alpine Betriebsystem auf dem Raspberry Pi verwenden? Hier einige Gründe:
 
-* **Very low memory consumption \(~50MB utilized during idle vs ~350MB for Ubuntu 20.04\).**
-* **Lower CPU overhead** **\(27 tasks/ 31 threads active for Alpine vs 57 tasks / 111 threads for Ubuntu when cardano-node is running\).**
-* **Cooler Pi 😎 \(Literally, CPU runs cooler because of the lower CPU overhead\).**
-* **And finally, why not? If you're gonna use static binaries, might as well take advantage of AlpineOS 😜**
+* **Sehr geringer Speicherverbrauch \(~50MB im Leerlauf gegenüber ~350MB bei Ubuntu 20.04\).**
+* **Niedrigerer CPU overhead** **\(27 tasks/ 31 threads aktiv bei Alpine gegenüber 57 tasks / 111 threads bei Ubuntu wenn der cardano-node läuft\).**
+* **Kühler Pi 😎 \(Kein Schärz, die CPU läuft kühler, weil der CPU Overhead geringer ist\).**
+* **Und zuletzt, wieso nicht? Wenn Sie statische Binärdateien verwenden wollen, können Sie auch die Vorteile von AlpineOS nutzen**
 
 ## If you have previously used this guide and intend to update the scripts. Follow these steps. Then follow the rest of the steps outlined in this guide accordingly 🙂.
 
@@ -33,25 +33,25 @@ git tag
 git checkout tags/<tag>
 ```
 
-## Initial Setup for AlpineOS on Raspberry Pi 4B 8GB:
+## Ersteinrichtung für AlpineOS auf Raspberry Pi 4B 8GB:
 
-1\) Download the AlpineOS for RPi 4 aarch64 here: [https://dl-cdn.alpinelinux.org/alpine/v3.13/releases/aarch64/alpine-rpi-3.13.5-aarch64.tar.gz](https://dl-cdn.alpinelinux.org/alpine/v3.13/releases/aarch64/alpine-rpi-3.13.5-aarch64.tar.gz)
+1\) Laden Sie das AlpineOS für RPi 4 aarch64 hier herunter: [https://dl-cdn.alpinelinux.org/alpine/v3.13/releases/aarch64/alpine-rpi-3.13.5-aarch64.tar.gz](https://dl-cdn.alpinelinux.org/alpine/v3.13/releases/aarch64/alpine-rpi-3.13.5-aarch64.tar.gz)
 
-2\) Decompress the .tar.gz file and copy it's contents into an SSD/SD card
+2\) Dekomprimieren Sie die .tar.gz Datei und kopieren Sie ihren Inhalt auf eine SSD/SD-Karte
 
-3\) Plug in a keyboard and monitor.
+3\) Schliessen Sie eine Tastatur und einen Monitor an.
 
-4\) Login with username 'root'.
+4\) Melden Sie sich mit dem Benutzernamen 'root' an.
 
-5\) Run the command `setup-alpine` and follow the instructions.
+5\) Führen Sie den Befehl `setup-alpine` aus folgen Sie den Anweisungen.
 
 {% hint style="info" %}
-When you are in `setup-alpine` you will be prompted to choose the system disk. Once you are at this point, enter, `y`, to setup disk and create the partition for `sys`.
+When you are in `setup-alpine` you will be prompted to choose the system disk. Wenn Sie an diesem Punkt sind, geben Sie `y` ein, um die Festplatte einzurichten und die Partition für `sys` zu erstellen.
 {% endhint %}
 
-6\) Reboot.
+6\) Führen Sie einen Neustart aus.
 
-7\) Add a new user called cardano via the command `adduser cardano` and its password as instructed. \(For username other than **cardano**, refer to **General Troubleshooting**\)
+7\) Fügen Sie einen neuen Benutzer namens cardano über den Befehl `adduser cardano` hinzu und setzten Sie ein Passwort. \(Für andere Benutzernamen als **cardano**, siehe **Allgemeine Fehlerbehebung**\)
 
 8\) Run the following commands to grant the new user root privileges
 
