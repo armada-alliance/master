@@ -40,5 +40,5 @@
 ## Resources <a id="before-you-get-started..."></a>
 
 * [Library 🏫](before-you-get-started.../library.md)
-* [Hardware Purchase Links 🏪](before-you-get-started.../hardware.md)
+* [Hardware Einkauf Links 🏪](before-you-get-started.../hardware.md)
 
