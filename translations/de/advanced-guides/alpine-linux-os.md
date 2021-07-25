@@ -163,15 +163,15 @@ tar -xzvf node_exporter.tar.gz
     mv node_exporter-1.1.2.linux-arm64 node_exporter
 ```
 
-4\) Follow the guide written in README.txt contained in the $HOME directory after installing cnode, scripts and services to start the services accordingly.
+4\) Folgen Sie der Anleitung in README.txt im $HOME Verzeichnis nach erfolgreicher Installation von cnode, Skripten und Dienste.
 
 ```text
     more ~/README.txt
 ```
 
-## General Troubleshooting
+## Allgemeine Fehlerbehebung
 
-* If you happen to use another than username other than cardano, do use the following commands and replace `username` with your chosen username.
+* Wenn Sie einen anderen als einen anderen Benutzernamen als Cardano verwenden, verwenden Sie die folgenden Befehle und ersetzen Sie den `-Benutzernamen` mit Ihrem gewählten Benutzernamen.
 
 ```text
     sed -i 's@/home/cardano@/home/<username>@g' ~/cnode_env
@@ -189,20 +189,20 @@ tar -xzvf node_exporter.tar.gz
     sudo sed -i 's@/home/cardano@/home/<username>@g' /etc/init.d/node-export
 ```
 
-* If you have trouble with port forwarding via SSH, run the following command
+* Wenn Sie Probleme mit der Port-Weiterleitung über SSH haben, führen Sie folgenden Befehl aus
 
 ```text
 sudo nano /etc/ssh/sshd_config
 ```
 
-* Edit the line `AllowTcpForwarding no` to `AllowTcpForwarding yes`
+* Bearbeiten Sie die Zeile `AllowTcpForwarding no` to `AllowTcpForwarding yes`
 
 {% hint style="info" %}
-  Make sure this line is not commented out with a`#`
+  Stellen Sie sicher, dass diese Zeile nicht mit einem`#` auskommentiert ist
 {% endhint %}
 
 {% hint style="success" %}
-We would like to give a special shoutout to our [alliance member](https://armada-alliance.com) Sayshar, operator of [\[SRN\] Pool](https://www.adasrn.com/), for providing this tutorial 🏴‍☠️ 🙏 😎
+Herzlichen Dank an unseren [alliance member](https://armada-alliance.com) Sayshar, operator of [\[SRN\] Pool](https://www.adasrn.com/), der dieses Tutorial möglich gemacht hat 🏴‍☠️ 🙏 😎
 {% endhint %}
 
 
