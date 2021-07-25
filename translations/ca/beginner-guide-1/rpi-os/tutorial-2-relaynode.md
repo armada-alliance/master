@@ -171,7 +171,7 @@ sudo nano testnet-config.json
 We will use the Linux systemd service manager to handle the starting, stopping, and restarting of our Cardano node relay.
 
 {% hint style="info" %}
-If you'd like to find out more about Linux systemd go to the Linux manual page.[https://www.man7.org/linux/man-pages/man1/systemd.1.html](https://www.man7.org/linux/man-pages/man1/systemd.1.html)
+If you'd like to find out more about Linux and systemd go to the [Linux manual page](https://www.man7.org/linux/man-pages/man1/systemd.1.html).
 {% endhint %}
 
 ```bash
@@ -181,7 +181,7 @@ sudo nano $HOME/.local/bin/cardano-service
 **Now we need to make the cardano-node startup script**
 
 {% hint style="info" %}
-How to start the cardano-node can be found here on the Cardano documentation.[https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles\_AND\_Connect.html](https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles_AND_Connect.html)
+How to start the cardano-node can be found here on the [Cardano documentation](https://docs.cardano.org/getting-started/installing-the-cardano-node#gatsby-focus-wrapper).
 {% endhint %}
 
 {% tabs %}
@@ -302,7 +302,9 @@ We now should reload our systemd service to make sure it picks up our cardano-se
 sudo systemctl daemon-reload
 ```
 
-**If we don't want to call "sudo systemctl" everytime we want to start, stop, or restart the cardano-node service we can create a "function" that will be added into our .bashrc shell script that will do this for us** [https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/](https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/)
+**If we don't want to call "sudo systemctl" everytime we want to start, stop, or restart the cardano-node service we can create a "function" that will be added into our .bashrc shell script that will do this for us**
+
+[https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/](https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/)
 
 ```bash
 nano $HOME/.bashrc
