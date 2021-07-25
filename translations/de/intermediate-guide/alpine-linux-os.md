@@ -53,7 +53,7 @@ When you are in `setup-alpine` you will be prompted to choose the system disk. W
 
 7\) Fügen Sie einen neuen Benutzer namens cardano über den Befehl `adduser cardano` hinzu und setzten Sie ein Passwort. \(Für andere Benutzernamen als **cardano**, siehe **Allgemeine Fehlerbehebung**\)
 
-8\) Run the following commands to grant the new user root privileges
+8\) Führen Sie die folgenden Befehle aus, um dem neuen Benutzer Root Rechte zu gewähren
 
 ```text
 apk add sudo
@@ -71,15 +71,15 @@ addgroup cardano tape
 addgroup cardano video
 ```
 
-9\) Either exit root via the command `exit` or reboot and login to cardano
+9\) Beenden Sie entweder root über den Befehl `exit` oder starten Sie neu und melden Sie sich als cardano an
 
-10\) Install bash to ensure bash script compatibility
+10\) Installieren Sie Bash, um die Kompatibilität von Bash Skripten zu gewährleisten
 
 ```text
     sudo apk add bash
 ```
 
-11\) Also install git and wget, we will need it later.
+11\) Installieren Sie auch git und wget, denn wir werden sie später brauchen.
 
 ```text
     sudo apk add git wget
@@ -159,21 +159,21 @@ Replace `<tag>` with the latest tag in the next command.
 
 14\) Reboot the system. For the Raspberry Pi 4B 8GB, you should expect around 3.81GB of swap via ZRAM when checking with `htop` \(`sudo apk add htop` if htop is unavailable\).
 
-## Installing the 'cardano-node' and 'cardano-cli' static binaries \(AlpineOS uses static binaries almost exclusively so you should avoid non-static builds\)
+## Installation der statischen Binärdateien 'cardano-node' und 'cardano-cli' \(AlpineOS verwendet fast ausschliesslich statische Binärdateien, daher sollten Sie nicht-statische Builds vermeiden\)
 
 {% hint style="info" %}
-**You can obtain the static binaries for version 1.27.0 via this** [**link**](https://ci.zw3rk.com/build/1758) **courtesy of Moritz Angermann, the SPO of ZW3RK pool 🙏**
+**Die statischen Binärdateien für Version 1.27.0 erhalten Sie über diesen** [**link**](https://ci.zw3rk.com/build/1758) **der freundlicherweise von Moritz Angermann, der SPO von ZW3RK pool, zur Verfügung gestellt wurde🙏**
 {% endhint %}
 
-**Run the following commands to install the binaries and place them into the correct directory.**
+**Führen Sie die folgenden Befehle aus, um die Binärdateien zu installieren und sie in das richtige Verzeichnis zu verschieben.**
 
-* Download the binaries
+* Herunterladen der Binärdateien
 
 ```text
     wget -O ~/aarch64-unknown-linux-musl-cardano-node-1.27.0.zip https://ci.zw3rk.com/build/1758/download/1/aarch64-unknown-linux-musl-cardano-node-1.27.0.zip
 ```
 
-* Unzip and install the binaries via the commands
+* Entpacken und installieren Sie die Binärdateien mit den Befehlen
 
 ```text
     unzip -d ~/ aarch64-unknown-linux-musl-cardano-node-1.27.0.zip
@@ -181,14 +181,14 @@ Replace `<tag>` with the latest tag in the next command.
     sudo mv ~/cardano-node/* /usr/local/bin/
 ```
 
-## Install the Armada Alliance Alpine Linux Cardano node service
+## Installieren Sie den Armada Alliance Alpine Linux Cardano Node Dienst
 
 {% hint style="success" %}
-### If you have decided to use AlpineOS for your Cardano stake pool operations, you may find this collection of scripts and services useful.
+### Wenn Sie sich entschieden haben, AlpineOS für Ihre Cardano-Stake-Pool-Operationen zu verwenden, könnten Sie diese Sammlung von Skripten und Diensten nützlich finden.
 {% endhint %}
 
 {% hint style="info" %}
-### To install the scripts and services correctly don't skip steps 🏴‍☠️😎
+### Um die Skripte und Dienste korrekt zu installieren, sollten Sie diese Schritte auf keinen Fall überspringen🏴‍☠️😎
 {% endhint %}
 
 1\) Clone this repo to obtain the neccessary folder and scripts to quickly start your cardano node. You may skip this step if you have already clonned this repo from step 12 when setting up AlpineOS.
@@ -211,7 +211,7 @@ Replace `<tag>` with the latest tag in the next command.
     git checkout tags/<tag>
 ```
 
-2\) Run the following commands to then install the **cnode** folder, scripts, and services into the correct folders. The **cnode** folder contains everything a **Cardano node** needs to start as a functional relay node.
+2\) Führen Sie die folgenden Befehle aus, um anschliessend den Ordner **cnode**, die Skripte und die Dienste in den richtigen Ordnern zu installieren. The **cnode** folder contains everything a **Cardano node** needs to start as a functional relay node.
 
 ```text
     cd ~
@@ -233,21 +233,21 @@ Replace `<tag>` with the latest tag in the next command.
     sudo chmod +x /etc/init.d/cardano-node /etc/init.d/prometheus /etc/init.d/node-exporter
 ```
 
-3\) For faster syncing, consider this optional command for downloading the latest db folder hosted by one of our Alliance members.
+3\) Um die Synchronisierung zu beschleunigen, sollten Sie diesen optionalen Befehl zum Herunterladen des neuesten db Ordners, der von einem unserer Alliance-Mitglieder gehostet wird, in Betracht ziehen.
 
 ```text
     wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/ -P ~/cnode
 ```
 
-4\) Follow the guide written in **README.txt** contained in the **$HOME** directory after installing **cnode**, scripts, and services.
+4\) Folgen Sie der Anleitung in **README.txt** im **$HOME** Verzeichnis nach erfolgreicher Installation von **cnode**, Skripten und Dienste.
 
 ```text
     more ~/README.txt
 ```
 
-## Setup prometheus and node exporter
+## Einrichten von Prometheus und Node Exporter
 
-1\) Download Prometheus and node-exporter into the home directory
+1\) Laden Sie Prometheus und node-exporter in das Home Verzeichnis herunter
 
 ```text
     wget -O ~/prometheus.tar.gz https://github.com/prometheus/prometheus/releases/download/v2.27.1/prometheus-2.27.1.linux-arm64.tar.gz
@@ -257,7 +257,7 @@ Replace `<tag>` with the latest tag in the next command.
     wget -O ~/node_exporter.tar.gz https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-arm64.tar.gz
 ```
 
-2\) Extract the tarballs
+2\) Extrahieren der tarballs
 
 ```text
 tar -xzvf prometheus.tar.gz
@@ -267,10 +267,10 @@ tar -xzvf prometheus.tar.gz
 tar -xzvf node_exporter.tar.gz
 ```
 
-3\) Rename the folders with the following commands
+3\) Benenne die Ordner mit den folgenden Befehlen um
 
 ```text
-    mv prometheus-2.27.1.linux-arm64 prometheus
+    mv prometheus-2.27.1.linux-arm64 Prometheus
 ```
 
 ```text
