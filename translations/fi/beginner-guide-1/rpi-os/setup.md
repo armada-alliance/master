@@ -23,7 +23,7 @@ description: Tässä tutoriaalissa käymme läpi Raspberry Pin ja Linuxin asenta
 
 Nyt lataamme uusimman virallisen version Raspberry Pi 64bit Debian OS. Tämä on virallinen Raspberry Pi:lle ja ARM64 CPU:lle suunniteltu 64bit Linux käyttöjärjestelmä. Tämä tekee järjestelmästä hyvin vakaan ja helpottaa Raspberry Pin käyttöönottoa.
 
-**1. Download the Debian “buster” Raspberry Pi 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-04-09/2021-03-04-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
+**1. Download the Debian “buster” Raspberry Pi 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/2021-05-07-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
 
 **2. Seuraavaksi, lataa Raspberry Pi Imager ohjelma, jota käytetään asentamaan yllä mainittu käyttöjärjestelmä Raspberry Pi:lle. Tämä ohjelmisto on saatavilla** [**Raspberry Pi verkkosivuilla**](https://www.raspberrypi.org/software/)**. Tarkasta, että lataat koneellesi oikean version.**
 
