@@ -335,6 +335,15 @@ for i in $(seq ${NRDEVICES}); do
 done
 ```
 
+{% hint style="info" %}
+View how much zram swap cardano-node is using.
+
+```text
+CNZRAM=$(pidof cardano-node)
+grep --color VmSwap /proc/$CNZRAM/status
+```
+{% endhint %}
+
 ### Raspberry Pi & entropy
 
 Before we start generating keys with a headless server we should have a safe amount of entropy.
