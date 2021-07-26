@@ -10,7 +10,6 @@
 
 ## Stake Pool Guides <a id="intermediate-guide"></a>
 
-* [Alpine Linux OS 🗻](intermediate-guide/alpine-linux-os.md)
 * [Pi-Node Image & Guide 🌟](intermediate-guide/pi-pool-tutorial/README.md)
   * [Pi-Node \(quick start\)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
     * [Download & Flash](intermediate-guide/pi-pool-tutorial/pi-node/download-and-write-it.md)
@@ -21,6 +20,7 @@
   * [Pi-Relay](intermediate-guide/pi-pool-tutorial/pi-relay.md)
   * [Pi-Core/Cold](intermediate-guide/pi-pool-tutorial/pi-core-and-pi-cold.md)
   * [Rotate KES](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
+* [Alpine Linux OS 🗻](intermediate-guide/alpine-linux-os.md)
 * [Basic Stake Pool Networking 💫](intermediate-guide/basic-stake-pool-networking.md)
 * [Add adapools Metrics to Grafana 📊](intermediate-guide/add-adapools-info-to-grafana.md)
 * [Leader Logs📑](intermediate-guide/leader-logs.md)
