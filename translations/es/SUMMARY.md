@@ -10,17 +10,17 @@
 
 ## Guias de Stake Pools <a id="intermediate-guide"></a>
 
-* [Alpine Linux OS 🗻](intermediate-guide/alpine-linux-os.md)
 * [Pi-Node Image & Guide 🌟](intermediate-guide/pi-pool-tutorial/README.md)
   * [Pi-Node \(inicio rápido\)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
     * [Descargar y Flashear](intermediate-guide/pi-pool-tutorial/pi-node/download-and-write-it.md)
     * [Iniciando sesión de forma segura](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
-    * [Configurando un usuario](intermediate-guide/pi-pool-tutorial/pi-node/user-setup.md)
+    * [Configuración usuarios](intermediate-guide/pi-pool-tutorial/pi-node/user-setup.md)
     * [Configuración del servidor](intermediate-guide/pi-pool-tutorial/pi-node/server-setup.md)
-    * [Configuración del entorno, nodo y métricas](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md)
+    * [Configuracion de entorno](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md)
   * [Pi-Relay](intermediate-guide/pi-pool-tutorial/pi-relay.md)
   * [Pi-Core/Frío](intermediate-guide/pi-pool-tutorial/pi-core-and-pi-cold.md)
-  * [Rotando las claves KES](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
+  * [Rotate KES](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
+* [Alpine Linux OS 🗻](intermediate-guide/alpine-linux-os.md)
 * [Topología de red de una Stake Pool](intermediate-guide/basic-stake-pool-networking.md)
 * [Cómo añadir las métricas de adapools a Grafana](intermediate-guide/add-adapools-info-to-grafana.md)
 * [Leader Logs📑](intermediate-guide/leader-logs.md)
