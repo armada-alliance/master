@@ -23,7 +23,7 @@
 * [Alpine Linux OS 🗻](intermediate-guide/alpine-linux-os.md)
 * [Basic Stake Pool Networking 💫](intermediate-guide/basic-stake-pool-networking.md)
 * [Add adapools Metrics to Grafana 📊](intermediate-guide/add-adapools-info-to-grafana.md)
-* [Leader Logs📑](intermediate-guide/leader-logs.md)
+* [CNCLI Leader Logs📑](intermediate-guide/leader-logs.md)
 
 ## Other Cardano Guides <a id="cardano-developer-guides"></a>
 
