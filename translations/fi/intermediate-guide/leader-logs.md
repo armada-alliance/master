@@ -2,7 +2,7 @@
 description: How to get your Stake Pools Slot Assignments for next Epoch
 ---
 
-# Leader Logs📑
+# CNCLI Leader Logs📑
 
 ## Build CNCLI \(thanks to @AndrewWestberg\)
 
@@ -16,11 +16,13 @@ Running it on your block-producing/Core node is the convenient way, but to save 
 mkdir -p $HOME/.cargo/bin
 ```
 
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
 Choose Option 1 \(default\)
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
 source $HOME/.cargo/env
 
 rustup install stable
@@ -32,7 +34,7 @@ rustup update
 rustup component add clippy rustfmt
 ```
 
-Install the necessary packages. The Core should have them already.
+Install any necessary packages. Your system may already have most to all of these.
 
 {% tabs %}
 {% tab title="Monitor" %}
@@ -54,6 +56,11 @@ sudo apt update -y
 ### Build cncli
 
 ```bash
+# If you don't have a $HOME/git folder you can create one using:
+# mkdir $HOME/git
+
+cd $HOME/git
+
 git clone --recurse-submodules https://github.com/AndrewWestberg/cncli
 
 cd cncli
@@ -66,20 +73,25 @@ git checkout <latest_tag_name>
 ```
 
 ```bash
+# This will take some time on a Raspberry Pi - be patient, it'll git r dun.
+# Grab some coffee, check the strawberries, whatever.
+
 cargo install --path . --force
 ```
 
-#### Check if the installation was successful and locate cncli
+Check if the installation was successful and locate `cncli`
 
 ```bash
 cncli --version
 
 command -v cncli
+
+echo $PATH
 ```
 
-#### Move it to `.local/bin`
+The `command -v` should show you where the `cncli` executable currently lives, `.cargo/bin`. The `echo` command will show what's on your `PATH`.
 
-In case you haven't created it yet \(Core should have it\), do it now and add it to your `PATH`:
+You should have `.local/bin` on your `PATH`, but in case you don't \(Core should have it\), do it now and add it to your `PATH`:
 
 {% tabs %}
 {% tab title="Monitor" %}
@@ -91,10 +103,10 @@ source $HOME/.bashrc
 {% endtab %}
 {% endtabs %}
 
-Then move cncli from where ever it is \(usually /usr/local/bin\)
+Move `cncli` from it's current location to `.local/bin`
 
 ```bash
-mv path/to/cncli $HOME/.local/bin/cncli
+mv <path/to>/cncli $HOME/.local/bin/cncli
 ```
 
 ## Run cncli sync and deploy it as a service
@@ -123,7 +135,7 @@ Type=simple
 Restart=always
 RestartSec=5
 LimitNOFILE=131072
-ExecStart=$HOME/.local/bin/cncli sync --host <your_core_ip> --port <your_core_port> --db $HOME/pi-pool/cncli/cncli.db
+ExecStart=/home/ada/.local/bin/cncli sync --host <your_core_ip> --port <your_core_port> --db /home/ada/pi-pool/cncli/cncli.db
 KillSignal=SIGINT
 SuccessExitStatus=143
 StandardOutput=syslog
