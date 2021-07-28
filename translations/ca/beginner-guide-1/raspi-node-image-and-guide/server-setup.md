@@ -39,7 +39,7 @@ sudo hdparm -Tt /dev/sda
 Edit /boot/firmware/config.txt. Just paste Pi Pool additions in at the bottom.
 
 ```bash
-sudo nano /boot/firmware/config.txt
+sudo nano /boot/config.txt
 ```
 
 ```text
@@ -199,9 +199,25 @@ sudo nano /etc/rc.local
 ```
 
 ```text
-#!/bin/bash
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
 
-# Give CPU startup routines time to settle.
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
+fi
+
 sleep 120
 
 sysctl -p /etc/sysctl.conf
@@ -295,6 +311,12 @@ Swapping to disk is slow, swapping to compressed ram space is faster and gives u
 {% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters/" caption="" %}
 
 {% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" %}
+
+Disable Raspbian swapfile.
+
+```text
+sudo systemctl disable dphys-swapfile.service
+```
 
 ```text
 sudo apt install zram-tools
