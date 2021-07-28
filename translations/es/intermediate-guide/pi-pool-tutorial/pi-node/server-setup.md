@@ -1,5 +1,5 @@
 ---
-description: 'optimize hardware, optimize Ubuntu'
+description: 'optimize hardware, harden Ubuntu'
 ---
 
 # Configuración del servidor
@@ -294,7 +294,7 @@ Swapping to disk is slow, swapping to compressed ram space is faster and gives u
 
 {% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters/" caption="" %}
 
-{% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" %}
+{% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" caption="" %}
 
 ```text
 sudo apt install zram-config
