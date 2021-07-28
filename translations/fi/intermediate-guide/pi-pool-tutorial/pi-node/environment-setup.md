@@ -598,7 +598,7 @@ At this point you may want to start cardano-service and get synced up before we 
 
 ### Configure Grafana
 
-On your local machine open your browser and got to http://&lt;Pi-Node's private ip&gt;:5000
+On your local machine open your browser and got to [http://&lt;Pi-Node's](http://<Pi-Node's) private ip&gt;:5000
 
 Log in and set a new password. Default username and password is **admin:admin**.
 
@@ -627,7 +627,7 @@ Follow the instructions to install the Grafana plugin, configure your datasource
 Follow log output to journal.
 
 ```bash
-journalctl --unit=cardano-node --follow
+sudo journalctl --unit=cardano-node --follow
 ```
 
 Follow log output to stdout.
@@ -694,5 +694,5 @@ You can now visit your pi-nodes ip address without any port specification, the c
 
 ![](../../../.gitbook/assets/snakeoil.png)
 
-From here you have a pi-node with tools to build a stake pool from the following pages. Best of Luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger! 
+From here you have a pi-node with tools to build a stake pool from the following pages. Best of Luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger!
 
