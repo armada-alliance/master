@@ -2,15 +2,17 @@
 
 * [Bienvenidos Operadores ARM 🦾](README.md)
 
-## Nodo de Cardano <a id="beginner-guide-1"></a>
+## Cardano Node Testnet <a id="beginner-guide-1"></a>
 
-* [Raspberry Pi OS 🍓](beginner-guide-1/rpi-os/README.md)
-  * [Configurando el Raspberry Pi](beginner-guide-1/rpi-os/setup.md)
-  * [Configurando el nodo Relay](beginner-guide-1/rpi-os/tutorial-2-relaynode.md)
+* [RasPi-Node Image & Guide](beginner-guide-1/raspi-node-image-and-guide/README.md)
+  * [Descargar y Flashear](beginner-guide-1/raspi-node-image-and-guide/setup.md)
+  * [Configuración usuarios](beginner-guide-1/raspi-node-image-and-guide/tutorial-2-relaynode.md)
+  * [Configuración del servidor](beginner-guide-1/raspi-node-image-and-guide/server-setup.md)
+  * [Configuracion de entorno](beginner-guide-1/raspi-node-image-and-guide/environment-setup.md)
 
 ## Guias de Stake Pools <a id="intermediate-guide"></a>
 
-* [Pi-Node Image & Guide 🌟](intermediate-guide/pi-pool-tutorial/README.md)
+* [Pi-Node Image & Guide](intermediate-guide/pi-pool-tutorial/README.md)
   * [Pi-Node \(inicio rápido\)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
     * [Descargar y Flashear](intermediate-guide/pi-pool-tutorial/pi-node/download-and-write-it.md)
     * [Iniciando sesión de forma segura](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
