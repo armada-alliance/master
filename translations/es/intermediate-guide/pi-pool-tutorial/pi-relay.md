@@ -144,10 +144,11 @@ cardano-node run \
   --config ${CONFIG}
 ```
 
-Enable cardano-service at boot.
+Enable cardano-service at boot & restart the service to load changes.
 
 ```bash
 cardano-service enable
+cardano-service restart
 ```
 
 ## Forward port on router
@@ -224,7 +225,7 @@ After four hours of on boarding your relay\(s\) will start to be available to ot
 relay-topology\_pull.sh will replace the contents of your relays mainnet-topology file.
 
 ```bash
-cd /home/ada/pi-pool/scripts/relay-topology_pull.sh
+cd /home/ada/pi-pool/scripts
 ./relay-topology_pull.sh
 ```
 
