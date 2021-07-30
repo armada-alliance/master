@@ -16,8 +16,6 @@ Here are some links for overclocking and testing your drive speeds. If you have 
 * [https://www.tomshardware.com/how-to/raspberry-pi-4-23-ghz-overclock](https://www.tomshardware.com/how-to/raspberry-pi-4-23-ghz-overclock)
 * [https://dopedesi.com/2020/11/24/upgrade-your-raspberry-pi-4-with-a-nvme-boot-drive-by-alex-ellis-nov-2020/](https://dopedesi.com/2020/11/24/upgrade-your-raspberry-pi-4-with-a-nvme-boot-drive-by-alex-ellis-nov-2020/)
 * [Legendary Technology: New Raspberry Pi 4 Bootloader USB](https://jamesachambers.com/new-raspberry-pi-4-bootloader-usb-network-boot-guide/)
-
-Take note that Ubuntu stores config.txt in a different location than Raspbian.
 {% endhint %}
 
 ### Test drive speed
@@ -92,6 +90,18 @@ sudo reboot
 
 ## Configure Ubuntu
 
+### Update The System
+
+```text
+sudo apt update && sudo apt upgrade
+```
+
+### Disable the Pi user
+
+```text
+sudo passwd -l pi
+```
+
 ### Disable the root user
 
 ```text
@@ -99,6 +109,8 @@ sudo passwd -l root
 ```
 
 ### Secure shared memory
+
+Mount tmpfs as read only.
 
 Open /etc/fstab.
 
@@ -365,24 +377,4 @@ CNZRAM=$(pidof cardano-node)
 grep --color VmSwap /proc/$CNZRAM/status
 ```
 {% endhint %}
-
-### Raspberry Pi & entropy
-
-Before we start generating keys with a headless server we should have a safe amount of entropy.
-
-{% hint style="info" %}
-[https://hackaday.com/2017/11/02/what-is-entropy-and-how-do-i-get-more-of-it/](https://hackaday.com/2017/11/02/what-is-entropy-and-how-do-i-get-more-of-it/)
-
-[https://github.com/nhorman/rng-tools](https://github.com/nhorman/rng-tools)
-{% endhint %}
-
-> But consider the fate of a standalone, headless server \(or a micro controller for that matter\) with no human typing or mousing around, and no spinning iron drive providing mechanical irregularity. Where does _it_ get entropy after it starts up? What if an attacker, or bad luck, forces periodic reboots? This is a [real problem](http://www.theregister.co.uk/2015/12/02/raspberry_pi_weak_ssh_keys/).
-
-```text
-sudo apt-get install rng-tools
-```
-
-```text
-sudo reboot
-```
 
