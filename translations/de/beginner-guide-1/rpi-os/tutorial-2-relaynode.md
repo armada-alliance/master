@@ -323,14 +323,14 @@ source $HOME/.bashrc
 ## Download a snapshot of the blockchain to speed the sync process
 
 {% hint style="info" %}
-We have been provided a snapshot of the testnet database thanks to Star Forge Pool \[OTG\]. If you don't want to download a database, **you may skip this step**. Beware, if you skip downloading our snapshot it may take up to 28 hours to get the node fully synced.
+Dank Star Forge Pool \[OTG\] wurde uns einen Snapshot der Testnet Blockchain zur Verfügung gestellt. Wenn Sie keinen Snapshot herunterladen wollen, **können Sie diesen Schritt** überspringen. Beware, if you skip downloading our snapshot it may take up to 28 hours to get the node fully synced.
 {% endhint %}
 
 {% hint style="danger" %}
-**Make sure you have not started a Cardano node before proceeding.** 🛑
+**Stellen Sie sicher, dass Sie den cardano-node noch nicht gestartet haben, bevor Sie hier fortfahren.**🛑
 {% endhint %}
 
-First, make sure the cardano-service we created earlier is stopped, then we download the database in our testnet-relay/files. You can run the following commands to begin our download.
+Stellen Sie zuerst sicher, dass der cardano-service, den wir vorher erstellt haben, gestoppt ist, dann laden wir die Blockchain in unseren testnet-relay/-files herunter. Sie können die folgenden Befehle ausführen, um unseren Download zu starten.
 
 ```bash
 # Make sure you do not have the cardano-node running in the background
@@ -343,7 +343,7 @@ wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online
 ```
 
 {% hint style="info" %}
-This download will take anywhere from 25 min to 2 hours depending on your internet speeds.
+Dieser Download dauert je nach Internetgeschwindigkeit zwischen 25 Minuten und 2 Stunden.
 {% endhint %}
 
 * After the database has finished downloading add a clean file to it before we start the relay. Copy/paste the following command into your terminal window.
@@ -388,7 +388,7 @@ sudo nano env
 ```
 
 {% hint style="success" %}
-If you want to monitor your Raspberry Pi performance you can use the following commands.
+Wenn Sie Ihre Raspberry Pi Performance überwachen möchten, können Sie die folgenden Befehle verwenden.
 {% endhint %}
 
 {% tabs %}
