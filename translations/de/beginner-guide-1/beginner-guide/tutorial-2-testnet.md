@@ -38,26 +38,26 @@ Es wird dringend empfohlen, das Betriebssystem jedes Mal, wenn Sie aufstarten un
 {% endhint %}
 
 ```text
-# We are using the sudo prefix to run commands as non-root-user  
+# Wir verwenden den sudo-Präfix um Befehle als nicht-root-Benutzer auszuführen  
 
 sudo apt update
 sudo apt upgrade -y
 ```
 
-* We can now reboot the Pi and let the updates take effect by running this command in a terminal.
+* Wir können nun den Pi neu starten und die Aktualisierungen wirksam machen, indem wir diesen Befehl im Terminal ausführen.
 
 ```text
 sudo reboot
 ```
 
-### Make our directories
+### Verzeichnisse erstellen
 
 ```bash
 mkdir -p $HOME/.local/bin
 mkdir -p $HOME/testnet-relay/files
 ```
 
-### Add ~/.local/bin to our $PATH
+### ~/.local/bin zu unserem $PATH hinzufügen
 
 {% hint style="info" %}
 [How to Add a Directory to Your $PATH in Linux](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)
