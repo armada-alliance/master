@@ -118,14 +118,14 @@ Jetzt müssen wir cardano-node in unser lokales Binärverzeichnis verschieben.
 mv cardano-node/* ~/.local/bin
 ```
 
-Before we proceed let's make sure the cardano-node and cardano-cli is in our $PATH
+Bevor wir fortfahren, wollen wir sicherstellen, dass cardano-node und cardano-cli in unserem $PATH sind
 
 ```bash
 cardano-node version
 cardano-cli version
 ```
 
-Now we can move in to our files folder, and download the four Cardano node configuration files we need from the official [IOHK website](https://hydra.iohk.io/build/5822084/download/1/index.html) and or [documentation](https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles_AND_Connect.html). We will be using our "wget" command to download the files.
+Jetzt können wir in unseren Dateiordner wechseln, und laden die vier Cardano-Knoten Konfigurationsdateien herunter, die wir von der offiziellen [IOHK-Website](https://hydra.iohk.io/build/5822084/download/1/index.html) oder [Dokumentation](https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles_AND_Connect.html) benötigen. Wir verwenden den "wget" Befehl, um die Dateien herunterzuladen.
 
 ```bash
 cd $NODE_FILES
@@ -135,10 +135,10 @@ wget https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-she
 wget https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-* **Use the nano bash editor to change a few things in our "testnet-config.json" file**
-* [ ] Change the **"TraceBlockFetchDecisions"** line from "**false**" to "**true**"
-* [ ] Change the **"hasEKG"** to **12600**
-* [ ] Change  the **"hasPrometheus"** address/port to 12700
+* **Verwende den nano Bash-Editor um ein paar Einstellungen in unserer "testnet-config.json" Datei zu ändern**
+* [ ] Ändere die **"TraceBlockFetchDecisions"** Zeile von "**false**" auf "**true**"
+* [ ] Ändere **"hasEKG"** zu **12600**
+* [ ] Ändere **"hasPrometheus"** Adresse/Port zu 12700
 
 ```text
 sudo nano testnet-config.json
