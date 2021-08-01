@@ -60,14 +60,14 @@ mkdir -p $HOME/testnet-relay/files
 ### ~/.local/bin zu unserem $PATH hinzufügen
 
 {% hint style="info" %}
-[How to Add a Directory to Your $PATH in Linux](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)
+[Wie man ein Verzeichnis in $PATH hinzufügt](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)
 {% endhint %}
 
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
 ```
 
-### Create our bash variables
+### Bash-Variablen erstellen
 
 ```bash
 echo export NODE_HOME=$HOME/testnet-relay >> $HOME/.bashrc
@@ -82,37 +82,37 @@ source $HOME/.bashrc
 sudo reboot
 ```
 
-### Download the Cardano-node static build
+### Cardano-node static build herunterladen
 
-| Provided By                                                                                                                      | Link to Cardano Static Build                                                                           |
+| Bereitgestellt durch                                                                                                             | Link zu Cardano Static-Build                                                                           |
 |:-------------------------------------------------------------------------------------------------------------------------------- |:------------------------------------------------------------------------------------------------------ |
 | [**ZW3RK**](https://adapools.org/pool/e2c17915148f698723cb234f3cd89e9325f40b89af9fd6e1f9d1701a) **1PCT Haskell CI Support Pool** | \*\*\*\*[**https://ci.zw3rk.com/build/1755**](https://ci.zw3rk.com/build/1755)\*\*\*\* |
 
-* A[ **static build**](https://en.wikipedia.org/wiki/Static_build) is a ****[**compiled**](https://en.wikipedia.org/wiki/Compiler) ****version of a program that has been statically linked against libraries.
+* Ein[ **Static-Build**](https://en.wikipedia.org/wiki/Static_build) ist eine ****[**kompilierte**](https://en.wikipedia.org/wiki/Compiler) ****Version eines Programms, das statisch gegen Bibliotheken gelinkt wurde.
 
-Now we need to simply download the zip file above to our Pi's home directory and then move it to the right location so we can call on it later to start the node.
+Jetzt müssen wir einfach die Zip-Datei oben in das Home-Verzeichnis unseres Pi herunterladen und sie dann an die richtige Stelle verschieben, damit wir sie später aufrufen können, um den Knoten zu starten.
 
 ```bash
-# First change to the home directory
+# Als erstes wechseln Sie zum Home Verzeichniss
 cd $HOME
 
-# Now we can download the cardano-node 
+# Jetzt können wir den cardano-node herunterladen 
 wget https://ci.zw3rk.com/build/1755/download/1/aarch64-unknown-linux-musl-cardano-node-1.26.2.zip
 ```
 
-* Use [**unzip**](https://linux.die.net/man/1/unzip) command on the downloaded zip file and extract its contents.
+* Verwenden Sie [**unzip**](https://linux.die.net/man/1/unzip) Befehl für die heruntergeladene Zip Datei und entpacken Sie deren Inhalt.
 
   ```bash
   unzip aarch64-unknown-linux-musl-cardano-node-1.26.1.zip
   ```
 
-* Next, we need to make sure the newly downloaded "cardano-node" folder and its contents are present.
+* Als nächstes müssen wir sicherstellen, dass der neu heruntergeladene "cardano-node" Ordner und seine Inhalte vorhanden sind.
 
 {% hint style="info" %}
-If you are unsure if the file downloaded properly or need the name of the folder/files, we can use the Linux [**ls**](https://www.man7.org/linux/man-pages/man1/ls.1.html) command.
+Wenn Sie sich nicht sicher sind, ob die Datei richtig heruntergeladen wurde oder ob Sie den Namen des Ordners/der Dateien benötigen wir können den Linux Befehl [**ls**](https://www.man7.org/linux/man-pages/man1/ls.1.html) verwenden.
 {% endhint %}
 
-Now we need to move the cardano-node folder into our local binary directory.
+Jetzt müssen wir cardano-node in unser lokales Binärverzeichnis verschieben.
 
 ```bash
 mv cardano-node/* ~/.local/bin
