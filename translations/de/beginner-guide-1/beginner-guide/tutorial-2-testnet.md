@@ -10,31 +10,31 @@ description: >-
 {% endhint %}
 
 {% hint style="warning" %}
-**This tutorial is for only use with Raspberry Pi OS 64bit and is solely for educational purposes to get a Cardano node syncing to the blockchain.**
+**Dieses Tutorial ist nur für Raspberry Pi OS 64bit geeignet und ist ausschließlich für Bildungszwecke gedacht, um die Synchronisierung einens Cardano-Knoten zur Blockchain zu bekommen.**
 {% endhint %}
 
-## Summary
+## Übersicht
 
-1. Environment Setup
-2. Downloading the binaries needed to build a Cardano node relay
-3. Download configuration files from IOHK/Cardano-node
-4. Edit the config settings
-5. Download a database snapshot to speed up the sync process
-6. Run the basic passive relay node to connect to the testnet
-7. Monitor the relay node with [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/)
+1. Einrichtung der Umgebung
+2. Laden Sie die Binärdateien herunter, die zum Aufbau eines Cardano-Knoten-Relays benötigt werden
+3. Konfigurationsdateien vom IOHK/Cardano-Knoten herunterladen
+4. Konfigurationseinstellungen bearbeiten
+5. Herunterladen eines Datenbank-Snapshots, um den Synchronisierungsprozess zu beschleunigen
+6. Starten des passiven Relaisknoten, um sich mit dem Testnet zu verbinden
+7. Überwachung des Relays Knoten [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/)
 
 ![](../../.gitbook/assets/download-10-%20%281%29.jpeg)
 
 {% hint style="info" %}
-This tutorial can be used for **mainnet** if you would like. Just replace all instances of the word "**testnet**" with "**mainne**t" throughout this tutorial.
+Dieses Tutorial könte auch für **mainnet** verwendet werden. Ersetzen Sie einfach alle Instanzen des Wortes "**testnet**" durch "**mainne**t" innerhalb dieses Tutorials.
 {% endhint %}
 
-## Setting up our environment
+## Einrichtung der Umgebung
 
-* We must first update our OS and install needed upgrades if available.
+* Wir müssen zuerst unser Betriebssystem aktualisieren und benötigte Upgrades installieren, falls verfügbar.
 
 {% hint style="info" %}
-It is highly recommended to update the operating system every time you boot up and log in to your **Raspberry Pi** to prevent security vulnerabilities.
+Es wird dringend empfohlen, das Betriebssystem jedes Mal, wenn Sie aufstarten und sich bei Ihrem **Raspberry Pi** einloggen, zu aktualisieren, um Sicherheitslücken zu vermeiden.
 {% endhint %}
 
 ```text
