@@ -209,15 +209,15 @@ Nyt meidän täytyy vain:
 
 ## ⛓ Ketjun synkronointi ⛓
 
-Olet nyt valmis käynnistämään cardano-noden. Käynnistäminen aloittaa oman nodesi synkronoinnin Cardano lohkoketjun kanssa. This is going to take about 30 hours and the db folder is about 8.5GB in size right now. We used to have to sync it to one node and copy it from that node to our new ones to save time.
+Olet nyt valmis käynnistämään cardano-noden. Käynnistäminen aloittaa oman nodesi synkronoinnin Cardano lohkoketjun kanssa. Tähän menee noin 30 tuntaja tietokanta on kooltaan on noin 8.5GB. Aiemmin ensimmäinen node tuli synkronoida kokonaan, alusta loppuun jonka jälkeen tietokanta voitiin kopioida toiseen nodeen.
 
-### Download snapshot
+### Lataa tilannekuva
 
 {% hint style="danger" %}
-Do not attempt this on an 8GB sd card. Not enough space! [Create your image file](https://app.gitbook.com/@wcatz/s/pi-pool-guide/create-.img-file) and flash it to your ssd.
+Älä yritä tätä 8Gt:n SD-kortilla. Tilaa ei ole tarpeeksi [Luo imagetiedosto](https://app.gitbook.com/@wcatz/s/pi-pool-guide/create-.img-file) ja asenna se ssd-asemaasi.
 {% endhint %}
 
-I have started taking snapshots of my backup nodes db folder and hosting it in a web directory. With this service it takes around 15 minutes to pull the latest snapshot and maybe another 30 minutes to sync up to the tip of the chain. This service is provided as is. It is up to you. If you want to sync the chain on your own simply:
+Olen alkanut ottaa tilannekuvia oman vara noden tietokanta kansiosta ja se on saatavilla web-hakemistosta. Tämän palvelun avulla kestää noin 15 minuuttia ladata uusin tilannekuva ja ehkä vielä 30 minuuttia synkronoida tietokanta ketjun kärkeen saakka. Palvelu tarjotaan sellaisenaan. Valinta on sinun. Jos haluat synkronoida ketjun omin avuin, yksinkertaisesti:
 
 ```bash
 cardano-service enable
@@ -225,7 +225,7 @@ cardano-service start
 cardano-service status
 ```
 
-Otherwise be sure your node is **not** running & delete the db folder if it exists and download db/.
+Muussa tapauksessa varmista, että palvelimesi **ei ole** käynnissä, poista db-kansio jos se on olemassa ja lataa db/.
 
 ```bash
 cardano-service stop
@@ -233,13 +233,13 @@ cd $NODE_HOME
 rm -r db/
 ```
 
-For mainnet chain use.
+Mainnet lohketjua varten.
 
 ```bash
 wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/
 ```
 
-Once wget completes enable & start cardano-node.
+Kun wget valmistuu, ota käyttöön cardano-node & käynnistä se.
 
 ```bash
 cardano-service enable
@@ -249,7 +249,7 @@ cardano-service status
 
 ## gLiveView.sh
 
-Guild operators scripts has a couple useful tools for operating a pool. We do not want the project as a whole, though there are a couple scripts we are going to use.
+Guild operaattoreiden skripteissä on pari hyödyllistä työkalua stake poolin hallintaan. Emme halua hanketta kokonaisuudessaan, mutta siellä on pari skriptiä, joita aiomme käyttää.
 
 {% embed url="https://github.com/cardano-community/guild-operators/tree/master/scripts/cnode-helper-scripts" caption="" %}
 
@@ -259,7 +259,7 @@ wget https://raw.githubusercontent.com/cardano-community/guild-operators/master/
 wget https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/gLiveView.sh
 ```
 
-We have to edit the env file to work with our environment. The port number here will have to be updated to match the port cardano-node is running on. For the **Pi-Node** it's port 3003. As we build the pool we will work down. For example Pi-Relay\(2\) will run on port 3002, Pi-Relay\(1\) on 3001 and Pi-Core on port 3000.
+Meidän täytyy muokata env tiedostoa, jotta se toimii meidän ympäristössämme. Porttinumero on päivitettävä, jotta se vastaa oman cardano-nodemme porttia. **Pi-nodessamme** se on portti 3003. As we build the pool we will work down. For example Pi-Relay\(2\) will run on port 3002, Pi-Relay\(1\) on 3001 and Pi-Core on port 3000.
 
 {% hint style="info" %}
 You can change the port cardano-node runs on in /home/ada/.local/bin/cardano-service.
