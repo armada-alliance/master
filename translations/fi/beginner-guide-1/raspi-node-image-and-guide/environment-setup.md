@@ -253,10 +253,10 @@ wget https://raw.githubusercontent.com/cardano-community/guild-operators/master/
 wget https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/gLiveView.sh
 ```
 
-Meidän täytyy muokata env tiedostoa, jotta se toimii meidän ympäristössämme. Porttinumero on päivitettävä, jotta se vastaa oman cardano-nodemme porttia. **Pi-nodessamme** se on portti 3003. As we build the pool we will work down. For example Pi-Relay\(2\) will run on port 3002, Pi-Relay\(1\) on 3001 and Pi-Core on port 3000.
+Meidän täytyy muokata env tiedostoa, jotta se toimii meidän ympäristössämme. Porttinumero on päivitettävä, jotta se vastaa oman cardano-nodemme porttia. **Pi-nodessamme** se on portti 3003. Rakentaessamme poolia valitsemme edelliset portit. Esimerkiksi Pi-Relay\(2\) ajetaan portilla 3002, Pi-Relay\(1\) 3001 ja Pi-Core portilla 3000.
 
 {% hint style="info" %}
-You can change the port cardano-node runs on in /home/ada/.local/bin/cardano-service.
+Voit vaihtaa portin, jossa cardano-node toimii muokkaamalla /home/ada/.local/bin/cardano-service.
 {% endhint %}
 
 ```bash
@@ -267,7 +267,7 @@ sed -i env \
     -e "s/\#SOCKET=\"\${CNODE_HOME}\/sockets\/node0.socket\"/SOCKET=\"\${NODE_HOME}\/db\/socket\"/g"
 ```
 
-Allow execution of gLiveView.sh.
+Salli gLiveView.sh:n suorittaminen.
 
 ```bash
 chmod +x gLiveView.sh
@@ -275,23 +275,23 @@ chmod +x gLiveView.sh
 
 ## topologyUpdater.sh
 
-Until peer to peer is enabled on the network operators need a way to get a list of relays/peers to connect to. The topology updater service runs in the background with cron. Every hour the script will run and tell the service you are a relay and want to be a part of the network. It will add your relay to it's directory after four hours and start generating a list of relays in a json file in the $NODE\_HOME/logs directory. A second script, relay-topology\_pull.sh can then be used manually to generate a mainnet-topolgy file with relays/peers that are aware of you and you of them.
+Kunnes vertaisverkko on otettu käyttöön verkko-operaattorit tarvitsevat tavan saada listan releistä/vertaisverkoista, joihin muodostaa yhteyden. Topologian päivityspalvelu toimii taustalla cron kanssa. Joka tunti skripti toimii ja kertoo palvelulle, että olet relay ja haluat olla osa verkkoa. Se lisää relaysi sen hakemistoon neljän tunnin kuluttua ja alkaa luoda listaa relaystä json tiedostoon $NODE\_HOME/logs hakemistoon. Toisella skriptillä, relay-topology\_pull.sh:lla, voidaan sitten manuaalisesti luoda mainnet-topolgy tiedosto, jossa on relayt, jotka ovat tietoisia sinusta ja jotka itse tiedät.
 
 {% hint style="info" %}
-The list generated will show you the distance in miles & a clue as to where the relay is located.
+Luotu lista näyttää sinulle etäisyyden maileina sekä arvion siitä, missä relay sijaitsee.
 {% endhint %}
 
-Open a file named topologyUpdater.sh
+Avaa tiedosto nimeltä topologyUpdater.sh
 
 ```bash
 cd $NODE_HOME/scripts
 nano topologyUpdater.sh
 ```
 
-Paste in the following, save & exit.
+Liitä seuraavat, tallenna & sulje nano.
 
 {% hint style="Huomaa" %}
-The port number here must match the port cardano-node is running on. If you are using dns records you can add the FQDN that matches on line 6\(line 6 only\). Leave it as is if you are not using dns. The service will pick up the public IP and use that.
+Porttinumero on päivitettävä, jotta se vastaa oman cardano-nodemme porttia. Jos käytät dns-tietueita, voit lisätä FQDN:n, joka vastaa riviä 6\(vain rivi 6 \). Jätä se niin kuin on, jos et käytä dns:ää. Palvelu hakee julkisen IP-osoitteen ja käyttää sitä.
 {% endhint %}
 
 ```bash
@@ -332,21 +332,21 @@ fi
 curl -s -f -4 "https://api.clio.one/htopology/v1/?port=${CNODE_PORT}&blockNo=${blockNo}&valency=${CNODE_VALENCY}&magic=${NWMAGIC}${T_HOSTNAME}" | tee -a "${LOG_DIR}"/topologyUpdater_lastresult.json
 ```
 
-Save, exit and make it executable.
+Tallenna, sulje ja tee se suoritettavaksi.
 
 ```bash
 chmod +x topologyUpdater.sh
 ```
 
 {% hint style="Huomaa" %}
-You will not be able to successfully execute ./topologyUpdater.sh until you are fully synced up to the tip of the chain.
+Et pysty suorittamaan ./topologyUpdater.sh onnistuneesti ennen kuin nodesi on täysin synkronoitu ketjun kärkeen.
 {% endhint %}
 
 {% hint style="info" %}
-Choose nano when prompted for editor.
+Valitse nano pyydettäessä editoria.
 {% endhint %}
 
-Create a cron job that will run the script every hour.
+Luo cron työ, joka suorittaa skriptin tunnin välein.
 
 ```bash
 crontab -e
@@ -355,16 +355,16 @@ crontab -e
 Add the following to the bottom, save & exit.
 
 {% hint style="info" %}
-The Pi-Node image has this cron entry disabled by default. You can enable it by removing the \#.
+Pi-node-imagessassa tämä cron merkintä on oletuksena pois päältä. Voit ottaa sen käyttöön poistamalla \#.
 {% endhint %}
 
 ```bash
 33 * * * * /home/ada/pi-pool/scripts/topologyUpdater.sh
 ```
 
-After 4 hours of on boarding you will be added to the service and can pull your new list of peers into the mainnet-topology file.
+Neljän tunnin skriptin ajon jälkeen, nodesi lisätään palveluun ja voit vetää palvelusta uudet vertaisnodet mainnet-topology tiedostoosi.
 
-Create another file relay-topology\_pull.sh and paste in the following.
+Luo toinen tiedosto, relay-topology\_pull.sh ja liitä siihen seuraavat rivit.
 
 ```bash
 nano relay-topology_pull.sh
@@ -377,17 +377,17 @@ BLOCKPRODUCING_PORT=3000
 curl -4 -s -o /home/ada/pi-pool/files/testnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1|relays-new.cardano-mainnet.iohk.io:3001:2"
 ```
 
-Save, exit and make it executable.
+Tallenna, sulje ja tee se suoritettavaksi.
 
 ```bash
 chmod +x relay-topology_pull.sh
 ```
 
 {% hint style="danger" %}
-Pulling in a new list will overwrite your existing topology file. Keep that in mind.
+Uuteen listan vetäminen korvaa olemassa olevan topologiatiedoston. Pidä tämä mielessä.
 {% endhint %}
 
-After 4 hours you can pull in your new list and restart the cardano-service.
+Neljän tunnin jälkeen voit vetää uuden listan ja käynnistää cardano-palvelun uudelleen.
 
 ```bash
 cd $NODE_HOME/scripts
@@ -395,7 +395,7 @@ cd $NODE_HOME/scripts
 ```
 
 {% hint style="info" %}
-relay-topology\_pull.sh will add 15 peers to your mainnet-topology file. I usually remove the furthest 5 relays and use the closest 10.
+relay-topology\_pull.sh lisää 15 vertaista mainnet-topology tiedostoon. I usually remove the furthest 5 relays and use the closest 10.
 {% endhint %}
 
 ```bash
