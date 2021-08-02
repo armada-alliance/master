@@ -395,7 +395,7 @@ cd $NODE_HOME/scripts
 ```
 
 {% hint style="info" %}
-relay-topology\_pull.sh lisää 15 vertaista mainnet-topology tiedostoon. I usually remove the furthest 5 relays and use the closest 10.
+relay-topology\_pull.sh lisää 15 vertaista mainnet-topology tiedostoon. Yleensä poistan kauimmat 5 relaytä ja käyttän lähimpiä 10:tä.
 {% endhint %}
 
 ```bash
@@ -403,21 +403,21 @@ nano $NODE_FILES/${NODE_CONFIG}-topology.json
 ```
 
 {% hint style="info" %}
-You can use gLiveView.sh to view ping times in relation to the peers in your mainnet-topology file. Use Ping to resolve hostnames to IP's.
+Voit käyttää gLiveView.sh -sovellusta tarkastellaksesi ping-aikoja suhteessa mainnet-topologiatiedossasi oleviin vertaajiin. Käytä Ping:ää palvelimien nimien selvittämiseen IP-osoitteissa.
 {% endhint %}
 
-Changes to this file will take affect upon restarting the cardano-service.
+Muutokset tässä tiedostossa tulevat käyttöön vasta kun cardano-service käynnistetään uudelleen.
 
 {% hint style="Huomaa" %}
-Don't forget to remove the last comma in your topology file!
+Älä unohda poistaa viimeistä pilkkua topologiatiedostosta!
 {% endhint %}
 
-Status should show as enabled & running.
+Tilan tulisi näyttää enabled & running.
 
-Once your node syncs past epoch 208\(shelley era\) you can use gLiveView.sh to monitor.
+Kun noden synkronointi on ohittanut epochin 208\(shelley era\), voit käyttää gLiveView.sh skriptiä monitorointiin.
 
 {% hint style="danger" %}
-It can take up to an hour for cardano-node to sync to the tip of the chain. Use ./gliveView.sh, htop and log outputs to view process. Be patient it will come up.
+Se voi kestää jopa tunnin, kun cardano-node synkronoituu takaisin lohkoketjun kärkeen. Käytä ./gliveView.sh, htop ja log tietoja tarkastellaksesi prosessia. Olipa kärsivällinen, kärki saavutetaan kyllä.
 {% endhint %}
 
 ```bash
