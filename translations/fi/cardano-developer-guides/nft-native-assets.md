@@ -463,8 +463,6 @@ node src/send-back-asset-to-wallet.js
 {% embed url="https://youtu.be/awxVkFbWoKM" caption="" %}
 
 {% hint style="success" %}
-**If you liked this tutorial and want to see more like it please consider staking your ADA with our** [**PIADA**](https://adapools.org/pool/b8d8742c7b7b512468448429c776b3b0f824cef460db61aa1d24bc65) **Stake Pool, or giving a one-time donation to our Alliance** [**https://cointr.ee/armada-alliance**](https://cointr.ee/armada-alliance)**.**
+**If you liked this tutorial and want to see more like it please consider staking your ADA with any of our Alliance's** [**Stake Pools**](https://armada-alliance.com/stake-pools)**, or giving a one-time donation to our Alliance** [**https://cointr.ee/armada-alliance**](https://cointr.ee/armada-alliance)**.**
 {% endhint %}
-
-\*\*\*\*
 
