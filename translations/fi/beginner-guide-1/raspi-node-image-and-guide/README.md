@@ -1,12 +1,12 @@
 ---
 description: >-
-  This tutorial is for those who want to use the 64 bit Raspberry Pi OS(Raspbian) with a desktop environment.
+  Tämä tutoriaali on niille, jotka haluavat käyttää 64 bittistä Raspberry Pi OS(Raspbian) käyttöjärjestelmää työpöytäympäristössä.
 ---
 
-# RasPi-Node Image & Guide
+# Pi-Node Image & Ohjeet
 
 {% hint style="Huomaa" %}
-**This tutorial is meant to get a single node syncing to the Cardano Testnet! If you wish to build a stake pool on mainnet. Please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **for mainnet.**
+**Tämän tutoriaalin tarkoitus on saada yksi node synkronoitua Cardano lohkoketjuun! Jos haluat rakentaa stake poolin mainnettiin. Ole hyvä ja käytä**[ **keskitason oppaitamme**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **mainnettia varten.**
 {% endhint %}
 
 ## Mitä laitteistoa tarvitset näitä oppitunteja varten
