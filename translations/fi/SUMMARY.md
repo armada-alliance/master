@@ -4,7 +4,7 @@
 
 ## Cardano Node Testnet <a id="beginner-guide-1"></a>
 
-* [RasPi-Node Image & Guide](beginner-guide-1/raspi-node-image-and-guide/README.md)
+* [Pi-Node Image & Ohjeet](beginner-guide-1/raspi-node-image-and-guide/README.md)
   * [Lataa & Polta](beginner-guide-1/raspi-node-image-and-guide/setup.md)
   * [User Setup](beginner-guide-1/raspi-node-image-and-guide/tutorial-2-relaynode.md)
   * [Server Setup](beginner-guide-1/raspi-node-image-and-guide/server-setup.md)
