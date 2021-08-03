@@ -448,32 +448,32 @@ Voit myös yhdistää Telegram botin Grafanaan, joka varoittaa sinua ongelmista 
 ### Asenna Prometheus & Node Exporter.
 
 {% hint style="info" %}
-Prometheus pystyy onkimaan myös muiden node exporteria käyttävien palvelimien http päätetapahtumat. Meaning Grafana and Prometheus does not have to be installed on your core and relays. Only the package prometheus-node-exporter is required if you would like to build a central Grafana dashboard for the pool, freeing up resources.
+Prometheus pystyy onkimaan myös muiden node exporteria käyttävien palvelimien http päätetapahtumat. Tämä tarkoittaa, että Grafanaa ja Prometheusta ei tarvitse asentaa ydin tai relay nodeesi. Vain prometheus-node exporter paketti tarvitaan, jos haluat rakentaa Grafanaan keskitetyn kojelaudan poolillesi ja vapauttaa hieman resursseja.
 {% endhint %}
 
 ```bash
 sudo apt-get install -y prometheus prometheus-node-exporter
 ```
 
-Disable them in systemd for now.
+Poista ne systemd:n käytöstä toistaiseksi.
 
 ```bash
 sudo systemctl disable prometheus.service
 sudo systemctl disable prometheus-node-exporter.service
 ```
 
-### Configure Prometheus
+### Määritä Prometheus
 
-Open prometheus.yml.
+Avaa prometheus.yml.
 
 ```bash
 sudo nano /etc/prometheus/prometheus.yml
 ```
 
-Replace the contents of the file with.
+Korvaa tiedoston sisältö alla olevan kanssa.
 
-{% hint style="Huomaa" %}
-Indentation must be correct YAML format or Prometheus will fail to start.
+{% hint style="warning" %}
+Sisennyksen on oltava oikea YAML muoto tai Prometheus ei käynnisty.
 {% endhint %}
 
 ```yaml
@@ -521,37 +521,37 @@ scrape_configs:
 
 Tallenna & poistu.
 
-Edit mainnet-config.json so cardano-node exports traces on all interfaces.
+Muokkaa mainnet-config.json tiedostoa niin, että cardano-node lähettää jälkiä kaikilla rajapintoja.
 
 ```bash
 cd $NODE_FILES
 sed -i ${NODE_CONFIG}-config.json -e "s/127.0.0.1/0.0.0.0/g"
 ```
 
-### Install Grafana
+### Asenna Grafana
 
 {% embed url="https://github.com/grafana/grafana" caption="" %}
 
-Add Grafana's gpg key to Ubuntu.
+Lisää Grafanan gpg avain Ubuntuun.
 
 ```bash
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 ```
 
-Add latest stable repo to apt sources.
+Lisää uusin vakaa repo apt lähteisiin.
 
 ```bash
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 ```
 
-Update your package lists & install Grafana.
+Päivitä pakettilistat & asenna Grafana.
 
 ```bash
 sudo apt update
 sudo apt install grafana
 ```
 
-Change the port Grafana listens on so it does not clash with cardano-node.
+Muuta portti jota Grafana kuuntelee, jotta se ei ole ristiriidassa cardano-noden kanssa.
 
 ```bash
 sudo sed -i /etc/grafana/grafana.ini \
@@ -559,7 +559,7 @@ sudo sed -i /etc/grafana/grafana.ini \
 -e "s/3000/5000/"
 ```
 
-### cardano-monitor bash function
+### cardano-monitor bash-toiminto
 
 Open .bashrc.
 
@@ -568,7 +568,7 @@ cd $HOME
 nano .bashrc
 ```
 
-Down at the bottom add.
+Lisää tiedoston loppuun:
 
 ```bash
 cardano-monitor() {
@@ -579,24 +579,24 @@ cardano-monitor() {
 }
 ```
 
-Save, exit & source.
+Tallenna, poistu & source.
 
 ```bash
 source .bashrc
 ```
 
-Here we tied all three services under one function. Enable Prometheus.service, prometheus-node-exporter.service & grafana-server.service to run on boot and start the services.
+Täällä yhdistimme kaikki kolme palvelua yhteen tehtävään. Ota Prometheus.service, prometheus-node-exporter.service & grafana-server.service käyttöön käynnistyksen yhteydessä ja käynnistä palvelut.
 
 ```bash
 cardano-monitor enable
 cardano-monitor start
 ```
 
-{% hint style="Huomaa" %}
-At this point you may want to start cardano-service and get synced up before we continue to configure Grafana. Skip ahead to [syncing the chain section](https://app.gitbook.com/@wcatz/s/pi-pool-guide/~/drafts/-MYFtFDZp-rTlybgAO71/pi-node/environment-setup/@drafts#syncing-the-chain). Choose whether you want to wait 30 hours or download my latest chain snapshot. Return here once gLiveView.sh shows you are at the tip of the chain.
+{% hint style="warning" %}
+Tässä vaiheessa saatat haluta käynnistää cardano-servicen ja synkronoida nodesi lohkoketjun kanssa ennen kuin jatkamme Grafanan konfigurointia. Hyppää eteenpäin [synkronoidaan ketju jaksoon](https://app.gitbook.com/@wcatz/s/pi-pool-guide/~/drafts/-MYFtFDZp-rTlybgAO71/pi-node/environment-setup/@drafts#syncing-the-chain). Valitse haluatko odottaa 30 tuntia tai ladata viimeisimmän tilannekuvani tietokannasta. Palaa tähän kun gLiveView.sh näyttää, että olet ketjun kärjessä.
 {% endhint %}
 
-### Configure Grafana
+### Määritä Grafana
 
 On your local machine open your browser and got to [http://&lt;Pi-Node's](http://<Pi-Node's) private ip&gt;:5000
 
