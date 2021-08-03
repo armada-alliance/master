@@ -435,17 +435,17 @@ cd $NODE_HOME/scripts
 
 ## Prometheus, Node Exporter & Grafana
 
-Prometheus yhdistää cardano-noden backendiin ja lähettää metriikkaa http:n kautta. Grafana in turn can use that data to display graphs and create alerts. Our Grafana dashboard will be made up of data from our Ubuntu system & cardano-node. Grafana can display data from other sources as well, like [adapools.org](https://adapools.org/).
+Prometheus yhdistää cardano-noden backendiin ja lähettää metriikkaa http:n kautta. Grafana puolestaan voi käyttää näitä tietoja kaavioiden näyttämiseen ja hälytysten luomiseen. Meidän Grafana kojelautamme koostuu Ubuntu järjestelmän & cardano-noden datasta. Grafana voi näyttää tietoja myös muista lähteistä, kuten [adapools.org](https://adapools.org/).
 
 {% hint style="info" %}
-You can connect a Telegram bot to Grafana which can alert you of problems with the server. Much easier than trying to configure email alerts.
+Voit myös yhdistää Telegram botin Grafanaan, joka varoittaa sinua ongelmista palvelimen kanssa. Tämä on paljon helpompaa kuin yrittää määritellä sähköpostihälytyksiä.
 {% endhint %}
 
 {% embed url="https://github.com/prometheus" caption="" %}
 
 ![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
-### Install Prometheus & Node Exporter.
+### Asenna Prometheus & Node Exporter.
 
 {% hint style="info" %}
 Prometheus can scrape the http endpoints of other servers running node exporter. Meaning Grafana and Prometheus does not have to be installed on your core and relays. Only the package prometheus-node-exporter is required if you would like to build a central Grafana dashboard for the pool, freeing up resources.
