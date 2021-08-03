@@ -448,7 +448,7 @@ Voit myös yhdistää Telegram botin Grafanaan, joka varoittaa sinua ongelmista 
 ### Asenna Prometheus & Node Exporter.
 
 {% hint style="info" %}
-Prometheus can scrape the http endpoints of other servers running node exporter. Meaning Grafana and Prometheus does not have to be installed on your core and relays. Only the package prometheus-node-exporter is required if you would like to build a central Grafana dashboard for the pool, freeing up resources.
+Prometheus pystyy onkimaan myös muiden node exporteria käyttävien palvelimien http päätetapahtumat. Meaning Grafana and Prometheus does not have to be installed on your core and relays. Only the package prometheus-node-exporter is required if you would like to build a central Grafana dashboard for the pool, freeing up resources.
 {% endhint %}
 
 ```bash
