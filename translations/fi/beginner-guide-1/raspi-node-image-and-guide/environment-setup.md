@@ -2,7 +2,7 @@
 description: Asenna tarvittavat paketit, joita tarvitaan cardano-noden ylläpitämiseen ja määritetään ympäristömme
 ---
 
-# Environment Setup
+# Ympäristön Asetukset
 
 ## Asenna paketit
 
@@ -41,7 +41,7 @@ Muutokset tähän tiedostoon vaativat .bashrc:n uudelleenlataamista tai uloskirj
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
 echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
-echo export NODE_CONFIG=testnet >> $HOME/.bashrc
+echo export NODE_CONFIG=mainnet >> $HOME/.bashrc
 echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.bashrc
 echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.bashrc
 echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
@@ -58,7 +58,7 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-Run the following to modify testnet-config.json and update TraceBlockFetchDecisions to "true"
+Suorita seuraavat käskyt muokataksesi testnet-config.json tiedostoa ja päivittääksesi TraceBlockFetchDecisions arvoon "true"
 
 ```bash
 sed -i ${NODE_CONFIG}-config.json \
@@ -111,7 +111,7 @@ DIRECTORY=/home/ada/pi-pool
 FILES=/home/ada/pi-pool/files
 PORT=3003
 HOSTADDR=0.0.0.0
-TOPOLOGY=${FILES}/testnet-topology.json
+TOPOLOGY=${FILES}/mainnet-topology.json
 DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
 CONFIG=${FILES}/mainnet-config.json
@@ -159,7 +159,7 @@ TimeoutStopSec=3
 LimitNOFILE=32768
 Restart=always
 RestartSec=5
-#EnvironmentFile=-/home/ada/.pienv
+EnvironmentFile=-/home/ada/.pienv
 
 [Install]
 WantedBy= multi-user.target
@@ -263,7 +263,7 @@ Voit vaihtaa portin, jossa cardano-node toimii muokkaamalla /home/ada/.local/bin
 sed -i env \
     -e "s/\#CNODE_HOME=\"\/opt\/cardano\/cnode\"/CNODE_HOME=\"\home\/ada\/pi-pool\"/g" \
     -e "s/"6000"/"3003"/g" \
-    -e "s/\#CONFIG=\"\${CNODE_HOME}\/files\/config.json\"/CONFIG=\"\${NODE_FILES}\/${NODE_CONFIG}-config.json\"/g" \
+    -e "s/\#CONFIG=\"\${CNODE_HOME}\/files\/config.json\"/CONFIG=\"\${NODE_FILES}\/mainnet-config.json\"/g" \
     -e "s/\#SOCKET=\"\${CNODE_HOME}\/sockets\/node0.socket\"/SOCKET=\"\${NODE_HOME}\/db\/socket\"/g"
 ```
 
@@ -304,7 +304,7 @@ CNODE_HOSTNAME="CHANGE ME"  # optional. must resolve to the IP you are requestin
 CNODE_BIN="/home/ada/.local/bin"
 CNODE_HOME="/home/ada/pi-pool"
 LOG_DIR="${CNODE_HOME}/logs"
-GENESIS_JSON="${CNODE_HOME}/files/testnet-shelley-genesis.json"
+GENESIS_JSON="${CNODE_HOME}/files/mainnet-shelley-genesis.json"
 NETWORKID=$(jq -r .networkId $GENESIS_JSON)
 CNODE_VALENCY=1   # optional for multi-IP hostnames
 NWMAGIC=$(jq -r .networkMagic < $GENESIS_JSON)
@@ -352,7 +352,7 @@ Luo cron työ, joka suorittaa skriptin tunnin välein.
 crontab -e
 ```
 
-Add the following to the bottom, save & exit.
+Lisää tämä tiedoston loppuun, tallenna & poistu.
 
 {% hint style="info" %}
 Pi-node-imagessassa tämä cron merkintä on oletuksena pois päältä. Voit ottaa sen käyttöön poistamalla \#.
@@ -442,32 +442,32 @@ Voit myös yhdistää Telegram botin Grafanaan, joka varoittaa sinua ongelmista 
 ### Asenna Prometheus & Node Exporter.
 
 {% hint style="info" %}
-Prometheus pystyy onkimaan myös muiden node exporteria käyttävien palvelimien http päätetapahtumat. Meaning Grafana and Prometheus does not have to be installed on your core and relays. Only the package prometheus-node-exporter is required if you would like to build a central Grafana dashboard for the pool, freeing up resources.
+Prometheus pystyy onkimaan myös muiden node exporteria käyttävien palvelimien http päätetapahtumat. Tämä tarkoittaa, että Grafanaa ja Prometheusta ei tarvitse asentaa ydin tai relay nodeesi. Vain prometheus-node exporter paketti tarvitaan, jos haluat rakentaa Grafanaan keskitetyn kojelaudan poolillesi ja vapauttaa hieman resursseja.
 {% endhint %}
 
 ```bash
 sudo apt-get install -y prometheus prometheus-node-exporter
 ```
 
-Disable them in systemd for now.
+Poista ne systemd:n käytöstä toistaiseksi.
 
 ```bash
 sudo systemctl disable prometheus.service
 sudo systemctl disable prometheus-node-exporter.service
 ```
 
-### Configure Prometheus
+### Määritä Prometheus
 
-Open prometheus.yml.
+Avaa prometheus.yml.
 
 ```bash
 sudo nano /etc/prometheus/prometheus.yml
 ```
 
-Replace the contents of the file with.
+Korvaa tiedoston sisältö alla olevan kanssa.
 
 {% hint style="Huomaa" %}
-Indentation must be correct YAML format or Prometheus will fail to start.
+Sisennyksen on oltava oikea YAML muoto tai Prometheus ei käynnisty.
 {% endhint %}
 
 ```yaml
@@ -515,37 +515,37 @@ scrape_configs:
 
 Tallenna & poistu.
 
-Edit mainnet-config.json so cardano-node exports traces on all interfaces.
+Muokkaa mainnet-config.json tiedostoa niin, että cardano-node lähettää jälkiä kaikilla rajapintoja.
 
 ```bash
 cd $NODE_FILES
 sed -i ${NODE_CONFIG}-config.json -e "s/127.0.0.1/0.0.0.0/g"
 ```
 
-### Install Grafana
+### Asenna Grafana
 
 {% embed url="https://github.com/grafana/grafana" caption="" %}
 
-Add Grafana's gpg key to Ubuntu.
+Lisää Grafanan gpg avain Ubuntuun.
 
 ```bash
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 ```
 
-Add latest stable repo to apt sources.
+Lisää uusin vakaa repo apt lähteisiin.
 
 ```bash
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 ```
 
-Update your package lists & install Grafana.
+Päivitä pakettilistat & asenna Grafana.
 
 ```bash
 sudo apt update
 sudo apt install grafana
 ```
 
-Change the port Grafana listens on so it does not clash with cardano-node.
+Muuta portti jota Grafana kuuntelee, jotta se ei ole ristiriidassa cardano-noden kanssa.
 
 ```bash
 sudo sed -i /etc/grafana/grafana.ini \
@@ -553,7 +553,7 @@ sudo sed -i /etc/grafana/grafana.ini \
 -e "s/3000/5000/"
 ```
 
-### cardano-monitor bash function
+### cardano-monitor bash-toiminto
 
 Open .bashrc.
 
@@ -562,7 +562,7 @@ cd $HOME
 nano .bashrc
 ```
 
-Down at the bottom add.
+Lisää tiedoston loppuun:
 
 ```bash
 cardano-monitor() {
@@ -573,13 +573,13 @@ cardano-monitor() {
 }
 ```
 
-Save, exit & source.
+Tallenna, poistu & source.
 
 ```bash
 source .bashrc
 ```
 
-Here we tied all three services under one function. Enable Prometheus.service, prometheus-node-exporter.service & grafana-server.service to run on boot and start the services.
+Täällä yhdistimme kaikki kolme palvelua yhteen tehtävään. Ota Prometheus.service, prometheus-node-exporter.service & grafana-server.service käyttöön käynnistyksen yhteydessä ja käynnistä palvelut.
 
 ```bash
 cardano-monitor enable
@@ -587,44 +587,44 @@ cardano-monitor start
 ```
 
 {% hint style="Huomaa" %}
-At this point you may want to start cardano-service and get synced up before we continue to configure Grafana. Skip ahead to [syncing the chain section](https://app.gitbook.com/@wcatz/s/pi-pool-guide/~/drafts/-MYFtFDZp-rTlybgAO71/pi-node/environment-setup/@drafts#syncing-the-chain). Choose whether you want to wait 30 hours or download my latest chain snapshot. Return here once gLiveView.sh shows you are at the tip of the chain.
+Tässä vaiheessa saatat haluta käynnistää cardano-servicen ja synkronoida nodesi lohkoketjun kanssa ennen kuin jatkamme Grafanan konfigurointia. Hyppää eteenpäin [synkronoidaan ketju jaksoon](https://app.gitbook.com/@wcatz/s/pi-pool-guide/~/drafts/-MYFtFDZp-rTlybgAO71/pi-node/environment-setup/@drafts#syncing-the-chain). Valitse haluatko odottaa 30 tuntia tai ladata viimeisimmän tilannekuvani tietokannasta. Palaa tähän kun gLiveView.sh näyttää, että olet ketjun kärjessä.
 {% endhint %}
 
-### Configure Grafana
+### Määritä Grafana
 
-On your local machine open your browser and got to http://&lt;Pi-Node's private ip&gt;:5000
+Avaa paikallisessa koneessasi selaimesi ja mene osoitteeseen http://&lt;Pi-Node's private ip&gt;:5000
 
-Log in and set a new password. Default username and password is **admin:admin**.
+Aseta uusi salasana. Oletus käyttäjätunnus ja salasana on **admin:admin**.
 
-#### Configure data source
+#### Määritä tietolähde
 
-In the left hand vertical menu go to **Configure** &gt; **Datasources** and click to **Add data source**. Choose Prometheus. Enter [http://localhost:9090](http://localhost:9090) where it is grayed out, everything can be left default. At the bottom save & test. You should get the green "Data source is working" if cardano-monitor has been started. If for some reason those services failed to start issue **cardano-service restart**.
+Vasemmalla kädellä pystysuorassa valikossa siirry **Configure** &gt; **Datasources** ja napsauta **Add data source**. Valitse Prometheus. Syötä [http://localhost:9090](http://localhost:9090) kaikki harmaa voidaan jättää oletusarvoiseksi. Alareunassa save & test. Sinun pitäisi saada vihreä "Data source is working", jos kardano-monitor on päällä. Jos jostain syystä nämä palvelut eivät käynnistyneet, käytä komentoa **cardano-service restart**.
 
-#### Import dashboards
+#### Tuo kojelaudat
 
-Save the dashboard json files to your local machine.
+Tallenna kojelaudan json tiedostot paikalliseen koneeseen.
 
 {% embed url="https://github.com/armada-alliance/dashboards" caption="" %}
 
-In the left hand vertical menu go to **Dashboards** &gt; **Manage** and click on **Import**. Select the file you just downloaded/created and save. Head back to **Dashboards** &gt; **Manage** and click on your new dashboard.
+Vasemmalla kädellä pystysuorassa valikossa siirry **Configure** &gt; **Datasources** ja napsauta **Add data source**. Valitse tiedosto, jonka juuri latasit tai loit ja tallenna. Suuntaa takaisin **Dashboards** &gt; **Manage** ja klikkaa uutta kojelautaasi.
 
 ![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%282%29.png)
 
-### Configure poolDataLive
+### Määritä poolDataLive
 
-Here you can use the poolData api to bring your pools data into Grafana.
+Täällä voit käyttää poolData api -sovellusta tuodaksesi poolisi tiedot Grafanaan.
 
 {% embed url="https://api.pooldata.live/dashboard" caption="" %}
 
-Follow the instructions to install the Grafana plugin, configure your datasource and import the dashboard.
+Noudata ohjeita asentaaksesi Grafana plugin, määritä datasource ja tuo dashboard.
 
-Follow log output to journal.
+Seuraa lokin ulostuloa päiväkirjaan.
 
 ```bash
 sudo journalctl --unit=cardano-node --follow
 ```
 
-Follow log output to stdout.
+Seuraa lokin ulostuloa stdoutiin.
 
 ```bash
 sudo tail -f /var/log/syslog
