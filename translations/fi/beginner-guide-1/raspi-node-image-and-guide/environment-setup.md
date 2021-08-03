@@ -632,15 +632,15 @@ sudo tail -f /var/log/syslog
 
 ## Grafana, Nginx proxy\_pass & snakeoil
 
-Let's put Grafana behind Nginx with self signed\(snakeoil\) certificate. The certificate was generated when we installed the ssl-cert package.
+Asetetaan Grafana Nginxin taakse itse allekirjoitetulla\(snakeoil\) sertifikaatilla. Sertifikaatti luotiin, kun asensimme ssl-cert paketin.
 
-You will get a warning from your browser. This is because ca-certificates cannot follow a trust chain to a trusted \(centralized\) source. The connection is however encrypted and will protect your passwords flying around in plain text.
+Voit saada varoituksen selaimestasi. Tämä johtuu siitä, että ca-sertifikaatit eivät voi seurata luottamusketjua luotettuun \(keskitetty\) lähteeseen. Yhteys on kuitenkin salattu, ja se suojaa salasanojasi, jotka liitelevät pelkkänä tekstinä.
 
 ```bash
 sudo nano /etc/nginx/sites-available/default
 ```
 
-Replace contents of the file with below.
+Korvaa tiedoston sisältö alla olevan kanssa.
 
 ```bash
 # Default server configuration
@@ -676,7 +676,7 @@ server {
 }
 ```
 
-Check that Nginx is happy with our changes and restart it.
+Tarkista, että Nginx on tyytyväinen muutoksiimme ja käynnistä se uudelleen.
 
 ```bash
 sudo nginx -t
@@ -684,9 +684,9 @@ sudo nginx -t
 sudo service nginx restart
 ```
 
-You can now visit your pi-nodes ip address without any port specification, the connection will be upgraded to SSL/TLS and you will get a scary message\(not really scary at all\). Continue through to your dashboard.
+Voit nyt käydä pi-noden ip osoitteessa ilman portin määrittelyä, yhteys päivitetään SSL / TLS ja saat pelottavan viesti\(ei oikeastaan pelottava ollenkaan\). Jatka kohti kojelautaasi.
 
 ![](../../.gitbook/assets/snakeoil.png)
 
-From here you have a pi-node with tools to build a stake pool from the following pages. Best of Luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger! 
+Nyt sinulla on pi-node, jossa on työkaluja joilla rakentaa stake pool seuraavien sivujen avulla. Tsemppiä projektiisi ja olet tervetullut liittymään [armada-allianssiin](https://armada-alliance.com), yhdessä olemme vahvempia! 
 
