@@ -1,5 +1,5 @@
 ---
-description: 'optimize hardware, harden Ubuntu'
+description: 'optimoi laitteistot, suojaa (harden) Ubuntu'
 ---
 
 # Server Setup
