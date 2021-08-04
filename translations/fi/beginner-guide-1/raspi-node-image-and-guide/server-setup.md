@@ -1,15 +1,15 @@
 ---
-description: 'optimize hardware, harden Ubuntu'
+description: 'optimoi laitteistot, suojaa (harden) Ubuntu'
 ---
 
-# Server Setup
+# Palvelimen Asetukset
 
-## Configure Hardware
+## Konfiguroi Laitteisto
 
-Let's save some power, raise the governor on the CPU a bit, and set GPU ram as low as we can.
+Säästetään hieman energiaa, nostetaan CPU:n hallintaa pikkuisen ja asetetaan GPU:n RAM mahdollisimman alas.
 
-{% hint style="Huomaa" %}
-Here are some links for overclocking and testing your drive speeds. If you have heat sinks you can safely go to 2000. Just pay attention to over volt recommendations to go with your chosen clock speed.
+{% hint style="warning" %}
+Tässä muutamia linkkejä ylikellotukseen ja aseman nopeuksien testaamiseen. Jos sinulla on lämpöaltaita, voit turvallisesti mennä 2000. Kiinnitä huomiota yli-voltitus suosituksiin jotta nekin sopivat valitsemaasi kellotusnopeuteen.
 
 * [https://www.raspberrypi.org/documentation/configuration/config-txt/overclocking.md](https://www.raspberrypi.org/documentation/configuration/config-txt/overclocking.md)
 * [https://www.seeedstudio.com/blog/2020/02/12/how-to-safely-overclock-your-raspberry-pi-4-to-2-147ghz/](https://www.seeedstudio.com/blog/2020/02/12/how-to-safely-overclock-your-raspberry-pi-4-to-2-147ghz/)
