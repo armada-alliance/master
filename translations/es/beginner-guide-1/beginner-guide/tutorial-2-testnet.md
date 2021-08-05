@@ -16,7 +16,7 @@ description: >-
 ## Resumen
 
 1. Configuración de entorno
-2. Downloading the binaries needed to build a Cardano node relay
+2. Descargando los binarios necesarios para construir un nodo Relay de Cardano
 3. Descargar archivos de configuración de IOHK/Cardano-node
 4. Editar los ajustes de configuración
 5. Descargar una instantánea (snapshot) de la base de datos para acelerar el proceso de sincronización
@@ -252,13 +252,13 @@ Se nos ha proporcionado una instantánea (snapshot) de la base de datos de testn
 Primero, asegúrate de que cardano-service que creamos anteriormente está parado y luego ya podemos descargar la base de datos en nuestro Relay de pruebas/archivos. Puedes ejecutar los siguientes comandos para iniciar nuestra descarga.
 
 ```bash
-# Make sure you do not have the cardano-node running in the background
+# Asegúrate de que no tienes el cardano-node ejecutándose en segundo plano:
 cardano-service stop
 cd $NODE_HOME
-# Remove old db and its contents if present
+# Elimina el antiguo db y su contenido si está presente
 rm -r db/ 
-#Download testnet db snapshot
-wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online/db/
+#Descargar testnet db snapshot
+wget -r -np -nH -R "index. tml*" -e robots=off https://test-db.adamantium.online/db/
 ```
 
 {% hint style="info" %}
