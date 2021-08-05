@@ -6,61 +6,61 @@ description: >-
 # Configurar un nodo en Testnet
 
 {% hint style="warning" %}
-**¡Este tutorial está diseñado para conseguir una sincronización de un nodo completo con el blockchain de Cardano! Hemos omitido ciertos pasos de seguridad para hacer este tutorial lo más fácil posible - NO UTILICE este tutorial para crear un Stake Pool de Mainnet. Please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **for the mainnet.**
+**¡Este tutorial está diseñado para conseguir una sincronización de un nodo completo con el blockchain de Cardano! Hemos omitido ciertos pasos de seguridad para hacer este tutorial lo más fácil posible - NO UTILICE este tutorial para crear un Stake Pool de Mainnet. Por favor, utilice nuestras**[ **guías intermedias**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **para la Mainnet.**
 {% endhint %}
 
 {% hint style="warning" %}
-**This tutorial is for only use with Raspberry Pi OS 64bit and is solely for educational purposes to get a Cardano node syncing to the blockchain.**
+**Este tutorial es sólo para usar con Raspberry Pi OS 64bit y está pensado sólo para propósitos educativos para conseguir una sincronización de un nodo completo con la cadena de bloques de Cardano.**
 {% endhint %}
 
-## Summary
+## Resumen
 
-1. Configuracion de entorno
+1. Configuración de entorno
 2. Downloading the binaries needed to build a Cardano node relay
-3. Download configuration files from IOHK/Cardano-node
-4. Edit the config settings
-5. Download a database snapshot to speed up the sync process
-6. Run the basic passive relay node to connect to the testnet
-7. Monitor the relay node with [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/)
+3. Descargar archivos de configuración de IOHK/Cardano-node
+4. Editar los ajustes de configuración
+5. Descargar una instantánea (snapshot) de la base de datos para acelerar el proceso de sincronización
+6. Ejecuta el nodo Relay básico pasivo para conectarse a  Testnet (red de pruebas)
+7. Monitorea el nodo Relay con [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/)
 
 ![](../../.gitbook/assets/download-10-%20%281%29.jpeg)
 
 {% hint style="info" %}
-This tutorial can be used for **mainnet** if you would like. Just replace all instances of the word "**testnet**" with "**mainne**t" throughout this tutorial.
+Este tutorial puede ser utilizado en **mainnet** si lo desea. Simplemente reemplace en todas las instancias la palabra "**testnet**" por "**mainne**t" durante este tutorial.
 {% endhint %}
 
-## Setting up our environment
+## Configurando tu entorno
 
-* We must first update our OS and install needed upgrades if available.
+* Primero debemos actualizar nuestro sistema operativo e instalar las actualizaciones necesarias si están disponibles.
 
 {% hint style="info" %}
-It is highly recommended to update the operating system every time you boot up and log in to your **Raspberry Pi** to prevent security vulnerabilities.
+Es altamente recomendable actualizar el sistema operativo cada vez que arranca e inicie sesión en su **Raspberry Pi** para prevenir vulnerabilidades de seguridad.
 {% endhint %}
 
 ```text
-# We are using the sudo prefix to run commands as non-root-user  
+# Estamos usando el prefijo sudo para ejecutar comandos como no-root-user  
 
 sudo apt update
 sudo apt upgrade -y
 ```
 
-* We can now reboot the Pi and let the updates take effect by running this command in a terminal.
+* Ahora podemos reiniciar el Pi y dejar que las actualizaciones surtan efecto ejecutando este comando en una terminal.
 
 ```text
 sudo reboot
 ```
 
-### Make our directories
+### Crear nuestros directorios
 
 ```bash
 mkdir -p $HOME/.local/bin
 mkdir -p $HOME/testnet-relay/files
 ```
 
-### Add ~/.local/bin to our $PATH
+### Añadir ~/.local/bin a nuestro $PATH
 
 {% hint style="info" %}
-[How to Add a Directory to Your $PATH in Linux](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)
+[Cómo añadir un directorio a su $PATH en Linux](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)
 {% endhint %}
 
 ```bash
