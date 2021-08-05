@@ -88,67 +88,67 @@ Tallenna ja käynnistä uudelleen.
 sudo reboot
 ```
 
-## Configure Ubuntu
+## Määritä Ubuntu
 
-### Update The System
+### Päivitä järjestelmä
 
 ```text
 sudo apt update && sudo apt upgrade
 ```
 
-### Disable the Pi user
-
-```text
-sudo passwd -l pi
-```
-
-### Disable the root user
+### Poista root käyttäjä käytöstä
 
 ```text
 sudo passwd -l root
 ```
 
-### Secure shared memory
+### Poista root käyttäjä käytöstä
 
-Mount tmpfs as read only.
+```text
+sudo passwd -l root
+```
 
-Open /etc/fstab.
+### Suojaa jaettu muisti
+
+Mounttaa tmpfs vain luettavaksi.
+
+Avaa /etc/fstab.
 
 ```text
 sudo nano /etc/fstab
 ```
 
-Add this line at the bottom, save & exit.
+Lisää seuraava tiedoston loppuun omalle riville, tallenna & sulje nano.
 
 ```text
 tmpfs    /run/shm    tmpfs    ro,noexec,nosuid    0 0
 ```
 
-### Increase open file limit
+### Lisää avoimen tiedoston rajaa
 
-Open /etc/security/limits.conf.
+Avaa /etc/security/limits.conf.
 
 ```text
 sudo nano /etc/security/limits.conf
 ```
 
-Add the following to the bottom, save & exit.
+Lisää seuraava tiedoston loppuun omalle riville, tallenna & sulje nano.
 
 ```text
 ada soft nofile 800000
 ada hard nofile 1048576
 ```
 
-### Optimize performance & security
+### Optimoi suorituskyky & tietoturva
 
-Add the following to the bottom of /etc/sysctl.conf. Save and exit.
+Lisää seuraava /etc/sysctl.conf tiedoston loppuun. Tallenna ja sulje.
 
 {% hint style="info" %}
 [https://gist.github.com/lokhman/cc716d2e2d373dd696b2d9264c0287a3](https://gist.github.com/lokhman/cc716d2e2d373dd696b2d9264c0287a3)
 {% endhint %}
 
-{% hint style="Huomaa" %}
-I am disabling IPv6 and IPv4 forwarding. You may want these. I have seen claims that IPv6 is slower and gets in the way.
+{% hint style="warning" %}
+Olen poistamassa IPv6 ja IPv4 siirtoa käytöstä. Saatat haluta pitää näitä. Olen nähnyt väitteitä, että IPv6 on hitaampi ja saattaa häiritä toimintaa.
 {% endhint %}
 
 ```text
@@ -158,11 +158,9 @@ sudo nano /etc/sysctl.conf
 ```text
 ## Pi Pool ##
 
-# swap more to zram                     
-vm.vfs_cache_pressure=500
-vm.swappiness=100
-vm.dirty_background_ratio=1
-vm.dirty_ratio=50
+# swap less                      
+#vm.swappiness=10
+#vm.vfs_cache_pressure=50
 
 fs.file-max = 10000000
 fs.nr_open = 10000000
@@ -202,9 +200,9 @@ net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 ```
 
-#### Load our changes after boot
+#### Muutoksemme otetaan käyttöön uudelleen käynnistyksen jälkeen
 
-Create a new file. Paste, save & close.
+Luo uusi tiedosto. Liitä seuraava, tallenna & sulje.
 
 ```text
 sudo nano /etc/rc.local
@@ -237,15 +235,15 @@ sysctl -p /etc/sysctl.conf
 exit 0
 ```
 
-### Disable IRQ balance
+### Poista IRQ-balance käytöstä
 
 {% hint style="info" %}
 [**http://bookofzeus.com/harden-ubuntu/server-setup/disable-irqbalance/**](http://bookofzeus.com/harden-ubuntu/server-setup/disable-irqbalance/)
 {% endhint %}
 
-You should turn off IRQ Balance to make sure you do not get hardware interrupts in your threads. Turning off IRQ Balance will optimize the balance between power savings and performance through the distribution of hardware interrupts across multiple processors.
+Sinun pitäisi poistaa IRQ Balance käytöstä varmistaaksesi, ettet saa laitteistokatkoksia säikeissäsi. IRQ Balance -laitteen kytkeminen pois päältä optimoi virransäästön ja suorituskyvyn välisen tasapainon jakamalla laitteiston keskeytyksiä useiden prosessorien välillä.
 
-Open /etc/default/irqbalance and add to the bottom. Save, exit and reboot.
+Avaa /etc/default/irqbalance ja lisää alareunaan. Tallenna, poistu ja käynnistä uudelleen.
 
 ```text
 sudo nano /etc/default/irqbalance
@@ -257,17 +255,17 @@ ENABLED="0"
 
 ### Chrony
 
-We need to get our time synchronization as accurate as possible. Open /etc/chrony/chrony.conf
+Meidän täytyy saada aikamme synkronoitua niin tarkasti kuin mahdollista. Avaa /etc/security/chrony.conf
 
 ```text
 sudo apt install chrony
 ```
 
 ```bash
-sudo nano /etc/chrony/chrony.conf
+sudo nano /etc/security/chrony.conf
 ```
 
-Replace the contents of the file with below, Save and exit.
+Korvaa tiedoston sisältö alla olevalla tekstillä, Tallenna ja poistu.
 
 ```bash
 pool time.google.com       iburst minpoll 2 maxpoll 2 maxsources 3 maxdelay 0.3
@@ -315,30 +313,30 @@ sudo service chrony restart
 ### Zram swap
 
 {% hint style="info" %}
-We have found that cardano-node can safely use this compressed swap in ram essentially giving us around 20gb of ram. We already set kernel parameters for zram in /etc/sysctl.conf
+Olemme havainneet, että kardano-node voi turvallisesti käyttää tätä pakattua swapia RAM:ina periaatteessatämä antaa meille noin 20 gb RAM:ia. Olemme jo asettaneet ytimen parametrit zram:ia varten /etc/sysctl.conf tiedostossa
 {% endhint %}
 
-Swapping to disk is slow, swapping to compressed ram space is faster and gives us some overhead before out of memory \(oom\).
+Vaihto levylle on hidasta, vaihtaminen pakattuun ram tilaan on nopeampaa ja antaa meille jonkin verran enemmän marginaalia ennen muistin loppumista \(oom\).
 
-{% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters/" caption="" %}
+{% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters" caption="" %}
 
 {% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" %}
 
-Disable Raspbian swapfile.
+Poista Raspbian swapfile käytöstä.
 
 ```text
 sudo systemctl disable dphys-swapfile.service
 ```
 
 ```text
-sudo apt install zram-tools
+sudo apt install zram-config
 ```
 
 ```bash
 sudo nano /etc/default/zramswap
 ```
 
-Multiply default config by 3. This will give you 12.5GB of virtual compressed swap in ram.
+Kerro oletusasetukset kolmella. Tämä antaa sinulle 12,5 Gt virtuaalista pakattua swapia RAM:ksi.
 
 {% hint style="info" %}
 mem=$\(\(\(totalmem / 2 / ${NRDEVICES}\) \* 1024 \* 3\)\)
@@ -370,7 +368,7 @@ done
 ```
 
 {% hint style="info" %}
-View how much zram swap cardano-node is using.
+Katso, kuinka paljon zram swap:ia cardano-node käyttää.
 
 ```text
 CNZRAM=$(pidof cardano-node)
