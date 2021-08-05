@@ -1,12 +1,12 @@
 ---
 description: >-
-  After completing the Raspberry Pi setup we are now ready to download the files needed for the testnet.
+  Después de completar la configuración de la Raspberry Pi, ahora estamos listos para descargar los archivos necesarios para Testnet (red de pruebas).
 ---
 
-# Set up a Node on Testnet
+# Configurar un nodo en Testnet
 
 {% hint style="warning" %}
-**This tutorial is meant to get a single node syncing to the Cardano blockchain! We have skipped certain steps and security in order to make this tutorial as easy as possible - DO NOT USE this tutorial to form a mainnet stake pool. Please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **for the mainnet.**
+**¡Este tutorial está diseñado para conseguir una sincronización de un nodo completo con el blockchain de Cardano! Hemos omitido ciertos pasos de seguridad para hacer este tutorial lo más fácil posible - NO UTILICE este tutorial para crear un Stake Pool de Mainnet. Please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **for the mainnet.**
 {% endhint %}
 
 {% hint style="warning" %}
