@@ -162,9 +162,19 @@ wget https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-con
 * [ ] Change the **"hasEKG"** to **12600**
 * [ ] Change  the **"hasPrometheus"** address/port to 12700
 
+{% tabs %}
+{% tab title="testnet" %}
 ```text
 sudo nano testnet-config.json
 ```
+{% endtab %}
+
+{% tab title="mainnet" %}
+```
+sudo nano mainnet-config.json
+```
+{% endtab %}
+{% endtabs %}
 
 ### Create the systemd files
 
@@ -332,6 +342,8 @@ Olemme saaneet tilannekuvan testnet tietokannasta Star Forge Pool \[OTG\] ansios
 
 Ensinnäkin, varmista, että Cardano-palvelu loimme aiemmin on pysäytetty, niin me ladata tietokannan testiverkon releyn tiedostoja. Voit suorittaa seuraavat komennot aloittaaksesi lataamisen.
 
+{% tabs %}
+{% tab title="testnet" %}
 ```bash
 # Make sure you do not have the cardano-node running in the background
 cardano-service stop
@@ -341,8 +353,22 @@ rm -r db/
 #Download testnet db snapshot
 wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online/db/
 ```
+{% endtab %}
 
-## Finish syncing to the blockchain
+{% tab title="mainnet" %}
+```bash
+# Make sure you do not have the cardano-node running in the background
+cardano-service stop 
+cd $NODE_HOME
+
+#Remove old db and its contents if present
+rm -r db/
+
+#Download mainnet db snapshot
+wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online/db/Finish syncing to the blockchain
+```
+{% endtab %}
+{% endtabs %}
 
 * Now we can start the "passive" relay node to begin syncing to the blockchain.
 
