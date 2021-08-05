@@ -333,14 +333,14 @@ source $HOME/.bashrc
 ## Download a snapshot of the blockchain to speed the sync process
 
 {% hint style="info" %}
-We have been provided a snapshot of the testnet database thanks to Star Forge Pool \[OTG\]. If you don't want to download a database, **you may skip this step**. Beware, if you skip downloading our snapshot it may take up to 28 hours to get the node fully synced.
+Se nos ha proporcionado una instantánea (snapshot) de la base de datos de testnet gracias a Star Forge Pool \[OTG\]. Si no desea descargar la base de datos, **puedes saltar este paso**. Beware, if you skip downloading our snapshot it may take up to 28 hours to get the node fully synced.
 {% endhint %}
 
 {% hint style="danger" %}
-**Make sure you have not started a Cardano node before proceeding.** 🛑
+**Asegúrate de que no has iniciado un nodo de Cardano antes de continuar.**🛑
 {% endhint %}
 
-First, make sure the cardano-service we created earlier is stopped, then we download the database in our testnet-relay/files. You can run the following commands to begin our download.
+Primero, asegúrate de que cardano-service que creamos anteriormente está parado y luego ya podemos descargar la base de datos en nuestro Relay de pruebas/archivos. Puedes ejecutar los siguientes comandos para iniciar nuestra descarga.
 
 {% tabs %}
 {% tab title="testnet" %}
@@ -404,7 +404,7 @@ sudo nano env
 ```
 
 {% hint style="success" %}
-If you want to monitor your Raspberry Pi performance you can use the following commands.
+Si deseas controlar el rendimiento de tu Raspberry Pi puedes utilizar los siguientes comandos.
 {% endhint %}
 
 {% tabs %}
