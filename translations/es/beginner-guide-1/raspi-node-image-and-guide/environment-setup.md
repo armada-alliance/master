@@ -31,11 +31,11 @@ mkdir $HOME/tmp
 ### Crear variables de bash & añade ~/.local/bin a nuestro $PATH🏃
 
 {% hint style="info" %}
-[Environment Variables in Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
+[Variables de entorno en Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
 {% endhint %}
 
 {% hint style="warning" %}
-Changes to this file require reloading .bashrc or logging out then back in.
+Los cambios a este archivo requieren recargar .bashrc o cerrar sesión y volver a entrar.
 {% endhint %}
 
 ```bash
@@ -48,7 +48,7 @@ echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
-### Retrieve node files
+### Recuperar archivos del nodo
 
 ```bash
 cd $NODE_FILES
