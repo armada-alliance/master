@@ -1,5 +1,5 @@
 ---
-description: 'Retrieve Raspbian image, write image to target drive, create user.'
+description: 'Nouda Raspbian image, kirjoita image kohdeasemalle, luo käyttäjä.'
 ---
 
 # Lataa & Polta
