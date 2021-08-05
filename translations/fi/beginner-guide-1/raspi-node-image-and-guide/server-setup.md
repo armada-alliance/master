@@ -18,26 +18,26 @@ Tässä muutamia linkkejä ylikellotukseen ja aseman nopeuksien testaamiseen. Jo
 * [Legendary Technology: New Raspberry Pi 4 Bootloader USB](https://jamesachambers.com/new-raspberry-pi-4-bootloader-usb-network-boot-guide/)
 {% endhint %}
 
-### Test drive speed
+### Aseman nopeustesti
 
-#### Write speed
+#### Kirjoitusnopeus
 
 ```text
 sudo dd if=/dev/zero of=/tmp/output conv=fdatasync bs=384k count=1k; sudo rm -f /tmp/output
 ```
 
-#### Read speed
+#### Lukunopeus
 
 ```text
 sudo hdparm -Tt /dev/sda
 ```
 
-### Overclock, memory & radios
+### Ylikellotus, muisti & radiot
 
-Edit /boot/firmware/config.txt. Just paste Pi Pool additions in at the bottom.
+Muokkaa /boot/firmware/config.txt. Liitä Pi Pool lisäykset tiedoston loppuun.
 
 ```bash
-sudo nano /boot/config.txt
+sudo nano /boot/firmware/config.txt
 ```
 
 ```text
@@ -77,12 +77,12 @@ dtoverlay=dwc2
 ## Pi Pool ##
 over_voltage=6
 arm_freq=2000
-#gpu_mem=16
+gpu_mem=16
 disable-wifi
-#disable-bt
+disable-bt
 ```
 
-Save and reboot.
+Tallenna ja käynnistä uudelleen.
 
 ```text
 sudo reboot
