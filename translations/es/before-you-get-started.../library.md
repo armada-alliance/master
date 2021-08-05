@@ -2,7 +2,7 @@
 description: Recursos para el operador stake pool.
 ---
 
-# Libreria
+# Librería
 
 ## Recursos proporcionados por la comunidad de Cardano
 
@@ -46,14 +46,14 @@ description: Recursos para el operador stake pool.
 
 {% tabs %}
 {% tab title="Official Cardano Foundation" %}
-| Documentación                                                                             |
-|:----------------------------------------------------------------------------------------- |
-| [Stake Pool Operation and General Information](https://cardano.org/stake-pool-operation/) |
-| :---------------------------------------------------------------------------------------- |
-| [Testnet Documentation](https://developers.cardano.org/en/testnets/cardano/overview/)     |
-| :------------------------------------------------------------------------------------     |
-| [https://roadmap.cardano.org/en/goguen/](https://roadmap.cardano.org/en/goguen/)          |
-| :-------------------------------------------------------------------------------          |
+| Documentación                                                                                 |
+|:--------------------------------------------------------------------------------------------- |
+| [Operaciones del Stake Pool e Información General](https://cardano.org/stake-pool-operation/) |
+| :----------------------------------------------------------------------------------------     |
+| [Documentación de Testnet](https://developers.cardano.org/en/testnets/cardano/overview/)      |
+| :------------------------------------------------------------------------------------         |
+| [https://roadmap.cardano.org/en/goguen/](https://roadmap.cardano.org/en/goguen/)              |
+| :-------------------------------------------------------------------------------              |
 {% endtab %}
 
 {% tab title="Youtube and Video Resources" %}
