@@ -2,11 +2,11 @@
 description: Install packages needed to run cardano-node and configure our environment
 ---
 
-# Configuracion de entorno
+# Configuración del entorno
 
 ## Instalar paquetes
 
-Install the packages we will need.
+Instala los paquetes que necesitaremos.
 
 ```bash
 sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
@@ -15,9 +15,9 @@ sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
          zlib1g-dev g++ libncursesw5 libtool autoconf -y
 ```
 
-## Environment
+## Entorno
 
-Make some directories.
+Crear algunos directorios.
 
 ```bash
 mkdir -p $HOME/.local/bin
@@ -28,7 +28,7 @@ mkdir $HOME/git
 mkdir $HOME/tmp
 ```
 
-### Create bash variables & add ~/.local/bin to our $PATH 🏃
+### Crear variables de bash & añade ~/.local/bin a nuestro $PATH🏃
 
 {% hint style="info" %}
 [Environment Variables in Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
