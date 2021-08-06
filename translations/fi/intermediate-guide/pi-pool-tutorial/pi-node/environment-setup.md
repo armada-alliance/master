@@ -598,17 +598,17 @@ Tässä vaiheessa saatat haluta käynnistää cardano-servicen ja synkronoida no
 
 ### Määritä Grafana
 
-On your local machine open your browser and got to [http://&lt;Pi-Node's](http://<Pi-Node's) private ip&gt;:5000
+Avaa paikallisessa koneessasi selaimesi ja mene osoitteeseen http://&lt;Pi-Node's private ip&gt;:5000
 
-Log in and set a new password. Default username and password is **admin:admin**.
+Kirjaudu sisään ja aseta uusi salasana. Oletus käyttäjätunnus ja salasana on **admin:admin**.
 
-#### Configure data source
+#### Määritä tietolähde
 
-In the left hand vertical menu go to **Configure** &gt; **Datasources** and click to **Add data source**. Choose Prometheus. Enter [http://localhost:9090](http://localhost:9090) where it is grayed out, everything can be left default. At the bottom save & test. You should get the green "Data source is working" if cardano-monitor has been started. If for some reason those services failed to start issue **cardano-service restart**.
+Vasemman puolen pystysuorassa valikossa siirry **Configure** &gt; **Datasources** ja napsauta **Add data source**. Valitse Prometheus. Syötä [http://localhost:9090](http://localhost:9090) kaikki harmaa voidaan jättää oletusarvoiseksi. Alareunassa save & test. Sinun pitäisi saada vihreä "Data source is working", jos kardano-monitor on päällä. Jos jostain syystä nämä palvelut eivät käynnistyneet, käytä komentoa **cardano-service restart**.
 
-#### Import dashboards
+#### Tuo kojelaudat
 
-Save the dashboard json files to your local machine.
+Tallenna kojelaudan json tiedostot paikalliseen koneeseen.
 
 {% embed url="https://github.com/armada-alliance/dashboards" caption="" %}
 
