@@ -6,18 +6,18 @@
 
 * [Pi-Node Image & Ohjeet](beginner-guide-1/raspi-node-image-and-guide/README.md)
   * [Lataa & Polta](beginner-guide-1/raspi-node-image-and-guide/setup.md)
-  * [Server Setup](beginner-guide-1/raspi-node-image-and-guide/server-setup.md)
-  * [Environment Setup](beginner-guide-1/raspi-node-image-and-guide/environment-setup.md)
+  * [Palvelimen Asetukset](beginner-guide-1/raspi-node-image-and-guide/server-setup.md)
+  * [Ympäristön Asetukset](beginner-guide-1/raspi-node-image-and-guide/environment-setup.md)
 
 ## Stake Pool -oppaat <a id="intermediate-guide"></a>
 
 * [Pi-Node Image & Guide](intermediate-guide/pi-pool-tutorial/README.md)
   * [Pi-Node \(quick start\)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
     * [Lataa & Polta](intermediate-guide/pi-pool-tutorial/pi-node/download-and-write-it.md)
-    * [User Setup](intermediate-guide/pi-pool-tutorial/pi-node/user-setup.md)
-    * [Logging in Securely](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
-    * [Server Setup](intermediate-guide/pi-pool-tutorial/pi-node/server-setup.md)
-    * [Environment Setup](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md)
+    * [Käyttäjän Asetukset](intermediate-guide/pi-pool-tutorial/pi-node/user-setup.md)
+    * [Suojattu kirjautuminen](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
+    * [Palvelimen Asetukset](intermediate-guide/pi-pool-tutorial/pi-node/server-setup.md)
+    * [Ympäristön Asetukset](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md)
   * [Pi-Relay](intermediate-guide/pi-pool-tutorial/pi-relay.md)
   * [Pi-Core/Cold](intermediate-guide/pi-pool-tutorial/pi-core-and-pi-cold.md)
   * [Rotate KES](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
