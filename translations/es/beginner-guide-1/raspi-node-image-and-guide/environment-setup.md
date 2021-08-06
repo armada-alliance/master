@@ -425,7 +425,7 @@ cd $NODE_HOME/scripts
 ./gLiveView.sh
 ```
 
-![](../../.gitbook/assets/pi-node-glive%20%281%29.png)
+![](../../.gitbook/assets/pi-node-glive.png)
 
 ## Prometheus, Node Exporter & Grafana
 
@@ -437,7 +437,7 @@ You can connect a Telegram bot to Grafana which can alert you of problems with t
 
 {% embed url="https://github.com/prometheus" caption="" %}
 
-![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
+![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.png)
 
 ### Install Prometheus & Node Exporter.
 
