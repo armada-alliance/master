@@ -357,20 +357,18 @@ wget -r -np -nH -R "index. tml*" -e robots=off https://test-db.adamantium.online
 
 {% tab title="mainnet" %}
 ```bash
-# Make sure you do not have the cardano-node running in the background
-cardano-service stop 
+# Varmista, ettei kardano-node ole käynnissä taustalla
+cardano-service stop
 cd $NODE_HOME
-
-#Remove old db and its contents if present
-rm -r db/
-
-#Download mainnet db snapshot
-wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online/db/Finish syncing to the blockchain
+# Poista vanha db ja sen sisältö, jos läsnä
+rm -r db/ 
+#Lataa testnet db tilannekuva
+wget -r -np -nH -R "index. tml*" -e robots=off https://test-db.adamantium.online/db/Finish
 ```
 {% endtab %}
 {% endtabs %}
 
-* Now we can start the "passive" relay node to begin syncing to the blockchain.
+* Nyt voimme käynnistää "passiivisen" relay noden aloittaaksemme synkronoinnin lohkoketjuun.
 
 ```bash
 cd $HOME
@@ -379,9 +377,9 @@ cardano-service start
 cardano-service status
 ```
 
-## Setting up gLiveView to monitor the node during its syncing process
+## gLiveView-ohjelman asennus, noden seuraamiseksi synkronointiprosessin aikana
 
-#### Now you can change to the $NODE\_FILES folder and then download the gLiveView monitor service
+#### Nyt voit siirtyä $NODE\_FILES kansioon ja sitten ladata gLiveView- monitoripalvelun
 
 ```bash
 sudo apt-get install jq
@@ -391,13 +389,13 @@ curl -s -o env https://raw.githubusercontent.com/cardano-community/guild-operato
 chmod 755 gLiveView.sh
 ```
 
-* Need to change the "**CNODE\_PORT**" to the port you set on your cardano-node, in our case let's change it to **3001.**
+* Päivitä "**CNODE\_PORT**" porttiin jonka asetit cardano nodelle, tässä tapauksessa vaihdetaan siihen **3001.**
 
 ```bash
 sudo nano env
 ```
 
-* Finally, we can exit the nano editor and just run the gLiveView script.
+* Lopuksi, voimme poistua nanoeditorista ja vain käynnistää gLiveViewen skripti.
 
 ```bash
 ./gLiveView.sh
@@ -421,7 +419,7 @@ htop
 {% endtab %}
 {% endtabs %}
 
-## References:
+## Viitteet:
 
 {% tabs %}
 {% tab title="📚" %}
