@@ -1,5 +1,5 @@
 ---
-description: This Tutorial is for those who may want to use the Raspberry Pi OS
+description: Tämä tutoriaali on niille, jotka voivat haluta käyttää Raspberry Pi OS -käyttöjärjestelmää
 ---
 
 # Raspberry Pi OS 🍓
