@@ -1,9 +1,9 @@
 ---
 description: >-
-  After completing the Raspberry Pi setup we are now ready to download the files needed for the testnet.
+  Kun Raspberry Pin asennus on valmis, olemme valmiita lataamaan testiverkkoa varten tarvittavat tiedostot.
 ---
 
-# User Setup
+# Käyttäjän Asetukset
 
 {% hint style="Huomaa" %}
 **Tämän tutoriaalin tarkoitus on saada yksi node synkronoitua Cardano lohkoketjuun! Olemme ohittaneet tiettyjä vaiheita ja turvallisuuskäytäntöjä, jotta tämä tutoriaali olisi mahdollisimman helppo - ÄLÄ KÄYTÄ tätä tutoriaalia rakentaessasi mainnet stake poolia. Ole hyvä ja käytä**[ **keskitason oppaitamme**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **mainnettia varten.**
@@ -13,40 +13,40 @@ description: >-
 **This tutorial is for use with the official Raspberry Pi 64-bit OS and is solely for development educational purposes to get a Raspberry Pi Cardano node syncing to the blockchain.**
 {% endhint %}
 
-## Summary
+## Yhteenveto
 
-1. Environment Setup
-2. Downloading the binaries needed to build a Cardano node relay
-3. Download configuration files from IOHK/Cardano-node
-4. Edit the config settings
-5. Download a database snapshot to speed up the sync process
-6. Run the basic passive relay node to connect to the testnet
-7. Monitor the relay node with [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/)
+1. Ympäristön asetukset
+2. Cardano relay noden rakentamiseen tarvittavien binääritiedostojen lataaminen
+3. Konfiguraatiotiedostojen lataaminen IOHK/Cardano-nodelta
+4. Config-asetuksien muokkaus
+5. Tietokannan tilannekuvan lataaminen synkronointiprosessin nopeuttamiseksi
+6. Perus passiivi relay noden käynnistäminen ja yhdistäminen testiverkkoon
+7. Relay noden monitorointi [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/) -ohjelmalla
 
 ![](../../.gitbook/assets/download-10-%20%281%29.jpeg)
 
-## Setting up our environment
+## Ympäristön luominen
 
-* We must first update our OS and install needed upgrades if available.
+* Meidän täytyy ensin päivittää käyttöjärjestelmämme ja asentaa tarvittavat päivitykset, jos saatavilla.
 
 {% hint style="info" %}
-It is highly recommended to update the operating system every time you boot up and log in to your **Raspberry Pi** to prevent security vulnerabilities.
+On erittäin suositeltavaa päivittää käyttöjärjestelmä aina kun käynnistät ja kirjaudu sisään **Raspberry Pi:lle** estääksesi tietoturvahaavoittuvuuksia.
 {% endhint %}
 
 ```text
-# We are using the sudo prefix to run commands as non-root-user  
+# Käytämme sudo etuliitettä komentojen suorittamiseen ei-root-userina  
 
 sudo apt update
 sudo apt upgrade -y
 ```
 
-* We can now reboot the Pi and let the updates take effect by running this command in a terminal.
+* Voimme nyt käynnistää Pi uudelleen ja antaa päivitysten tulla voimaan suorittamalla tämän komennon terminaalissa.
 
 ```text
 sudo reboot
 ```
 
-### Make our directories
+### Tee hakemistot
 
 {% tabs %}
 {% tab title="testnet" %}
@@ -64,17 +64,17 @@ mkdir -p $HOME/mainnet-relay/files
 {% endtab %}
 {% endtabs %}
 
-### Add ~/.local/bin to our $PATH
+### Lisää ~/.local/bin meidän $PATH -polkuumme
 
 {% hint style="info" %}
-[How to Add a Directory to Your $PATH in Linux](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)
+[Kuinka lisätä hakemisto $PATH -polkuun Linuxissa](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)
 {% endhint %}
 
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
 ```
 
-### Create our bash variables
+### Luo bash muuttujat
 
 {% tabs %}
 {% tab title="testnet" %}
@@ -104,50 +104,50 @@ source $HOME/.bashrc
 sudo reboot
 ```
 
-### Download the Cardano-node static build
+### Lataa Cardano-noden staattinen rakennelma
 
-| Provided By                                                                                                                      | Link to Cardano Static Build                                           |
+| Toimittanut:                                                                                                                     | Linkki Cardano Static Buildiin                                         |
 |:-------------------------------------------------------------------------------------------------------------------------------- |:---------------------------------------------------------------------- |
 | [**ZW3RK**](https://adapools.org/pool/e2c17915148f698723cb234f3cd89e9325f40b89af9fd6e1f9d1701a) **1PCT Haskell CI Support Pool** | [**https://ci.zw3rk.com/build/1758**](https://ci.zw3rk.com/build/1758) |
 
-* A[ **static build**](https://en.wikipedia.org/wiki/Static_build) is a [compiled](https://en.wikipedia.org/wiki/Compiler) version of a program that has been statically linked against[ libraries](https://en.wikipedia.org/wiki/Library_%28computing%29).
+* A[ **staattinen versio**](https://en.wikipedia.org/wiki/Static_build) on [**kasattu**](https://en.wikipedia.org/wiki/Compiler) versio ohjelmasta, joka on staattisesti yhdistetty kirjastoihin.
 
-Now we need to download the zip file above to our Pi's home directory and then move it to the right location so we can call on it later to start the node.
+Nyt meidän täytyy yksinkertaisesti ladata edellä mainittu zip-tiedosto Pi's kotihakemistoon ja sitten siirtää se oikeaan paikkaan, jotta voimme myöhemmin käyttää sitä ja käynnistää node.
 
 ```bash
-# First change to the home directory
+# Ensin mene kotihakemistoon
 cd $HOME
 
-# Now we can download the cardano-node 
+# Nyt voimme ladata cardano-noden 
 wget https://ci.zw3rk.com/build/1758/download/1/aarch64-unknown-linux-musl-cardano-node-1.27.0.zip
 ```
 
-* Use [**unzip**](https://linux.die.net/man/1/unzip) command on the downloaded zip file and extract its contents.
+* Käytä [**unzip**](https://linux.die.net/man/1/unzip) komentoa ladattuun zip-tiedostoon ja pura sen sisältö.
 
   ```bash
   unzip aarch64-unknown-linux-musl-cardano-node-1.27.0.zip
   ```
 
-* Next, we need to make sure the newly downloaded "cardano-node" folder and its contents are present.
+* Seuraavaksi meidän on varmistettava, että äskettäin ladattu "cardano-node" kansio ja sen sisältö ovat läsnä.
 
 {% hint style="info" %}
-If you are unsure if the file downloaded properly or need the name of the folder/files, we can use the Linux [**ls**](https://www.man7.org/linux/man-pages/man1/ls.1.html) command.
+Jos olet epävarma, onko tiedosto ladattu oikein tai haluat tietää kansion/tiedostojen nimet, voit käyttää Linuxin [**ls**](https://www.man7.org/linux/man-pages/man1/ls.1.html) komentoa.
 {% endhint %}
 
-Now we need to move the cardano-node folder into our local binary directory.
+Nyt meidän täytyy siirtää cardano-node kansio paikalliseen binääri hakemistoon.
 
 ```bash
 mv cardano-node/* ~/.local/bin
 ```
 
-Before we proceed let's make sure the cardano-node and cardano-cli is in our $PATH
+Ennen kuin jatkamme, varmista, että cardano-node ja cardano-cli ovat meidän $PATH
 
 ```bash
 cardano-node version
 cardano-cli version
 ```
 
-Now we can move into our files folder, and download the four Cardano node configuration files we need from the official [IOHK website](https://hydra.iohk.io/build/5822084/download/1/index.html) and or [documentation](https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles_AND_Connect.html). We will be using the "wget" command to download the files.
+Nyt voimme siirtyä meidän files kansioon, ja ladata tarvittavat neljä Cardano noden virallista asetustiedostoa [IOHK verkkosivuilla](https://hydra.iohk.io/build/5822084/download/1/index.html) ja tai niihin liittyvän [dokumentaation](https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles_AND_Connect.html). Käytämme "wget" -komentoa tiedostojen lataamiseen.
 
 ```bash
 cd $NODE_FILES
@@ -157,10 +157,10 @@ wget https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-she
 wget https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-* **Use the nano bash editor to change a few things in our "testnet-config.json" file**
-* [ ] Change the **"TraceBlockFetchDecisions"** line from "**false**" to "**true**"
-* [ ] Change the **"hasEKG"** to **12600**
-* [ ] Change  the **"hasPrometheus"** address/port to 12700
+* **Käytä nano bash editoria muuttaaksesi muutamia asioita meidän "testnet-config.json" tiedostossa**
+* [ ] Muuta **"TraceBlockFetchDecisions"** riviltä arvo "**false**" arvoon "**true**"
+* [ ] Muuta **"hasEKG"** portiksi **12600**
+* [ ] Muuta **"hasPrometheus"** osoite / portti 12700
 
 {% tabs %}
 {% tab title="testnet" %}
@@ -176,22 +176,22 @@ sudo nano mainnet-config.json
 {% endtab %}
 {% endtabs %}
 
-### Create the systemd files
+### Luo systemd järjestelmätiedostot
 
-We will use the Linux systemd service manager to handle the starting, stopping, and restarting of our Cardano node relay.
+Käytämme linuxin systemd järjestelmänvalvojaa Cardano noden käynnistämiseen, pysäyttämiseen ja uudelleenkäynnistämiseen.
 
 {% hint style="info" %}
-If you'd like to find out more about Linux and systemd go to the [Linux manual page](https://www.man7.org/linux/man-pages/man1/systemd.1.html).
+Jos haluat tietää lisää Linuxista ja systemd järjestelmästä, mene [Linux-käsikirjan sivulle](https://www.man7.org/linux/man-pages/man1/systemd.1.html).
 {% endhint %}
 
 ```bash
 sudo nano $HOME/.local/bin/cardano-service
 ```
 
-**Now we need to make the cardano-node startup script**
+**Nyt meidän täytyy tehdä cardano-noden käynnistys skripti**
 
 {% hint style="info" %}
-How to start the cardano-node can be found here on the [Cardano documentation](https://docs.cardano.org/getting-started/installing-the-cardano-node#gatsby-focus-wrapper).
+Cardano noden käynnistämisen ohje löytyy täältä Cardanon dokumentaatiosta.[https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles\_AND\_Connect.html](https://docs.cardano.org/getting-started/installing-the-cardano-node#gatsby-focus-wrapper).
 {% endhint %}
 
 {% tabs %}
@@ -207,7 +207,7 @@ DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
 CONFIG=${FILES}/testnet-config.json
 
-cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
+cardano-node run \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
@@ -229,7 +229,7 @@ DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
 CONFIG=${FILES}/mainnet-config.json
 
-cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
+cardano-node run \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
@@ -240,7 +240,7 @@ cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
 {% endtab %}
 {% endtabs %}
 
-**Now we must give access permission to our new systemd service script**
+**Nyt meidän on annettava pääsyoikeus uuden järjestelmäpalvelun skriptille**
 
 ```bash
 sudo chmod +x $HOME/.local/bin/cardano-service
@@ -306,13 +306,13 @@ WantedBy= multi-user.target
 {% endtab %}
 {% endtabs %}
 
-We now should reload our systemd service to make sure it picks up our cardano-service
+Meidän pitää nyt käynnistää järjestelmäpalvelu uudelleen varmistaaksemme, että se meidän cardano-palvelumme on mukana
 
 ```bash
 sudo systemctl daemon-reload
 ```
 
-**If we don't want to call "sudo systemctl" everytime we want to start, stop, or restart the cardano-node service we can create a "function" that will be added into our .bashrc shell script that will do this for us**
+**Jos emme halua käyttää "sudo systemctl" joka kerta kun haluamme aloittaa, lopettaa, tai käynnistä uudelleen cardano-node palvelun voimme luoda "funktion", joka lisätään meidän .bashrc shell skriptiin, ja tekee tämän puolestamme**
 
 [https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/](https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/)
 
@@ -330,10 +330,10 @@ cardano-service() {
 source $HOME/.bashrc
 ```
 
-## Download a snapshot of the blockchain to speed the sync process
+## Lataa tilannekuva lohkoketjusta ja nopeuta synkronointiprosessia
 
 {% hint style="info" %}
-Olemme saaneet tilannekuvan testnet tietokannasta Star Forge Pool \[OTG\] ansiosta. Jos et halua ladata tietokantaa, **voit ohittaa tämän vaiheen**. Beware, if you skip downloading our snapshot it may take up to 28 hours to get the node fully synced.
+Olemme saaneet tilannekuvan testnet tietokannasta Star Forge Pool \[OTG\] ansiosta. Jos et halua ladata tietokantaa, **voit ohittaa tämän vaiheen**. Huomaa että, jos jätät tilannekuvan lataamisen väliin, saattaa kestää jopa 28 tuntia, ennen kuin node on täysin synkronoitu.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -345,13 +345,13 @@ Ensinnäkin, varmista, että Cardano-palvelu loimme aiemmin on pysäytetty, niin
 {% tabs %}
 {% tab title="testnet" %}
 ```bash
-# Make sure you do not have the cardano-node running in the background
+# Varmista, ettei kardano-node ole käynnissä taustalla
 cardano-service stop
 cd $NODE_HOME
-# Remove old db and its contents if present
+# Poista vanha db ja sen sisältö, jos läsnä
 rm -r db/ 
-#Download testnet db snapshot
-wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online/db/
+#Lataa testnet db tilannekuva
+wget -r -np -nH -R "index. tml*" -e robots=off https://test-db.adamantium.online/db/
 ```
 {% endtab %}
 
