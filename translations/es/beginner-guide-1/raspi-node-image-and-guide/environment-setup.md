@@ -201,9 +201,9 @@ Ahora solo tenemos que hacer:
 * cardano-service stop       \(para cardano-node.service\)
 * cardano-service status    \(muestra el estado de cardano-node.service\)
 
-## ⛓ Syncing the chain ⛓
+## ⛓ Sincronización de la cadena ⛓
 
-You are now ready to start cardano-node. Doing so will start the process of 'syncing the chain'. This is going to take about 30 hours and the db folder is about 8.5GB in size right now. We used to have to sync it to one node and copy it from that node to our new ones to save time.
+Ahora está listo para iniciar cardano-node. Doing so will start the process of 'syncing the chain'. This is going to take about 30 hours and the db folder is about 8.5GB in size right now. We used to have to sync it to one node and copy it from that node to our new ones to save time.
 
 ### Download snapshot
 
