@@ -88,7 +88,7 @@ Save and reboot.
 sudo reboot
 ```
 
-## Configure Ubuntu
+## Configure Raspberry Pi OS
 
 ### Update The System
 
