@@ -207,7 +207,6 @@ Subsystem sftp  /usr/lib/openssh/sftp-server
 #       AllowTcpForwarding no
 #       PermitTTY no
 #       ForceCommand cvs server
-
 ```
 
 {% hint style="info" %}
