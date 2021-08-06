@@ -6,7 +6,6 @@
 
 * [RasPi-Node Image & Guide](beginner-guide-1/raspi-node-image-and-guide/README.md)
   * [Download & Flash](beginner-guide-1/raspi-node-image-and-guide/setup.md)
-  * [User Setup](beginner-guide-1/raspi-node-image-and-guide/tutorial-2-relaynode.md)
   * [Server Setup](beginner-guide-1/raspi-node-image-and-guide/server-setup.md)
   * [Environment Setup](beginner-guide-1/raspi-node-image-and-guide/environment-setup.md)
 
@@ -15,8 +14,8 @@
 * [Pi-Node Image & Guide](intermediate-guide/pi-pool-tutorial/README.md)
   * [Pi-Node \(quick start\)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
     * [Download & Flash](intermediate-guide/pi-pool-tutorial/pi-node/download-and-write-it.md)
-    * [Logging in Securely](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
     * [User Setup](intermediate-guide/pi-pool-tutorial/pi-node/user-setup.md)
+    * [Logging in Securely](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
     * [Server Setup](intermediate-guide/pi-pool-tutorial/pi-node/server-setup.md)
     * [Environment Setup](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md)
   * [Pi-Relay](intermediate-guide/pi-pool-tutorial/pi-relay.md)
