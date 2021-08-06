@@ -4,17 +4,17 @@ description: 'Nouda Raspbian image, kirjoita image kohdeasemalle, luo käyttäj�
 
 # Lataa & Polta
 
-## Installing the Raspberry Pi Debian "buster" OS
+## Asennetaan Raspberry Pi Debian "buster" OS
 
-Download the latest official release of 64 bit Raspbian OS.
+Lataa uusin virallinen julkaisu 64 bittinen Raspbian OS.
 
-**1. Download Raspbian 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/2021-05-07-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
+**1. Lataa Debian “buster” Raspberry Pi 64bit OS image** [**täältä**] ja tallenna se toistaiseksi tietokoneellesi kätevästi saataville</p>
 
-**2. Next, download the Raspberry Pi Imager software that we will use in order to write the OS image onto our target drive. Tämä ohjelmisto on saatavilla** [**Raspberry Pi verkkosivuilla**](https://www.raspberrypi.org/software/)**. Tarkasta, että lataat koneellesi oikean version.**
+**2. Seuraavaksi, lataa Raspberry Pi Imager ohjelma, jota käytetään asentamaan yllä mainittu käyttöjärjestelmä Raspberry Pi:lle. Tämä ohjelmisto on saatavilla** [**Raspberry Pi verkkosivuilla**](https://www.raspberrypi.org/software/)**. Tarkasta, että lataat koneellesi oikean version.**
 
 ![](../../.gitbook/assets/screen-shot-2021-03-12-at-5.36.30-pm.png)
 
-**3. Insert the target drive\(your SSD or NVMe with usb3 adapter\) into your computer and open the "Raspberry Pi Imager".**
+**3. Aseta kohdeasema\(SSD tai NVMe usb3-sovittimen avulla\) tietokoneeseesi ja avaa "Raspberry Pi Imager".**
 
 * **Click on "CHOOSE OS"  then "Use custom" choose the Raspbian image file you downloaded.**
 * **Next, click on the "CHOOSE SD" and choose the target drive you inserted into the computers usb port.**
