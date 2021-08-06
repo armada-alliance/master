@@ -2,7 +2,7 @@
 
 * [Bienvenidos Operadores ARM 🦾](README.md)
 
-## Cardano Node Testnet <a id="beginner-guide-1"></a>
+## Cardano Node <a id="beginner-guide-1"></a>
 
 * [RasPi-Node Image & Guide](beginner-guide-1/raspi-node-image-and-guide/README.md)
   * [Descargar y Flashear](beginner-guide-1/raspi-node-image-and-guide/setup.md)
