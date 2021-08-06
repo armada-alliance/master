@@ -21,7 +21,7 @@ Teimme tämän tutoriaalin käytettäväksi **Raspberry-Pi-ARM** koneiden kanssa
 {% endhint %}
 
 {% hint style="info" %}
-If you are using a Raspberry Pi machine [h](../beginner-guide-1/raspi-node-image-and-guide/tutorial-2-relaynode.md)[ere](../beginner-guide-1/raspi-node-image-and-guide/tutorial-2-relaynode.md) is an easy-to-follow tutorial we made to get a Cardano Relay Node running.
+Jos käytät Raspberry Pi konetta [tässä](../beginner-guide-1/raspi-node-image-and-guide/tutorial-2-relaynode.md) on helposti seurattava tutoriaali, jonka teimme Cardano Relay Node:n rakentamiseen ja käynnistämiseen.
 {% endhint %}
 
 * cardano-node / cardano-cli perustettu paikalliseen koneeseen
@@ -168,7 +168,7 @@ module.exports = cardano;
 {% endtab %}
 
 {% tab title="Fetch Genesis File" %}
-{% embed url="https://www.youtube.com/watch?v=X5cRGA0qyQE" %}
+{% upotettu url="https://www.youtube.com/watch?v=X5cRGA0qyQE" %}
 {% endtab %}
 
 {% tab title="Create Cardano Client" %}
@@ -231,26 +231,26 @@ node src/get-balance.js
 * Voimme nyt lähettää joitakin varoja \(ADA\) luomaamme lompakkoon, odota muutama minuutti, ja sitten tarkista saldo uudelleen varmistaaksesi, että tapahtuma onnistui.
 
 {% hint style="info" %}
-If you are using testnet you must get your tADA from the testnet faucet [here](https://developers.cardano.org/en/testnets/cardano/tools/faucet/).
+Jos käytät testnetiä, sinun täytyy saada tADA testnet-hanasta [täältä](https://developers.cardano.org/en/testnets/cardano/tools/faucet/).
 {% endhint %}
 
 #### _Video Walk-through_ :
 
 {% tabs %}
 {% tab title="Create Local Wallet" %}
-{% embed url="https://youtu.be/a8uWUc0O3DE" %}
+{% upotettu url="https://youtu.be/a8uWUc0O3DE" %}
 {% endtab %}
 
 {% tab title="Send ada to local wallet" %}
-{% embed url="https://youtu.be/Mm1ZOciiNaE" %}
+{% upotettu url="https://youtu.be/Mm1ZOciiNaE" %}
 {% endtab %}
 {% endtabs %}
 
 ## Paina (Mint) uudet Native-Assetit/NFT:t Cardano lohkoketjuun
 
-Before we proceed to mint our Native Asset we must have a few things taken care of. We need to first get our "asset" onto our [IPFS](https://ipfs.io/#install) node and generate the IPFS link. If you do not know about IPFS or what it actually does we recommend having a read through the documentation [here](https://docs.ipfs.io/) or watching this [video](https://www.youtube.com/watch?v=5Uj6uR3fp-U).
+Ennen kuin ryhdymme painamaan alkuperäis- (native) assetteja, meillä on oltava muutamia asioita hoidettu. Meidän täytyy ensin saada "asset" meidän [IPFS](https://ipfs.io/#install) node:en ja luoda IPFS linkki. Jos et tiedä IPFS-järjestelmästä tai mitä se todella tekee, suosittelemme lukemaan dokumentaation [täällä](https://docs.ipfs.io/) tai katsomaan tämän [videon](https://www.youtube.com/watch?v=5Uj6uR3fp-U).
 
-Since we are using an image file to be our asset we should upload a smaller thumbnail-sized version of our image \(ideally less than 1MB\). This will be used on sites like [pool.pm](https://pool.pm) to display our assets nicely in our wallets. We then upload the full-size image as our source image.
+Koska käytämme kuvatiedostoa assettinamme, meidän pitää ladata pienempi kuvake-kokoinen versio kuvastamme \(mieluiten alle 1MB\). Tätä käytetään nättiin visualisointiin sivustoilla, kuten [pool.pm](https://pool.pm) ja lompakoissamme. Sitten lataamme koko lähdekuvan NFT assetistamme.
 
 * [ ] Lataa [IPFS](https://ipfs.io/#install)
 * [ ] Lataa assetisi tiedostot IPFS:ään
@@ -264,7 +264,7 @@ Since we are using an image file to be our asset we should upload a smaller thum
 
 ### Luo mint-asset.js skripti
 
-This script has three main components:
+Tässä skriptissä on kolme pääosaa:
 
 1. **Luo policy id**
 2. **Määrittele metatiedot**
@@ -369,14 +369,14 @@ _**Video Walk-through:**_
 
 ## NFT:n lähettäminen takaisin Daedalus tai Yoroi lompakkoon
 
-Now we must create a new script to send our newly minted NFT to a wallet.
+Nyt meidän on luotava uusi skripti, jotta voimme lähettää juuri painetun NFT:n lompakkoomme.
 
 ```javascript
 cd cardaon-minter/src
 nano send-back-asset-to-wallet.js
 ```
 
-There are few main parts we have to this script in order to send the asset:
+Tässä skriptissä on muutamia päävaiheita, joiden kautta voimme lähettää NFT:n eteenpäin:
 
 1. Hae lompakko
 2. Määrittele tapahtuma
@@ -463,6 +463,6 @@ node src/send-back-asset-to-wallet.js
 {% embed url="https://youtu.be/awxVkFbWoKM" caption="" %}
 
 {% hint style="success" %}
-**If you liked this tutorial and want to see more like it please consider staking your ADA with any of our Alliance's** [**Stake Pools**](https://armada-alliance.com/stake-pools)**, or giving a one-time donation to our Alliance** [**https://cointr.ee/armada-alliance**](https://cointr.ee/armada-alliance)**.**
+Jos pidit tästä tutoriaalista ja haluat nähdä enemmän samankaltaisia, harkitse ADAn delegoimista meidän [**PIADA**](https://armada-alliance.com/stake-pools) **Stake Pooliin, tai kertalahjoituksen antamista yhteisöllemme, Armada Allianssille,** </strong>[https://cointr. e/armada-alliance****](https://cointr.ee/armada-alliance).** </p>
 {% endhint %}
 
