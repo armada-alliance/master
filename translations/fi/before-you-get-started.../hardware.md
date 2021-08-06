@@ -3,7 +3,7 @@ description: >-
   Tältä sivulta löytyy ajantasainen lista tarvittavista komponenteista, joilla voit rakentaa oman Raspberry Pi stake poolin (lisäksi tarvitset toimivan pöytäkoneen tai läppärin).
 ---
 
-# Hardware Purchase Links 🏪
+# Hyödyllisiä linkkeja laitteiston hankintaan 🏪
 
 ![GeeekPi Cluster Case](../.gitbook/assets/photo_2021-03-09-13.42.42.jpeg)
 
@@ -61,27 +61,27 @@ Pi4 tarvitsee virtalähteen josta saa 5V/3A
 {% endtab %}
 {% endtabs %}
 
-## Star Forge parts list.
+## Star Forge osaluettelo.
 
 ![](../.gitbook/assets/photo_2021-03-09-13.40.29.jpeg)
 
-{% embed url="https://www.amazon.com/gp/product/B07VPL4B7K/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
+{% upotettu url="https://www.amazon.com/gp/product/B07VPL4B7K/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
 
-{% embed url="https://www.amazon.com/gp/product/B089K47QDN/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
+{% upotettu url="https://www.amazon.com/gp/product/B089K47QDN/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
 
-{% embed url="https://www.amazon.com/gp/product/B0828R25XD/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
+{% upotettu url="https://www.amazon.com/gp/product/B0828R25XD/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
 
-{% embed url="https://www.amazon.com/gp/product/B07864V6CK/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
+{% upotettu url="https://www.amazon.com/gp/product/B07864V6CK/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
 
-{% embed url="https://www.amazon.com/gp/product/B08KY27W6C/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
+{% upotettu url="https://www.amazon.com/gp/product/B08KY27W6C/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
 
-{% embed url="https://www.amazon.com/gp/product/B0863M7C1L/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
+{% upotettu url="https://www.amazon.com/gp/product/B0863M7C1L/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
 
-{% embed url="https://www.amazon.com/gp/product/B01IUTIUEA/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
+{% upotettu url="https://www.amazon.com/gp/product/B01IUTIUEA/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
 
-{% embed url="https://www.amazon.com/gp/product/B086KTGRH1/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
+{% upotettu url="https://www.amazon.com/gp/product/B086KTGRH1/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
 
-{% embed url="https://www.amazon.com/gp/product/B07WMFNHFM/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
+{% upotettu url="https://www.amazon.com/gp/product/B07WMFNHFM/ref=ppx\_yo\_dt\_b\_search\_asin\_title?ie=UTF8&psc=1" %}
 
 
 
