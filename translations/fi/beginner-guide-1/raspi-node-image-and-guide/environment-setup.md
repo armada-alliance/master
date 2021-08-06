@@ -425,7 +425,7 @@ cd $NODE_HOME/scripts
 ./gLiveView.sh
 ```
 
-![](../../.gitbook/assets/pi-node-glive%20%281%29.png)
+![](../../.gitbook/assets/pi-node-glive.png)
 
 ## Prometheus, Node Exporter & Grafana
 
@@ -437,7 +437,7 @@ Voit myös yhdistää Telegram botin Grafanaan, joka varoittaa sinua ongelmista 
 
 {% embed url="https://github.com/prometheus" caption="" %}
 
-![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
+![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.png)
 
 ### Asenna Prometheus & Node Exporter.
 
