@@ -16,38 +16,38 @@ Lataa uusin virallinen julkaisu 64 bittinen Raspbian OS.
 
 **3. Aseta kohdeasema\(SSD tai NVMe usb3-sovittimen avulla\) tietokoneeseesi ja avaa "Raspberry Pi Imager".**
 
-* **Click on "CHOOSE OS"  then "Use custom" choose the Raspbian image file you downloaded.**
-* **Next, click on the "CHOOSE SD" and choose the target drive you inserted into the computers usb port.**
-* **The "WRITE" button will appear and you can click on it to begin writing/verifying the OS onto the target drive.**
-* **Finally, once it has finished the writing/verifying process, you will see a pop-up window saying that the OS was successfully written to the drive, click "CONTINUE" and remove your drive from the computer.**
+* **Klikkaa "CHOOSE OS" ja sitten "Use custom" valitse Raspbian image tiedosto, jonka latasit.**
+* **Seuraavaksi klikkaa "CHOOSE SD" ja etsi SD-kortti, jonka asetit tietokoneeseen.**
+* **Nyt, "WRITE" painike ilmestyy ja voit klikata sitä ja aloittaa OS:n kirjoittamisen/todentamisen SD-kortille.**
+* **Lopuksi, kun kirjoitusprosessi on valmis, näet pop-up ikkunan, joka kertoo että käyttöjärjestelmä on asennettu onnistuneesti SD kortille. Klikkaa "CONTINUE" ja poista SD kortti tietokoneesta.**
 
 ![](../../.gitbook/assets/image-2-.png)
 
-## Boot & Configure
+## Käynnistys & asetukset
 
-Insert the SSD into one of the blue usb3 ports. Then insert the HDMI, Keyboard, Mouse, Ethernet and power supply.
+Aseta SSD yhteen sinisestä usb3-porteista. Seuraavaksi kiinnitetään HDMI kaapeli, näppäimistö, hiiri ja virtalähde.
 
 {% hint style="danger" %}
-The first Pi4's to ship do not boot from USB3 by default, nowadays they do. If your image does not boot the two most common issues are older firmware on your Pi or an incompatible USB3 adaptor.
+Ensimmäiset Pi4:t eivät ole oletusarvoisesti käynnistyneet USB3:sta, mutta nykyään niiden pitäisi. Jos imagesi ei käynnisty kaksi yleisintä ongelmaa ovat vanhemmat laiteohjelmistot Pi:ssäsi tai yhteensopimaton USB3 sovitin.
 {% endhint %}
 
 ![](../../.gitbook/assets/pi4.jpeg)
 
 {% hint style="info" %}
-All we really need to do here is disable auto login & create the ada user with sudo privileges. After we log back in we will delete the default Pi user and configure the server & environment for cardan-node & cardano-cli.
+Kaikki mitä me todella tarvitsee tehdä on poistaa automaattinen kirjautuminen & luoda ada käyttäjä jolla on sudo oikeudet. Kun kirjaudumme takaisin, poistamme oletus Pi käyttäjän ja määrittämme palvelin ympäristön sekä cardan-noden & cardano-clin.
 {% endhint %}
 
-![Open the Raspberry Pi Configuration utility.](../../.gitbook/assets/raspberrypi-configuration.png)
+![Avaa Raspberry Pi Configuration apuohjelma.](../../.gitbook/assets/raspberrypi-configuration.png)
 
-![Set Auto Login to Disabled](../../.gitbook/assets/disable-auto-login.png)
+![Aseta automaattinen kirjautuminen pois käytöstä](../../.gitbook/assets/disable-auto-login.png)
 
-### Create the ada user
+### Luo ada käyttäjä
 
 ```text
 sudo adduser ada && sudo adduser ada sudo
 ```
 
-Go ahead and reboot, log in as your new ada user.
+Sitten vaan uudelleenkäynnistys ja kirjaudu sisään uutena ada käyttäjänä.
 
 ```text
 sudo reboot
