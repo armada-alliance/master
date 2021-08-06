@@ -58,7 +58,7 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-Run the following to modify testnet-config.json and update TraceBlockFetchDecisions to "true"
+Ejecutar lo siguiente para modificar testnet-config.json y actualizar TraceBlockFetchDecisions a "true"
 
 ```bash
 sed -i ${NODE_CONFIG}-config.json \
@@ -66,13 +66,13 @@ sed -i ${NODE_CONFIG}-config.json \
 ```
 
 {% hint style="info" %}
-**Tip for relay nodes**: It's possible to reduce memory and cpu usage by setting "TraceMemPool" to "false" in **mainnet-config.json.** This will turn off mempool data in Grafana and gLiveView.sh.
+**Consejo para nodos Relay**: Es posible reducir el uso de memoria y cpu estableciendo "TraceMemPool" en "false" en **mainnet-config.json.** Esto desactivará los datos de mempool en Grafana y gLiveView.sh.
 {% endhint %}
 
-### Retrieve aarch64 binaries
+### Recuperar binarios aarch64
 
 {% hint style="info" %}
-The **unofficial** cardano-node & cardano-cli binaries available to us are being built by an IOHK engineer in his **spare time**. Please visit the '[Arming Cardano](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w)' Telegram group for more information.
+Los **binarios de cardano** no oficiales & cardano-cli disponibles para nosotros están siendo construidos por un ingeniero de IOHK en su **tiempo libre**. Visita el grupo '[Arming Cardano](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w)' Telegram para más información.
 {% endhint %}
 
 ```bash
@@ -85,25 +85,25 @@ cd $HOME
 ```
 
 {% hint style="warning" %}
-If binaries already exist you will have to confirm overwriting the old ones.
+Si ya existen binarios tendrás que confirmar la sobreescritura de los antiguos.
 {% endhint %}
 
-Confirm binaries are in ada $PATH.
+Confirma que los binarios están en ada $PATH.
 
 ```bash
 cardano-node version
 cardano-cli version
 ```
 
-### Systemd unit files
+### Creación de Systemd
 
-Let us now create the systemd unit file and startup script so systemd can manage cardano-node.
+Vamos a crear ahora el archivo systemd y su script de arranque para que systemd pueda gestionar cardano-node.
 
 ```bash
 nano $HOME/.local/bin/cardano-service
 ```
 
-Paste the following, save & exit.
+Pegar lo siguiente, guardar & salir.
 
 ```bash
 #!/bin/bash
@@ -111,7 +111,7 @@ DIRECTORY=/home/ada/pi-pool
 FILES=/home/ada/pi-pool/files
 PORT=3003
 HOSTADDR=0.0.0.0
-TOPOLOGY=${FILES}/testnet-topology.json
+TOPOLOGY=${FILES}/mainnet-topology.json
 DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
 CONFIG=${FILES}/mainnet-config.json
@@ -125,19 +125,19 @@ cardano-node run +RTS -N4 -RTS \
   --config ${CONFIG}
 ```
 
-Allow execution of our new startup script.
+Permitir la ejecución de nuestro nuevo script de arranque.
 
 ```bash
 chmod +x $HOME/.local/bin/cardano-service
 ```
 
-Open /etc/systemd/system/cardano-node.service.
+Abrir /etc/systemd/system/cardano-node.service
 
 ```bash
 sudo nano /etc/systemd/system/cardano-node.service
 ```
 
-Paste the following, save & exit.
+Pegar lo siguiente, guardar & salir.
 
 ```bash
 # The Cardano Node Service (part of systemd)
@@ -165,13 +165,13 @@ RestartSec=5
 WantedBy= multi-user.target
 ```
 
-Set permissions and reload systemd so it picks up our new service file..
+Establezca los permisos y vuelva a cargar systemd para que recoja nuestro nuevo archivo del servicio.
 
 ```bash
 sudo systemctl daemon-reload
 ```
 
-Let's add a function to the bottom of our .bashrc file to make life a little easier.
+Vamos a añadir una función al fondo de nuestro archivo .bashrc para hacer la vida un poco más fácil.
 
 ```bash
 nano $HOME/.bashrc
@@ -184,22 +184,22 @@ cardano-service() {
 }
 ```
 
-Save & exit.
+Guardar y salir
 
 ```bash
 source $HOME/.bashrc
 ```
 
-What we just did there was add a function to control our cardano-service without having to type out
+Lo que acabamos de hacer fue añadir una función para controlar nuestro cardano-service sin tener que escribir:
 
 > > sudo systemctl enable cardano-node.service sudo systemctl start cardano-node.service sudo systemctl stop cardano-node.service sudo systemctl status cardano-node.service
 
-Now we just have to:
+Ahora solo tenemos que hacer:
 
-* cardano-service enable  \(enables cardano-node.service auto start at boot\)
-* cardano-service start      \(starts cardano-node.service\)
-* cardano-service stop       \(stops cardano-node.service\)
-* cardano-service status    \(shows the status of cardano-node.service\)
+* cardano-service enable \\(habilita cardano-node.service con autoejecución al arrancar\\)
+* cardano-service start      \(inicia cardano-node.service\)
+* cardano-service stop       \(para cardano-node.service\)
+* cardano-service status    \(muestra el estado de cardano-node.service\)
 
 ## ⛓ Syncing the chain ⛓
 
