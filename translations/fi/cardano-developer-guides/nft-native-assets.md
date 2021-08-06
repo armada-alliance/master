@@ -21,7 +21,7 @@ Teimme tämän tutoriaalin käytettäväksi **Raspberry-Pi-ARM** koneiden kanssa
 {% endhint %}
 
 {% hint style="info" %}
-Jos käytät Raspberry Pi konetta [tässä](../beginner-guide-1/raspi-node-image-and-guide/tutorial-2-relaynode.md) on helposti seurattava tutoriaali, jonka teimme Cardano Relay Node:n rakentamiseen ja käynnistämiseen.
+If you are using a Raspberry Pi machine [h]()[ere]() is an easy-to-follow tutorial we made to get a Cardano Relay Node running.
 {% endhint %}
 
 * cardano-node / cardano-cli perustettu paikalliseen koneeseen
