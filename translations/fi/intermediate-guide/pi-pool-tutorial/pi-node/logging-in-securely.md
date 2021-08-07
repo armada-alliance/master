@@ -58,10 +58,10 @@ hostname -I | cut -f1 -d' '
 Lisää äskettäin luotu julkinen avain Pi:n authorized\_keys tiedostoon käyttäen ssh-copy-id.
 
 {% hint style="info" %}
-Tab-näppäimen painaminen on autotäydennys ominaisuus terminaalissa. Ota tavaksi näpäyttää jatkuvasti Tabia, niin asiat sujuvat nopeammin, saat enemmän näkemystä eri vaihtoehtoihin ja vältät suurimman osan kirjoitusvirheistä. In this case ssh-copy-id will give you a list of available public keys if you hit tab a couple times after using the -i switch. Start typing the name of your key and hit tab to auto complete the name of your ed25519 public key.
+Tab-näppäimen painaminen on autotäydennys ominaisuus terminaalissa. Ota tavaksi näpäyttää jatkuvasti Tabia, niin asiat sujuvat nopeammin, saat enemmän näkemystä eri vaihtoehtoihin ja vältät suurimman osan kirjoitusvirheistä. Tässä tapauksessa ssh-copy-id antaa sinulle luettelon käytettävissä olevista julkisista avaimista, jos painat Tabia pari kertaa -i -kytkimen käytön jälkeen. Aloita kirjoittamalla avain nimi ja paina Tab autotäydentäämään oman ed25519 julkisen avaimen nimi.
 {% endhint %}
 
-Enter the default password associated with your img.gz.
+Anna oletussalasana, joka on liitetty img.gz:ään.
 
 {% tabs %}
 {% tab title="Pi-Pool" %}
