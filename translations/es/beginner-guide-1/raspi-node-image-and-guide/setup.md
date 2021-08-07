@@ -4,11 +4,9 @@ description: 'Retrieve Raspbian image, write image to target drive, create user.
 
 # Descargar y Flashear
 
-## Installing the Raspberry Pi Debian "buster" OS
+## Installing the RaspiNode OS
 
-Download the latest official release of 64 bit Raspbian OS.
-
-**1. Download Raspbian 64bit OS image** [**here**](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/2021-05-07-raspios-buster-arm64.zip) **and save it in an accessible location for now on your computer.**
+**1. Download the Armada Alliance's pre-configured Raspbian 64bit OS Cardano-node image** [**here**](https://db.adamantium.online/RasPi-Node.img.gz) **and save it in an accessible location for now on your computer.**
 
 **2. Next, download the Raspberry Pi Imager software that we will use in order to write the OS image onto our target drive. Este software se encuentra en el sitio web** [**Raspberry Pi**](https://www.raspberrypi.org/software/)**. Por favor, descargue la versión correcta para su computadora.**
 
