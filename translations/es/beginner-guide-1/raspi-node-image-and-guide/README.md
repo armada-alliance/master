@@ -3,7 +3,7 @@ description: >-
   This tutorial is for those who want to use the 64 bit Raspberry Pi OS(Raspbian) with a desktop environment.
 ---
 
-# RasPi-Node Image & Guide
+# RasPi-Node🍓 \(NOT READY\)
 
 {% hint style="warning" %}
 **This tutorial is meant to get a single node syncing to the Cardano Testnet! If you wish to build a stake pool on mainnet. Please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **for mainnet.**
