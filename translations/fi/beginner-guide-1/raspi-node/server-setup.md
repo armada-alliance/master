@@ -88,7 +88,7 @@ Tallenna ja käynnistä uudelleen.
 sudo reboot
 ```
 
-## Configure Raspberry Pi OS
+## Määritä Raspberry Pi OS
 
 ### Päivitä järjestelmä
 
