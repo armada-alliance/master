@@ -4,10 +4,10 @@
 
 ## Cardano Node <a id="beginner-guide-1"></a>
 
-* [RasPi-Node🍓 \(NOT READY\)](beginner-guide-1/raspi-node-image-and-guide/README.md)
-  * [Lataa & Polta](beginner-guide-1/raspi-node-image-and-guide/setup.md)
-  * [Palvelimen Asetukset](beginner-guide-1/raspi-node-image-and-guide/server-setup.md)
-  * [Ympäristön Asetukset](beginner-guide-1/raspi-node-image-and-guide/environment-setup.md)
+* [RasPi-Node🍓 \(NOT READY\)](beginner-guide-1/raspi-node/README.md)
+  * [Lataa & Polta](beginner-guide-1/raspi-node/download.md)
+  * [Palvelimen Asetukset](beginner-guide-1/raspi-node/server-setup.md)
+  * [Ympäristön Asetukset](beginner-guide-1/raspi-node/environment-setup.md)
 
 ## Stake Pool -oppaat <a id="intermediate-guide"></a>
 
