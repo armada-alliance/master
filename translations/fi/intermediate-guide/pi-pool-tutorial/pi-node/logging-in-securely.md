@@ -32,33 +32,33 @@ ls -al
 
 ## Käynnistä Pi & kirjaudu sisään
 
-Plug in a network cable connected to your router and boot your new image.
+Kytke verkkokaapeli, joka on kytketty reitittimeesi ja käynnistä uusi image.
 
-### Login credentials
+### Sisäänkirjautumistiedot
 
-| 🍓 Default Pi-Node Credentials | 🦍 Default Ubuntu Credentials |
-|:----------------------------- |:---------------------------- |
-| username = ada                | username = ubuntu            |
-| password = lovelace           | password = ubuntu            |
+| 🍓 Pi-Noden Oletustunnisteet | 🦍 Ubuntun Oletustunnukset |
+|:--------------------------- |:------------------------- |
+| käyttäjätunnus = ada        | käyttäjätunnus = ubuntu   |
+| salasana = lovelace         | salasana = ubuntu         |
 
 {% hint style="Huomaa" %}
-Upon successful login you will be prompted to change your password & login with new credentials.
+Onnistuneen kirjautumisen yhteydessä sinua pyydetään vaihtamaan salasanasi & kirjautumaan uusilla tunnuksilla.
 {% endhint %}
 
-### Obtain IPv4 address
+### Hae IPv4-osoite
 
-Either log into your router and locate the address assigned by it's dhcp server or connect a monitor. Write the Pi's IPv4 address down.
+Joko kirjaudu reitittimeesi ja paikanna dhcp-palvelimen määrittämä osoite, tai yhdistä monitori. Kirjoita Pi:n IPv4 -osoite ylös.
 
 ```bash
 hostname -I | cut -f1 -d' '
 ```
 
-## Copy ssh pub key to new server
+## Kopioi ssh pub-avain uuteen palvelimeen
 
-Add your newly created public key to the Pi's authorized\_keys file using ssh-copy-id.
+Lisää äskettäin luotu julkinen avain Pi:n authorized\_keys tiedostoon käyttäen ssh-copy-id.
 
 {% hint style="info" %}
-Pressing the tab key is an auto complete feature in terminal. Getting into the habit of constantly hitting tab will speed things up, give insight into options available and prevent typos. In this case ssh-copy-id will give you a list of available public keys if you hit tab a couple times after using the -i switch. Start typing the name of your key and hit tab to auto complete the name of your ed25519 public key.
+Tab-näppäimen painaminen on autotäydennys ominaisuus terminaalissa. Ota tavaksi näpäyttää jatkuvasti Tabia, niin asiat sujuvat nopeammin, saat enemmän näkemystä eri vaihtoehtoihin ja vältät suurimman osan kirjoitusvirheistä. In this case ssh-copy-id will give you a list of available public keys if you hit tab a couple times after using the -i switch. Start typing the name of your key and hit tab to auto complete the name of your ed25519 public key.
 {% endhint %}
 
 Enter the default password associated with your img.gz.
