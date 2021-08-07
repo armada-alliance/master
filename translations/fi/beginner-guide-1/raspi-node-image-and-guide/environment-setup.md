@@ -374,7 +374,7 @@ nano relay-topology_pull.sh
 #!/bin/bash
 BLOCKPRODUCING_IP=<BLOCK PRODUCERS PRIVATE IP>
 BLOCKPRODUCING_PORT=3000
-curl -4 -s -o /home/ada/pi-pool/files/testnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1|relays-new.cardano-mainnet.iohk.io:3001:2"
+curl -4 -s -o /home/ada/pi-pool/files/testnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&magic=1097911063&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1"
 ```
 
 Tallenna, sulje ja tee se suoritettavaksi.
