@@ -77,13 +77,13 @@ ssh-copy-id -i <ed25519-keyname.pub> ubuntu@<server-ip>
 {% endtab %}
 {% endtabs %}
 
-ssh should return 1 key added and suggest a command for you to try logging into your new server.
+ssh:n pitäisi palauttaa "1 key added" ja ehdottaa komentoa, jonka avulla voit yrittää kirjautua uudelle palvelimellesi.
 
 > Number of key\(s\) added: 1
 > 
 > Now try logging into the machine, with: **&lt;run this in terminal&gt;**
 
-## Log into your server with ssh
+## Kirjaudu palvelimellesi ssh:n avulla
 
-Run the suggestion and you should be greeted with your remote shell. Congratulations! 🥳
+Suorita ehdotus ja sinun pitäisi päästä etänä palvelimen terminaaliin. Onneksi olkoon! 🥳
 
