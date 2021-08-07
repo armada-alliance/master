@@ -6,7 +6,7 @@ description: How to add adapools.org summary.json info to your Grafana instance.
 
 ## Assumptions
 
-You have set up a Cardano node using one of the tutorials provided [here](pi-pool-tutorial/). If so, you should have the necessary dependencies installed that the steps below utilize. If not, see the apt install [Environment Setup](../beginner-guide-1/raspi-node-image-and-guide/environment-setup.md#install-packages) section of the Pi-Pool Tutorial.
+You have set up a Cardano node using one of the tutorials provided [here](pi-pool-tutorial/). If so, you should have the necessary dependencies installed that the steps below utilize. If not, see the apt install [Environment Setup](../beginner-guide-1/raspi-node/environment-setup.md#install-packages) section of the Pi-Pool Tutorial.
 
 ## Make New Directory
 
