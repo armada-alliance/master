@@ -433,7 +433,7 @@ cd $HOME/pi-pool/scripts
 The schedule is saved to slot\_`number-of-epoch`.json.
 
 {% hint style="warning" %}
-The script calculates the schedule for the current epoch by default. You can run it for the next epoch 1.5 days before. \(Or at 66% into the current epoch.\) Just change the epoch parameter in the script from "current" to "next".
+The script calculates the schedule for the current epoch by default. You can run it for the next epoch 1.5 days before. \(Or at 70% into the current epoch.\) Just change the epoch parameter in the script from "current" to "next".
 {% endhint %}
 
 {% hint style="danger" %}
