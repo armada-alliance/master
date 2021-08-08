@@ -5,7 +5,7 @@ It is best to rename the old **kes.vkey**, **kes.skey** & **node.cert** files be
 {% endhint %}
 
 {% hint style="warning" %}
-You only need **kes.skey**, **node.cert** and **vrf.vkey** on your Core node.
+You only need **kes.skey**, **node.cert** and **vrf.skey** on your Core node.
 {% endhint %}
 
 Determine KES period by querying current slot number divided by slots per KES period found in genesis file.
