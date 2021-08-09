@@ -4,6 +4,8 @@ description: Install packages needed to run cardano-node and configure our envir
 
 # Configuration de l'environnement
 
+![](../../.gitbook/assets/download-10-%20%282%29.jpeg)
+
 ## Install packages
 
 Install the packages we will need.
@@ -38,6 +40,8 @@ mkdir $HOME/tmp
 Changes to this file require reloading .bashrc or logging out then back in.
 {% endhint %}
 
+{% tabs %}
+{% tab title="Testnet" %}
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
 echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
@@ -47,6 +51,20 @@ echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/car
 echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
+{% endtab %}
+
+{% tab title="Mainnet" %}
+```bash
+echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
+echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
+echo export NODE_CONFIG=mainnet >> $HOME/.bashrc
+echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.bashrc
+echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.bashrc
+echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
+source $HOME/.bashrc
+```
+{% endtab %}
+{% endtabs %}
 
 ### Retrieve node files
 
@@ -105,6 +123,8 @@ nano $HOME/.local/bin/cardano-service
 
 Paste the following, save & exit.
 
+{% tabs %}
+{% tab title="Testnet" %}
 ```bash
 #!/bin/bash
 DIRECTORY=/home/ada/pi-pool
@@ -114,9 +134,9 @@ HOSTADDR=0.0.0.0
 TOPOLOGY=${FILES}/testnet-topology.json
 DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
-CONFIG=${FILES}/mainnet-config.json
+CONFIG=${FILES}/testnet-config.json
 ## +RTS -N4 -RTS = Multicore(4)
-cardano-node run +RTS -N4 -RTS \
+cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
@@ -124,6 +144,30 @@ cardano-node run +RTS -N4 -RTS \
   --port ${PORT} \
   --config ${CONFIG}
 ```
+{% endtab %}
+
+{% tab title="Mainnet" %}
+```bash
+#!/bin/bash
+DIRECTORY=/home/ada/pi-pool
+FILES=/home/ada/pi-pool/files
+PORT=3003
+HOSTADDR=0.0.0.0
+TOPOLOGY=${FILES}/mainnet-topology.json
+DB_PATH=${DIRECTORY}/db
+SOCKET_PATH=${DIRECTORY}/db/socket
+CONFIG=${FILES}/mainnet-config.json
+## +RTS -N4 -RTS = Multicore(4)
+cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
+  --topology ${TOPOLOGY} \
+  --database-path ${DB_PATH} \
+  --socket-path ${SOCKET_PATH} \
+  --host-addr ${HOSTADDR} \
+  --port ${PORT} \
+  --config ${CONFIG}
+```
+{% endtab %}
+{% endtabs %}
 
 Allow execution of our new startup script.
 
@@ -425,7 +469,7 @@ cd $NODE_HOME/scripts
 ./gLiveView.sh
 ```
 
-![](../../.gitbook/assets/pi-node-glive.png)
+![](../../.gitbook/assets/pi-node-glive%20%282%29.png)
 
 ## Prometheus, Node Exporter & Grafana
 
@@ -437,7 +481,7 @@ You can connect a Telegram bot to Grafana which can alert you of problems with t
 
 {% embed url="https://github.com/prometheus" caption="" %}
 
-![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.png)
+![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%282%29.png)
 
 ### Install Prometheus & Node Exporter.
 
@@ -608,7 +652,7 @@ Save the dashboard json files to your local machine.
 
 In the left hand vertical menu go to **Dashboards** &gt; **Manage** and click on **Import**. Select the file you just downloaded/created and save. Head back to **Dashboards** &gt; **Manage** and click on your new dashboard.
 
-![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%282%29.png)
+![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
 ### Configure poolDataLive
 
