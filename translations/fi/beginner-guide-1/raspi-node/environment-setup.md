@@ -4,6 +4,8 @@ description: Asenna tarvittavat paketit, joita tarvitaan cardano-noden ylläpit�
 
 # Ympäristön Asetukset
 
+![](../../.gitbook/assets/download-10-%20%282%29.jpeg)
+
 ## Asenna paketit
 
 Asennetaan tarvittavat paketit.
@@ -38,6 +40,8 @@ mkdir $HOME/tmp
 Muutokset tähän tiedostoon vaativat .bashrc:n uudelleenlataamista tai uloskirjautumista ja sitten uuden sisäänkirjautumisen.
 {% endhint %}
 
+{% tabs %}
+{% tab title="Testnet" %}
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
 echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
@@ -47,6 +51,20 @@ echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/car
 echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
+{% endtab %}
+
+{% tab title="Mainnet" %}
+```bash
+echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
+echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
+echo export NODE_CONFIG=mainnet >> $HOME/.bashrc
+echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.bashrc
+echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.bashrc
+echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
+source $HOME/.bashrc
+```
+{% endtab %}
+{% endtabs %}
 
 ### Nouda palvelintiedostot
 
@@ -58,7 +76,7 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-Suorita seuraavat käskyt muokataksesi testnet-config.json tiedostoa ja päivittääksesi TraceBlockFetchDecisions arvoon "true"
+Run the following to modify testnet-config.json and update TraceBlockFetchDecisions to "true"
 
 ```bash
 sed -i ${NODE_CONFIG}-config.json \
@@ -105,6 +123,30 @@ nano $HOME/.local/bin/cardano-service
 
 Liitä seuraavat, tallenna & sulje nano.
 
+{% tabs %}
+{% tab title="Testnet" %}
+```bash
+#!/bin/bash
+DIRECTORY=/home/ada/pi-pool
+FILES=/home/ada/pi-pool/files
+PORT=3003
+HOSTADDR=0.0.0.0
+TOPOLOGY=${FILES}/testnet-topology.json
+DB_PATH=${DIRECTORY}/db
+SOCKET_PATH=${DIRECTORY}/db/socket
+CONFIG=${FILES}/testnet-config.json
+## +RTS -N4 -RTS = Multicore(4)
+cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
+  --topology ${TOPOLOGY} \
+  --database-path ${DB_PATH} \
+  --socket-path ${SOCKET_PATH} \
+  --host-addr ${HOSTADDR} \
+  --port ${PORT} \
+  --config ${CONFIG}
+```
+{% endtab %}
+
+{% tab title="Mainnet" %}
 ```bash
 #!/bin/bash
 DIRECTORY=/home/ada/pi-pool
@@ -116,7 +158,7 @@ DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
 CONFIG=${FILES}/mainnet-config.json
 ## +RTS -N4 -RTS = Multicore(4)
-cardano-node run +RTS -N4 -RTS \
+cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
@@ -124,6 +166,8 @@ cardano-node run +RTS -N4 -RTS \
   --port ${PORT} \
   --config ${CONFIG}
 ```
+{% endtab %}
+{% endtabs %}
 
 Salli uuden käynnistyskomentosarjan suorittaminen.
 
@@ -159,7 +203,7 @@ TimeoutStopSec=3
 LimitNOFILE=32768
 Restart=always
 RestartSec=5
-EnvironmentFile=-/home/ada/.pienv
+#EnvironmentFile=-/home/ada/.pienv
 
 [Install]
 WantedBy= multi-user.target
@@ -304,7 +348,7 @@ CNODE_HOSTNAME="CHANGE ME"  # optional. must resolve to the IP you are requestin
 CNODE_BIN="/home/ada/.local/bin"
 CNODE_HOME="/home/ada/pi-pool"
 LOG_DIR="${CNODE_HOME}/logs"
-GENESIS_JSON="${CNODE_HOME}/files/mainnet-shelley-genesis.json"
+GENESIS_JSON="${CNODE_HOME}/files/testnet-shelley-genesis.json"
 NETWORKID=$(jq -r .networkId $GENESIS_JSON)
 CNODE_VALENCY=1   # optional for multi-IP hostnames
 NWMAGIC=$(jq -r .networkMagic < $GENESIS_JSON)
@@ -352,7 +396,7 @@ Luo cron työ, joka suorittaa skriptin tunnin välein.
 crontab -e
 ```
 
-Lisää tämä tiedoston loppuun, tallenna & poistu.
+Add the following to the bottom, save & exit.
 
 {% hint style="info" %}
 Pi-node-imagessassa tämä cron merkintä on oletuksena pois päältä. Voit ottaa sen käyttöön poistamalla \#.
@@ -374,7 +418,7 @@ nano relay-topology_pull.sh
 #!/bin/bash
 BLOCKPRODUCING_IP=<BLOCK PRODUCERS PRIVATE IP>
 BLOCKPRODUCING_PORT=3000
-curl -4 -s -o /home/ada/pi-pool/files/testnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1"
+curl -4 -s -o /home/ada/pi-pool/files/testnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&magic=1097911063&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1"
 ```
 
 Tallenna, sulje ja tee se suoritettavaksi.
@@ -425,7 +469,7 @@ cd $NODE_HOME/scripts
 ./gLiveView.sh
 ```
 
-![](../../.gitbook/assets/pi-node-glive.png)
+![](../../.gitbook/assets/pi-node-glive%20%282%29.png)
 
 ## Prometheus, Node Exporter & Grafana
 
@@ -437,7 +481,7 @@ Voit myös yhdistää Telegram botin Grafanaan, joka varoittaa sinua ongelmista 
 
 {% embed url="https://github.com/prometheus" caption="" %}
 
-![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.png)
+![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%282%29.png)
 
 ### Asenna Prometheus & Node Exporter.
 
@@ -594,11 +638,11 @@ Tässä vaiheessa saatat haluta käynnistää cardano-servicen ja synkronoida no
 
 Avaa paikallisessa koneessasi selaimesi ja mene osoitteeseen http://&lt;Pi-Node's private ip&gt;:5000
 
-Aseta uusi salasana. Oletus käyttäjätunnus ja salasana on **admin:admin**.
+Kirjaudu sisään ja aseta uusi salasana. Oletus käyttäjätunnus ja salasana on **admin:admin**.
 
 #### Määritä tietolähde
 
-Vasemmalla kädellä pystysuorassa valikossa siirry **Configure** &gt; **Datasources** ja napsauta **Add data source**. Valitse Prometheus. Syötä [http://localhost:9090](http://localhost:9090) kaikki harmaa voidaan jättää oletusarvoiseksi. Alareunassa save & test. Sinun pitäisi saada vihreä "Data source is working", jos kardano-monitor on päällä. Jos jostain syystä nämä palvelut eivät käynnistyneet, käytä komentoa **cardano-service restart**.
+Vasemman puolen pystysuorassa valikossa siirry **Configure** &gt; **Datasources** ja napsauta **Add data source**. Valitse Prometheus. Syötä [http://localhost:9090](http://localhost:9090) kaikki harmaa voidaan jättää oletusarvoiseksi. Alareunassa save & test. Sinun pitäisi saada vihreä "Data source is working", jos kardano-monitor on päällä. Jos jostain syystä nämä palvelut eivät käynnistyneet, käytä komentoa **cardano-service restart**.
 
 #### Tuo kojelaudat
 
@@ -606,9 +650,9 @@ Tallenna kojelaudan json tiedostot paikalliseen koneeseen.
 
 {% embed url="https://github.com/armada-alliance/dashboards" caption="" %}
 
-Vasemmalla kädellä pystysuorassa valikossa siirry **Configure** &gt; **Datasources** ja napsauta **Add data source**. Valitse tiedosto, jonka juuri latasit tai loit ja tallenna. Suuntaa takaisin **Dashboards** &gt; **Manage** ja klikkaa uutta kojelautaasi.
+Vasemmalla puolen valikossa mene **Dashboards** &gt; **Manage** ja klikkaa **Import**. Valitse tiedosto, jonka juuri latasit tai loit ja tallenna. Suuntaa takaisin **Dashboards** &gt; **Manage** ja klikkaa uutta kojelautaasi.
 
-![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%282%29.png)
+![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
 ### Määritä poolDataLive
 
@@ -634,7 +678,7 @@ sudo tail -f /var/log/syslog
 
 Asetetaan Grafana Nginxin taakse itse allekirjoitetulla\(snakeoil\) sertifikaatilla. Sertifikaatti luotiin, kun asensimme ssl-cert paketin.
 
-Voit saada varoituksen selaimestasi. Tämä johtuu siitä, että ca-sertifikaatit eivät voi seurata luottamusketjua luotettuun \(keskitetty\) lähteeseen. Yhteys on kuitenkin salattu, ja se suojaa salasanojasi, jotka liitelevät pelkkänä tekstinä.
+Voit saada varoituksen selaimestasi. Tämä johtuu siitä, että ca-sertifikaatit eivät voi seurata luottamusketjua luotettuun \(keskitetty\) lähteeseen. Yhteys on kuitenkin salattu, ja se suojaa salasanojasi, jotka liitelevät bittiavaruudessa pelkkänä tekstinä.
 
 ```bash
 sudo nano /etc/nginx/sites-available/default
@@ -657,13 +701,13 @@ server {
         #listen [::]:443 ssl default_server;
         #
         # Note: You should disable gzip for SSL traffic.
-        # See: https://bugs.debian.org/773332
+        # Katso: https://bugs.debian.org/773332
         #
-        # Read up on ssl_ciphers to ensure a secure configuration.
-        # See: https://bugs.debian.org/765782
+        # Lukea ssl_ciphers varmistaaksesi turvallisen konfiguraation.
+        # Katso: https://bugs.debian.org/765782
         #
-        # Self signed certs generated by the ssl-cert package
-        # Don't use them in a production server!
+        # Itse allekirjoitetut sertit luotu ssl-cert paketti
+        # Älä käytä niitä tuotantopalvelimella!
         #
         include snippets/snakeoil.conf;
 
@@ -684,9 +728,9 @@ sudo nginx -t
 sudo service nginx restart
 ```
 
-Voit nyt käydä pi-noden ip osoitteessa ilman portin määrittelyä, yhteys päivitetään SSL / TLS ja saat pelottavan viesti\(ei oikeastaan pelottava ollenkaan\). Jatka kohti kojelautaasi.
+Voit nyt käydä pi-noden ip osoitteessa ilman portin määrittelyä, yhteys päivitetään SSL / TLS ja saat pelottavan viesti\(ei oikeasti pelottava ollenkaan\). Jatka kohti kojelautaasi.
 
 ![](../../.gitbook/assets/snakeoil.png)
 
-Nyt sinulla on pi-node, jossa on työkaluja joilla rakentaa stake pool seuraavien sivujen avulla. Tsemppiä projektiisi ja olet tervetullut liittymään [armada-allianssiin](https://armada-alliance.com), yhdessä olemme vahvempia!
+Nyt sinulla on pi-node, jossa on työkaluja, joilla voit rakentaa stake poolin seuraavien sivujen ohjeiden ja tutoriaalien avulla. Tsemppiä projektiisi ja olet tervetullut liittymään [armada-allianssiin](https://armada-alliance.com), yhdessä olemme vahvempia!
 
