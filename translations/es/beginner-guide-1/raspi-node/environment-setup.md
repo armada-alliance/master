@@ -4,9 +4,11 @@ description: Install packages needed to run cardano-node and configure our envir
 
 # Configuración del entorno
 
+![](../../.gitbook/assets/download-10-%20%282%29.jpeg)
+
 ## Instalar paquetes
 
-Instala los paquetes que necesitaremos.
+Install the packages we will need.
 
 ```bash
 sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
@@ -17,7 +19,7 @@ sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
 
 ## Entorno
 
-Crear algunos directorios.
+Make some directories.
 
 ```bash
 mkdir -p $HOME/.local/bin
@@ -31,13 +33,15 @@ mkdir $HOME/tmp
 ### Crear variables de bash & añade ~/.local/bin a nuestro $PATH🏃
 
 {% hint style="info" %}
-[Variables de entorno en Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
+[Environment Variables in Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
 {% endhint %}
 
 {% hint style="warning" %}
-Los cambios a este archivo requieren recargar .bashrc o cerrar sesión y volver a entrar.
+Changes to this file require reloading .bashrc or logging out then back in.
 {% endhint %}
 
+{% tabs %}
+{% tab title="Testnet" %}
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
 echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
@@ -47,6 +51,20 @@ echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/car
 echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
+{% endtab %}
+
+{% tab title="Mainnet" %}
+```bash
+echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
+echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
+echo export NODE_CONFIG=mainnet >> $HOME/.bashrc
+echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.bashrc
+echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.bashrc
+echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
+source $HOME/.bashrc
+```
+{% endtab %}
+{% endtabs %}
 
 ### Recuperar archivos del nodo
 
@@ -58,7 +76,7 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-Ejecutar lo siguiente para modificar testnet-config.json y actualizar TraceBlockFetchDecisions a "true"
+Run the following to modify testnet-config.json and update TraceBlockFetchDecisions to "true"
 
 ```bash
 sed -i ${NODE_CONFIG}-config.json \
@@ -66,13 +84,13 @@ sed -i ${NODE_CONFIG}-config.json \
 ```
 
 {% hint style="info" %}
-**Consejo para nodos Relay**: Es posible reducir el uso de memoria y cpu estableciendo "TraceMemPool" en "false" en **mainnet-config.json.** Esto desactivará los datos de mempool en Grafana y gLiveView.sh.
+**Tip for relay nodes**: It's possible to reduce memory and cpu usage by setting "TraceMemPool" to "false" in **mainnet-config.json.** This will turn off mempool data in Grafana and gLiveView.sh.
 {% endhint %}
 
 ### Recuperar binarios aarch64
 
 {% hint style="info" %}
-Los **binarios de cardano** no oficiales & cardano-cli disponibles para nosotros están siendo construidos por un ingeniero de IOHK en su **tiempo libre**. Visita el grupo '[Arming Cardano](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w)' Telegram para más información.
+The **unofficial** cardano-node & cardano-cli binaries available to us are being built by an IOHK engineer in his **spare time**. Please visit the '[Arming Cardano](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w)' Telegram group for more information.
 {% endhint %}
 
 ```bash
@@ -85,10 +103,10 @@ cd $HOME
 ```
 
 {% hint style="warning" %}
-Si ya existen binarios tendrás que confirmar la sobreescritura de los antiguos.
+If binaries already exist you will have to confirm overwriting the old ones.
 {% endhint %}
 
-Confirma que los binarios están en ada $PATH.
+Confirm binaries are in ada $PATH.
 
 ```bash
 cardano-node version
@@ -97,14 +115,38 @@ cardano-cli version
 
 ### Creación de Systemd
 
-Vamos a crear ahora el archivo systemd y su script de arranque para que systemd pueda gestionar cardano-node.
+Let us now create the systemd unit file and startup script so systemd can manage cardano-node.
 
 ```bash
 nano $HOME/.local/bin/cardano-service
 ```
 
-Pegar lo siguiente, guardar & salir.
+Paste the following, save & exit.
 
+{% tabs %}
+{% tab title="Testnet" %}
+```bash
+#!/bin/bash
+DIRECTORY=/home/ada/pi-pool
+FILES=/home/ada/pi-pool/files
+PORT=3003
+HOSTADDR=0.0.0.0
+TOPOLOGY=${FILES}/testnet-topology.json
+DB_PATH=${DIRECTORY}/db
+SOCKET_PATH=${DIRECTORY}/db/socket
+CONFIG=${FILES}/testnet-config.json
+## +RTS -N4 -RTS = Multicore(4)
+cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
+  --topology ${TOPOLOGY} \
+  --database-path ${DB_PATH} \
+  --socket-path ${SOCKET_PATH} \
+  --host-addr ${HOSTADDR} \
+  --port ${PORT} \
+  --config ${CONFIG}
+```
+{% endtab %}
+
+{% tab title="Mainnet" %}
 ```bash
 #!/bin/bash
 DIRECTORY=/home/ada/pi-pool
@@ -116,7 +158,7 @@ DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
 CONFIG=${FILES}/mainnet-config.json
 ## +RTS -N4 -RTS = Multicore(4)
-cardano-node run +RTS -N4 -RTS \
+cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
@@ -124,20 +166,22 @@ cardano-node run +RTS -N4 -RTS \
   --port ${PORT} \
   --config ${CONFIG}
 ```
+{% endtab %}
+{% endtabs %}
 
-Permitir la ejecución de nuestro nuevo script de arranque.
+Allow execution of our new startup script.
 
 ```bash
 chmod +x $HOME/.local/bin/cardano-service
 ```
 
-Abrir /etc/systemd/system/cardano-node.service
+Open /etc/systemd/system/cardano-node.service.
 
 ```bash
 sudo nano /etc/systemd/system/cardano-node.service
 ```
 
-Pegar lo siguiente, guardar & salir.
+Paste the following, save & exit.
 
 ```bash
 # The Cardano Node Service (part of systemd)
@@ -165,13 +209,13 @@ RestartSec=5
 WantedBy= multi-user.target
 ```
 
-Establezca los permisos y vuelva a cargar systemd para que recoja nuestro nuevo archivo del servicio.
+Set permissions and reload systemd so it picks up our new service file..
 
 ```bash
 sudo systemctl daemon-reload
 ```
 
-Vamos a añadir una función al fondo de nuestro archivo .bashrc para hacer la vida un poco más fácil.
+Let's add a function to the bottom of our .bashrc file to make life a little easier.
 
 ```bash
 nano $HOME/.bashrc
@@ -184,17 +228,17 @@ cardano-service() {
 }
 ```
 
-Guardar y salir
+Save & exit.
 
 ```bash
 source $HOME/.bashrc
 ```
 
-Lo que acabamos de hacer fue añadir una función para controlar nuestro cardano-service sin tener que escribir:
+What we just did there was add a function to control our cardano-service without having to type out
 
 > > sudo systemctl enable cardano-node.service sudo systemctl start cardano-node.service sudo systemctl stop cardano-node.service sudo systemctl status cardano-node.service
 
-Ahora solo tenemos que hacer:
+Now we just have to:
 
 * cardano-service enable \\(habilita cardano-node.service con autoejecución al arrancar\\)
 * cardano-service start      \(inicia cardano-node.service\)
@@ -203,7 +247,7 @@ Ahora solo tenemos que hacer:
 
 ## ⛓ Sincronización de la cadena ⛓
 
-Ahora está listo para iniciar cardano-node. Doing so will start the process of 'syncing the chain'. This is going to take about 30 hours and the db folder is about 8.5GB in size right now. We used to have to sync it to one node and copy it from that node to our new ones to save time.
+You are now ready to start cardano-node. Doing so will start the process of 'syncing the chain'. This is going to take about 30 hours and the db folder is about 8.5GB in size right now. We used to have to sync it to one node and copy it from that node to our new ones to save time.
 
 ### Download snapshot
 
@@ -425,7 +469,7 @@ cd $NODE_HOME/scripts
 ./gLiveView.sh
 ```
 
-![](../../.gitbook/assets/pi-node-glive.png)
+![](../../.gitbook/assets/pi-node-glive%20%282%29.png)
 
 ## Prometheus, Node Exporter & Grafana
 
@@ -437,7 +481,7 @@ You can connect a Telegram bot to Grafana which can alert you of problems with t
 
 {% embed url="https://github.com/prometheus" caption="" %}
 
-![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.png)
+![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%282%29.png)
 
 ### Install Prometheus & Node Exporter.
 
@@ -608,7 +652,7 @@ Save the dashboard json files to your local machine.
 
 In the left hand vertical menu go to **Dashboards** &gt; **Manage** and click on **Import**. Select the file you just downloaded/created and save. Head back to **Dashboards** &gt; **Manage** and click on your new dashboard.
 
-![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%282%29.png)
+![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
 ### Configure poolDataLive
 
