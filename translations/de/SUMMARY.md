@@ -4,7 +4,7 @@
 
 ## Cardano Node <a id="beginner-guide-1"></a>
 
-* [RasPi-Node🍓 \(NOT READY\)](beginner-guide-1/raspi-node/README.md)
+* [RasPi-Node🍓](beginner-guide-1/raspi-node/README.md)
   * [Download & Flash](beginner-guide-1/raspi-node/download.md)
   * [Server Setup](beginner-guide-1/raspi-node/server-setup.md)
   * [Environment Setup](beginner-guide-1/raspi-node/environment-setup.md)
