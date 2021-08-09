@@ -614,7 +614,7 @@ Tallenna kojelaudan json tiedostot paikalliseen koneeseen.
 
 Vasemmalla puolen valikossa mene **Dashboards** &gt; **Manage** ja klikkaa **Import**. Valitse tiedosto, jonka juuri latasit tai loit ja tallenna. Suuntaa takaisin **Dashboards** &gt; **Manage** ja klikkaa uutta kojelautaasi.
 
-![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
+![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.png)
 
 ### Määritä poolDataLive
 
