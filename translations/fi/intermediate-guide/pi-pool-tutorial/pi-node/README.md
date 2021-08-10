@@ -7,36 +7,36 @@ description: Quickly bootstrap a synced configured node in a hour!
 {% hint style="info" %}
 Ketjun lataaminen kestää noin 15 minuuttia ja lisäksi 45 minuuttia kun node synkronoidaan ketjun kärkeen. Et voi tehdä paljoakaan ennen kuin node on synkronoitu lohkoketjun kärkeen asti.
 
-Uudelleenkäynnistyksen jälkeen voi kestää 5-50 minuuttia synkronoida ketju uudlleen riippuen siitä, miten node suljettiin tai käynnistettiin uudelleen. Tarkista htopilla, onko prosessi käynnissä. If it is, use gLiveView.sh or go for walk. It will sync and the socket will be created.
+Uudelleenkäynnistyksen jälkeen voi kestää 5-50 minuuttia synkronoida ketju uudlleen riippuen siitä, miten node suljettiin tai käynnistettiin uudelleen. Tarkista htopilla, onko prosessi käynnissä. Jos se on, käytä gLiveView.sh -skriptiä monitorointiin tai mene kävelylle. Node synkronoituu ja socket luodaan.
 
-It is best to just leave it running. 🏃♀
+On parasta vain jättää se käyntiin. 🏃♀
 {% endhint %}
 
-## Quick Start
+## Pikaohje
 
-### **1. Download and flash the** [**Pi-Node.img.gz**](https://db.adamantium.online/Pi-Node.img.gz)**.**
+### **1. Lataa ja asenna** [**Pi-Node.img.gz**](https://db.adamantium.online/Pi-Node.img.gz)**.**
 
-### 2. ssh into the server.
+### 2. Ota ssh-yhteys palvelimeen.
 
 ```bash
 ssh ada@<pi-node private IPv4>
 ```
 
-Default credentials = **ada:lovelace**
+Oletustiedot = **ada:lovelace**
 
-### 3. Enter the pi-pool folder.
+### 3. Mene pi-poolin kansioon.
 
 ```bash
 cd /home/ada/pi-pool
 ```
 
-### 4. Download database snapshot.
+### 4. Lataa tietokannan tilannekuva.
 
 ```bash
 wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/
 ```
 
-### 5. Enable & start the cardano-service.
+### 5. Ota käyttöön & aloita cardano-palvelu.
 
 {% hint style="Huomaa" %}
 Wait for wget to finish downloading the chain before starting the cardano-service. While you are waiting update Ubuntu by entering the server from another terminal.
