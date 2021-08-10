@@ -2,12 +2,12 @@
 description: Quickly bootstrap a synced configured node in a hour!
 ---
 
-# Pi-Node \(quick start\)
+# Pi-Node \(pikaopas\)
 
 {% hint style="info" %}
-It will take about 15 minutes to download the chain and another 45 to sync to the tip. You will not be able to do much until your node has synced with the tip of the block chain.
+Ketjun lataaminen kestää noin 15 minuuttia ja lisäksi 45 minuuttia kun node synkronoidaan ketjun kärkeen. Et voi tehdä paljoakaan ennen kuin node on synkronoitu lohkoketjun kärkeen asti.
 
-It can take anywhere from 5 to 50 minutes to sync after a reboot depending how the node was shut down or restarted. Check if process is running with htop. If it is, use gLiveView.sh or go for walk. It will sync and the socket will be created.
+Uudelleenkäynnistyksen jälkeen voi kestää 5-50 minuuttia synkronoida ketju uudlleen riippuen siitä, miten node suljettiin tai käynnistettiin uudelleen. Tarkista htopilla, onko prosessi käynnissä. If it is, use gLiveView.sh or go for walk. It will sync and the socket will be created.
 
 It is best to just leave it running. 🏃♀
 {% endhint %}
