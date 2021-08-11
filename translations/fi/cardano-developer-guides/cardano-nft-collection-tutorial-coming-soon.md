@@ -479,14 +479,14 @@ const metadata = {
     }
 }
 
-const txOut_amount = assets.reduce((result, asset) => {
+const txOut_value = assets.reduce((result, asset) => {
 
     const ASSET_ID = POLICY_ID + "." + asset.id
     result[ASSET_ID] = 1
     return result
 
 }, {
-    ...wallet.balance().amount
+    ...wallet.balance().value
 })
 
 const mint_actions = assets.map(asset => ({ action: "mint", amount: 1, token: POLICY_ID + "." + asset.id }))
@@ -496,10 +496,13 @@ const tx = {
     txOut: [
         {
             address: wallet.paymentAddr,
-            amount: txOut_amount
+            amount: txOut_value
         }
     ],
-    mint: mint_actions,
+     mint: {
+        actions: mint_actions,
+        script: [mintScript]
+    },
     metadata,
     witnessCount: 2
 }
@@ -512,7 +515,7 @@ const buildTransaction = (tx) => {
         txBody: raw
     })
 
-    tx.txOut[0].amount.lovelace -= fee
+    tx.txOut[0].value.lovelace -= fee
 
     return cardano.transactionBuildRaw({ ...tx, fee })
 }
@@ -523,9 +526,8 @@ const raw = buildTransaction(tx)
 
 const signTransaction = (wallet, tx, script) => {
 
-    return cardano.transactionSign({
+     return cardano.transactionSign({
         signingKeys: [wallet.payment.skey, wallet.payment.skey],
-        scriptFile: script,
         txBody: tx
     })
 }
