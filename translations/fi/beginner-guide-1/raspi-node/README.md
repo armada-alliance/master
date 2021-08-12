@@ -3,7 +3,7 @@ description: >-
   Tämä tutoriaali on niille, jotka haluavat käyttää 64 bittistä Raspberry Pi OS(Raspbian) käyttöjärjestelmää työpöytäympäristössä.
 ---
 
-# RasPi-Node🍓
+# Pi-Node🍓
 
 {% hint style="Huomaa" %}
 **Tämän tutoriaalin tarkoitus on saada yksi node synkronoitua Cardano lohkoketjuun! Jos haluat rakentaa stake poolin mainnettiin. Ole hyvä ja käytä**[ **keskitason oppaitamme**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **mainnettia varten.**
