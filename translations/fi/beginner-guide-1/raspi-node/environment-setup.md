@@ -76,7 +76,7 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-Run the following to modify testnet-config.json and update TraceBlockFetchDecisions to "true"
+Suorita seuraavat käskyt muokataksesi testnet-config.json tiedostoa ja päivittääksesi TraceBlockFetchDecisions arvoon "true"
 
 ```bash
 sed -i ${NODE_CONFIG}-config.json \
@@ -131,12 +131,12 @@ DIRECTORY=/home/ada/pi-pool
 FILES=/home/ada/pi-pool/files
 PORT=3003
 HOSTADDR=0.0.0.0
-TOPOLOGY=${FILES}/testnet-topology.json
+TOPOLOGY=${FILES}/mainnet-topology.json
 DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
-CONFIG=${FILES}/testnet-config.json
+CONFIG=${FILES}/mainnet-config.json
 ## +RTS -N4 -RTS = Multicore(4)
-cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
+cardano-node run +RTS -N4 -disable-delayed-os-memory-return -qg -qb -c -RTS run \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
@@ -158,7 +158,7 @@ DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
 CONFIG=${FILES}/mainnet-config.json
 ## +RTS -N4 -RTS = Multicore(4)
-cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
+cardano-node +RTS -N4 -disable-delayed-os-memory-return -qg -qb -c -RTS run \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
@@ -203,7 +203,7 @@ TimeoutStopSec=3
 LimitNOFILE=32768
 Restart=always
 RestartSec=5
-#EnvironmentFile=-/home/ada/.pienv
+EnvironmentFile=-/home/ada/.pienv
 
 [Install]
 WantedBy= multi-user.target
@@ -348,7 +348,7 @@ CNODE_HOSTNAME="CHANGE ME"  # optional. must resolve to the IP you are requestin
 CNODE_BIN="/home/ada/.local/bin"
 CNODE_HOME="/home/ada/pi-pool"
 LOG_DIR="${CNODE_HOME}/logs"
-GENESIS_JSON="${CNODE_HOME}/files/testnet-shelley-genesis.json"
+GENESIS_JSON="${CNODE_HOME}/files/mainnet-shelley-genesis.json"
 NETWORKID=$(jq -r .networkId $GENESIS_JSON)
 CNODE_VALENCY=1   # optional for multi-IP hostnames
 NWMAGIC=$(jq -r .networkMagic < $GENESIS_JSON)
@@ -396,7 +396,7 @@ Luo cron työ, joka suorittaa skriptin tunnin välein.
 crontab -e
 ```
 
-Add the following to the bottom, save & exit.
+Lisää seuraava tiedoston loppuun omalle riville, tallenna & sulje nano.
 
 {% hint style="info" %}
 Pi-node-imagessassa tämä cron merkintä on oletuksena pois päältä. Voit ottaa sen käyttöön poistamalla \#.
@@ -418,7 +418,7 @@ nano relay-topology_pull.sh
 #!/bin/bash
 BLOCKPRODUCING_IP=<BLOCK PRODUCERS PRIVATE IP>
 BLOCKPRODUCING_PORT=3000
-curl -4 -s -o /home/ada/pi-pool/files/testnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&magic=1097911063&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1"
+curl -4 -s -o /home/ada/pi-pool/files/testnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1"
 ```
 
 Tallenna, sulje ja tee se suoritettavaksi.
@@ -518,8 +518,8 @@ Sisennyksen on oltava oikea YAML muoto tai Prometheus ei käynnisty.
 global:
   scrape_interval:     15s # By default, scrape targets every 15 seconds.
 
-  # Attach these labels to any time series or alerts when communicating with
-  # external systems (federation, remote storage, Alertmanager).
+  # Liitä nämä tunnisteet mihin tahansa aikasarjaan tai hälytyksiin kommunikoidessaan
+  # ulkoisen järjestelmän kanssa (federation, etävarastointi, Alertmanager).
   external_labels:
     monitor: 'codelab-monitor'
 
