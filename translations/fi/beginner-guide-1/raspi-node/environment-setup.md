@@ -4,7 +4,7 @@ description: Asenna tarvittavat paketit, joita tarvitaan cardano-noden ylläpit�
 
 # Ympäristön Asetukset
 
-![](../../.gitbook/assets/download-10-%20%282%29.jpeg)
+![](../../.gitbook/assets/download-10-%20%281%29%20%282%29.jpeg)
 
 ## Asenna paketit
 
@@ -263,7 +263,7 @@ cardano-service start
 cardano-service status
 ```
 
-Muussa tapauksessa varmista, että palvelimesi **ei ole** käynnissä, poista db-kansio jos se on olemassa ja lataa db/.
+Otherwise, be sure your node is **not** running & delete the db folder if it exists and download db.
 
 ```bash
 cardano-service stop
@@ -271,11 +271,21 @@ cd $NODE_HOME
 rm -r db/
 ```
 
-Mainnet lohketjua varten.
+Download the DB snapshot.
 
+{% tabs %}
+{% tab title="Testnet" %}
+```bash
+wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online/db/
+```
+{% endtab %}
+
+{% tab title="Mainnet" %}
 ```bash
 wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/
 ```
+{% endtab %}
+{% endtabs %}
 
 Kun wget valmistuu, ota käyttöön cardano-node & käynnistä se.
 
@@ -287,7 +297,7 @@ cardano-service status
 
 ## gLiveView.sh
 
-Guild operaattoreiden skripteissä on pari hyödyllistä työkalua stake poolin hallintaan. Emme halua hanketta kokonaisuudessaan, mutta siellä on pari skriptiä, joita aiomme käyttää.
+Guild operators scripts have a couple of useful tools for operating a pool. We do not want the project as a whole, though there are a couple of scripts we are going to use.
 
 {% embed url="https://github.com/cardano-community/guild-operators/tree/master/scripts/cnode-helper-scripts" caption="" %}
 
@@ -348,7 +358,7 @@ CNODE_HOSTNAME="CHANGE ME"  # optional. must resolve to the IP you are requestin
 CNODE_BIN="/home/ada/.local/bin"
 CNODE_HOME="/home/ada/pi-pool"
 LOG_DIR="${CNODE_HOME}/logs"
-GENESIS_JSON="${CNODE_HOME}/files/mainnet-shelley-genesis.json"
+GENESIS_JSON="${CNODE_HOME}/files/testnet-shelley-genesis.json"
 NETWORKID=$(jq -r .networkId $GENESIS_JSON)
 CNODE_VALENCY=1   # optional for multi-IP hostnames
 NWMAGIC=$(jq -r .networkMagic < $GENESIS_JSON)
@@ -396,7 +406,7 @@ Luo cron työ, joka suorittaa skriptin tunnin välein.
 crontab -e
 ```
 
-Lisää seuraava tiedoston loppuun omalle riville, tallenna & sulje nano.
+Add the following to the bottom, save & exit.
 
 {% hint style="info" %}
 Pi-node-imagessassa tämä cron merkintä on oletuksena pois päältä. Voit ottaa sen käyttöön poistamalla \#.
@@ -418,7 +428,7 @@ nano relay-topology_pull.sh
 #!/bin/bash
 BLOCKPRODUCING_IP=<BLOCK PRODUCERS PRIVATE IP>
 BLOCKPRODUCING_PORT=3000
-curl -4 -s -o /home/ada/pi-pool/files/testnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1"
+curl -4 -s -o /home/ada/pi-pool/files/testnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&magic=1097911063&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1"
 ```
 
 Tallenna, sulje ja tee se suoritettavaksi.
@@ -518,8 +528,8 @@ Sisennyksen on oltava oikea YAML muoto tai Prometheus ei käynnisty.
 global:
   scrape_interval:     15s # By default, scrape targets every 15 seconds.
 
-  # Liitä nämä tunnisteet mihin tahansa aikasarjaan tai hälytyksiin kommunikoidessaan
-  # ulkoisen järjestelmän kanssa (federation, etävarastointi, Alertmanager).
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
   external_labels:
     monitor: 'codelab-monitor'
 
