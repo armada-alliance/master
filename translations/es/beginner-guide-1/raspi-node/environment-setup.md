@@ -4,7 +4,7 @@ description: Install packages needed to run cardano-node and configure our envir
 
 # Configuración del entorno
 
-![](../../.gitbook/assets/download-10-%20%282%29.jpeg)
+![](../../.gitbook/assets/download-10-%20%281%29%20%282%29.jpeg)
 
 ## Instalar paquetes
 
@@ -263,7 +263,7 @@ cardano-service start
 cardano-service status
 ```
 
-Otherwise be sure your node is **not** running & delete the db folder if it exists and download db/.
+Otherwise, be sure your node is **not** running & delete the db folder if it exists and download db.
 
 ```bash
 cardano-service stop
@@ -271,11 +271,21 @@ cd $NODE_HOME
 rm -r db/
 ```
 
-For mainnet chain use.
+Download the DB snapshot.
 
+{% tabs %}
+{% tab title="Testnet" %}
+```bash
+wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online/db/
+```
+{% endtab %}
+
+{% tab title="Mainnet" %}
 ```bash
 wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/
 ```
+{% endtab %}
+{% endtabs %}
 
 Once wget completes enable & start cardano-node.
 
@@ -287,7 +297,7 @@ cardano-service status
 
 ## gLiveView.sh
 
-Guild operators scripts has a couple useful tools for operating a pool. We do not want the project as a whole, though there are a couple scripts we are going to use.
+Guild operators scripts have a couple of useful tools for operating a pool. We do not want the project as a whole, though there are a couple of scripts we are going to use.
 
 {% embed url="https://github.com/cardano-community/guild-operators/tree/master/scripts/cnode-helper-scripts" caption="" %}
 
