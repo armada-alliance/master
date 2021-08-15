@@ -461,7 +461,7 @@ Build **tx.tmp** file to hold some information.
 cardano-cli transaction build-raw \
   ${tx_in} \
   --tx-out $(cat payment.addr)+0 \
-  --invalid-hereafter $(( ${slotNo} + 10000)) \
+  --invalid-hereafter $(( ${slotNo} + 1000)) \
   --fee 0 \
   --certificate stake.cert \
   --out-file tx.tmp
