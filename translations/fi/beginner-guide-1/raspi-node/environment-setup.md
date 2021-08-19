@@ -406,7 +406,7 @@ Luo cron työ, joka suorittaa skriptin tunnin välein.
 crontab -e
 ```
 
-Add the following to the bottom, save & exit.
+Lisää seuraava tiedoston loppuun omalle riville, tallenna & sulje nano.
 
 {% hint style="info" %}
 Pi-node-imagessassa tämä cron merkintä on oletuksena pois päältä. Voit ottaa sen käyttöön poistamalla \#.
