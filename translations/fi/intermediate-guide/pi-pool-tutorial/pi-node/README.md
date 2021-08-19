@@ -1,5 +1,5 @@
 ---
-description: Quickly bootstrap a synced configured node in a hour!
+description: Asenna synkattu ja konfiguroitu node, jopa tunnissa!
 ---
 
 # Pi-Node \(pikaopas\)
@@ -39,7 +39,7 @@ wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/
 ### 5. Ota käyttöön & aloita cardano-palvelu.
 
 {% hint style="Huomaa" %}
-Wait for wget to finish downloading the chain before starting the cardano-service. While you are waiting update Ubuntu by entering the server from another terminal.
+Odota, että wget saa ketjun lataamisen loppuun ennen cardano-servicen aloittamista. Odottaessasi, voit päivittää Ubuntun avaamalla palvelimeen toisen pääteikkunan.
 
 ```bash
 sudo apt update
@@ -52,21 +52,21 @@ cardano-service enable
 cardano-service start
 ```
 
-### 6. Enable & start the cardano-monitor.
+### 6. Ota käyttöön & aloita cardano-monitor.
 
 ```bash
 cardano-monitor enable
 cardano-monitor start
 ```
 
-### 7. Confirm they are running.
+### 7. Vahvista että palvelut ovat käynnissä.
 
 ```bash
 cardano-service status
 cardano-monitor status
 ```
 
-### 8. gliveview.sh
+### 8. gLiveView.sh
 
 ```bash
 cd $NODE_HOME/scripts
@@ -75,11 +75,11 @@ cd $NODE_HOME/scripts
 
 ### 9. Grafana.
 
-Enter your Node's IPv4 address in your browser.
+Syötä Node:n IPv4 -osoite selaimesi osoitekenttään.
 
-Default credentials = **admin:admin**
+Oletus käyttäjätunnus ja salasana = **admin:admin**
 
-#### Dashboards can be found here.
+#### Kojelaudat löytyvät täältä.
 
 {% embed url="https://github.com/armada-alliance/dashboards" caption="" %}
 
