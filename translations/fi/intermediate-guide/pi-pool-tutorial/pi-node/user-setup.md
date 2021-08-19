@@ -1,8 +1,8 @@
 ---
-description: 'Create the ada user, add to group sudo'
+description: 'Luo ada käyttäjä, lisää ryhmään sudo'
 ---
 
-# User Setup
+# Käyttäjän Asetukset
 
 {% hint style="Huomaa" %}
 If you are using a Pi-Node image you need only reference this material until we start configuring the Relay & Core.
