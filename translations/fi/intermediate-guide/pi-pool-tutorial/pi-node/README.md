@@ -86,6 +86,6 @@ Oletus käyttäjätunnus ja salasana = **admin:admin**
 {% embed url="https://api.pooldata.live/" caption="" %}
 
 {% hint style="info" %}
-The following guide builds out the image, use it as a reference and please feel free to ask for clarification in our Telegram channel. [https://t.me/armada\_alli](https://t.me/armada_alli)
+Seuraava opas rakentaa imagen, käytä sitä viitteenä ja voit vapaasti pyytää selvennystä Telegram kanavassamme. [https://t.me/armada\_alli](https://t.me/armada_alli)
 {% endhint %}
 
