@@ -1,15 +1,15 @@
 ---
-description: 'optimoi laitteistot, suojaa (harden) Ubuntu'
+description: 'Optimoi laitteistot, suojaa (harden) Ubuntu'
 ---
 
-# Server Setup
+# Palvelimen Asetukset
 
-## Configure Hardware
+## Konfiguroi Laitteisto
 
-Let's save some power, raise the governor on the CPU a bit, and set GPU ram as low as we can.
+Säästetään hieman energiaa, nostetaan CPU:n hallintaa pikkuisen ja asetetaan GPU:n RAM mahdollisimman alas.
 
-{% hint style="Huomaa" %}
-Here are some links for overclocking and testing your drive speeds. If you have heat sinks you can safely go to 2000. Just pay attention to over volt recommendations to go with your chosen clock speed.
+{% hint style="warning" %}
+Tässä muutamia linkkejä ylikellotukseen ja aseman nopeuksien testaamiseen. Jos sinulla on lämpöaltaita, voit turvallisesti asettaa 2000. Kiinnitä huomiota yli-voltitus suosituksiin jotta nekin sopivat valitsemaasi kellotusnopeuteen.
 
 * [https://www.raspberrypi.org/documentation/configuration/config-txt/overclocking.md](https://www.raspberrypi.org/documentation/configuration/config-txt/overclocking.md)
 * [https://www.seeedstudio.com/blog/2020/02/12/how-to-safely-overclock-your-raspberry-pi-4-to-2-147ghz/](https://www.seeedstudio.com/blog/2020/02/12/how-to-safely-overclock-your-raspberry-pi-4-to-2-147ghz/)
@@ -17,26 +17,26 @@ Here are some links for overclocking and testing your drive speeds. If you have 
 * [https://dopedesi.com/2020/11/24/upgrade-your-raspberry-pi-4-with-a-nvme-boot-drive-by-alex-ellis-nov-2020/](https://dopedesi.com/2020/11/24/upgrade-your-raspberry-pi-4-with-a-nvme-boot-drive-by-alex-ellis-nov-2020/)
 * [Legendary Technology: New Raspberry Pi 4 Bootloader USB](https://jamesachambers.com/new-raspberry-pi-4-bootloader-usb-network-boot-guide/)
 
-Take note that Ubuntu stores config.txt in a different location than Raspbian.
+Huomaa, että Ubuntu tallentaa config.txt -tiedoston eri paikkaan kuin Raspbian.
 {% endhint %}
 
-### Test drive speed
+### Aseman nopeustesti
 
-#### Write speed
+#### Kirjoitusnopeus
 
 ```text
 sudo dd if=/dev/zero of=/tmp/output conv=fdatasync bs=384k count=1k; sudo rm -f /tmp/output
 ```
 
-#### Read speed
+#### Lukunopeus
 
 ```text
 sudo hdparm -Tt /dev/sda
 ```
 
-### Overclock, memory & radios
+### Ylikellotus, muisti & radiot
 
-Edit /boot/firmware/config.txt. Just paste Pi Pool additions in at the bottom.
+Muokkaa /boot/firmware/config.txt. Liitä Pi Pool lisäykset tiedoston loppuun.
 
 ```bash
 sudo nano /boot/firmware/config.txt
@@ -84,59 +84,59 @@ disable-wifi
 disable-bt
 ```
 
-Save and reboot.
+Tallenna ja käynnistä uudelleen.
 
 ```text
 sudo reboot
 ```
 
-## Configure Ubuntu
+## Määritä Ubuntu
 
-### Disable the root user
+### Poista root käyttäjä käytöstä
 
 ```text
 sudo passwd -l root
 ```
 
-### Secure shared memory
+### Suojaa jaettu muisti
 
-Open /etc/fstab.
+Avaa /etc/fstab.
 
 ```text
 sudo nano /etc/fstab
 ```
 
-Add this line at the bottom, save & exit.
+Lisää seuraava tiedoston loppuun omalle riville, tallenna & sulje nano.
 
 ```text
 tmpfs    /run/shm    tmpfs    ro,noexec,nosuid    0 0
 ```
 
-### Increase open file limit
+### Lisää avoimen tiedoston rajaa
 
-Open /etc/security/limits.conf.
+Avaa /etc/security/limits.conf.
 
 ```text
 sudo nano /etc/security/limits.conf
 ```
 
-Add the following to the bottom, save & exit.
+Lisää seuraava tiedoston loppuun omalle riville, tallenna & sulje nano.
 
 ```text
 ada soft nofile 800000
 ada hard nofile 1048576
 ```
 
-### Optimize performance & security
+### Optimoi suorituskyky & tietoturva
 
-Add the following to the bottom of /etc/sysctl.conf. Save and exit.
+Lisää seuraava /etc/sysctl.conf tiedoston loppuun. Tallenna ja sulje.
 
 {% hint style="info" %}
 [https://gist.github.com/lokhman/cc716d2e2d373dd696b2d9264c0287a3](https://gist.github.com/lokhman/cc716d2e2d373dd696b2d9264c0287a3)
 {% endhint %}
 
 {% hint style="Huomaa" %}
-I am disabling IPv6 and IPv4 forwarding. You may want these. I have seen claims that IPv6 is slower and gets in the way.
+Olen poistamassa IPv6 ja IPv4 siirtoa käytöstä. Saatat haluta pitää nämä. Olen nähnyt väitteitä, että IPv6 on hitaampi ja saattaa häiritä toimintaa.
 {% endhint %}
 
 ```text
@@ -190,9 +190,9 @@ net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 ```
 
-#### Load our changes after boot
+#### Muutoksemme otetaan käyttöön uudelleen käynnistyksen jälkeen
 
-Create a new file. Paste, save & close.
+Luo uusi tiedosto. Liitä seuraava, tallenna & sulje.
 
 ```text
 sudo nano /etc/rc.local
@@ -201,7 +201,7 @@ sudo nano /etc/rc.local
 ```text
 #!/bin/bash
 
-# Give CPU startup routines time to settle.
+# Anna suorittimen käynnistyksen rutiinien aika asettua.
 sleep 120
 
 sysctl -p /etc/sysctl.conf
@@ -209,15 +209,15 @@ sysctl -p /etc/sysctl.conf
 exit 0
 ```
 
-### Disable IRQ balance
+### Poista IRQ-balance käytöstä
 
 {% hint style="info" %}
 [**http://bookofzeus.com/harden-ubuntu/server-setup/disable-irqbalance/**](http://bookofzeus.com/harden-ubuntu/server-setup/disable-irqbalance/)
 {% endhint %}
 
-You should turn off IRQ Balance to make sure you do not get hardware interrupts in your threads. Turning off IRQ Balance will optimize the balance between power savings and performance through the distribution of hardware interrupts across multiple processors.
+Sinun pitäisi poistaa IRQ Balance käytöstä varmistaaksesi, ettet saa laitteistokatkoksia säikeissäsi. IRQ Balance -laitteen kytkeminen pois päältä optimoi virransäästön ja suorituskyvyn välisen tasapainon jakamalla laitteiston keskeytyksiä useiden prosessorien välillä.
 
-Open /etc/default/irqbalance and add to the bottom. Save, exit and reboot.
+Avaa /etc/default/irqbalance ja lisää alareunaan. Tallenna, poistu ja käynnistä uudelleen.
 
 ```text
 sudo nano /etc/default/irqbalance
@@ -229,7 +229,7 @@ ENABLED="0"
 
 ### Chrony
 
-We need to get our time synchronization as accurate as possible. Open /etc/chrony/chrony.conf
+Meidän täytyy saada aikamme synkronoitua niin tarkasti kuin mahdollista. Avaa /etc/chrony/chrony.conf
 
 ```text
 sudo apt install chrony
@@ -239,7 +239,7 @@ sudo apt install chrony
 sudo nano /etc/chrony/chrony.conf
 ```
 
-Replace the contents of the file with below, Save and exit.
+Korvaa tiedoston sisältö alla olevalla tekstillä, Tallenna ja poistu.
 
 ```bash
 pool time.google.com       iburst minpoll 2 maxpoll 2 maxsources 3 maxdelay 0.3
@@ -287,12 +287,12 @@ sudo service chrony restart
 ### Zram swap
 
 {% hint style="info" %}
-We have found that cardano-node can safely use this compressed swap in ram essentially giving us around 20gb of ram. We already set kernel parameters for zram in /etc/sysctl.conf
+Olemme havainneet, että kardano-node voi turvallisesti käyttää tätä pakattua swapia RAM:ina periaatteessatämä antaa meille noin 20 gb RAM:ia. Olemme jo asettaneet ytimen parametrit zram:ia varten /etc/sysctl.conf tiedostossa
 {% endhint %}
 
-Swapping to disk is slow, swapping to compressed ram space is faster and gives us some overhead before out of memory \(oom\).
+Vaihto levylle on hidasta, vaihtaminen pakattuun ram tilaan on nopeampaa ja antaa meille jonkin verran enemmän marginaalia ennen muistin loppumista \(oom\).
 
-{% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters/" caption="" %}
+{% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters" caption="" %}
 
 {% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" caption="" %}
 
@@ -304,7 +304,7 @@ sudo apt install zram-config
 sudo nano /usr/bin/init-zram-swapping
 ```
 
-Multiply default config by 3. This will give you 12.5GB of virtual compressed swap in ram.
+Kerro oletusasetukset kolmella. Tämä antaa sinulle 12,5 Gt virtuaalista pakattua swapia RAM:ksi.
 
 {% hint style="info" %}
 mem=$\(\(\(totalmem / 2 / ${NRDEVICES}\) \* 1024 \* 3\)\)
@@ -336,7 +336,7 @@ done
 ```
 
 {% hint style="info" %}
-View how much zram swap cardano-node is using.
+Katso, kuinka paljon zram swap:ia cardano-node käyttää.
 
 ```text
 CNZRAM=$(pidof cardano-node)
@@ -346,7 +346,7 @@ grep --color VmSwap /proc/$CNZRAM/status
 
 ### Raspberry Pi & entropia
 
-Before we start generating keys with a headless server we should have a safe amount of entropy.
+Ennen kuin alamme tuottaa avaimia palvelimella meidän pitää luoda turvallinen määrä entropiaa.
 
 {% hint style="info" %}
 [https://hackaday.com/2017/11/02/what-is-entropy-and-how-do-i-get-more-of-it/](https://hackaday.com/2017/11/02/what-is-entropy-and-how-do-i-get-more-of-it/)
@@ -354,7 +354,7 @@ Before we start generating keys with a headless server we should have a safe amo
 [https://github.com/nhorman/rng-tools](https://github.com/nhorman/rng-tools)
 {% endhint %}
 
-> But consider the fate of a standalone, headless server \(or a micro controller for that matter\) with no human typing or mousing around, and no spinning iron drive providing mechanical irregularity. Mistä _se_ saa entropiaa käynnistyttyään? Entä jos hyökkääjä tai huono onni, pakottaa säännöllisiä uudelleenkäynnistyksiä? Tämä on [todellinen ongelma](http://www.theregister.co.uk/2015/12/02/raspberry_pi_weak_ssh_keys/).
+> Mietitäänpä yksittäisen, "headless" palvelimen \(tai mikro-ohjaimenkin\) kohtaloa, ilman ihmisen syöttämiä kirjoituksia tai hiiren liikkeitä, eikä kehräävää asemaa tarjoamassa mekaanista epäsäännöllisyyttä. Mistä _se_ saa entropiaa käynnistyttyään? Entä jos hyökkääjä tai huono onni, pakottaa säännöllisiä uudelleenkäynnistyksiä? Tämä on [todellinen ongelma](http://www.theregister.co.uk/2015/12/02/raspberry_pi_weak_ssh_keys/).
 
 ```text
 sudo apt-get install rng-tools
