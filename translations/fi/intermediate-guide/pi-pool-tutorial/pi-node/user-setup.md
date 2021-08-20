@@ -28,38 +28,38 @@ passwd
 Ole huolellinen milloin käytät sudo-komentoa. Esimerkiksi 'sudo passwd' muuttaisi root -käyttäjän salasanan. Tämä tuntuu olevan kohta, jossa uudet käyttäjät hämmentyvät helposti.
 {% endhint %}
 
-### Login as ada
+### Kirjaudu sisään ada käyttäjänä
 
-Let's add our ssh public key to our new $USER ada's authorized\_keys file. Then we can log in as ada and delete the default 'ubuntu' user.
+Lisätään meidän ssh julkinen avaimemme uuteen $USER adan authorized\_keys tiedostoon. Sitten voimme kirjautua sisään ada:na ja poistaa oletuksena olevan 'ubuntu' käyttäjätilin.
 
 ```bash
-# drop back into your local terminal
+# siirry takaisin paikalliseen päätelaitteeseen
 exit
 ```
 
-Use ssh-copy-id to add your public key to ada users authorized\_keys file.
+Käytä ssh-copy-id:tä lisätäksesi julkisen avaimesi ada-käyttäjän authorized\_keys tiedostoon.
 
 ```bash
 ssh-copy-id -i <ed25519-keyname.pub> ada@<server-ip>
 ```
 
-and ssh into the Pi as ada.
+ja kirjaudu sisään ssh:n kautta käyttäjänä ada.
 
 ```bash
 ssh ada@<server-ip>
 ```
 
-Test that ada is in the sudo group by updating your package lists and upgrading the system.
+Testaa, että ada on sudo-ryhmässä päivittämällä pakettiluettelot ja päivittämällä järjestelmä.
 
 {% hint style="Huomaa" %}
-Updating Ubuntu is going to take 10 minutes or more unless they update the image used with rpi-imager.
+Ubuntun päivittäminen kestää 10 minuuttia tai enemmän, ellei rpi-imagerilla käytettyä kuvaa ole päivitetty.
 {% endhint %}
 
 ```bash
 sudo apt update && sudo apt upgrade
 ```
 
-If that was successful we can delete the default ubuntu user and it's home directory.
+Jos päivitys onnistui, voimme poistaa ubuntu käyttäjän ja sen kotihakemiston.
 
 ```bash
 sudo deluser --remove-home ubuntu
@@ -67,12 +67,12 @@ sudo deluser --remove-home ubuntu
 
 ## ssh
 
-Edit OpenSSH's configuration file and make the following changes with Nano text editor.
+Muokkaa OpenSSH:n asetustiedostoa ja tee seuraavat muutokset Nanon tekstieditorilla.
 
 {% hint style="info" %}
-Check out this [nano cheat sheet](https://www.nano-editor.org/dist/latest/cheatsheet.html) I just found!
+Tutustu tähän [nano lunttilistaan](https://www.nano-editor.org/dist/latest/cheatsheet.html)!
 
-All the \# commented out values in sshd\_config are the default values. Remove the pound sign and change the value to match below. They will be loaded the next time systemd restarts ssh.
+Kaikki \# kommentoidut arvot sshd\_config tiedostossa ovat oletusarvoja. Poista punta merkki ja vaihda arvo vastaamaan alla olevaa. Ne ladataan seuraavan kerran järjestelmän uudelleenkäynnistäessä ssh-palvelun.
 {% endhint %}
 
 ```bash
@@ -80,21 +80,21 @@ sudo nano /etc/ssh/sshd_config
 ```
 
 {% hint style="Huomaa" %}
-Turn off password authentication.
+Poista salasanan todennus käytöstä.
 {% endhint %}
 
 ```bash
 #    $OpenBSD: sshd_config,v 1.103 2018/04/09 20:41:22 tj Exp $
 
-# This is the sshd server system-wide configuration file.  See
-# sshd_config(5) for more information.
+# Tämä on sshd-palvelimen koko järjestelmän asetustiedosto.  Katso lisätietoja kohdasta
+# sshd_config5.
 
-# This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin
+# Tämä sshd on rakennettu PATH=/usr/bin:/bin:/bin:/usr/sbin:/sbin
 
-# The strategy used for options in the default sshd_config shipped with
-# OpenSSH is to specify options with their default value where
-# possible, but leave them commented.  Uncommented options override the
-# default value.
+# Strategia, jota käytetään oletuksena sshd_config:ssä
+# OpenSSH:n kanssa on määrittää vaihtoehtoja oletusarvolla, jos
+# mahdollista, mutta jättä ne kommentoiduiksi.  Kommentoimattomat asetukset ohittavat
+# oletusarvon.
 
 Include /etc/ssh/sshd_config.d/*.conf
 
@@ -210,6 +210,6 @@ Subsystem sftp  /usr/lib/openssh/sftp-server
 ```
 
 {% hint style="info" %}
-I am not a proponent of changing default ports when I don't have to. A strong key pair and fail2ban is enough for me. It is not too hard for an attacker to figure out what port ssh is listening on if they really want to.
+En ole oletusporttien vaihtamisen puolestapuhuja, kun minun ei tarvitse sitä tehdä. Vahva avainpari ja fail2ban riittää minulle. Hyökkääjän ei ole liian vaikeaa selvittää, mitä porttia ssh kuuntelee, jos he todella haluavat.
 {% endhint %}
 
