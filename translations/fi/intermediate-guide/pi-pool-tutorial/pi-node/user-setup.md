@@ -5,27 +5,27 @@ description: 'Luo ada käyttäjä, lisää ryhmään sudo'
 # Käyttäjän Asetukset
 
 {% hint style="Huomaa" %}
-If you are using a Pi-Node image you need only reference this material until we start configuring the Relay & Core.
+Jos käytät Pi-Node -imagea, tarvitset tätä aineistoa vain antamaan osviittaa, kunnes aloitamme Relay & Coren asetusten määrittämisen.
 {% endhint %}
 
-## Create the ada user
+## Luo ada käyttäjä
 
-Create a new user and add them to the sudo group.
+Luo uusi käyttäjä ja lisää se sudo-ryhmään.
 
 ```bash
 sudo adduser ada && sudo adduser ada sudo
 ```
 
-### Change password
+### Vaihda salasana
 
-You can change the ada users password at anytime with.
+Voit vaihtaa ada käyttäjien salasanaa milloin tahansa.
 
 ```bash
 passwd
 ```
 
 {% hint style="Huomaa" %}
-Careful where you use sudo. For example issuing 'sudo passwd' would change the root password. This seems to be a place where new users get confused.
+Ole huolellinen milloin käytät sudo-komentoa. Esimerkiksi 'sudo passwd' muuttaisi root -käyttäjän salasanan. Tämä tuntuu olevan kohta, jossa uudet käyttäjät hämmentyvät helposti.
 {% endhint %}
 
 ### Login as ada
