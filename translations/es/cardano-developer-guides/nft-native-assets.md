@@ -163,18 +163,16 @@ module.exports = cardano;
 #### _Video Walk-through_ :
 
 {% tabs %}
-{% tab title="Create Project" %}
-{% embed url="https://youtu.be/Xkx9vdibbq0" %}
-{% endtab %}
 
-{% tab title="Fetch Genesis File" %}
-{% embed url="https://www.youtube.com/watch?v=X5cRGA0qyQE" %}
-{% endtab %}
 
-{% tab title="Create Cardano Client" %}
-{% embed url="https://youtu.be/-fnaF3FWL3k" %}
-{% endtab %}
-{% endtabs %}
+
+{% embed url="https://youtu.be/Xkx9vdibbq0" caption="" %}
+
+
+
+{% embed url="https://www.youtube.com/watch?v=X5cRGA0qyQE" caption="" %}
+
+{% embed url="https://youtu.be/-fnaF3FWL3k" caption="" %}
 
 ## Create a local wallet
 
@@ -237,12 +235,8 @@ If you are using testnet you must get your tADA from the testnet faucet [here](h
 #### _Video Walk-through_ :
 
 {% tabs %}
-{% tab title="Create Local Wallet" %}
-{% embed url="https://youtu.be/a8uWUc0O3DE" %}
-{% endtab %}
+{% tab %}
 
-{% tab title="Send ada to local wallet" %}
-{% embed url="https://youtu.be/Mm1ZOciiNaE" %}
 {% endtab %}
 {% endtabs %}
 
@@ -362,10 +356,8 @@ node src/mint-asset.js
 _**Video Walk-through:**_
 
 {% tabs %}
-{% tab title="Mint Asset" %}
-{% embed url="https://youtu.be/qTzLgMyJC7s" %}
-{% endtab %}
-{% endtabs %}
+
+{% embed url="https://youtu.be/qTzLgMyJC7s" caption="" %}
 
 ## Sending your NFT back to Daedulus or Yoroi wallet
 
