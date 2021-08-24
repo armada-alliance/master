@@ -163,18 +163,16 @@ module.exports = cardano;
 #### _Video Walk-through_ :
 
 {% tabs %}
-{% tab title="Create Project" %}
-{% embed url="https://youtu.be/Xkx9vdibbq0" %}
-{% endtab %}
 
-{% tab title="Fetch Genesis File" %}
-{% upotettu url="https://www.youtube.com/watch?v=X5cRGA0qyQE" %}
-{% endtab %}
 
-{% tab title="Create Cardano Client" %}
-{% embed url="https://youtu.be/-fnaF3FWL3k" %}
-{% endtab %}
-{% endtabs %}
+
+{% embed url="https://youtu.be/Xkx9vdibbq0" caption="" %}
+
+
+
+{% embed url="https://www.youtube.com/watch?v=X5cRGA0qyQE" caption="" %}
+
+{% embed url="https://youtu.be/-fnaF3FWL3k" caption="" %}
 
 ## Luo uusi lompakko
 
@@ -231,26 +229,22 @@ node src/get-balance.js
 * Voimme nyt lähettää joitakin varoja \(ADA\) luomaamme lompakkoon, odota muutama minuutti, ja sitten tarkista saldo uudelleen varmistaaksesi, että tapahtuma onnistui.
 
 {% hint style="info" %}
-Jos käytät testnetiä, sinun täytyy saada tADA testnet-hanasta [täältä](https://developers.cardano.org/en/testnets/cardano/tools/faucet/).
+If you are using testnet you must get your tADA from the testnet faucet [here](https://developers.cardano.org/en/testnets/cardano/tools/faucet/).
 {% endhint %}
 
 #### _Video Walk-through_ :
 
 {% tabs %}
-{% tab title="Create Local Wallet" %}
-{% upotettu url="https://youtu.be/a8uWUc0O3DE" %}
-{% endtab %}
+{% tab %}
 
-{% tab title="Send ada to local wallet" %}
-{% upotettu url="https://youtu.be/Mm1ZOciiNaE" %}
 {% endtab %}
 {% endtabs %}
 
 ## Paina (Mint) uudet Native-Assetit/NFT:t Cardano lohkoketjuun
 
-Ennen kuin ryhdymme painamaan alkuperäis- (native) assetteja, meillä on oltava muutamia asioita hoidettu. Meidän täytyy ensin saada "asset" meidän [IPFS](https://ipfs.io/#install) node:en ja luoda IPFS linkki. Jos et tiedä IPFS-järjestelmästä tai mitä se todella tekee, suosittelemme lukemaan dokumentaation [täällä](https://docs.ipfs.io/) tai katsomaan tämän [videon](https://www.youtube.com/watch?v=5Uj6uR3fp-U).
+Before we proceed to mint our Native Asset we must have a few things taken care of. We need to first get our "asset" onto our [IPFS](https://ipfs.io/#install) node and generate the IPFS link. If you do not know about IPFS or what it actually does we recommend having a read through the documentation [here](https://docs.ipfs.io/) or watching this [video](https://www.youtube.com/watch?v=5Uj6uR3fp-U).
 
-Koska käytämme kuvatiedostoa assettinamme, meidän pitää ladata pienempi kuvake-kokoinen versio kuvastamme \(mieluiten alle 1MB\). Tätä käytetään nättiin visualisointiin sivustoilla, kuten [pool.pm](https://pool.pm) ja lompakoissamme. Sitten lataamme koko lähdekuvan NFT assetistamme.
+Since we are using an image file to be our asset we should upload a smaller thumbnail-sized version of our image \(ideally less than 1MB\). This will be used on sites like [pool.pm](https://pool.pm) to display our assets nicely in our wallets. We then upload the full-size image as our source image.
 
 * [ ] Lataa [IPFS](https://ipfs.io/#install)
 * [ ] Lataa assetisi tiedostot IPFS:ään
@@ -264,7 +258,7 @@ Koska käytämme kuvatiedostoa assettinamme, meidän pitää ladata pienempi kuv
 
 ### Luo mint-asset.js skripti
 
-Tässä skriptissä on kolme pääosaa:
+This script has three main components:
 
 1. **Luo policy id**
 2. **Määrittele metatiedot**
@@ -362,21 +356,19 @@ node src/mint-asset.js
 _**Video Walk-through:**_
 
 {% tabs %}
-{% tab title="Mint Asset" %}
-{% embed url="https://youtu.be/qTzLgMyJC7s" %}
-{% endtab %}
-{% endtabs %}
+
+{% embed url="https://youtu.be/qTzLgMyJC7s" caption="" %}
 
 ## NFT:n lähettäminen takaisin Daedalus tai Yoroi lompakkoon
 
-Nyt meidän on luotava uusi skripti, jotta voimme lähettää juuri painetun NFT:n lompakkoomme.
+Now we must create a new script to send our newly minted NFT to a wallet.
 
 ```javascript
 cd cardaon-minter/src
 nano send-back-asset-to-wallet.js
 ```
 
-Tässä skriptissä on muutamia päävaiheita, joiden kautta voimme lähettää NFT:n eteenpäin:
+There are few main parts we have to this script in order to send the asset:
 
 1. Hae lompakko
 2. Määrittele tapahtuma
@@ -463,6 +455,6 @@ node src/send-back-asset-to-wallet.js
 {% embed url="https://youtu.be/awxVkFbWoKM" caption="" %}
 
 {% hint style="success" %}
-Jos pidit tästä tutoriaalista ja haluat nähdä enemmän samankaltaisia, harkitse ADAn delegoimista meidän [**PIADA**](https://armada-alliance.com/stake-pools) **Stake Pooliin, tai kertalahjoituksen antamista yhteisöllemme, Armada Allianssille,** </strong>[https://cointr. e/armada-alliance****](https://cointr.ee/armada-alliance).** </p>
+**If you liked this tutorial and want to see more like it please consider staking your ADA with any of our Alliance's** [**Stake Pools**](https://armada-alliance.com/stake-pools)**, or giving a one-time donation to our Alliance** [**https://cointr.ee/armada-alliance**](https://cointr.ee/armada-alliance)**.**
 {% endhint %}
 
