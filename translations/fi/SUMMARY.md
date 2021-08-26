@@ -19,7 +19,7 @@
     * [Palvelimen Asetukset](intermediate-guide/pi-pool-tutorial/pi-node/server-setup.md)
     * [Ympäristön Asetukset](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md)
   * [Pi-Relay](intermediate-guide/pi-pool-tutorial/pi-relay.md)
-  * [Pi-Core/Cold](intermediate-guide/pi-pool-tutorial/pi-core-and-pi-cold.md)
+  * [Pi-Core/Kylmä kone](intermediate-guide/pi-pool-tutorial/pi-core-and-pi-cold.md)
   * [Rotate KES](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
 * [Alpine Linux OS 🗻](intermediate-guide/alpine-linux-os.md)
 * [Stake Pool -verkosto: Perusteita](intermediate-guide/basic-stake-pool-networking.md)
