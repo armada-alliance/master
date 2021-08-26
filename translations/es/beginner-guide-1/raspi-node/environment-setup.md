@@ -332,20 +332,20 @@ chmod +x gLiveView.sh
 Hasta que el peer to peer no esté habilitado en los operadores de red se necesita una forma de obtener una lista de relays/peers a los que conectarse. El servicio de actualizador de topología (topology updater) se ejecuta en segundo plano con cron. Cada hora el script se ejecutará y le dirá al servicio que eres un relay y quieres ser parte de la red. Añadirá tu relay a su directorio después de cuatro horas y comenzará a generar una lista de relays en un archivo json en el directorio $NODE\_HOME/logs. Un segundo script, relay-topology\_pull.sh puede ser usado manualmente para generar un archivo mainnet-topolgy con relays/peers que sean relacionados directamente entre tú y ellos.
 
 {% hint style="info" %}
-The list generated will show you the distance in miles & a clue as to where the relay is located.
+La lista generada te mostrará la distancia en millas &  para saber dónde se encuentra ubicado el relay.
 {% endhint %}
 
-Open a file named topologyUpdater.sh
+Abrir un archivo llamado topologyUpdater.sh
 
 ```bash
 cd $NODE_HOME/scripts
 nano topologyUpdater.sh
 ```
 
-Paste in the following, save & exit.
+Pega lo siguiente, guardar & salir.
 
 {% hint style="warning" %}
-The port number here must match the port cardano-node is running on. If you are using dns records you can add the FQDN that matches on line 6\(line 6 only\). Leave it as is if you are not using dns. The service will pick up the public IP and use that.
+El número de puerto aquí tendrá que ser actualizado para que coincida con el puerto en el que se está ejecutando el nodo cardano-nodo. Si estás utilizando registros dns puede agregar el FQDN que coincide con la línea 6\(línea 6 solamente\). Leave it as is if you are not using dns. The service will pick up the public IP and use that.
 {% endhint %}
 
 ```bash
