@@ -5,39 +5,39 @@ description: Luo toiminnalliset avaimet & sertifikaatit. Luo lompakko & rekister
 # Pi-Core/Kylmä kone
 
 {% hint style="danger" %}
-You need to have a Pi-Node configured with a new static ip address on your LAN. A fully qualified domain name and cardano-service file set to start on port 3000. You also need to update the env file used by gLiveView.sh located in $NODE\_HOME/scripts.
+Tarvitset Pi-Noden, joka on konfiguroitu uudella staattisella IP-osoitteella omassa lähiverkossasi. Täysin pätevä verkkotunnus ja cardano-service tiedosto on asetettu käyttämään porttia 3000. Sinun täytyy myös päivittää env-tiedosto, jota gLiveView.sh käyttää osoitteessa $NODE\_HOME/skripts.
 
-You do not enable the topology updater service on a core node so feel free to delete those two scripts and remove the commented out cron job.
+Et ota käyttöön topologian päivityspalvelua core nodessa, joten voit poistaa nämä kaksi komentosarjaa ja poistaa kommentoidun cron työn cron-taulukosta.
 
-Make sure your core node is synced to the tip of the blockchain.
+Varmista, että core node on synkronoitu lohkoketjun kärkeen saakka.
 {% endhint %}
 
-{% hint style="Huomaa" %}
-There exists a way to create your pool wallets **payment keypair** by creating a wallet in Yoroi and using cardano-wallet to extract the key pair from the mnemonic seed from Yoroi. This allows you to have a seed backup of the wallet and to also easily extract rewards or send funds elsewhere. You can do this with any shelley era mnemonic seed. I prefer Yoroi because it is quick.
+{% hint style="warning" %}
+On olemassa tapa luoda poolin lompakon **payment keypair** luomalla Yoroi lompakko ja käyttämällä cardano-lompakkoa poimimaan avainpari Yoroin mnemonic seed:istä. Näin saat varmuuskopion lompakosta avainsanojen muodoss ja voit helposti siirtää palkintoja tai lähettää varoja muualle. Voit tehdä tämän millä tahansa Shelley aikakauden mnemonisella seedillä. Itse pidän Yoroista, koska se on nopea.
 
 [https://gist.github.com/ilap/3fd57e39520c90f084d25b0ef2b96894​](https://gist.github.com/ilap/3fd57e39520c90f084d25b0ef2b96894)
 
-Cardano-wallet will not build on arm due to dependency failure. @ZW3RK tried to build it for us and it would not. You may want to install cardano-wallet on an offline x86 machine and go through this process. That is how I did it. You can get cardano-wallet binary below.
+Cardano-lompakko ei rakennu Arm koneisiin riippuvuuden epäonnistumisen vuoksi. @ZW3RK yritti rakentaa sen meille, mutta se ei onnistunut. Haluat ehkä asentaa cardano-lompakon offline x86 koneeseen ja käydä läpi tämän prosessin. Näin minä sen tein. Löydät cardano-lompakon binäärin alla.
 
 [https://hydra.iohk.io/build/3770189](https://hydra.iohk.io/build/3770189)
 {% endhint %}
 
-### Enable blockfetch tracing
+### Ota blockfetch seuranta käyttöön
 
 ```text
-sed -i ${NODE_FILES}/mainnet-config.json \
+sed -i ${NODE_FILES}-mainnet-config.json \
     -e "s/TraceBlockFetchDecisions\": false/TraceBlockFetchDecisions\": true/g"
 ```
 
-## Generate Keys & Issue Operational Certificate
+## Luo avaimet & Myönnä käyttötodistus
 
-{% hint style="Huomaa" %}
-#### Rotating the KES keys
+{% hint style="warning" %}
+#### KES-avainten kierrätys
 
-KES keys need to be regenerated and a new **pool.cert** needs to be issued and submitted to the chain every 90 days. The **node.counter** file keeps track of how many times this has been done.
+KES avaimet on uudistettava ja uusi **pool.cert** on myönnettävä ja toimitettava ketjulle 90 päivän välein. Tiedosto **node.counter** pitää kirjaa siitä, kuinka monta kertaa tämä on tehty.
 {% endhint %}
 
-Generate a KES key pair: **kes.vkey** & **kes.skey**
+Luo a KES avainpari: **kes.vkey** & **kes.skey**
 
 {% tabs %}
 {% tab title="Core" %}
