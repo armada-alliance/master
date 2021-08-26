@@ -1,5 +1,5 @@
 ---
-description: Create operational keys & certificates. Create wallet & register stake pool
+description: Luo toiminnalliset avaimet & sertifikaatit. Luo lompakko & rekisteröi stakepool
 ---
 
 # Pi-Core/Cold
