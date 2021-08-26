@@ -1,51 +1,51 @@
 ---
-description: 'Retrieve Raspbian image, write image to target drive, create user.'
+description: 'Recuperar imagen Raspbian, escribir imagen en unidad de destino, crear usuario.'
 ---
 
 # Descargar y Flashear
 
-## Installing the RaspiNode OS
+## Instalar el sistema operativo RaspiNode
 
-**1. Download the Armada Alliance's pre-configured Raspbian 64bit OS Cardano-node image** [**here**](https://db.adamantium.online/RasPi-Node.img.gz) **and save it in an accessible location for now on your computer.**
+**1. Descargua la imagen Raspbian del nodo Cardano-node de 64 bits de la Armada Alliance** [**aquí**](https://db.adamantium.online/RasPi-Node.img.gz) **y guárdalo en una ubicación accesible de su ordenador.**
 
-**2. Next, download the Raspberry Pi Imager software that we will use in order to write the OS image onto our target drive. Este software se encuentra en el sitio web** [**Raspberry Pi**](https://www.raspberrypi.org/software/)**. Por favor, descargue la versión correcta para su computadora.**
+**2. A continuación, descarga el software de Raspberry Pi Imager que utilizaremos para grabar la imagen del sistema operativo en nuestra unidad de destino. Este software se encuentra en el sitio web** [**Raspberry Pi**](https://www.raspberrypi.org/software/)**. Por favor, descargue la versión correcta para su computadora.**
 
 ![](../../.gitbook/assets/screen-shot-2021-03-12-at-5.36.30-pm.png)
 
-**3. Insert the target drive\(your SSD or NVMe with usb3 adapter\) into your computer and open the "Raspberry Pi Imager".**
+**3. Inserta la unidad de destino\(su SSD o NVMe con el adaptador usb3\) en su ordenador y abra el "Raspberry Pi Imager".**
 
-* **Click on "CHOOSE OS"  then "Use custom" choose the Raspbian image file you downloaded.**
-* **Next, click on the "CHOOSE SD" and choose the target drive you inserted into the computers usb port.**
-* **The "WRITE" button will appear and you can click on it to begin writing/verifying the OS onto the target drive.**
-* **Finally, once it has finished the writing/verifying process, you will see a pop-up window saying that the OS was successfully written to the drive, click "CONTINUE" and remove your drive from the computer.**
+* **Haz clic en "CHOOSE OS" y luego en "Use custom" elija el archivo de imagen Raspbian que haya descargado.**
+* **Luego, haz clic en el "CHOSE SD" y busca la tarjeta SD que has introducido en la computadora.**
+* **Ahora, el botón "WRITE" aparecerá y puedes hacer clic en él para comenzar a escribir/verificar el sistema operativo en la tarjeta SD.**
+* **Finalmente, una vez haya terminado el proceso de escritura/verificación, verás una ventana emergente que dice que el sistema operativo se ha escrito con éxito en la tarjeta SD, haz clic en "CONTINUE" y retira tu tarjeta SD de la computadora.**
 
 ![](../../.gitbook/assets/image-2-.png)
 
-## Boot & Configure
+## Arranque & Configuración
 
-Insert the SSD into one of the blue usb3 ports. Then insert the HDMI, Keyboard, Mouse, Ethernet and power supply.
+Inserta la SSD en uno de los puertos azules de usb3. Luego inserta el HDMI, Keyboard, Mouse, Ethernet y fuente de energía.
 
 {% hint style="danger" %}
-The first Pi4's to ship do not boot from USB3 by default, nowadays they do. If your image does not boot the two most common issues are older firmware on your Pi or an incompatible USB3 adaptor.
+Los primeros Pi4's a enviar no arrancan desde USB3 por defecto, hoy en día ya lo hacen. Si tu imagen no arranca los dos problemas más comunes son que el firmware es antiguo en tu Raspberry Pi o un adaptador USB3 incompatible.
 {% endhint %}
 
 ![](../../.gitbook/assets/pi4.jpeg)
 
 {% hint style="info" %}
-All we really need to do here is disable auto login & create the ada user with sudo privileges. After we log back in we will delete the default Pi user and configure the server & environment for cardan-node & cardano-cli.
+Todo lo que realmente necesitamos hacer aquí es desactivar el inicio de sesión automático & crear el usuario ada con privilegios sudo. Después de volver a iniciar sesión, eliminaremos el usuario predeterminado de Pi y configuraremos el servidor & entorno para el nodo cardano & cardano-cli.
 {% endhint %}
 
-![Open the Raspberry Pi Configuration utility.](../../.gitbook/assets/raspberrypi-configuration.png)
+![Abra la utilidad de configuración de Raspberry Pi.](../../.gitbook/assets/raspberrypi-configuration.png)
 
-![Set Auto Login to Disabled](../../.gitbook/assets/disable-auto-login.png)
+![Establecer inicio automático deshabilitado](../../.gitbook/assets/disable-auto-login.png)
 
-### Create the ada user
+### Crear el usuario ada
 
 ```text
 sudo adduser ada && sudo adduser ada sudo
 ```
 
-Go ahead and reboot, log in as your new ada user.
+Avanza y reinicia, inicia sesión como tu nuevo usuario ada.
 
 ```text
 sudo reboot
