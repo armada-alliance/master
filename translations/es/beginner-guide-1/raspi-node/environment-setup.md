@@ -460,18 +460,18 @@ nano $NODE_FILES/${NODE_CONFIG}-topology.json
 Puedes usar gLiveView.sh para ver qué tiempos de ping tienes en relación a los peers de tu archivo mainnet-topology. Usa Ping para resolver el hostname de la IP.
 {% endhint %}
 
-Changes to this file will take affect upon restarting the cardano-service.
+Los cambios en este archivo se verán afectados al reiniciar cardano-service.
 
 {% hint style="warning" %}
-Don't forget to remove the last comma in your topology file!
+¡No olvides eliminar la última coma en tu archivo topology!
 {% endhint %}
 
-Status should show as enabled & running.
+El estado debe mostrarse como habilitado y en ejecución.
 
-Once your node syncs past epoch 208\(shelley era\) you can use gLiveView.sh to monitor.
+Una vez que el nodo se sincronice con el epoch 208\(shelley era\) puedes usar gLiveView.sh para monitorizarlo.
 
 {% hint style="danger" %}
-It can take up to an hour for cardano-node to sync to the tip of the chain. Use ./gliveView.sh, htop and log outputs to view process. Be patient it will come up.
+Puede tardar hasta una hora en sincronizar el nodo cardano con el final de la cadena. Use el script ./gliveView.sh, el comando htop y la salida del log para ver cómo evoluciona el proceso. Ten paciencia finalizará.
 {% endhint %}
 
 ```bash
