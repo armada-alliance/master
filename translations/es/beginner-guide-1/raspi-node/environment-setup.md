@@ -457,7 +457,7 @@ nano $NODE_FILES/${NODE_CONFIG}-topology.json
 ```
 
 {% hint style="info" %}
-Puedes usar gLiveView.sh para ver qué tiempos de ping tienes en relación a los peers de tu archivo mainnet-topology. Use Ping to resolve hostnames to IP's.
+Puedes usar gLiveView.sh para ver qué tiempos de ping tienes en relación a los peers de tu archivo mainnet-topology. Usa Ping para resolver el hostname de la IP.
 {% endhint %}
 
 Changes to this file will take affect upon restarting the cardano-service.
