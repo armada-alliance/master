@@ -1,5 +1,5 @@
 ---
-description: Install packages needed to run cardano-node and configure our environment
+description: Instalar los paquetes necesarios para ejecutar cardano-node y configurar nuestro entorno
 ---
 
 # Configuración del entorno
@@ -345,7 +345,7 @@ nano topologyUpdater.sh
 Pega lo siguiente, guardar & salir.
 
 {% hint style="warning" %}
-El número de puerto aquí tendrá que ser actualizado para que coincida con el puerto en el que se está ejecutando el nodo cardano-nodo. Si estás utilizando registros dns puede agregar el FQDN que coincide con la línea 6\(línea 6 solamente\). Leave it as is if you are not using dns. The service will pick up the public IP and use that.
+El número de puerto aquí tendrá que ser actualizado para que coincida con el puerto en el que se está ejecutando el nodo cardano-nodo. Si estás utilizando registros dns puede agregar el FQDN que coincide con la línea 6\(línea 6 solamente\). Déjalo como si no estuviera usando dns. El servicio recogerá la IP pública y la utilizará.
 {% endhint %}
 
 ```bash
@@ -386,39 +386,39 @@ fi
 curl -s -f -4 "https://api.clio.one/htopology/v1/?port=${CNODE_PORT}&blockNo=${blockNo}&valency=${CNODE_VALENCY}&magic=${NWMAGIC}${T_HOSTNAME}" | tee -a "${LOG_DIR}"/topologyUpdater_lastresult.json
 ```
 
-Save, exit and make it executable.
+Guardar, salir y hacerlo ejecutable.
 
 ```bash
 chmod +x topologyUpdater.sh
 ```
 
 {% hint style="warning" %}
-You will not be able to successfully execute ./topologyUpdater.sh until you are fully synced up to the tip of the chain.
+No podrá ejecutar con éxito ./topologyUpdater.sh hasta que esté completamente sincronizado hasta el final de la cadena.
 {% endhint %}
 
 {% hint style="info" %}
-Choose nano when prompted for editor.
+Elegir nano cuando se te pida que editor quieres usar.
 {% endhint %}
 
-Create a cron job that will run the script every hour.
+Crea una tarea de cron (cron job) que ejecutará el script cada hora.
 
 ```bash
 crontab -e
 ```
 
-Add the following to the bottom, save & exit.
+Añadir lo siguiente en la parte inferior, guardar & salir.
 
 {% hint style="info" %}
-The Pi-Node image has this cron entry disabled by default. You can enable it by removing the \#.
+La imagen de Pi-Node tiene esta línea de cron deshabilitada por defecto. Puedes activarla eliminando el \#.
 {% endhint %}
 
 ```bash
 33 * * * * /home/ada/pi-pool/scripts/topologyUpdater.sh
 ```
 
-After 4 hours of on boarding you will be added to the service and can pull your new list of peers into the mainnet-topology file.
+Después de 4 horas corriendo se añadirá al servicio y podrá llevar su nueva lista de peers al archivo de topología principal.
 
-Create another file relay-topology\_pull.sh and paste in the following.
+Crear otro archivo relay-topology\_pull.sh y pegar en lo siguiente.
 
 ```bash
 nano relay-topology_pull.sh
@@ -431,17 +431,17 @@ BLOCKPRODUCING_PORT=3000
 curl -4 -s -o /home/ada/pi-pool/files/testnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&magic=1097911063&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1"
 ```
 
-Save, exit and make it executable.
+Guardar, salir y hacerlo ejecutable.
 
 ```bash
 chmod +x relay-topology_pull.sh
 ```
 
 {% hint style="danger" %}
-Pulling in a new list will overwrite your existing topology file. Keep that in mind.
+Al arrastrar una nueva lista se sobrescribirá tu archivo de topología existente. Ten esto en cuenta.
 {% endhint %}
 
-After 4 hours you can pull in your new list and restart the cardano-service.
+Después de 4 horas puede instalar su nueva lista y reiniciar el servicio de cardano.
 
 ```bash
 cd $NODE_HOME/scripts
@@ -449,7 +449,7 @@ cd $NODE_HOME/scripts
 ```
 
 {% hint style="info" %}
-relay-topology\_pull.sh will add 15 peers to your mainnet-topology file. I usually remove the furthest 5 relays and use the closest 10.
+relay-topology\_pull.sh añadirá 15 peers a tu archivo mainnet-topology. Normalmente retiro los 5 relays más lejanos y uso los 10 más cercanos.
 {% endhint %}
 
 ```bash
@@ -457,7 +457,7 @@ nano $NODE_FILES/${NODE_CONFIG}-topology.json
 ```
 
 {% hint style="info" %}
-You can use gLiveView.sh to view ping times in relation to the peers in your mainnet-topology file. Use Ping to resolve hostnames to IP's.
+Puedes usar gLiveView.sh para ver qué tiempos de ping tienes en relación a los peers de tu archivo mainnet-topology. Use Ping to resolve hostnames to IP's.
 {% endhint %}
 
 Changes to this file will take affect upon restarting the cardano-service.
