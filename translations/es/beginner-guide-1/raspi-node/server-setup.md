@@ -1,15 +1,15 @@
 ---
-description: 'optimize hardware, harden Ubuntu'
+description: 'optimizar hardware, robustecer Ubuntu'
 ---
 
 # Configuración del servidor
 
-## Configure Hardware
+## Configurar Hardware
 
-Let's save some power, raise the governor on the CPU a bit, and set GPU ram as low as we can.
+Ahorremos algo de electricidad, levantemos un poco al gobernador en la CPU y pongamos el ram GPU tan baja como podamos.
 
 {% hint style="warning" %}
-Here are some links for overclocking and testing your drive speeds. If you have heat sinks you can safely go to 2000. Just pay attention to over volt recommendations to go with your chosen clock speed.
+Aquí hay algunos enlaces para overclocking y probar las velocidades de la unidad. Si usas un sistema de disipación de calor puedes poner a 2000 con seguridad. Simplemente preste atención a las recomendaciones sobre voltios para ir con la velocidad del reloj elegida.
 
 * [https://www.raspberrypi.org/documentation/configuration/config-txt/overclocking.md](https://www.raspberrypi.org/documentation/configuration/config-txt/overclocking.md)
 * [https://www.seeedstudio.com/blog/2020/02/12/how-to-safely-overclock-your-raspberry-pi-4-to-2-147ghz/](https://www.seeedstudio.com/blog/2020/02/12/how-to-safely-overclock-your-raspberry-pi-4-to-2-147ghz/)
@@ -18,23 +18,23 @@ Here are some links for overclocking and testing your drive speeds. If you have 
 * [Legendary Technology: New Raspberry Pi 4 Bootloader USB](https://jamesachambers.com/new-raspberry-pi-4-bootloader-usb-network-boot-guide/)
 {% endhint %}
 
-### Test drive speed
+### Probar velocidad de disco
 
-#### Write speed
+#### Velocidad de escritura
 
 ```text
 sudo dd if=/dev/zero of=/tmp/output conv=fdatasync bs=384k count=1k; sudo rm -f /tmp/output
 ```
 
-#### Read speed
+#### Velocidad de lectura
 
 ```text
 sudo hdparm -Tt /dev/sda
 ```
 
-### Overclock, memory & radios
+### Overclock, memoria & radios
 
-Edit /boot/firmware/config.txt. Just paste Pi Pool additions in at the bottom.
+Edita /boot/firmware/config.txt. Simplemente pegue las adiciones de Pi Pool en la parte inferior.
 
 ```bash
 sudo nano /boot/config.txt
@@ -82,43 +82,43 @@ disable-wifi
 #disable-bt
 ```
 
-Save and reboot.
+Guardar y reiniciar
 
 ```text
 sudo reboot
 ```
 
-## Configure Raspberry Pi OS
+## Configurar Raspberry Pi OS
 
-### Update The System
+### Actualización del Sistema
 
 ```text
 sudo apt update && sudo apt upgrade
 ```
 
-### Disable the Pi user
+### Deshabilitar el usuario Pi
 
 ```text
 sudo passwd -l pi
 ```
 
-### Disable the root user
+### Deshabilitar el usuario root
 
 ```text
 sudo passwd -l root
 ```
 
-### Secure shared memory
+### Securizar la memoria compartida
 
-Mount tmpfs as read only.
+Montar tmpfs como solo lectura.
 
-Open /etc/fstab.
+Abrir /etc/fstab.
 
 ```text
 sudo nano /etc/fstab
 ```
 
-Add this line at the bottom, save & exit.
+Añade lo siguiente en la parte inferior, guardar & salir.
 
 ```text
 tmpfs    /run/shm    tmpfs    ro,noexec,nosuid    0 0
