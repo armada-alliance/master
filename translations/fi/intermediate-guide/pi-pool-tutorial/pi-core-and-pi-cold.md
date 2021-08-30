@@ -450,10 +450,10 @@ Staking osoitteen rekisteröinti on 2000 000 lovelacea tai 2 adaa.
 {% endhint %}
 
 {% hint style="Huomaa" %}
-Take note of the invalid-hereafter input. We are taking the current slot number\(tip of the chain\) and adding 1,000 slots. If we do not issue the signed transaction before the chain reaches this slot number the tx will be invalidated. A slot is one second so you have 16.666666667 minutes to get this done. 🐌
+Huomaa, invalid-hereafter syöte. Otamme nykyisen slotin numeron\(ketjun kärki\) ja lisäämme siihen 10000 paikkaa. Jos emme anna allekirjoitettua tapahtumaa ennen kuin ketju saavuttaa tämän syötetyn slotin numeron, tx mitätöidään. Slotti on yksi sekunti, joten sinulla on 166.666667 minuuttia aikaa saada tämä valmiiksi. 🐌
 {% endhint %}
 
-Build **tx.tmp** file to hold some information.
+Rakenna **tx.tmp** tiedosto, jossa on jo joitakin tx tietoja.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -461,7 +461,7 @@ Build **tx.tmp** file to hold some information.
 cardano-cli transaction build-raw \
   ${tx_in} \
   --tx-out $(cat payment.addr)+0 \
-  --invalid-hereafter $(( ${slotNo} + 1000)) \
+  --invalid-hereafter $(( ${slotNo} + 10000)) \
   --fee 0 \
   --certificate stake.cert \
   --out-file tx.tmp
@@ -469,7 +469,7 @@ cardano-cli transaction build-raw \
 {% endtab %}
 {% endtabs %}
 
-Calculate the minimal fee.
+Laske minimimaksu.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -487,7 +487,7 @@ echo fee: $fee
 {% endtab %}
 {% endtabs %}
 
-Calculate txOut.
+Laske txOut.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -498,7 +498,7 @@ echo Change Output: ${txOut}
 {% endtab %}
 {% endtabs %}
 
-Build the full transaction to register your staking address.
+Rakenna koko tapahtuma rekisteröidäksesi staking osoitteesi.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -506,7 +506,7 @@ Build the full transaction to register your staking address.
 cardano-cli transaction build-raw \
   ${tx_in} \
   --tx-out $(cat payment.addr)+${txOut} \
-  --invalid-hereafter $(( ${slotNo} + 10000)) \
+  --invalid-hereafter $(( ${currentSlot} + 10000)) \
   --fee ${fee} \
   --certificate-file stake.cert \
   --out-file tx.raw
@@ -514,7 +514,7 @@ cardano-cli transaction build-raw \
 {% endtab %}
 {% endtabs %}
 
-Transfer **tx.raw** to your Cold offline machine and sign the transaction with the **payment.skey** and **stake.skey**.
+Siirrä **tx.raw** kylmään offline-koneeseesi ja allekirjoita tapahtuma **payment.skey** ja **stake.skey**.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -529,9 +529,9 @@ cardano-cli transaction sign \
 {% endtab %}
 {% endtabs %}
 
-Move **tx.signed** transaction file back to the core nodes pi-pool folder.
+Siirrä **tx.signed** tapahtumatiedosto takaisin core noden pi-poolin kansioon.
 
-Submit the transaction to the blockchain.
+Lähetä tapahtuma lohkoketjuun.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -543,9 +543,9 @@ cardano-cli transaction submit \
 {% endtab %}
 {% endtabs %}
 
-## Register the pool 🏊
+## Rekisteröi pooli 🏊
 
-Create a **poolMetaData.json** file. It will contain important information about your pool. You will need to host this file somewhere online forevermore. It must be online and you cannot edit it without resubmitting/updating your pool.cert. In the next couple steps we will hash
+Luo **poolMetaData.json** tiedosto. Se sisältää tärkeitä tietoja poolistasi. Sinun täytyy isännöidä tätä tiedostoa jossakin verkossa ikuisesti. Sen on oltava online-tilassa ja sitä ei voi muokata ilman pool.certin uudelleenlähettämistä/päivitystä. Parin seuraavan askeleen aikana teemme hashin
 
 {% hint style="Huomaa" %}
 metadata-url must be less than 64 characters.
@@ -553,7 +553,7 @@ metadata-url must be less than 64 characters.
 
 {% embed url="https://pages.github.com/" caption="Hosting your poolMetaData.json on github is popular choice" %}
 
-I say host it on your Pi with NGINX.
+Kannatan tiedoston hostaamista Pi:ssä NGINX:in kanssa.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -565,10 +565,10 @@ nano poolMetaData.json
 {% endtabs %}
 
 {% hint style="Huomaa" %}
-The **extendedPoolMetaData.json** file is used by adapools and others to scrape information like where to find your pool logo and social media links. Unlike the **poolMetaData.json** this files hash is not stored in your registration certificate and can be edited without having to rehash and resubmit **pool.cert**.
+Laajennettua **PoolMetaData.json** tiedostoa käyttävät adapoolit ja muut hakeakseen tietoja, kuten mistä löytyy poolisi logo ja sosiaalisen median linkkejä. Toisin kuin **poolMetaData.json** tämän tiedoston hash ei ole tallennettu rekisteröintitodistukseesi ja sitä voidaan muokata ilman poolin rekisterin ** pool.cert ** uudelleenlähettämistä.
 {% endhint %}
 
-Add the following and customize to your metadata.
+Lisää seuraavat ja muokkaa metatietojasi.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -593,10 +593,10 @@ cardano-cli stake-pool metadata-hash \
 {% endtab %}
 {% endtabs %}
 
-Copy poolMetaData.json to [https://pages.github.io](https://pages.github.io) or host it yourself along with your website.
+Kopioi poolMetaData.json osoitteeseen [https://pages.github.io](https://pages.github.io) tai isännöi sitä itse verkkosivustosi mukana.
 
 {% hint style="info" %}
-Here is my **poolMetaData.json** & **extendedPoolMetaData.json** as a reference and shameless links back to my site. 😰
+Tässä on minun **poolMetaData.json** & **laajennettuPoolMetaData.json** viitteenä ja häpeämättömänä linkkinä takaisin sivustolleni. 😰
 
 [https://adamantium.online/poolMetaData.json](https://adamantium.online/poolMetaData.json)
 
@@ -612,7 +612,7 @@ echo minPoolCost: ${minPoolCost}
 {% endtab %}
 {% endtabs %}
 
-Use the format below to register single or multiple relays.
+Käytä alla olevaa muotoa rekisteröityäksesi yhden tai useamman releen.
 
 {% tabs %}
 {% tab title="DNS Relay\(1\)" %}
@@ -649,10 +649,10 @@ Use the format below to register single or multiple relays.
 {% endtabs %}
 
 {% hint style="danger" %}
-Edit the information below to match your pools desired configuration.
+Muokkaa alla olevia tietoja vastaamaan haluamaasi konfiguraatiota.
 {% endhint %}
 
-Issue a stake pool registration certificate.
+Myönnä stake poolin rekisteröintitodistus.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -675,7 +675,7 @@ cardano-cli stake-pool registration-certificate \
 {% endtab %}
 {% endtabs %}
 
-Issue a delegation certificate from **stake.skey** & **node.vkey**.
+Anna delegointitodistus **stake.skey** & **node.vkey**.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -688,7 +688,7 @@ cardano-cli stake-address delegation-certificate \
 {% endtab %}
 {% endtabs %}
 
-Retrieve your stake pool id.
+Nouda stake poolisi id.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -699,9 +699,9 @@ cat stakePoolId.txt
 {% endtab %}
 {% endtabs %}
 
-Move **pool.cert**, **deleg.cert** & **stakePoolId.txt** to your online core machine.
+Siirrä **pool.cert**, **deleg.cert** & **stakePoolId.txt** online core node koneeseesi.
 
-Query the current slot number or tip of the chain.
+Kysy ketjun nykyinen slotti eli kärki.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -742,7 +742,7 @@ echo Number of UTXOs: ${txcnt}
 {% endtab %}
 {% endtabs %}
 
-Parse **params.json** for stake pool registration deposit value. Spoiler: it's 500 ada but that could change in the future.
+Tiedustele **params.json** -tiedostosta stake poolin rekisteröintitalletuksen arvo. Spoiler: se on 500 ada mutta se voi muuttua tulevaisuudessa.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -753,7 +753,7 @@ echo stakePoolDeposit: ${stakePoolDeposit}
 {% endtab %}
 {% endtabs %}
 
-Build temporary **tx.tmp** to hold information while we build our raw transaction file.
+Rakenna väliaikainen **tx.tmp** pitääksesi tietoja samalla kun rakennamme raakatapahtumatiedostomme.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -770,7 +770,7 @@ cardano-cli transaction build-raw \
 {% endtab %}
 {% endtabs %}
 
-Calculate the transaction fee.
+Laske tapahtumamaksu.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -788,7 +788,7 @@ fee=$(cardano-cli transaction calculate-min-fee \
 {% endtab %}
 {% endtabs %}
 
-Calculate your change output.
+Laske muutoksesi tulos.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -799,7 +799,7 @@ echo txOut: ${txOut}
 {% endtab %}
 {% endtabs %}
 
-Build your **tx.raw** \(unsigned\) transaction file.
+Rakenna **tx.raw** \(allekirjoittamaton\) tapahtumatiedosto.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -816,9 +816,9 @@ cardano-cli transaction build-raw \
 {% endtab %}
 {% endtabs %}
 
-Move **tx.raw** to your cold offline machine.
+Siirrä **tx.raw** kylmään offline-koneeseen.
 
-Sign the transaction with your **payment.skey**, **node.skey** & **stake.skey**.
+Allekirjoita tapahtuma **payment.skey**, **node.skey** & **stake.skey**.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -834,7 +834,7 @@ cardano-cli transaction sign \
 {% endtab %}
 {% endtabs %}
 
-Move **tx.signed** back to your core node & submit the transaction to the blockchain.
+Siirrä **tx.signed** takaisin core palvelimellesi & lähetä tapahtuma lohkoketjuun.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -846,29 +846,29 @@ cardano-cli transaction submit \
 {% endtab %}
 {% endtabs %}
 
-## Confirm successful registration
+## Vahvista onnistunut rekisteröinti
 
 ### pool.vet
 
-pool.vet is a website for pool operators to check the validity of their stake pools on chain data. You can check this site for problems and clues as to how to fix them.
+pool.vet on verkkosivusto, jossa poolin operaattorit voivat tarkistaa poolinsa ketjuun lähtetetyt tiedot. Voit tarkistaa tämän sivuston löytääksesi ongelmia ja vihjeitä siitä, miten korjata ne.
 
 {% embed url="https://pool.vet/" caption="" %}
 
 ### adapools.org
 
-You should create an account and claim your pool here.
+Sinun pitäisi luoda tili ja lunastaa poolisi täällä.
 
 {% embed url="https://adapools.org/" caption="" %}
 
 ### pooltool.io
 
-You should create an account and claim your pool here.
+Sinun pitäisi luoda tili ja lunastaa poolisi täällä.
 
 {% embed url="https://pooltool.io/" caption="" %}
 
-## Backups
+## Varmuuskopiointi
 
-Get a couple small usb sticks and backup all your files and folders\(except the db/ folder\). Backup your online Core first then the Cold offline files and folders. **Do it now**, not worth the risk! **Do not plug the USB stick into anything online after Cold files are on it!**
+Hanki pari pientä usb-tikkua ja varmuuskopioi kaikki tiedostot ja kansiot\(lukuun ottamatta db/ kansiota\). Varmuuskopioi online Core ensin ja sitten kylmän offline koneen tiedostot ja kansiot. **Tee se nyt**, odottaminen ei ole riskin arvoista! **Älä kytke USB-tikkua mihinkään mikä on verkkossa sen jälkeen, kun kylmät tiedostot ovat siellä!**
 
 ![https://twitter.com/insaladaPool/status/1380087586509709312?s=19](../../.gitbook/assets/insalada%20%281%29.png)
 
