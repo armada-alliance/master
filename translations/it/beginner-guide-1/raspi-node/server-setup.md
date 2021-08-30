@@ -40,7 +40,7 @@ Edit /boot/firmware/config.txt. Just paste Pi Pool additions in at the bottom.
 sudo nano /boot/config.txt
 ```
 
-```text
+```bash
 [pi4]
 max_framebuffers=2
 
@@ -155,7 +155,7 @@ I am disabling IPv6 and IPv4 forwarding. You may want these. I have seen claims 
 sudo nano /etc/sysctl.conf
 ```
 
-```text
+```bash
 ## Pi Pool ##
 
 # swap more to zram                     
