@@ -1,40 +1,40 @@
 ---
-description: Pi-Node to Pi-Relay
+description: Pi-Node Pi-Relayksi
 ---
 
 # Pi-Relay
 
-To turn Pi-Node into a active relay we have to.
+Jotta Pi-Node muuttuisi aktiiviseksi relayksi meidän on tehtävä seurrava.
 
-1. Configure hostname.
-2. Configure static IP.
-3. Configure port for cardano-service.
-4. Configure port forwarding on router.
-5. Update port in env file.
-6. Enable cron job.
-7. Configure both topology scripts.
-8. Wait for service on boarding\(4 hours\).
-9. Pull in new list of peers.
-10. Prune list of best peers.
-11. Update gLiveView's env file.
-12. Edit the alias name for Prometheus.
-13. Reboot.
+1. Määritä hostname.
+2. Määritä staattinen IP-osoite.
+3. Määritä portti cardano-palveluun.
+4. Määritä portin siirto reitittimessä.
+5. Päivitä portti env-tiedostossa.
+6. Ota cron työ käyttöön.
+7. Määritä molemmat topologian komentosarjat.
+8. Odota palvelua aktivointia\(4 tuntia\).
+9. Vedä uusi käyttäjäluettelo.
+10. Jalosta luettelo parhaista käyttäjiä.
+11. Päivitä gLiveViewin env-tiedosto.
+12. Muokkaa Prometheuksen alias nimeä.
+13. Käynnistä uudelleen
 
 ## Hostname
 
-To set a fully qualified domain name \(FQDN\) for our relay edit /etc/hostname & /etc/hosts.
+Määrittääksesi täysin hyväksytyn verkkotunnuksen \(FQDN\) relaylle muokkaa /etc/hostname & /etc/hosts.
 
 ```text
 sudo nano /etc/hostname
 ```
 
-Replace ubuntu with your desired FQDN.
+Korvaa ubuntu halutulla FQDN:llä.
 
 ```text
 r1.example.com
 ```
 
-Save and exit.
+Tallenna ja sulje.
 
 ```text
 sudo nano /etc/hosts
@@ -60,7 +60,7 @@ ff02::3 ip6-allhosts
 192.168.1.152 r2.example.com
 ```
 
-Save and exit.
+Tallenna ja sulje.
 
 ## Network
 
@@ -122,7 +122,7 @@ Open the cardano service file and change the port it listens on.
 nano /home/ada/.local/bin/cardano-service
 ```
 
-Save and exit. **ctrl+x then y**.
+Tallenna ja sulje. **ctrl+x then y**.
 
 ```bash
 #!/bin/bash
@@ -199,7 +199,7 @@ crontab -e
 33 * * * * /home/ada/pi-pool/scripts/topologyUpdater.sh
 ```
 
-Save and exit.
+Tallenna ja sulje.
 
 ### Pull in your list of peers
 
@@ -218,7 +218,7 @@ BLOCKPRODUCING_PORT=3000
 curl -4 -s -o /home/ada/pi-pool/files/mainnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1|relays-new.cardano-mainnet.iohk.io:3001:2"
 ```
 
-Save and exit.
+Tallenna ja sulje.
 
 After four hours of on boarding your relay\(s\) will start to be available to other peers on the network. **topologyUpdater.sh** will create a list in /home/ada/pi-pool/logs.
 
