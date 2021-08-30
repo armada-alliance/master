@@ -335,19 +335,19 @@ cardano-cli address build \
 cat payment.addr
 ```
 
-Copy **payment.addr** to a thumb drive and move it to the core nodes pi-pool folder.
+Kopioi **payment.addr** Usb-asemaan ja siirrä se core-noden pi-pool kansioon.
 
-Add funds to the wallet. This is the only wallet the pool uses so your pledge goes here as well. There is a 2 ada staking registration fee and a 500 ada pool registration deposit that you can get back when retiring your pool.
+Lisää varoja lompakkoon. Tämä on ainoa lompakko, jota stake poolisi käyttää, joten pledge summa menee myös tänne. On 2 ada:n staking rekisteröintimaksu ja 500 ada:n poolin rekisteröinti talletukset. Nämä ovat pantteja, jotka saat takaisin, kun lopetat poolisi.
 
 {% hint style="Huomaa" %}
-Test the wallet by sending a small amount waiting a few minutes and querying it's balance.
+Testaa lompakko lähettämällä pieni määrä adaa, odota muutama minuutti ja tarkasta lompakkosi saldo.
 {% endhint %}
 
 {% hint style="danger" %}
-Core node needs to be synced to the tip of the blockchain.
+Core noden on oltava synkronoitu lohkoketjun kärjen kanssa.
 {% endhint %}
 
-### 6. Check balance
+### 6. Tarkista saldo
 
 {% tabs %}
 {% tab title="Core" %}
@@ -359,9 +359,9 @@ cardano-cli query utxo \
 {% endtab %}
 {% endtabs %}
 
-## Register stake address
+## Rekisteröi staking osoite
 
-Issue a staking registration certificate: **stake.cert**
+Myönnä staking rekisteröintisertifikaatti: **stake.cert**
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -373,20 +373,20 @@ cardano-cli stake-address registration-certificate \
 {% endtab %}
 {% endtabs %}
 
-Copy **stake.cert** to your core node's pi-pool folder.
+Kopioi **stake.cert** core noden pi-pool -kansioon.
 
-Query current slot number or tip of the chain.
+Kysy ketjun nykyinen slotti eli kärki.
 
 {% tabs %}
 {% tab title="Core" %}
 ```bash
-slotNo=$(cardano-cli query tip --mainnet | jq -r '.slot')
+slotNo=$(cardano-cli query tip --mainnet | jq -r '.slotNo')
 echo slotNo: ${slotNo}
 ```
 {% endtab %}
 {% endtabs %}
 
-Get the utxo or balance of the wallet.
+Hae lompakon utxo tai saldo.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -417,16 +417,16 @@ echo Number of UTXOs: ${txcnt}
 {% endtabs %}
 
 {% hint style="danger" %}
-If you get
+Jos sinulle tulee
 
 `cardano-cli: Network.Socket.connect: : does not exist (No such file or directory)`
 
-It is because the core has not finished syncing to the tip of the blockchain. This can take a long time after a reboot. If you look in the db/ folder after cardano-service stop you will see a file named 'clean'. That is confirmation file of a clean database shutdown. It usually takes 5 to 10 minutes to sync back to the tip of the chain on Raspberry Pi as of epoch 267.
+Se johtuu siitä, että ydin ei ole lopettanut synkronointia lohkoketjun kärkeen. Tämä voi kestää pitkän aikaa uudelleenkäynnistyksen jälkeen. Jos katsot db/ kansioon cardano-palvelun pysähdyksen jälkeen, näet tiedoston nimeltä 'puhdas'. Se on vahvistustiedosto tietokannan puhtaasta sammutuksesta. Kestää yleensä 5-10 minuuttia synkronoida takaisin ketjun kärkeen Raspberry Pi :lla (näin ainakin epochin 267 kohdalla).
 
-If however the cardano-node does not shutdown 'cleanly' for whatever reason it can take up to an hour to verify the database\(chain\) and create the socket file. Socket file is created once your synced.
+Jos cardano-nodea ei kuitenkaan sammutettu 'puhtaasti', mistä tahansa syystä, voi kestää jopa tunnin tarkistaa tietokanta \(ketju \) ja luoda uusi socket tiedosto. Socket tiedosto luodaan, kun synkronointi on valmis.
 {% endhint %}
 
-Query mainnet for protocol parameters.
+Kysy mainnet protokollan parametrit.
 
 ```text
 cardano-cli query protocol-parameters \
@@ -434,7 +434,7 @@ cardano-cli query protocol-parameters \
     --out-file params.json
 ```
 
-Retrieve **stakeAddressDeposit** value from **params.json**.
+Nouda **stakeAddressDeposit** arvo **params.json**.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -446,7 +446,7 @@ echo stakeAddressDeposit : ${stakeAddressDeposit}
 {% endtabs %}
 
 {% hint style="info" %}
-Stake address registration is 2,000,000 lovelace or 2 ada.
+Staking osoitteen rekisteröinti on 2000 000 lovelacea tai 2 adaa.
 {% endhint %}
 
 {% hint style="Huomaa" %}
@@ -706,13 +706,13 @@ Query the current slot number or tip of the chain.
 {% tabs %}
 {% tab title="Core" %}
 ```bash
-slotNo=$(cardano-cli query tip --mainnet | jq -r '.slot')
+slotNo=$(cardano-cli query tip --mainnet | jq -r '.slotNo')
 echo slotNo: ${slotNo}
 ```
 {% endtab %}
 {% endtabs %}
 
-Get the utxo or balance of the wallet.
+Hae lompakon utxo tai saldo.
 
 {% tabs %}
 {% tab title="Core" %}
