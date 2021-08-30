@@ -27,15 +27,65 @@ git fetch --recurse-submodules --tags --all
 git tag
 ```
 
-3\) Replace `<tag>` in this step with the latest tag such as `v1.1.0`.
+3\) Replace `<tag>` in this step with the latest tag such as `v1.2.0`.
 
 ```text
 git checkout tags/<tag>
 ```
 
+## Upgrading to Alpine v3.14 from Alpine v3.13:
+
+1\) Update your current version of AlpineOS.
+
+```text
+sudo apk update
+```
+
+```text
+sudo apk upgrade
+```
+
+2\) Edit the repository to reflect Alpine v3.14.
+
+```text
+sudo sed -i 's@v3.13@v3.14@g' /etc/apk/repositories
+```
+
+3\) Update the package list.
+
+```text
+sudo apk update
+```
+
+4\) Upgrading packages to v3.14
+
+```text
+sudo apk add --upgrade apk-tools
+```
+
+```text
+sudo apk upgrade --available
+```
+
+```text
+sudo sync
+```
+
+```text
+sudo reboot now
+```
+
+5\) Now you should have AlpineOS upgraded to v3.14 🍷.
+
+```text
+cat /etc/alpine-release
+```
+
+6\) To troubleshoot the upgrade, refer to the link: https://wiki.alpinelinux.org/wiki/Upgrading_Alpine
+
 ## Configuración inicial para AlpineOS en Raspberry Pi 4B 8GB:
 
-1\) Descargue AlpineOS para RPi 4 aarch64 aquí: [https://dl-cdn.alpinelinux.org/alpine/v3.13/releases/aarch64/alpine-rpi-3.13.5-aarch64.tar.gz](https://dl-cdn.alpinelinux.org/alpine/v3.13/releases/aarch64/alpine-rpi-3.13.5-aarch64.tar.gz)
+1\) Download the AlpineOS for RPi 4 aarch64 here: [https://dl-cdn.alpinelinux.org/alpine/v3.14/releases/aarch64/alpine-rpi-3.14.2-aarch64.tar.gz](https://dl-cdn.alpinelinux.org/alpine/v3.14/releases/aarch64/alpine-rpi-3.14.2-aarch64.tar.gz)
 
 2\) Descomprime el archivo .tar.gz y copia su contenido en una tarjeta SSD/SD
 
@@ -51,7 +101,7 @@ When you are in `setup-alpine` you will be prompted to choose the system disk. U
 
 6\) Reinicie el sistema.
 
-7\) Añada un nuevo usuario llamado cardano mediante el comando `adduser cardano` y su contraseña como se indica. \(Para un nombre de usuario distinto de **cardano**, consulte **la solución general de problemas**\)
+7\) Añada un nuevo usuario llamado cardano mediante el comando `adduser cardano` y su contraseña como se indica.
 
 8\) Ejecute los siguientes comandos para otorgar privilegios de root al nuevo usuario creado
 
@@ -162,7 +212,7 @@ Replace `<tag>` with the latest tag in the next command.
 ## Instalando los binarios estáticos 'cardano-node' y 'cardano-cli' \(AlpineOS utiliza binarios estáticos casi exclusivamente así que debes evitar las compilaciones no estáticas\)
 
 {% hint style="info" %}
-**Puede obtener los binarios estáticos para la versión 1.27. a través de este** [**enlace**](https://ci.zw3rk.com/build/1758) **cortesía de Moritz Angermann el SPO de ZW3RK pool 🙏**
+**You can obtain the static binaries for version 1.29.0 via this** [**link**](https://ci.zw3rk.com/build/1758) **courtesy of Moritz Angermann, the SPO of ZW3RK pool 🙏**
 {% endhint %}
 
 **Ejecuta los siguientes comandos para instalar los binarios y colocarlos en el directorio correcto.**
@@ -170,13 +220,13 @@ Replace `<tag>` with the latest tag in the next command.
 * Descargar los binarios
 
 ```text
-    wget -O ~/aarch64-unknown-linux-musl-cardano-node-1.27.0.zip https://ci.zw3rk.com/build/1758/download/1/aarch64-unknown-linux-musl-cardano-node-1.27.0.zip
+    wget -O ~/aarch64-unknown-linux-musl-cardano-node-1.29.0.zip https://ci.zw3rk.com/build/1771/download/1/aarch64-unknown-linux-musl-cardano-node-1.29.0.zip
 ```
 
 * Descomprimir e instalar los binarios a través de los comandos
 
 ```text
-    unzip -d ~/ aarch64-unknown-linux-musl-cardano-node-1.27.0.zip
+    unzip -d ~/ aarch64-unknown-linux-musl-cardano-node-1.29.0.zip
 
     sudo mv ~/cardano-node/* /usr/local/bin/
 ```
@@ -250,11 +300,11 @@ Replace `<tag>` with the latest tag in the next command.
 1\) Descargar Prometheus y node-exporter en el directorio de inicio
 
 ```text
-    wget -O ~/prometheus.tar.gz https://github.com/prometheus/prometheus/releases/download/v2.27.1/prometheus-2.27.1.linux-arm64.tar.gz
+    wget -O ~/prometheus.tar.gz https://github.com/prometheus/prometheus/releases/download/v2.29.2/prometheus-2.29.2.linux-arm64.tar.gz
 ```
 
 ```text
-    wget -O ~/node_exporter.tar.gz https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-arm64.tar.gz
+    wget -O ~/node_exporter.tar.gz https://github.com/prometheus/node_exporter/releases/download/v1.2.2/node_exporter-1.2.2.linux-arm64.tar.gz
 ```
 
 2\) Extraer los tarballs
@@ -270,11 +320,11 @@ tar -xzvf node_exporter.tar.gz
 3\) Renombrar las carpetas con los siguientes comandos
 
 ```text
-    mv prometheus-2.27.1.linux-arm64 prometheus
+    mv prometheus-2.29.2.linux-arm64 prometheus
 ```
 
 ```text
-    mv node_exporter-1.1.2.linux-arm64 node_exporter
+    mv node_exporter-1.2.2.linux-arm64 node_exporter
 ```
 
 4\) Siga la guía escrita en README.txt contenida en el directorio $HOME después de instalar cnode, scripts y servicios para iniciar los servicios en correctamente.
@@ -284,24 +334,6 @@ tar -xzvf node_exporter.tar.gz
 ```
 
 ## Solución general de problemas
-
-* Si utilizas otro nombre de usuario distinto de cardano, usa los siguientes comandos y reemplaza `username` con el nombre de usuario elegido.
-
-```text
-    sed -i 's@/home/cardano@/home/<username>@g' ~/cnode_env
-```
-
-```text
-    sudo sed -i 's@/home/cardano@/home/<username>@g' /etc/init.d/cardano-node
-```
-
-```text
-    sudo sed -i 's@/home/cardano@/home/<username>@g' /etc/init.d/prometheus
-```
-
-```text
-    sudo sed -i 's@/home/cardano@/home/<username>@g' /etc/init.d/node-export
-```
 
 * Si tienes problemas con el reenvío de puertos a través de SSH, ejecuta el siguiente comando
 
