@@ -65,7 +65,7 @@ cardano-cli node key-gen \
 {% endtab %}
 {% endtabs %}
 
-Create variables with the number of slots per KES period from the genesis file and current tip of the chain.
+Luo muuttujat, joissa on KES-jakson slottien määrä. Tämä määritetään genesis-tiedostosta ja ketjun nykyisestä kärjestä.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -78,7 +78,7 @@ echo slotNo: ${slotNo}
 {% endtab %}
 {% endtabs %}
 
-Set the **startKesPeriod** variable by dividing **slotNo** / **slotsPerKESPeriod**.
+Aseta **startKesPeriod** muuttuja jakamalla **slotNo** / **slotsPerKESPeriod**.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -89,11 +89,11 @@ echo startKesPeriod: ${startKesPeriod}
 {% endtab %}
 {% endtabs %}
 
-Write **startKesPeriod** value down & copy the **kes.vkey** to your cold offline machine.
+Kirjoita **startKesPeriod** arvo ylös & kopioi **kes.vkey** kylmään offline koneeseen.
 
-Issue a **node.cert** certificate using: **kes.vkey**, **node.skey**, **node.counter** and **startKesPeriod** value.
+Myönnä **node.cert** sertifikaatti käyttäen: **kes.vkey**, **node.skey**, **node.counter** ja **startKesPeriod** arvoa.
 
-Replace **&lt;startKesPeriod&gt;** with the value you wrote down.
+Korvaa **&lt;startKesPeriod&gt;** arvolla, jonka kirjoitit ylös.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -108,9 +108,9 @@ cardano-cli node issue-op-cert \
 {% endtab %}
 {% endtabs %}
 
-Copy **node.cert** to your Core machine.
+Kopioi **node.cert** block producer koneeseesi.
 
-Generate a VRF key pair.
+Luo VRF avainpari.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -122,7 +122,7 @@ cardano-cli node key-gen-VRF \
 {% endtab %}
 {% endtabs %}
 
-For security purposes the **vrf.skey** **needs** read only permissions or cardano-node will not start.
+Turvallisuussyistä **vrf.skey** **tarvitsee** vain lukuoikeudet muuten cardano-node ei käynnisty.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -132,7 +132,7 @@ chmod 400 vrf.skey
 {% endtab %}
 {% endtabs %}
 
-Edit the cardano-service startup script by adding **kes.skey**, **vrf.skey** and **node.cert** to the cardano-node run command and changing the port it listens on.
+Muokkaa cardano-service startup skriptiä lisäämällä **kes.skey**, **vrf. avain** ja **node.cert** kardano-noden run komentoon ja muuta portti jota se kuuntelee.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -172,7 +172,7 @@ cardano-node run +RTS -N4 -RTS \
 {% endtab %}
 {% endtabs %}
 
-Add your relay\(s\) to mainnet-topolgy.json.
+Lisää relaysi mainnet-topolgy.jsoniin.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -182,9 +182,9 @@ nano $NODE_FILES/mainnet-topology.json
 {% endtab %}
 {% endtabs %}
 
-Use your LAN IPv4 for addr field if you are not using domain DNS. Be sure to have proper records set with your registrar or DNS service. Below are some examples.
+Käytä LAN IPv4:ää addr -kenttään, jos et käytä verkkotunnuksen DNS. Varmista, että sinulla on asianmukaiset tietueet asetettuna rekisteriin tai DNS palveluun. Alla on muutamia esimerkkejä.
 
-Valency greater than one is only used with DNS round robin srv records.
+Valency suurempi kuin yksi käytetään vain DNS round robin srv tietueiden kanssa.
 
 {% tabs %}
 {% tab title="1 Relay DNS" %}
@@ -254,7 +254,7 @@ Valency greater than one is only used with DNS round robin srv records.
 {% endtab %}
 {% endtabs %}
 
-Restart and your node is now running as a core.
+Käynnistä uudelleen ja node on nyt core eikä relay.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -264,20 +264,20 @@ cardano-service restart
 {% endtab %}
 {% endtabs %}
 
-## Create the pool wallet payment & staking key pairs
+## Luo pool-lompakko, maksu & staking avainparit
 
 {% hint style="danger" %}
-**Cold offlline machine.** Take the time to visualize the operations here.
+**Kylmä offlline kone.** Käytä aikaa visualisoidaksesi toiminnot täällä.
 
-1. _**Generate**_ a wallet key pair named payment. = **payment.vkey** & **payment.skey**
-2. _**Generate**_ staking key pair. = **stake.vkey** & **stake.skey**
-3. _**Build**_ a stake address from the newly created **stake.vkey**. = **stake.addr**
-4. _**Build**_ a wallet address from the **payment.vkey** & delegate with **stake.vkey**. = **payment.addr**
-5. Add funds to the wallet by sending ada to **payment.addr**
-6. Check balance.
+1. _**Luo**_ lompakon avain pari nimeltä payment. = **payment.vkey** & **payment.skey**
+2. _**Luo**_ staking avainpari. = **stake.vkey** & **stake.skey**
+3. _**Rakenna**_ stake osoite juuri luodusta **stake.vkey -avaimesta**. = **stake.addr**
+4. _**Rakenna**_ lompakon osoite **payment.vkey** & delegoi **stake.vkey**. = **payment.addr**
+5. Lisää varoja lompakkoon lähettämällä ada **payment.addr**
+6. Tarkista saldo.
 {% endhint %}
 
-### 1. Generate wallet key pair
+### 1. Luo lompakon avainpari
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -290,7 +290,7 @@ cardano-cli address key-gen \
 {% endtab %}
 {% endtabs %}
 
-### 2. Generate staking key pair
+### 2. Luo staking avainpari
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -302,7 +302,7 @@ cardano-cli stake-address key-gen \
 {% endtab %}
 {% endtabs %}
 
-### 3. Build stake address
+### 3. Koosta staking osoite
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -315,7 +315,7 @@ cardano-cli stake-address build \
 {% endtab %}
 {% endtabs %}
 
-### 4. Build payment address
+### 4. Koosta maksuosoite
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -329,7 +329,7 @@ cardano-cli address build \
 {% endtab %}
 {% endtabs %}
 
-### 5. Fund wallet
+### 5. Siirrä varoja lompakkoon
 
 ```text
 cat payment.addr
