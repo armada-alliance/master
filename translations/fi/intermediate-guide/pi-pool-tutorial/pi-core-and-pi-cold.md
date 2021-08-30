@@ -50,7 +50,7 @@ cardano-cli node key-gen-KES \
 {% endtab %}
 {% endtabs %}
 
-Generate a node cold key pair: **node.vkey**, **node.skey** and **node.counter** file on your Cold Offline machine.
+Luo noden kylmä avainpari: **node.vkey**, **node.skey** ja **node.counter** tallenna avaintiedostot kylmään Offline koneeseen.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
