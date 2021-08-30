@@ -40,7 +40,7 @@ Muokkaa /boot/firmware/config.txt. Liitä Pi Pool lisäykset tiedoston loppuun.
 sudo nano /boot/firmware/config.txt
 ```
 
-```text
+```bash
 [pi4]
 max_framebuffers=2
 
@@ -155,7 +155,7 @@ Olen poistamassa IPv6 ja IPv4 siirtoa käytöstä. Saatat haluta pitää näitä
 sudo nano /etc/sysctl.conf
 ```
 
-```text
+```bash
 ## Pi Pool ##
 
 # swap less                      
