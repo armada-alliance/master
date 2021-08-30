@@ -40,7 +40,7 @@ Tallenna ja sulje.
 sudo nano /etc/hosts
 ```
 
-Edit the file accordingly, take note that you may not be using the 192.168.1.xxx IP range.
+Muokkaa tiedostoa vastaavasti, ota huomioon, että et ehkä käytä 192.168.1.xxx IP-aluetta.
 
 ```bash
 127.0.0.1 localhost
@@ -62,14 +62,14 @@ ff02::3 ip6-allhosts
 
 Tallenna ja sulje.
 
-## Network
+## Verkko
 
-### Static IP
+### Staattinen IP
 
-Open **50-cloud-init.yaml** and replace the contents of the file with below.
+Avaa **50-pilvi-init.yaml** ja korvaa tiedoston sisältö alla olevalla.
 
 {% hint style="Huomaa" %}
-Be sure to use an address on your LAN subnet. In this example I am using **192.168.1.xxx**. Your network may very well be using a different private range.
+Muista käyttää LAN aliverkon osoitetta. Tässä esimerkissä käytän **192.168.1.xxx**. Verkostosi voi hyvinkin käyttää erilaista yksityistä aluetta.
 {% endhint %}
 
 ```bash
@@ -96,7 +96,7 @@ network:
           addresses: [192.168.1.1, 9.9.9.9, 149.112.112.112]
 ```
 
-Create a file named **99-disable-network-config.cfg** to disable cloud-init.
+Luo tiedosto nimeltä **99-disable-network-config.cfg** poistaaksesi cloud-init käytöstä.
 
 ```bash
 sudo nano /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
@@ -108,21 +108,21 @@ Add the following, save and exit.
 network: {config: disabled}
 ```
 
-Apply your changes.
+Ota muutoksesi käyttöön.
 
 ```text
 sudo netplan apply
 ```
 
-## Configure service port
+## Määritä palvelinportti
 
-Open the cardano service file and change the port it listens on.
+Avaa cardano-service tiedosto ja muuta portti jota se kuuntelee.
 
 ```bash
 nano /home/ada/.local/bin/cardano-service
 ```
 
-Tallenna ja sulje. **ctrl+x then y**.
+Tallenna ja sulje. **ctrl+x ja y**.
 
 ```bash
 #!/bin/bash
@@ -144,20 +144,20 @@ cardano-node run \
   --config ${CONFIG}
 ```
 
-Enable cardano-service at boot & restart the service to load changes.
+Ota cardano-service käyttöön käynnistyksen yhteydessä & käynnistä palvelu uudelleen ladataksesi muutokset.
 
 ```bash
 cardano-service enable
 cardano-service restart
 ```
 
-## Forward port on router
+## Välitä portti reitittimessä
 
 {% hint style="danger" %}
-Do not forward a port to your Core machine it only connects to your relay\(s\) on your LAN
+Älä siirrä porttia eteenpäin Core koneeseesi, sillä se muodostaa yhteyden vain LAN-verkossasi sijaitsevaan relayhin
 {% endhint %}
 
-Log into your router and forward port 3001 to your relay nodes LAN IPv4 address port 3001. Second relay forward port 3002 to LAN IPv4 address for relay 2 to port 3002.
+Kirjaudu reitittimeen ja siltaa portti 3001 relay noden LAN IPv4 osoiteporttiin 3001. Toiselle relaylle sillataan portti 3002 relay LAN IPv4 osoitteesseen porttiin 3002.
 
 ## Topology Updater
 
@@ -165,10 +165,10 @@ Log into your router and forward port 3001 to your relay nodes LAN IPv4 address 
 cd $NODE_HOME/scripts
 ```
 
-Configure the script to match your environment.
+Määritä skripti vastaamaan ympäristöäsi.
 
 {% hint style="Huomaa" %}
-If you are using IPv4 leave CNODE\_HOSTNAME the way it is. The service will pick up your public IP address on it's own. I repeat only change the port to 3001. For DNS change only the first instance. Do not edit "CHANGE ME" further down in the file.
+Jos käytät IPv4:ää, jätä CNODE\_HOSTNAME niin kuin se on. Palvelu hakee julkisen IP-osoitteen ja käyttää sitä. Toistan, muuta vain portti arvoon 3001 DNS:llä muuta vain ensimmäinen ilmentymä. Älä muokkaa "CHANGE ME" tiedoston alemmilla riveillä.
 {% endhint %}
 
 ```bash
@@ -179,17 +179,17 @@ cd /home/ada/pi-pool/scripts/topologyUpdater.sh
 nano topologyUpdater.sh
 ```
 
-Run the updater once to confirm it is working.
+Suorita päivitys kerran vahvistaa, että se toimii.
 
 ```bash
 ./topologyUpdater.sh
 ```
 
-Should look similar to this.
+Pitäisi näyttää samankaltaiselta kuin tämä.
 
 > `{ "resultcode": "201", "datetime":"2021-05-20 10:13:40", "clientIp": "1.2.3.4", "iptype": 4, "msg": "nice to meet you" }`
 
-Enable the cron job by removing the \# character from crontab.
+Ota cron työ käyttöön poistamalla \# merkki crontabista.
 
 ```bash
 crontab -e
@@ -201,11 +201,11 @@ crontab -e
 
 Tallenna ja sulje.
 
-### Pull in your list of peers
+### Vedä uusi käyttäjäluettelo
 
-Wait four hours or so and run the relay-topology\_pull.sh to replace your mainnet-topology file with the list created in the log directory.
+Odota neljä tuntia ja suorita relay-topology\_pull.sh korvataksesi mainnet-topologian tiedoston lokihakemistoon luodulla listalla.
 
-Open relay-topology\_pull.sh and configure it for your environment.
+Avaa relay-topology\_pull.sh ja määritä se ympäristöllesi.
 
 ```bash
 nano /home/ada/pi-pool/scripts/relay-topology_pull.sh
@@ -220,21 +220,20 @@ curl -4 -s -o /home/ada/pi-pool/files/mainnet-topology.json "https://api.clio.on
 
 Tallenna ja sulje.
 
-After four hours of on boarding your relay\(s\) will start to be available to other peers on the network. **topologyUpdater.sh** will create a list in /home/ada/pi-pool/logs.
+Neljän tunnin kuluttua relaysi on saatavilla muiden käyttäjien verkossa. **topologyUpdater.sh** luo listan /home/ada/pi-pool/logs.
 
-relay-topology\_pull.sh will replace the contents of your relays mainnet-topology file.
+relay-topology\_pull.sh korvaa relaysi mainnet-topology tiedoston sisällön.
 
 ```bash
-cd /home/ada/pi-pool/scripts
-./relay-topology_pull.sh
+nano /home/ada/pi-pool/scripts/relay-topology_pull.sh
 ```
 
-### Prune the list
+### Jalosta lista
 
-Open your topolgy file and use **ctrl+k** to cut the entire line of any peer over 5,000 miles away.
+Avaa topolgy tiedosto ja käytä **ctrl+k** leikataksesi koko rivi, jossa käyttäjän etäisyys on yli 5000 mailia.
 
-{% hint style="Huomaa" %}
-Remember to remove the last entries comma in your list or cardano-node will fail to start.
+{% hint style="warning" %}
+Muista poistaa listasta viimeisen syötteen pilkku tai cardano-node ei käynnisty.
 {% endhint %}
 
 ```bash
@@ -248,54 +247,54 @@ sed -i ${NODE_FILES}-mainnet-config.json \
     -e "s/TraceBlockFetchDecisions\": false/TraceBlockFetchDecisions\": true/g"
 ```
 
-## Update gLiveView port
+## Päivitä gLiveView- portti
 
-Open the env file in the scripts directory.
+Avaa env tiedosto skripts hakemistossa.
 
 ```bash
 nano /home/ada/pi-pool/scripts/env
 ```
 
-Update the port number to match the one set in the cardano-service file. 3001 in this guide.
+Päivitä portin numero, jotta se vastaa kardano-palvelun tiedostossa asetettua numeroa. 3001 tässä oppaassa.
 
-Reboot your new relay and let it sync back to the tip of the chain.
+Käynnistä uusi relay uudelleen ja anna sen synkronoida takaisin ketjun kärkeen.
 
-Use gLiveView.sh to view peer info.
+Käytä gLiveView.sh nähdäksesi vertaistiedot.
 
 ```bash
 cd /home/ada/pi-pool/scripts
 ./gLiveView.sh
 ```
 
-Many operators block icmp syn packets\(ping\) because of a security flaw that was patched a decade ago. So expect to see --- for RTT because we are not receiving a response from that server.
+Monet operaattorit estävät icmp syn packets\(ping\) vuosikymmen sitten korjatun turvavirheen vuoksi. Joten odota näkeväsi --- RTT, koska emme saa vastausta kyseiseltä palvelimelta.
 
-More incoming connections is generally a good thing, it increases the odds that you will get network data sooner. Though you may want to put a limit on how many connect. The only way to stop incoming connections would be to block the IPv4 address with ufw.
+Enemmän saapuvia yhteyksiä on yleensä hyvä asia, sillä se lisää mahdollisuutta, että saat verkon dataa nopeammin. Vaikkakin saatat haluta asettaa rajan sille, kuinka monta yhteyttä voidaan muodostaa. Ainoa tapa pysäyttää saapuvat yhteydet olisi estää IPv4-osoite ufw.
 
 ## Prometheus
 
-Last thing we should do is change the name Prometheus is serving to Grafana.
+Viimeinen asia, mitä meidän pitäisi tehdä, on muuttaa nimi jonka Prometheus vie Grafanaan.
 
 ```bash
 sudo nano /etc/prometheus/prometheus.yml
 ```
 
-{% hint style="Huomaa" %}
-You can change.
+{% hint style="warning" %}
+Voit muuttaa.
 
 ```bash
 alias: 'N1'
 ```
 
-to
+arvoon
 
 ```bash
 alias: 'R1'
 ```
 
-In an upcoming guide I will show how to have Prometheus running on a separate Pi scraping data from the pool instead of having Prometheus using system resources on those machines.
+Tulevassa oppaassa kerron kuinka Prometheus asennetaan erilliselle Pi:lle ja hakee dataa poolista sen sijaan, että Prometheus käyttäisi node koneiden järjestelmän resursseja.
 {% endhint %}
 
-Update, save and exit.
+Päivitä, tallenna ja poistu.
 
 ```bash
 global:
@@ -340,5 +339,5 @@ scrape_configs:
           type:  'node'
 ```
 
-Reboot the server and give it a while to sync back up. That is just about it. Please feel free to join our Telegram channel for support. [https://t.me/armada\_alli](https://t.me/armada_alli)
+Käynnistä palvelin uudelleen ja anna sille aikaa synkronoida ketjun kärkeen. Siinäpä se. Ole hyvä ja liity vapaasti Telegram-kanavamme tukeen. [https://t.me/armada\_alli](https://t.me/armada_alli)
 
