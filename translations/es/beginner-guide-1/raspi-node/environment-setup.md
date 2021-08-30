@@ -486,42 +486,42 @@ cd $NODE_HOME/scripts
 Prometheus se conecta al backend de los cardano-nodes y muestra sus métricas mediante http. Grafana a su vez puede usar esos datos para mostrar gráficos y crear alertas. Nuestro panel de control de Grafana estará compuesto de datos de nuestro sistema Ubuntu & nodo de tarjeta. Grafana también puede mostrar datos de otras fuentes, como [adapools.org](https://adapools.org/).
 
 {% hint style="info" %}
-You can connect a Telegram bot to Grafana which can alert you of problems with the server. Much easier than trying to configure email alerts.
+Puedes conectar un bot de Telegram a Grafana que te puede alertar de problemas con el servidor. Mucho más fácil que intentar configurar las alertas por correo electrónico.
 {% endhint %}
 
 {% embed url="https://github.com/prometheus" caption="" %}
 
 ![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%282%29.png)
 
-### Install Prometheus & Node Exporter.
+### Instalar Prometheus & Node Exporter.
 
 {% hint style="info" %}
-Prometheus can scrape the http endpoints of other servers running node exporter. Meaning Grafana and Prometheus does not have to be installed on your core and relays. Only the package prometheus-node-exporter is required if you would like to build a central Grafana dashboard for the pool, freeing up resources.
+Prometheus puede tomar los datos http de otros servidores ejecutando el node-exporter. El mantenimiento de Grafana y Prometheus no tiene que ser instalado en su core ni en sus relays. Sólo se requiere el paquete de prometheus-node-exporter para construir un tablero de control de Grafana para el Pool, liberando así recursos.
 {% endhint %}
 
 ```bash
 sudo apt-get install -y prometheus prometheus-node-exporter
 ```
 
-Disable them in systemd for now.
+Desactívalos en el systemd por ahora.
 
 ```bash
 sudo systemctl disable prometheus.service
 sudo systemctl disable prometheus-node-exporter.service
 ```
 
-### Configure Prometheus
+### Configurar Prometheus
 
-Open prometheus.yml.
+Abre prometheus.yml.
 
 ```bash
 sudo nano /etc/prometheus/prometheus.yml
 ```
 
-Replace the contents of the file with.
+Reemplaza el contenido del archivo.
 
 {% hint style="warning" %}
-Indentation must be correct YAML format or Prometheus will fail to start.
+La indentación debe ser correcta en formato YAML o Prometheus no podrá iniciarse.
 {% endhint %}
 
 ```yaml
@@ -567,39 +567,39 @@ scrape_configs:
           type:  'node'
 ```
 
-Save & exit.
+Guardar y salir
 
-Edit mainnet-config.json so cardano-node exports traces on all interfaces.
+Editar mainnet-config.json para que cardano-node exporta trazas en todas las interfaces.
 
 ```bash
 cd $NODE_FILES
 sed -i ${NODE_CONFIG}-config.json -e "s/127.0.0.1/0.0.0.0/g"
 ```
 
-### Install Grafana
+### Instalar Grafana
 
 {% embed url="https://github.com/grafana/grafana" caption="" %}
 
-Add Grafana's gpg key to Ubuntu.
+Añade la clave gpg de Grafana a Ubuntu.
 
 ```bash
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 ```
 
-Add latest stable repo to apt sources.
+Añade el último repositorio estable a las fuentes apt.
 
 ```bash
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 ```
 
-Update your package lists & install Grafana.
+Actualiza tus listas de paquetes e instala Grafana.
 
 ```bash
 sudo apt update
 sudo apt install grafana
 ```
 
-Change the port Grafana listens on so it does not clash with cardano-node.
+Cambia el puerto que escucha Grafana para que no choque con el nodo cardano.
 
 ```bash
 sudo sed -i /etc/grafana/grafana.ini \
@@ -607,7 +607,7 @@ sudo sed -i /etc/grafana/grafana.ini \
 -e "s/3000/5000/"
 ```
 
-### cardano-monitor bash function
+### Función de cardano-monitor bash
 
 Open .bashrc.
 
@@ -616,7 +616,7 @@ cd $HOME
 nano .bashrc
 ```
 
-Down at the bottom add.
+Abajo en la parte inferior.
 
 ```bash
 cardano-monitor() {
@@ -633,7 +633,7 @@ Save, exit & source.
 source .bashrc
 ```
 
-Here we tied all three services under one function. Enable Prometheus.service, prometheus-node-exporter.service & grafana-server.service to run on boot and start the services.
+Aquí vinculamos los tres servicios bajo una sola función. Habilita a Prometheus.service, prometheub node-exporter.service & grafana-server.service para ejecutarse en el arranque e iniciar los servicios.
 
 ```bash
 cardano-monitor enable
@@ -641,44 +641,44 @@ cardano-monitor start
 ```
 
 {% hint style="warning" %}
-At this point you may want to start cardano-service and get synced up before we continue to configure Grafana. Skip ahead to [syncing the chain section](https://app.gitbook.com/@wcatz/s/pi-pool-guide/~/drafts/-MYFtFDZp-rTlybgAO71/pi-node/environment-setup/@drafts#syncing-the-chain). Choose whether you want to wait 30 hours or download my latest chain snapshot. Return here once gLiveView.sh shows you are at the tip of the chain.
+En este punto es posible que quieras iniciar el cardano-service y que se sincronice antes de continuar con la configuración de Grafana. Pasar a [sincronizar la blockchain](https://app.gitbook.com/@wcatz/s/pi-pool-guide/~/drafts/-MYFtFDZp-rTlybgAO71/pi-node/environment-setup/@drafts#syncing-the-chain). Elige si quieres esperar 30 horas o descargar mi último snapshot. Vuelve aquí una vez que gLiveView.sh muestra que estás al final de la cadena.
 {% endhint %}
 
-### Configure Grafana
+### Configurar Grafana
 
-On your local machine open your browser and got to [http://&lt;Pi-Node's](http://<Pi-Node's) private ip&gt;:5000
+En tu máquina local abre tu navegador y ha llegado a [http://&lt;Pi-Nodo](http://<Pi-Node's) IP Privada&gt;:5000
 
-Log in and set a new password. Default username and password is **admin:admin**.
+Inicie sesión y establezca una nueva contraseña. El nombre de usuario y contraseña por defecto son **admin:admin**.
 
-#### Configure data source
+#### Configurar la fuente de datos
 
-In the left hand vertical menu go to **Configure** &gt; **Datasources** and click to **Add data source**. Choose Prometheus. Enter [http://localhost:9090](http://localhost:9090) where it is grayed out, everything can be left default. At the bottom save & test. You should get the green "Data source is working" if cardano-monitor has been started. If for some reason those services failed to start issue **cardano-service restart**.
+En el menú vertical de la mano izquierda, vaya a **Configure** &gt; **Datasources** y haga clic en **Add data source**. Elige Prometheus. Escribe [http://localhost:9090](http://localhost:9090) donde está en gris, el resto puede dejarse por defecto. En la parte inferior pinchar en save & test. Deberías obtener el verde "Data source is working" si el cardano-monitor está iniciado. Si por alguna razón estos servicios no pudieron iniciar, reinicie con **cardano-service restart**.
 
-#### Import dashboards
+#### Importar Panel de Control (Dashboards)
 
-Save the dashboard json files to your local machine.
+Guarda los archivos json del dashboard en tu máquina local.
 
 {% embed url="https://github.com/armada-alliance/dashboards" caption="" %}
 
-In the left hand vertical menu go to **Dashboards** &gt; **Manage** and click on **Import**. Select the file you just downloaded/created and save. Head back to **Dashboards** &gt; **Manage** and click on your new dashboard.
+En el menú vertical de la mano izquierda, vaya a **Dashboards** &gt; **Manage** y haga clic en **Import**. Selecciona el archivo que acabas de descargar/crear y guardar. Vuelve a **Dashboards** &gt; **Manage** y haz clic en tu nuevo Panel de control.
 
 ![](../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
-### Configure poolDataLive
+### Configurar poolDataLive
 
-Here you can use the poolData api to bring your pools data into Grafana.
+Aquí puedes utilizar la api de PoolData para traer sus datos del Pool a Grafana.
 
 {% embed url="https://api.pooldata.live/dashboard" caption="" %}
 
-Follow the instructions to install the Grafana plugin, configure your datasource and import the dashboard.
+Siga las instrucciones para instalar el plugin Grafana, configurar su fuente de datos e importar el Panel de control.
 
-Follow log output to journal.
+Seguir salida de log al journal.
 
 ```bash
 sudo journalctl --unit=cardano-node --follow
 ```
 
-Follow log output to stdout.
+Seguir salida de log al stdout (log general).
 
 ```bash
 sudo tail -f /var/log/syslog
@@ -686,15 +686,15 @@ sudo tail -f /var/log/syslog
 
 ## Grafana, Nginx proxy\_pass & snakeoil
 
-Let's put Grafana behind Nginx with self signed\(snakeoil\) certificate. The certificate was generated when we installed the ssl-cert package.
+Pongamos Grafana detrás de Nginx con certificado autofirmado\(snakeoil\). El certificado se generó cuando instalamos el paquete ssl-cert.
 
-You will get a warning from your browser. This is because ca-certificates cannot follow a trust chain to a trusted \(centralized\) source. The connection is however encrypted and will protect your passwords flying around in plain text.
+Recibirás una advertencia de tu navegador. Esto se debe a que ca-certificates no pueden seguir a una fuente de confianza \(centralizada\). Sin embargo, la conexión está cifrada y protegerá sus contraseñas volando en texto plano.
 
 ```bash
 sudo nano /etc/nginx/sites-available/default
 ```
 
-Replace contents of the file with below.
+Reemplaza el contenido del archivo.
 
 ```bash
 # Default server configuration
@@ -730,7 +730,7 @@ server {
 }
 ```
 
-Check that Nginx is happy with our changes and restart it.
+Compruebe que Nginx está contento con nuestros cambios y reinicie.
 
 ```bash
 sudo nginx -t
@@ -738,9 +738,9 @@ sudo nginx -t
 sudo service nginx restart
 ```
 
-You can now visit your pi-nodes ip address without any port specification, the connection will be upgraded to SSL/TLS and you will get a scary message\(not really scary at all\). Continue through to your dashboard.
+Ahora puede visitar su dirección IP de los pi-nodos sin ninguna especificación de puerto, la conexión se actualizará a SSL/TLS y recibirás un mensaje aterrador\(no realmente aterrador\). Continúe hasta su panel de control.
 
 ![](../../.gitbook/assets/snakeoil.png)
 
-From here you have a pi-node with tools to build a stake pool from the following pages. Best of Luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger!
+Desde aquí tienes un pi-node con herramientas para construir un Stake Pool desde las siguientes páginas. Lo mejor de la Suerte y por favor únete a la [armada-alliance](https://armada-alliance.com), ¡juntos somos más fuertes!
 
