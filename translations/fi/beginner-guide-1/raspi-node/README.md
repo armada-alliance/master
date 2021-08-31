@@ -6,7 +6,7 @@ description: >-
 # Pi-Node🍓
 
 {% hint style="Huomaa" %}
-**Tämän tutoriaalin tarkoitus on saada yksi node synkronoitua Cardano lohkoketjuun! Jos haluat rakentaa stake poolin mainnettiin. Ole hyvä ja käytä**[ **keskitason oppaitamme**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **mainnettia varten.**
+**This tutorial is meant to get a single node syncing to the Cardano network! If you wish to build a stake pool, please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/)**.**
 {% endhint %}
 
 ## Mitä laitteistoa tarvitset näitä oppitunteja varten
@@ -16,12 +16,12 @@ description: >-
 | TV tai näyttö HDMI-syötteellä                                                | 1     |
 | 1 Mini HDMI HDMI-kaapeli                                                     | 1     |
 | Kannettava tietokone tai työpöytätietokone \(macOS, Linux PC, Windows PC\) | 1     |
-| Raspberry Pi 4 Model B 8GB RAM                                               | 2     |
+| Raspberry Pi 4 Model B 8GB RAM                                               | 1     |
 | Mikro SD-kortti                                                              | 1     |
-| Ulkoinen Kovalevy                                                            | 2     |
-| USB 3.0 - SATA III -adapteri                                                 | 2     |
+| Ulkoinen Kovalevy                                                            | 1     |
+| USB 3.0 - SATA III -adapteri                                                 | 1     |
 | Langallinen tai langaton hiiri                                               | 1     |
 | langallinen tai langaton näppäimistö                                         | 1     |
-| Ethernet Kaapeli \(CAT6\)                                                  | 2     |
+| Ethernet Kaapeli \(CAT6\)                                                  | 1     |
 | Verkon reititin ethernet-yhteyttä varten                                     | 1     |
 
