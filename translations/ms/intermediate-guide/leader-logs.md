@@ -4,7 +4,7 @@ description: How to get your Stake Pools Slot Assignments for next Epoch
 
 # CNCLI Leader Logs📑
 
-## Build CNCLI \(thanks to @AndrewWestberg\)
+## Build CNCLI \(thanks to [@AndrewWestberg](https://github.com/AndrewWestberg)\)
 
 {% hint style="warning" %}
 Running it on your block-producing/Core node is the convenient way, but to save resources you may build and run cncli on another \(i.e. your monitoring\) device. Therefore you will need to get the stake-snapshot.json from one of your running nodes and copy the genesis files and the vrf.skey from your Core to the particular device.
@@ -158,7 +158,7 @@ Type=simple
 Restart=always
 RestartSec=5
 LimitNOFILE=131072
-ExecStart=$HOME/.local/bin/cncli sync --host 127.0.0.1 --port <cardano_node_port> --db $HOME/pi-pool/cncli/cncli.db
+ExecStart=/home/ada/.local/bin/cncli sync --host 127.0.0.1 --port <cardano_node_port> --db $HOME/pi-pool/cncli/cncli.db
 KillSignal=SIGINT
 SuccessExitStatus=143
 StandardOutput=syslog
@@ -189,7 +189,7 @@ cd $HOME/pi-pool/cncli
 sudo chmod a+w cncli.db
 ```
 
-### Create the leaderlog-stake-snapshot-v4.sh script \(thanks to @sayshar\)
+### Create the leaderlog-stake-snapshot-v4.sh script \(thanks to [@sayshar](https://github.com/sayshar)\)
 
 {% tabs %}
 {% tab title="Monitor" %}
