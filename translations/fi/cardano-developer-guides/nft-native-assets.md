@@ -455,6 +455,6 @@ node src/send-back-asset-to-wallet.js
 {% embed url="https://youtu.be/awxVkFbWoKM" caption="" %}
 
 {% hint style="success" %}
-**If you liked this tutorial and want to see more like it please consider staking your ADA with any of our Alliance's** [**Stake Pools**](https://armada-alliance.com/stake-pools)**, or giving a one-time donation to our Alliance** [**https://cointr.ee/armada-alliance**](https://cointr.ee/armada-alliance)**.**
+**Jos pidit tästä oppitunnista ja haluat nähdä enemmän sen kaltaista, harkitse ADAn delegoimista johonkin Allianssimme** [**Stake Pooleista**](https://armada-alliance.com/stake-pools)**, tai kertalahjoituksen antaminen liittoutumallemme** [**https://cointr.ee/armada-alliance**](https://cointr.ee/armada-alliance)**.**
 {% endhint %}
 
