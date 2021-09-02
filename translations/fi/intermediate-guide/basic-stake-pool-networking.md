@@ -125,5 +125,5 @@ Unless you have a static IP address assigned by your ISP, at some point you're g
 * no-ip
 * namecheap.com openwrt ddns-scripts
 
-Oliko tämä tieto hyödyllistä? Ansaitse palkintoja kanssamme! [Consider delegating some ADA](../cardano-developer-guides/delegate.md).
+Oliko tämä tieto hyödyllistä? Ansaitse palkintoja kanssamme! [Harkitse ADA: n delegoimista pooleihimme](../cardano-developer-guides/delegate.md).
 
