@@ -21,7 +21,7 @@ Teimme tämän tutoriaalin käytettäväksi **Raspberry-Pi-ARM** koneiden kanssa
 {% endhint %}
 
 {% hint style="info" %}
-If you are using a Raspberry Pi machine [here](https://docs.armada-alliance.com/learn/beginner-guide-1/raspi-node) is an easy-to-follow tutorial we made to get a Cardano Relay Node running.
+Jos käytät Raspberry Pi konetta h[tässä](https://docs.armada-alliance.com/learn/beginner-guide-1/raspi-node) on helposti seurattava tutoriaali, jonka teimme Cardano Relay Node:n rakentamiseen ja käynnistämiseen.
 {% endhint %}
 
 * cardano-node / cardano-cli perustettu paikalliseen koneeseen
@@ -229,7 +229,7 @@ node src/get-balance.js
 * Voimme nyt lähettää joitakin varoja \(ADA\) luomaamme lompakkoon, odota muutama minuutti, ja sitten tarkista saldo uudelleen varmistaaksesi, että tapahtuma onnistui.
 
 {% hint style="info" %}
-If you are using testnet you must get your tADA from the testnet faucet [here](https://developers.cardano.org/en/testnets/cardano/tools/faucet/).
+Jos käytät testnetiä, sinun täytyy saada tADA testnet-hanasta [täältä](https://developers.cardano.org/en/testnets/cardano/tools/faucet/).
 {% endhint %}
 
 #### _Video Walk-through_ :
