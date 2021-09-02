@@ -1,5 +1,5 @@
 ---
-description: 'optimizar hardware, robustecer Ubuntu'
+description: 'optimizar hardware, securizar Ubuntu'
 ---
 
 # Configuración del servidor
