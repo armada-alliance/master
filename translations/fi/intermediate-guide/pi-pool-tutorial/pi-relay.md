@@ -102,7 +102,7 @@ Luo tiedosto nimeltä **99-disable-network-config.cfg** poistaaksesi cloud-init 
 sudo nano /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
 ```
 
-Add the following, save and exit.
+Liitä seuraavat, tallenna & sulje nano.
 
 ```bash
 network: {config: disabled}
