@@ -2,7 +2,7 @@
 description: Miten lisätä adapools.org summary.json tiedot Grafana tapahtumaksi.
 ---
 
-# Add adapools Metrics to Grafana 📊
+# Lisää adapoolien mittareita Grafanaan 📊
 
 ## Oletukset
 
