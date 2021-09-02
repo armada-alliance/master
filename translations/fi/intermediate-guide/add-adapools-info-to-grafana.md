@@ -6,11 +6,11 @@ description: Miten lisätä adapools.org summary.json tiedot Grafana tapahtumaks
 
 ## Oletukset
 
-You have set up a Cardano node using one of the tutorials provided [here](pi-pool-tutorial/). Jos näin on, sinulla pitäisi olla tarvittavat riippuvuudet asennettuna, joita alla olevat ohjeet käyttävät. If not, see the apt install [Environment Setup](../beginner-guide-1/raspi-node/environment-setup.md#install-packages) section of the Pi-Pool Tutorial.
+Olet rakentanut Cardano noden käyttäen yhtä tutoriaaleistamme [täällä](pi-pool-tutorial/). Jos näin on, sinulla pitäisi olla tarvittavat riippuvuudet asennettuna, joita alla olevat ohjeet käyttävät. Jos näin ei ole, katso apt install [Environment Setup](../beginner-guide-1/raspi-node/environment-setup.md#install-packages) -osio Pi-pool-tutorialissa.
 
 ## Luo uusi hakemisto
 
-Aloittaaksesi, valitse sijainti koneessa, jossa on Grafana. Täällä voit luoda uuden hakemiston node exporterin käyttöön. Solmun viejä sijaitsee todennäköisesti /opt/cardano/monitoring/**node\_exporter** pi-poolin oletussijainnin vuoksi. \_\_If not, see if you can find it using the "which node\_exporter" command. Jos tämä ei löydä sitä, hakemisto, jossa se sijaitsee, ei ole sinun $PATH ja sinun täytyy kaivaa syvemmälle. [Tarkista tämä git](https://github.com/prometheus/node_exporter) saadaksesi lisätietoja.
+Aloittaaksesi, valitse sijainti koneessa, jossa on Grafana. Täällä voit luoda uuden hakemiston node exporterin käyttöön. Solmun viejä sijaitsee todennäköisesti /opt/cardano/monitoring/**node\_exporter** pi-poolin oletussijainnin vuoksi. __Jos tämä ei pidä paikkansa, koita löydätkö sen käyttämällä komentoa "which node\_exporter". Jos tämä ei löydä sitä, hakemisto, jossa se sijaitsee, ei ole sinun $PATH ja sinun täytyy kaivaa syvemmälle. [Tarkista tämä git](https://github.com/prometheus/node_exporter) saadaksesi lisätietoja.
 
 Muuta uuden hakemiston sijaintia, tässä olen valinnut paikallisen bin käyttäjälleni.
 
@@ -79,8 +79,8 @@ http://<YOUR GRAFANA NODE IP>:9100/metrics
 ```
 
 {% hint style="info" %}
-On olemassa muitakin menetelmiä, joita voit käyttää tämän lähestymistavan toteuttamiseen. Periaatteessa, jos luot tekstitiedoston avaimen/arvon pareilla ja laitat sen tähän uuteen kansioon, node exporterin pitäisi vetää tiedot Grafanaan. Se avaa laajan valikoiman mahdollisuuksia. Just ensure you prefix the label names with a unique value \(the **adapools\_** \_\_part in the adapools.prom file above\) per file.
+On olemassa muitakin menetelmiä, joita voit käyttää tämän lähestymistavan toteuttamiseen. Periaatteessa, jos luot tekstitiedoston avaimen/arvon pareilla ja laitat sen tähän uuteen kansioon, node exporterin pitäisi vetää tiedot Grafanaan. Se avaa laajan valikoiman mahdollisuuksia. Varmista vain, että lisäät yksilöllisen etuliitteen tunnisteen nimeen \( **adapools\_** __part in the adapools.prom file above\) per tiedosto.
 {% endhint %}
 
-Oliko tämä tieto hyödyllistä? Ansaitse palkintoja kanssamme! [Consider delegating some ADA](../cardano-developer-guides/delegate.md).
+Oliko tämä tieto hyödyllistä? Ansaitse palkintoja kanssamme! [Harkitse ADA: n delegoimista pooleihimme](../cardano-developer-guides/delegate.md).
 
