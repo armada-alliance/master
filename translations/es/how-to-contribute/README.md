@@ -8,5 +8,5 @@ description: Cómo contribuir con esta guía
 
 ### Apreciamos a todos los miembros de la Comunidad que nos ayuden a mejorar nuestro contenido educativo con sus propias contribuciones.
 
-### Si te gustaría contribuir a este proyecto, te dejamos en enlace [Guía de Contribución](untitled-1/) donde puedes empezar. 
+### Si quieres contribuir a este proyecto, te dejamos el enlace [Guía de Contribución](untitled-1/) para que sepas por donde puedes empezar. 
 
