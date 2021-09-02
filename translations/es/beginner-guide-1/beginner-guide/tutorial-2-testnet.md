@@ -6,7 +6,7 @@ description: >-
 # Configurar un nodo en Testnet
 
 {% hint style="warning" %}
-**¡Este tutorial está diseñado para conseguir una sincronización de un nodo completo con el blockchain de Cardano! Hemos omitido ciertos pasos de seguridad para hacer este tutorial lo más fácil posible - NO UTILICE este tutorial para crear un Stake Pool de Mainnet. Por favor, utilice nuestras**[ **guías intermedias**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **para la Mainnet.**
+**¡Este tutorial está diseñado para conseguir una sincronización de un nodo completo con la blockchain de Cardano! Hemos omitido ciertos pasos de seguridad para hacer este tutorial lo más fácil posible - NO UTILICE este tutorial para crear un Stake Pool de Mainnet. Por favor, utilice nuestras**[ **guías intermedias**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **para la Mainnet.**
 {% endhint %}
 
 {% hint style="warning" %}
