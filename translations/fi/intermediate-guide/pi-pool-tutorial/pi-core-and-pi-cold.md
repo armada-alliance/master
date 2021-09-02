@@ -593,7 +593,7 @@ cardano-cli stake-pool metadata-hash \
 {% endtab %}
 {% endtabs %}
 
-Copy poolMetaData.json to [https://pages.github.io](https://pages.github.io) or host it yourself along with your website. Be careful not to accidentally insert a space or a new line, which would result in a different hash.
+Kopioi poolMetaData.json osoitteeseen [https://pages.github.io](https://pages.github.io) tai isännöi sitä itse verkkosivustosi mukana. Varo ettet vahingossa syötä uutta välilyöntiä tai riviä, mikä johtaisi erilaiseen hashiin.
 
 {% hint style="info" %}
 Tässä on minun **poolMetaData.json** & **laajennettuPoolMetaData.json** viitteenä ja häpeämättömänä linkkinä takaisin sivustolleni. 😰
@@ -652,7 +652,7 @@ Käytä alla olevaa muotoa rekisteröityäksesi yhden tai useamman releen.
 Muokkaa alla olevia tietoja vastaamaan haluamaasi konfiguraatiota.
 {% endhint %}
 
-Copy vrf.vkey and poolMetaDataHash.txt to your cold machine and issue a stake pool registration certificate.
+Kopioi vrf.vkey ja poolMetaDataHash.txt kylmä koneeseen ja myönnä stake poolin rekisteröintitodistus.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
