@@ -11,7 +11,7 @@
 
 ## Stake Pool -oppaat <a id="intermediate-guide"></a>
 
-* [Pi-Node Image & Guide](intermediate-guide/pi-pool-tutorial/README.md)
+* [Pi-Node Image & Ohjeet](intermediate-guide/pi-pool-tutorial/README.md)
   * [Pi-Node \(pikaopas\)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
     * [Lataa & Polta](intermediate-guide/pi-pool-tutorial/pi-node/download-and-write-it.md)
     * [Käyttäjän Asetukset](intermediate-guide/pi-pool-tutorial/pi-node/user-setup.md)
@@ -20,11 +20,11 @@
     * [Ympäristön Asetukset](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md)
   * [Pi-Relay](intermediate-guide/pi-pool-tutorial/pi-relay.md)
   * [Pi-Core/Kylmä kone](intermediate-guide/pi-pool-tutorial/pi-core-and-pi-cold.md)
-  * [Rotate KES](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
-* [Alpine Linux OS 🗻](intermediate-guide/alpine-linux-os.md)
+  * [KES-avainten uusiminen](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
+* [Alpine Linux OS](intermediate-guide/alpine-linux-os.md)
 * [Stake Pool -verkosto: Perusteita](intermediate-guide/basic-stake-pool-networking.md)
 * [Lisää adapoolien mittareita Grafanaan 📊](intermediate-guide/add-adapools-info-to-grafana.md)
-* [CNCLI Leader Logs📑](intermediate-guide/leader-logs.md)
+* [CNCLI Leader Lokit📑](intermediate-guide/leader-logs.md)
 
 ## Muuita Cardano Oppaita <a id="cardano-developer-guides"></a>
 
@@ -40,6 +40,6 @@
 
 ## Resursseja <a id="before-you-get-started..."></a>
 
-* [Library 🏫](before-you-get-started.../library.md)
+* [Kirjasto 🏫](before-you-get-started.../library.md)
 * [Hyödyllisiä linkkeja laitteiston hankintaan 🏪](before-you-get-started.../hardware.md)
 
