@@ -2,7 +2,7 @@
 description: How to get your Stake Pools Slot Assignments for next Epoch
 ---
 
-# CNCLI Leader Logs📑
+# CNCLI Leader Lokit📑
 
 ## Build CNCLI \(thanks to [@AndrewWestberg](https://github.com/AndrewWestberg)\)
 
