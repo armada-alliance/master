@@ -6,7 +6,7 @@ description: >-
 # Pi-Node🍓
 
 {% hint style="Huomaa" %}
-**This tutorial is meant to get a single node syncing to the Cardano network! If you wish to build a stake pool, please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/)**.**
+**Tämän tutoriaalin tarkoitus on saada yksi node synkronoitua Cardano lohkoketjuun! Ole hyvä ja käytä**[ **keskitason oppaitamme**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **stake poolin rakentamiseen.**
 {% endhint %}
 
 ## Mitä laitteistoa tarvitset näitä oppitunteja varten
