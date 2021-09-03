@@ -1,11 +1,15 @@
 ---
 description: >-
-  Este tutorial es para aquellos que quieran usar una Raspberry Pi OS(Raspbian) de 64 bits con un entorno de escritorio.
+  Collection of tutorials focused for the beginner Raspberry Pi Stake Pool Operator
 ---
 
 # RasPi-Node🍓
 
-{% hint style="warning" %}
+{% hint style="danger" %}
+**This tutorial is for those who want to use the 64 bit Raspberry Pi OS\(Raspbian\) with a desktop environment.**
+{% endhint %}
+
+{% hint style="danger" %}
 **This tutorial is meant to get a single node syncing to the Cardano network! If you wish to build a stake pool, please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/)**.**
 {% endhint %}
 
