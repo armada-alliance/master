@@ -210,7 +210,7 @@ Nyt meidän täytyy vain:
 
 ## ⛓ Ketjun synkronointi ⛓
 
-Olet nyt valmis käynnistämään cardano-noden. Käynnistäminen aloittaa oman nodesi synkronoinnin Cardano lohkoketjun kanssa. Tähän menee noin 30 tuntaja tietokanta on kooltaan on noin 8.5GB. Aiemmin ensimmäinen node tuli synkronoida kokonaan, alusta loppuun jonka jälkeen tietokanta voitiin kopioida toiseen nodeen.
+Olet nyt valmis käynnistämään cardano-noden. Käynnistäminen aloittaa oman nodesi synkronoinnin Cardano lohkoketjun kanssa. This is going to take about 30 hours and the db folder is about 10GB in size right now. Aiemmin ensimmäinen node tuli synkronoida kokonaan, alusta loppuun jonka jälkeen tietokanta voitiin kopioida toiseen nodeen.
 
 ### Lataa tilannekuva
 
@@ -594,48 +594,8 @@ cardano-monitor start
 ```
 
 {% hint style="warning" %}
-Tässä vaiheessa saatat haluta käynnistää cardano-servicen ja synkronoida nodesi lohkoketjun kanssa ennen kuin jatkamme Grafanan konfigurointia. Hyppää eteenpäin [synkronoidaan ketju jaksoon](https://app.gitbook.com/@wcatz/s/pi-pool-guide/~/drafts/-MYFtFDZp-rTlybgAO71/pi-node/environment-setup/@drafts#syncing-the-chain). Valitse haluatko odottaa 30 tuntia tai ladata viimeisimmän tilannekuvani tietokannasta. Palaa tähän kun gLiveView.sh näyttää, että olet ketjun kärjessä.
+Tässä vaiheessa saatat haluta käynnistää cardano-servicen ja synkronoida nodesi lohkoketjun kanssa ennen kuin jatkamme Grafanan konfigurointia. Go to the syncing the chain section. Choose whether you want to wait 30 hours or download the latest chain snapshot. Palaa tähän kun gLiveView.sh näyttää, että olet ketjun kärjessä.
 {% endhint %}
-
-### Määritä Grafana
-
-Avaa paikallisessa koneessasi selaimesi ja mene osoitteeseen http://&lt;Pi-Node's private ip&gt;:5000
-
-Kirjaudu sisään ja aseta uusi salasana. Oletus käyttäjätunnus ja salasana on **admin:admin**.
-
-#### Määritä tietolähde
-
-Vasemman puolen pystysuorassa valikossa siirry **Configure** &gt; **Datasources** ja napsauta **Add data source**. Valitse Prometheus. Syötä [http://localhost:9090](http://localhost:9090) kaikki harmaa voidaan jättää oletusarvoiseksi. Alareunassa save & test. Sinun pitäisi saada vihreä "Data source is working", jos kardano-monitor on päällä. Jos jostain syystä nämä palvelut eivät käynnistyneet, käytä komentoa **cardano-service restart**.
-
-#### Tuo kojelaudat
-
-Tallenna kojelaudan json tiedostot paikalliseen koneeseen.
-
-{% embed url="https://github.com/armada-alliance/dashboards" caption="" %}
-
-Vasemmalla puolen valikossa mene **Dashboards** &gt; **Manage** ja klikkaa **Import**. Valitse tiedosto, jonka juuri latasit tai loit ja tallenna. Suuntaa takaisin **Dashboards** &gt; **Manage** ja klikkaa uutta kojelautaasi.
-
-![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.png)
-
-### Määritä poolDataLive
-
-Täällä voit käyttää poolData api -sovellusta tuodaksesi poolisi tiedot Grafanaan.
-
-{% embed url="https://api.pooldata.live/dashboard" caption="" %}
-
-Noudata ohjeita asentaaksesi Grafana plugin, määritä datasource ja tuo dashboard.
-
-Seuraa lokin ulostuloa päiväkirjaan.
-
-```bash
-sudo journalctl --unit=cardano-node --follow
-```
-
-Seuraa lokin ulostuloa stdoutiin.
-
-```bash
-sudo tail -f /var/log/syslog
-```
 
 ## Grafana, Nginx proxy\_pass & snakeoil
 
@@ -694,6 +654,46 @@ sudo service nginx restart
 Voit nyt käydä pi-noden ip osoitteessa ilman portin määrittelyä, yhteys päivitetään SSL / TLS ja saat pelottavan viesti\(ei oikeasti pelottava ollenkaan\). Jatka kohti kojelautaasi.
 
 ![](../../../.gitbook/assets/snakeoil.png)
+
+### Määritä Grafana
+
+On your local machine open your browser and enter your nodes private ip address.
+
+Kirjaudu sisään ja aseta uusi salasana. Oletus käyttäjätunnus ja salasana on **admin:admin**.
+
+#### Määritä tietolähde
+
+Vasemman puolen pystysuorassa valikossa siirry **Configure** &gt; **Datasources** ja napsauta **Add data source**. Valitse Prometheus. Syötä [http://localhost:9090](http://localhost:9090) kaikki harmaa voidaan jättää oletusarvoiseksi. Alareunassa save & test. Sinun pitäisi saada vihreä "Data source is working", jos kardano-monitor on päällä. Jos jostain syystä nämä palvelut eivät käynnistyneet, käytä komentoa **cardano-service restart**.
+
+#### Tuo kojelaudat
+
+Tallenna kojelaudan json tiedostot paikalliseen koneeseen.
+
+{% embed url="https://github.com/armada-alliance/dashboards" caption="" %}
+
+Vasemmalla puolen valikossa mene **Dashboards** &gt; **Manage** ja klikkaa **Import**. Valitse tiedosto, jonka juuri latasit tai loit ja tallenna. Suuntaa takaisin **Dashboards** &gt; **Manage** ja klikkaa uutta kojelautaasi.
+
+![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.png)
+
+### Määritä poolDataLive
+
+Täällä voit käyttää poolData api -sovellusta tuodaksesi poolisi tiedot Grafanaan.
+
+{% embed url="https://api.pooldata.live/dashboard" caption="" %}
+
+Noudata ohjeita asentaaksesi Grafana plugin, määritä datasource ja tuo dashboard.
+
+Seuraa lokin ulostuloa päiväkirjaan.
+
+```bash
+sudo journalctl --unit=cardano-node --follow
+```
+
+Seuraa lokin ulostuloa stdoutiin.
+
+```bash
+sudo tail -f /var/log/syslog
+```
 
 Nyt sinulla on pi-node, jossa on työkaluja, joilla voit rakentaa stake poolin seuraavien sivujen ohjeiden ja tutoriaalien avulla. Tsemppiä projektiisi ja olet tervetullut liittymään [armada-allianssiin](https://armada-alliance.com), yhdessä olemme vahvempia!
 
