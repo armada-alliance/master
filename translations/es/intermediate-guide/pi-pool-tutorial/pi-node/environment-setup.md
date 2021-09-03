@@ -703,5 +703,5 @@ View network connections with netstat.
 sudo netstat -puntw
 ```
 
-Desde aquí tienes un pi-node con herramientas para construir un Stake Pool desde las siguientes páginas. Lo mejor de la Suerte y por favor únete a la [armada-alliance](https://armada-alliance.com), ¡juntos somos más fuertes! 💪 
+Desde aquí tienes un pi-node con herramientas para construir un Stake Pool desde las siguientes páginas. Best of luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger! 💪 
 
