@@ -210,7 +210,7 @@ Now we just have to:
 
 ## ⛓ Syncing the chain ⛓
 
-You are now ready to start cardano-node. Doing so will start the process of 'syncing the chain'. This is going to take about 30 hours and the db folder is about 8.5GB in size right now. We used to have to sync it to one node and copy it from that node to our new ones to save time.
+You are now ready to start cardano-node. Doing so will start the process of 'syncing the chain'. This is going to take about 30 hours and the db folder is about 10GB in size right now. We used to have to sync it to one node and copy it from that node to our new ones to save time.
 
 ### Download snapshot
 
@@ -594,60 +594,20 @@ cardano-monitor start
 ```
 
 {% hint style="warning" %}
-At this point you may want to start cardano-service and get synced up before we continue to configure Grafana. Skip ahead to [syncing the chain section](https://app.gitbook.com/@wcatz/s/pi-pool-guide/~/drafts/-MYFtFDZp-rTlybgAO71/pi-node/environment-setup/@drafts#syncing-the-chain). Choose whether you want to wait 30 hours or download my latest chain snapshot. Return here once gLiveView.sh shows you are at the tip of the chain.
+At this point you may want to start cardano-service and get synced up before we continue to configure Grafana. Go to the syncing the chain section. Choose whether you want to wait 30 hours or download the latest chain snapshot. Return here once gLiveView.sh shows you are at the tip of the chain.
 {% endhint %}
-
-### Configure Grafana
-
-On your local machine open your browser and got to [http://&lt;Pi-Node's](http://<Pi-Node's) private ip&gt;:5000
-
-Log in and set a new password. Default username and password is **admin:admin**.
-
-#### Configure data source
-
-In the left hand vertical menu go to **Configure** &gt; **Datasources** and click to **Add data source**. Choose Prometheus. Enter [http://localhost:9090](http://localhost:9090) where it is grayed out, everything can be left default. At the bottom save & test. You should get the green "Data source is working" if cardano-monitor has been started. If for some reason those services failed to start issue **cardano-service restart**.
-
-#### Import dashboards
-
-Save the dashboard json files to your local machine.
-
-{% embed url="https://github.com/armada-alliance/dashboards" caption="" %}
-
-In the left hand vertical menu go to **Dashboards** &gt; **Manage** and click on **Import**. Select the file you just downloaded/created and save. Head back to **Dashboards** &gt; **Manage** and click on your new dashboard.
-
-![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.png)
-
-### Configure poolDataLive
-
-Here you can use the poolData api to bring your pools data into Grafana.
-
-{% embed url="https://api.pooldata.live/dashboard" caption="" %}
-
-Follow the instructions to install the Grafana plugin, configure your datasource and import the dashboard.
-
-Follow log output to journal.
-
-```bash
-sudo journalctl --unit=cardano-node --follow
-```
-
-Follow log output to stdout.
-
-```bash
-sudo tail -f /var/log/syslog
-```
 
 ## Grafana, Nginx proxy\_pass & snakeoil
 
-Let's put Grafana behind Nginx with self signed\(snakeoil\) certificate. The certificate was generated when we installed the ssl-cert package.
+Pongamos Grafana detrás de Nginx con certificado autofirmado\(snakeoil\). El certificado se generó cuando instalamos el paquete ssl-cert.
 
-You will get a warning from your browser. This is because ca-certificates cannot follow a trust chain to a trusted \(centralized\) source. The connection is however encrypted and will protect your passwords flying around in plain text.
+Recibirás una advertencia de tu navegador. Esto se debe a que ca-certificates no pueden seguir a una fuente de confianza \(centralizada\). Sin embargo, la conexión está cifrada y protegerá sus contraseñas volando en texto plano.
 
 ```bash
 sudo nano /etc/nginx/sites-available/default
 ```
 
-Replace contents of the file with below.
+Reemplaza el contenido del archivo.
 
 ```bash
 # Default server configuration
@@ -683,7 +643,7 @@ server {
 }
 ```
 
-Check that Nginx is happy with our changes and restart it.
+Compruebe que Nginx está contento con nuestros cambios y reinicie.
 
 ```bash
 sudo nginx -t
@@ -691,9 +651,49 @@ sudo nginx -t
 sudo service nginx restart
 ```
 
-You can now visit your pi-nodes ip address without any port specification, the connection will be upgraded to SSL/TLS and you will get a scary message\(not really scary at all\). Continue through to your dashboard.
+Ahora puede visitar su dirección IP de los pi-nodos sin ninguna especificación de puerto, la conexión se actualizará a SSL/TLS y recibirás un mensaje aterrador\(no realmente aterrador\). Continúe hasta su panel de control.
 
 ![](../../../.gitbook/assets/snakeoil.png)
+
+### Configure Grafana
+
+On your local machine open your browser and enter your nodes private ip address.
+
+Inicie sesión y establezca una nueva contraseña. El nombre de usuario y contraseña por defecto son **admin:admin**.
+
+#### Configure data source
+
+En el menú vertical de la mano izquierda, vaya a **Configure** &gt; **Datasources** y haga clic en **Add data source**. Elige Prometheus. Escribe [http://localhost:9090](http://localhost:9090) donde está en gris, el resto puede dejarse por defecto. En la parte inferior pinchar en save & test. Deberías obtener el verde "Data source is working" si el cardano-monitor está iniciado. Si por alguna razón estos servicios no pudieron iniciar, reinicie con **cardano-service restart**.
+
+#### Import dashboards
+
+Guarda los archivos json del dashboard en tu máquina local.
+
+{% embed url="https://github.com/armada-alliance/dashboards" caption="" %}
+
+En el menú vertical de la mano izquierda, vaya a **Dashboards** &gt; **Manage** y haga clic en **Import**. Selecciona el archivo que acabas de descargar/crear y guardar. Vuelve a **Dashboards** &gt; **Manage** y haz clic en tu nuevo Panel de control.
+
+![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.png)
+
+### Configure poolDataLive
+
+Aquí puedes utilizar la api de PoolData para traer sus datos del Pool a Grafana.
+
+{% embed url="https://api.pooldata.live/dashboard" caption="" %}
+
+Siga las instrucciones para instalar el plugin Grafana, configurar su fuente de datos e importar el Panel de control.
+
+Seguir salida de log al journal.
+
+```bash
+sudo journalctl --unit=cardano-node --follow
+```
+
+Seguir salida de log al stdout (log general).
+
+```bash
+sudo tail -f /var/log/syslog
+```
 
 From here you have a pi-node with tools to build a stake pool from the following pages. Best of Luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger!
 
