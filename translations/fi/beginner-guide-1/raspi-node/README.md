@@ -1,12 +1,16 @@
 ---
 description: >-
-  Tämä tutoriaali on niille, jotka haluavat käyttää 64 bittistä Raspberry Pi OS(Raspbian) käyttöjärjestelmää työpöytäympäristössä.
+  Collection of tutorials focused for the beginner Raspberry Pi Stake Pool Operator
 ---
 
 # Pi-Node🍓
 
-{% hint style="Huomaa" %}
-**Tämän tutoriaalin tarkoitus on saada yksi node synkronoitua Cardano lohkoketjuun! Ole hyvä ja käytä**[ **keskitason oppaitamme**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **stake poolin rakentamiseen.**
+{% hint style="danger" %}
+**This tutorial is for those who want to use the 64 bit Raspberry Pi OS\(Raspbian\) with a desktop environment.**
+{% endhint %}
+
+{% hint style="danger" %}
+**This tutorial is meant to get a single node syncing to the Cardano network! If you wish to build a stake pool, please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/)**.**
 {% endhint %}
 
 ## Mitä laitteistoa tarvitset näitä oppitunteja varten
