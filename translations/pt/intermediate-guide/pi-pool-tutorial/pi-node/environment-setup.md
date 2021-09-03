@@ -683,6 +683,8 @@ Here you can use the poolData api to bring your pools data into Grafana.
 
 Follow the instructions to install the Grafana plugin, configure your datasource and import the dashboard.
 
+## Useful Commands
+
 Follow log output to journal.
 
 ```bash
@@ -695,5 +697,11 @@ Follow log output to stdout.
 sudo tail -f /var/log/syslog
 ```
 
-From here you have a pi-node with tools to build a stake pool from the following pages. Best of Luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger!
+View network connections with netstat.
+
+```bash
+sudo netstat -puntw
+```
+
+From here you have a pi-node with tools to build a stake pool from the following pages. Best of Luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger! 💪 
 
