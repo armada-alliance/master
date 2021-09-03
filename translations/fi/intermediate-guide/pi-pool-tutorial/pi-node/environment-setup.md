@@ -683,6 +683,8 @@ Täällä voit käyttää poolData api -sovellusta tuodaksesi poolisi tiedot Gra
 
 Noudata ohjeita asentaaksesi Grafana plugin, määritä datasource ja tuo dashboard.
 
+## Useful Commands
+
 Seuraa lokin ulostuloa päiväkirjaan.
 
 ```bash
@@ -695,5 +697,11 @@ Seuraa lokin ulostuloa stdoutiin.
 sudo tail -f /var/log/syslog
 ```
 
-Nyt sinulla on pi-node, jossa on työkaluja, joilla voit rakentaa stake poolin seuraavien sivujen ohjeiden ja tutoriaalien avulla. Tsemppiä projektiisi ja olet tervetullut liittymään [armada-allianssiin](https://armada-alliance.com), yhdessä olemme vahvempia!
+View network connections with netstat.
+
+```bash
+sudo netstat -puntw
+```
+
+Nyt sinulla on pi-node, jossa on työkaluja, joilla voit rakentaa stake poolin seuraavien sivujen ohjeiden ja tutoriaalien avulla. Tsemppiä projektiisi ja olet tervetullut liittymään [armada-allianssiin](https://armada-alliance.com), yhdessä olemme vahvempia! 💪 
 
