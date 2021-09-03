@@ -58,10 +58,11 @@ source $HOME/.bashrc
 
 ```bash
 cd $NODE_FILES
-wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-byron-genesis.json
-wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-topology.json
-wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-shelley-genesis.json
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
+wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-byron-genesis.json
+wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-shelley-genesis.json
+wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-alonzo-genesis.json
+wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-topology.json
 ```
 
 Run the following to modify mainnet-config.json and update TraceBlockFetchDecisions to "true"
@@ -83,7 +84,7 @@ The **unofficial** cardano-node & cardano-cli binaries available to us are being
 
 ```bash
 cd $HOME/tmp
-wget -O cardano_node_$(date +"%m-%d-%y").zip https://ci.zw3rk.com/build/1758/download/1/aarch64-unknown-linux-musl-cardano-node-1.27.0.zip
+wget -O cardano_node_$(date +"%m-%d-%y").zip https://ci.zw3rk.com/build/1771/download/1/aarch64-unknown-linux-musl-cardano-node-1.29.0.zip
 unzip *.zip
 mv cardano-node/* $HOME/.local/bin
 rm -r cardano*
