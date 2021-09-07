@@ -649,6 +649,10 @@ At this point you may want to start cardano-service and get synced up before we 
 
 On your local machine open your browser and got to [http://&lt;Pi-Node's](http://<Pi-Node's) private ip&gt;:5000
 
+{% hint style="danger" %}
+Do not change the default password yet, there is no encryption on the wire. Choose skip when it asks. The next time we visit Grafana it will be with a self signed TLS certificate handled by Nginx webservers proxy\_pass and your passwords will be safe from anything listening on your internal network.
+{% endhint %}
+
 Log in and set a new password. Default username and password is **admin:admin**.
 
 #### Configure data source
