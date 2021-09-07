@@ -649,6 +649,10 @@ Tässä vaiheessa saatat haluta käynnistää cardano-servicen ja synkronoida no
 
 Avaa paikallisessa koneessasi selaimesi ja mene osoitteeseen http://&lt;Pi-Node's private ip&gt;:5000
 
+{% hint style="danger" %}
+Do not change the default password yet, there is no encryption on the wire. Choose skip when it asks. The next time we visit Grafana it will be with a self signed TLS certificate handled by Nginx webservers proxy\_pass and your passwords will be safe from anything listening on your internal network.
+{% endhint %}
+
 Kirjaudu sisään ja aseta uusi salasana. Oletus käyttäjätunnus ja salasana on **admin:admin**.
 
 #### Määritä tietolähde
@@ -743,5 +747,5 @@ Voit nyt käydä pi-noden ip osoitteessa ilman portin määrittelyä, yhteys pä
 
 ![](../../.gitbook/assets/snakeoil.png)
 
-Nyt sinulla on pi-node, jossa on työkaluja, joilla voit rakentaa stake poolin seuraavien sivujen ohjeiden ja tutoriaalien avulla. Tsemppiä projektiisi ja olet tervetullut liittymään [armada-allianssiin](https://armada-alliance.com), yhdessä olemme vahvempia!
+Nyt sinulla on pi-node, jossa on työkaluja, joilla voit rakentaa stake poolin seuraavien sivujen ohjeiden ja tutoriaalien avulla. Best of Luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger!
 
