@@ -370,7 +370,7 @@ done
 ```
 
 {% hint style="info" %}
-View how much zram swap cardano-node is using.
+Revisa cuánto utiliza el nodo de zram swap.
 
 ```text
 CNZRAM=$(pidof cardano-node)
