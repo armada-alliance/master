@@ -124,31 +124,31 @@ Añade lo siguiente en la parte inferior, guardar & salir.
 tmpfs    /run/shm    tmpfs    ro,noexec,nosuid    0 0
 ```
 
-### Increase open file limit
+### Aumenta el open file limit
 
-Open /etc/security/limits.conf.
+Abre/security/limits.conf
 
 ```text
 sudo nano /etc/security/limits.conf
 ```
 
-Add the following to the bottom, save & exit.
+Añade lo siguiente en la parte inferior, guardar & salir.
 
 ```text
 ada soft nofile 800000
 ada hard nofile 1048576
 ```
 
-### Optimize performance & security
+### Optimizar rendimiento y seguridad
 
-Add the following to the bottom of /etc/sysctl.conf. Save and exit.
+Agregue lo siguiente en la parte inferior de /etc/sysctl.conf . Guardar y salir
 
 {% hint style="info" %}
 [https://gist.github.com/lokhman/cc716d2e2d373dd696b2d9264c0287a3](https://gist.github.com/lokhman/cc716d2e2d373dd696b2d9264c0287a3)
 {% endhint %}
 
 {% hint style="warning" %}
-I am disabling IPv6 and IPv4 forwarding. You may want these. I have seen claims that IPv6 is slower and gets in the way.
+Desactivamos el reenvío de IPv6 e IPv4. Puede que esto te interese. He visto afirmaciones de que IPv6 es más lento y entorpece la comunicación.
 {% endhint %}
 
 ```text
@@ -202,9 +202,9 @@ net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 ```
 
-#### Load our changes after boot
+#### Cargará nuestros cambios después del inicio
 
-Create a new file. Paste, save & close.
+Crea un nuevo Archivo Pega, guarda y cierra.
 
 ```text
 sudo nano /etc/rc.local
@@ -237,15 +237,15 @@ sysctl -p /etc/sysctl.conf
 exit 0
 ```
 
-### Disable IRQ balance
+### Deshabilitar IRQ balance
 
 {% hint style="info" %}
 [**http://bookofzeus.com/harden-ubuntu/server-setup/disable-irqbalance/**](http://bookofzeus.com/harden-ubuntu/server-setup/disable-irqbalance/)
 {% endhint %}
 
-You should turn off IRQ Balance to make sure you do not get hardware interrupts in your threads. Turning off IRQ Balance will optimize the balance between power savings and performance through the distribution of hardware interrupts across multiple processors.
+Deberías deshabilitar el IRQ Balance para asegurarte de que no tiene interrupciones de hardware en los procesos. Si deshabilitar el IRQ Balance, se optimizará el equilibrio entre ahorro de energía y rendimiento mediante la distribución de interrupciones de hardware a través de sus múltiples procesadores.
 
-Open /etc/default/irqbalance and add to the bottom. Save, exit and reboot.
+Abre la ventana de inicio /default/irqbalance y añade en la parte inferior. Guarda, sal y reinicia.
 
 ```text
 sudo nano /etc/default/irqbalance
@@ -257,7 +257,7 @@ ENABLED="0"
 
 ### Chrony
 
-We need to get our time synchronization as accurate as possible. Open /etc/chrony/chrony.conf
+Necesitamos que nuestra sincronización de la hora sea lo más precisa posible. Abre/chrony/chrony.conf
 
 ```text
 sudo apt install chrony
@@ -267,7 +267,7 @@ sudo apt install chrony
 sudo nano /etc/chrony/chrony.conf
 ```
 
-Replace the contents of the file with below, Save and exit.
+Reemplaza el contenido del archivo con el de abajo, Guardar y salir.
 
 ```bash
 pool time.google.com       iburst minpoll 2 maxpoll 2 maxsources 3 maxdelay 0.3
@@ -315,16 +315,16 @@ sudo service chrony restart
 ### Zram swap
 
 {% hint style="info" %}
-We have found that cardano-node can safely use this compressed swap in ram essentially giving us around 20gb of ram. We already set kernel parameters for zram in /etc/sysctl.conf
+Hemos descubierto que el nodo de cardano puede usar de forma segura esta swap comprimida de Ram dándonos, básicamente, alrededor de 20gb de Ram. Ya establecimos los parámetros del kernel para zram en /etc/sysctl.conf
 {% endhint %}
 
-Swapping to disk is slow, swapping to compressed ram space is faster and gives us some overhead before out of memory \(oom\).
+Swapear a disco es lento, swapear a espacio comprimido de ram es más rápido y nos da algo de tiempo antes de llenar la memoria \(oom\).
 
 {% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters/" caption="" %}
 
 {% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" %}
 
-Disable Raspbian swapfile.
+Deshabilitar el archivo de intercambio (swapfile) de Raspbian
 
 ```text
 sudo systemctl disable dphys-swapfile.service
@@ -338,7 +338,7 @@ sudo apt install zram-tools
 sudo nano /etc/default/zramswap
 ```
 
-Multiply default config by 3. This will give you 12.5GB of virtual compressed swap in ram.
+Multiplica la configuración predeterminada por 3. Esto te dará 12,5GB de swap comprimido de ram virtual.
 
 {% hint style="info" %}
 mem=$\(\(\(totalmem / 2 / ${NRDEVICES}\) \* 1024 \* 3\)\)
