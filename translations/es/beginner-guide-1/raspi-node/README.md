@@ -1,16 +1,16 @@
 ---
 description: >-
-  Collection of tutorials focused for the beginner Raspberry Pi Stake Pool Operator
+  Colección de tutoriales dirigidos a Operadores principiantes de Stake Pools con Raspberry Pi
 ---
 
 # RasPi-Node🍓
 
 {% hint style="danger" %}
-**This tutorial is for those who want to use the 64 bit Raspberry Pi OS\(Raspbian\) with a desktop environment.**
+**Este tutorial es para aquellos que quieran usar una Raspberry Pi OS(Raspbian) de 64 bits con un entorno de escritorio.**
 {% endhint %}
 
 {% hint style="danger" %}
-**This tutorial is meant to get a single node syncing to the Cardano network! If you wish to build a stake pool, please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/)**.**
+**¡Este tutorial está diseñado para conseguir una sincronización de un nodo completo con la blockchain de Cardano! Si deseas hacer un Stake Pool, por favor, utiliza nuestras**[ **guías intermedias**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **para la Mainnet.**
 {% endhint %}
 
 ## Qué hardware necesitarás para estas lecciones
