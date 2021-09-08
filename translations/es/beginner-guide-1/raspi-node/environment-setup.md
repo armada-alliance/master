@@ -650,7 +650,7 @@ En este punto es posible que quieras iniciar el cardano-service y que se sincron
 En tu máquina local abre tu navegador y ha llegado a [http://&lt;Pi-Nodo](http://<Pi-Node's) IP Privada&gt;:5000
 
 {% hint style="danger" %}
-Do not change the default password yet, there is no encryption on the wire. Choose skip when it asks. The next time we visit Grafana it will be with a self signed TLS certificate handled by Nginx webservers proxy\_pass and your passwords will be safe from anything listening on your internal network.
+No cambies la contraseña por defecto todavía, no está cifrada la conexión. Elige omitir cuando se pregunte. La próxima vez que visitemos Grafana será con un certificado TLS autofirmado manejado por proxy\_pass de servidores web Nginx y tus contraseñas estarán a salvo de cualquiera que esté escuchando en tu red interna.
 {% endhint %}
 
 Inicie sesión y establezca una nueva contraseña. El nombre de usuario y contraseña por defecto son **admin:admin**.
@@ -747,5 +747,5 @@ Ahora puede visitar su dirección IP de los pi-nodos sin ninguna especificación
 
 ![](../../.gitbook/assets/snakeoil.png)
 
-Desde aquí tienes un pi-node con herramientas para construir un Stake Pool desde las siguientes páginas. Best of Luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger!
+Desde aquí tienes un pi-node con herramientas para construir un Stake Pool desde las siguientes páginas. Te deseamos la mejor de las Suertes y por favor únete a la [armada-alliance](https://armada-alliance.com), ¡Juntos somos más fuertes!
 
