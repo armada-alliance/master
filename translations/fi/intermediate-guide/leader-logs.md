@@ -1,16 +1,16 @@
 ---
-description: How to get your Stake Pools Slot Assignments for next Epoch
+description: Miten saada tietää Stake Poolin Slot varaukset seuraavalle Epochille
 ---
 
 # CNCLI Leader Lokit📑
 
-## Build CNCLI \(thanks to [@AndrewWestberg](https://github.com/AndrewWestberg)\)
+## Rakenna CNCLI \(kiitos [@AndrewWestberg](https://github.com/AndrewWestberg)\)
 
 {% hint style="Huomaa" %}
-Running it on your block-producing/Core node is the convenient way, but to save resources you may build and run cncli on another \(i.e. your monitoring\) device. Therefore you will need to get the stake-snapshot.json from one of your running nodes and copy the genesis files and the vrf.skey from your Core to the particular device.
+Cncli:n suorittaminen lohko-tuotanto/Core nodella on kätevä tapa, mutta resurssien säästämiseksi voit rakentaa ja ajaa cncli:n myös toisella \(monitorointi\) laitteella. Siksi sinun täytyy saada stake-snapshot.json yhdestä käynnissä nodestasi ja kopioida genesis tiedostot ja vrf.skey Core nodestasi monitoroivaan laitteeseen.
 {% endhint %}
 
-### Prepare Rust Environment and install Rustup
+### Valmista Rust ympäristö ja asenna Rustup
 
 ```bash
 mkdir -p $HOME/.cargo/bin
@@ -20,7 +20,7 @@ mkdir -p $HOME/.cargo/bin
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-Choose Option 1 \(default\)
+Valitse Vaihtoehto 1 \(oletus\)
 
 ```bash
 source $HOME/.cargo/env
@@ -34,7 +34,7 @@ rustup update
 rustup component add clippy rustfmt
 ```
 
-Install any necessary packages. Your system may already have most to all of these.
+Asenna tarvittavat paketit. Järjestelmässäsi saattaa jo olla suurin osa näistä.
 
 {% tabs %}
 {% tab title="Monitor" %}
@@ -53,7 +53,7 @@ sudo apt update -y
 {% endtab %}
 {% endtabs %}
 
-### Build cncli
+### Rakenna cncli
 
 ```bash
 # If you don't have a $HOME/git folder you can create one using:
@@ -66,7 +66,7 @@ git clone --recurse-submodules https://github.com/AndrewWestberg/cncli
 cd cncli
 ```
 
-Check [https://github.com/AndrewWestberg/cncli](https://github.com/AndrewWestberg/cncli) for the latest tag name and adjust the command below. For the time of writing this, it's v3.1.4
+Tarkista [https://github.com/AndrewWestberg/cncli](https://github.com/AndrewWestberg/cncli) saadaksesi viimeisimmän tunnisteen ja säädä komentoa alla. Tätä kirjoitettaessa se on v3.1.4
 
 ```bash
 git checkout <latest_tag_name>
@@ -79,7 +79,7 @@ git checkout <latest_tag_name>
 cargo install --path . --force
 ```
 
-Check if the installation was successful and locate `cncli`
+Tarkista, onko asennus onnistunut ja etsi `cncli`
 
 ```bash
 cncli --version
@@ -89,9 +89,9 @@ command -v cncli
 echo $PATH
 ```
 
-The `command -v` should show you where the `cncli` executable currently lives, `.cargo/bin`. The `echo` command will show what's on your `PATH`.
+Komennon `-v` pitäisi näyttää missä `cncli` suoritettava tällä hetkellä sijaitsee, `.cargo/bin`. Komento `echo` näyttää `PATH`.
 
-You should have `.local/bin` on your `PATH`, but in case you don't \(Core should have it\), do it now and add it to your `PATH`:
+Sinun pitäisi olla `.local/bin` `PATH`, jos ei ole \(Core pitäisi olla \), tee se nyt ja lisää se `PATH`:
 
 {% tabs %}
 {% tab title="Monitor" %}
@@ -103,16 +103,16 @@ source $HOME/.bashrc
 {% endtab %}
 {% endtabs %}
 
-Move `cncli` from it's current location to `.local/bin`
+Siirrä `cncli` nykyisestä sijainnista `.local/bin`
 
 ```bash
 mv <path/to>/cncli $HOME/.local/bin/cncli
 ```
 
-## Run cncli sync and deploy it as a service
+## Suorita cncli synkronointi ja ota se käyttöön palveluna
 
 {% hint style="info" %}
-CNCLI sync creates an sqlite3 database \(cncli.db\), and needs to be connected to your running core-node. The guide assumes you have followed the armada-alliance guide so far and use the same folder structure.
+CNCLI sync luo sqlite3 tietokannan \(cncli.db\), ja se on kytkettävä käynnissä olevaan core-nodeesi. Oppaassa oletetaan, että olet seurannut armada-allianssin tutoriaaleja tähän asti ja käytä samaa kansiorakennetta.
 {% endhint %}
 
 ```bash
@@ -121,7 +121,7 @@ mkdir -p $HOME/pi-pool/cncli
 sudo nano /etc/systemd/system/cncli-sync.service
 ```
 
-Paste the following, adjust ip and port, save and exit.
+Liitä seuraavat, säädä ip ja portti, tallenna ja poistu.
 
 {% tabs %}
 {% tab title="Monitor" %}
@@ -171,7 +171,7 @@ WantedBy=multi-user.target
 {% endtab %}
 {% endtabs %}
 
-Enable the service
+Ota palvelu käyttöön
 
 ```bash
 sudo systemctl daemon-reload
@@ -181,7 +181,7 @@ sudo systemctl enable cncli-sync.service
 sudo systemctl start cncli-sync.service
 ```
 
-Make the cncli.db writable \(needed for the following script\)
+Tee cncli.db kirjoitettavaksi \(tarvitaan seuraavassa komentosarjassa\)
 
 ```bash
 cd $HOME/pi-pool/cncli
@@ -189,7 +189,7 @@ cd $HOME/pi-pool/cncli
 sudo chmod a+w cncli.db
 ```
 
-### Create the leaderlog-stake-snapshot-v4.sh script \(thanks to [@sayshar](https://github.com/sayshar)\)
+### Luo leaderlog-stake-snapshot-v4.sh skripti \(kiitos [@sayshar](https://github.com/sayshar)\)
 
 {% tabs %}
 {% tab title="Monitor" %}
@@ -206,7 +206,7 @@ sudo chmod a+w cncli.db
 {% endtab %}
 {% endtabs %}
 
-Paste the following, adjust parameters, save and exit.
+Liitä seuraavat, säädä parametreja, tallenna ja poistu.
 
 {% tabs %}
 {% tab title="Monitor" %}
@@ -386,17 +386,17 @@ fi
 {% endtab %}
 {% endtabs %}
 
-Make it executable
+Tee skriptistä suoritettava
 
 ```bash
 sudo chmod +x leaderlog-stake-snapshot-v4.sh
 ```
 
-{% hint style="Huomaa" %}
-If you installed cncli on your Core continue with "Run leaderlog script", otherwise you have to do some more steps:
+{% hint style="warning" %}
+Jos asensit cncli Core jatka kohdasta "Suorita leaderlog skripti", muuten sinun täytyy tehdä vielä muutamia lisävaiheita:
 {% endhint %}
 
-Run the following command on your Core. Make sure to add your pool id.
+Suorita seuraava komento ydin nodessasi. Varmista, että lisäät pool id:si.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -406,7 +406,7 @@ cardano-cli query stake-snapshot --stake-pool-id <your_pool_id> --mainnet > stak
 {% endtab %}
 {% endtabs %}
 
-Then copy `vrf.skey`, `mainnet-byron-genesis.json`, `mainnet-shelley-genesis.json` `stake-snapshot.json` from your Core to your cncli device. \(via USB-stick, scp or rsync...\) Move them to the right directory:
+Sitten kopioi `vrf.skey`, `mainnet-byron-genesis.json`, `mainnet-shelley-genesis.json` `stake-snapshot.json` Coresta cncli laitteellesi. \(USB-tikulla, scp:llä tai rsync...\) Siirrä ne oikeaan kansioon:
 
 {% tabs %}
 {% tab title="Monitor" %}
@@ -419,9 +419,9 @@ mv /path/to/stake-snapshot.json $HOME/pi-pool/scripts/stake-snapshot.json
 {% endtab %}
 {% endtabs %}
 
-### Run leaderlog script
+### Suorita leaderlog skripti
 
-{% hint style="Huomaa" %}
+{% hint style="warning" %}
 Every time you run the script you need a fresh stake-snapshot.json, except your stake didn't change for the last few epochs.
 {% endhint %}
 
