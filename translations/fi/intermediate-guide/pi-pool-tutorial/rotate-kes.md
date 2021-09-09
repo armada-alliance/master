@@ -1,14 +1,14 @@
-# Rotate KES
+# KES-avainten uusiminen
 
 {% hint style="info" %}
-It is best to rename the old **kes.vkey**, **kes.skey** & **node.cert** files beforehand. Append the date. I tend to use mv instead of cp. This way I do not start creating copies of files.
+On parasta uudelleennimetä vanha **kes.vkey**, **kes.skey** & **node.cert** tiedostot etukäteen. Lisää päivämäärä. Minulla on tapana käyttää mv-komentoa cp-komennon sijaan. Näin en ala luoda kopioita tiedostoista.
 {% endhint %}
 
 {% hint style="Huomaa" %}
-You only need **kes.skey**, **node.cert** and **vrf.skey** on your Core node.
+Tarvitset vain **kes.skey**, **node.cert** ja **vrf.skey** Core nodellasi.
 {% endhint %}
 
-Determine KES period by querying current slot number divided by slots per KES period found in genesis file.
+Määritä KES-aika hakemalla nykyisen slotin numero ja jakamalla se KES-jakson slottimäärällä, joka löytyy genesis tiedostosta.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -23,7 +23,7 @@ echo startKesPeriod: ${startKesPeriod}
 {% endtab %}
 {% endtabs %}
 
-Generate a new KES key pair.
+Luo uusi KES avainpari.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -35,7 +35,7 @@ cardano-cli node key-gen-KES \
 {% endtab %}
 {% endtabs %}
 
-Move **kes.vkey** to your **Cold Offline** machine & issue a new node.cert.
+Siirrä **kes.vkey** **Kylmään Offline** koneeseen & myönnä uusi node.cert.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -54,10 +54,10 @@ chmod a-rwx $HOME/cold-keys
 {% endtabs %}
 
 {% hint style="Huomaa" %}
-The cold.counter in your cold-keys folder keeps track of how many times you have rotated your kes pair.
+Cold.counter tiedosto pitää kirjaa kuinka monta kertaa olet kierrättänyt Kes avainparisi.
 {% endhint %}
 
-Move **node.cert** back to Core & restart the cardano-service.
+Siirrä **node.cert** takaisin Coreen & käynnistä cardano-palvelu.
 
 {% tabs %}
 {% tab title="Core" %}
