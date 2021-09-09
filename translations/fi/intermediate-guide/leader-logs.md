@@ -422,7 +422,7 @@ mv /path/to/stake-snapshot.json $HOME/pi-pool/scripts/stake-snapshot.json
 ### Suorita leaderlog skripti
 
 {% hint style="warning" %}
-Every time you run the script you need a fresh stake-snapshot.json, except your stake didn't change for the last few epochs.
+Joka kerta kun suoritat skriptin tarvitset uuden stakesnapshot.json:in, paitsi jos stake ei ole muuttunut viime epochien aikana.
 {% endhint %}
 
 ```bash
@@ -430,13 +430,13 @@ cd $HOME/pi-pool/scripts
 ./leaderlog-stake-snapshot-v4.sh
 ```
 
-The schedule is saved to slot\_`number-of-epoch`.json.
+Aikataulu on tallennettu slot\_`luku-of-epoch`.json.
 
-{% hint style="Huomaa" %}
-The script calculates the schedule for the current epoch by default. You can run it for the next epoch 1.5 days before. \(Or at 70% into the current epoch.\) Just change the epoch parameter in the script from "current" to "next".
+{% hint style="warning" %}
+Skripti laskee oletusarvoisesti aikataulun nykyiselle epochille. Voit ajaa skriptin seuraavalle epochille 1,5 päivää ennen epochin alkua. \(Tai 70 % nykyisen epochin alusta.\) Vain muuttaa aika-parametria skriptissä arvosta "current" arvoon "next".
 {% endhint %}
 
 {% hint style="danger" %}
-Be careful to keep your block leader schedule private, as attackers could use this information to strategically attack your pool.
+Ole varovainen ja pidä lohkojohtajan aikataulu yksityisenä, koska hyökkääjät voivat käyttää näitä tietoja strategisesti hyväkseen kohdistaessaan hyökkäyksen pooliisi.
 {% endhint %}
 
