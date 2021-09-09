@@ -1,43 +1,43 @@
 ---
 description: >-
-  A guide to building a 4 watt per Pi, Cardano Stake Pool. A reference guide for the Pi-Node.img.gz.
+  Tämän oppaan avulla voit rakentaa Cardano Stake Pool, joka kuluttaa vain 4 wattia per Pi. Pi-Node.img.gz:n referenssiopas (reference guide for the Pi-Node.img.gz).
 ---
 
 # Pi-Node Image & Ohjeet
 
-The [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz) is a pre configured Cardano node that can be used for minting NFT's, submitting transactions and can be further configured into a relay or core node for stake pool creation. It is configured with everything you need to quickly bootstrap a synced node with Nginx proxypass of Grafana for TLS encryption with a self signed certificate, working topology updater and gLiveView.
+[Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz) on ennalta määritetty Cardano Node, jota voidaan käyttää NFT:n luomiseen, lähettämään tapahtumia tai edelleen konfiguroida relay tai ydin nodeksi stake pool käyttöön. Se on konfiguroitu kaikella mitä tarvitset asentaaksesi nopeasti synkronoidun noden sisältäen Nginx proxypass Grafanan TLS salaukselle itse allekirjoitetulla varmenteella, toimintavalmiin topology updaterin ja gLiveView-ohjelman.
 
 ![](../../.gitbook/assets/photo_2021-03-09-13.40.29.jpeg)
 
 {% hint style="danger" %}
-It is strongly recommended to work through the [Stake Pool School](https://cardano-foundation.gitbook.io/stake-pool-course/) course presented by the Cardano Foundation.
+On erittäin suositeltavaa käydä läpi Cardano Foundationin [Stake Pool School](https://cardano-foundation.gitbook.io/stake-pool-course/) -kurssi.
 {% endhint %}
 
 {% hint style="Huomaa" %}
-If you would like to create a .img file of your work that can be flashed for reuse on other Raspberry Pi's you should build on an 8GB sd card. It will take less time to make an image. See [image creation section](https://app.gitbook.com/@ada-pi/s/raspi-spo/intermediate-guide/pi-pool-tutorial/create-.img-file).
+Jos haluat luoda .img tiedoston työstäsi, joka voidaan ottaa uudelleenkäyttöön muissa Raspberry Pi:ssäsi sinun kannattaa rakentaa se 8GB sd-kortille. Kuvan tekemiseen kuluu näin vähemmän aikaa. Katso [kuvan luontiosio](https://app.gitbook.com/@ada-pi/s/raspi-spo/intermediate-guide/pi-pool-tutorial/create-.img-file).
 {% endhint %}
 
-## Why this guide?
+## Miksi tämä opas?
 
-Consolidate and organize the various guides into a single document that can be followed or referenced _specifically_ for running a pool using two \(or more\) Raspberry Pi 4B \(the 8GB version\) and one offline Pi for cold key operations.
+Yhdistämme ja järjestelemme eri oppaita yhteen asiakirjaan, jota on helppo seurata tai johon voidaan viitata _erityisesti_ stake poolin ylläpitoon kahdella \(tai useammalla\) Raspberry Pi 4B:llä \(8GB versio\) ja yhdellä offline Pi:llä, joka tarvitaan kylmä avain operaatioihin.
 
-Provide documentation of every step taken while building the Pi-Node image available for bootstrapping pool creation. A reference & guide.
+Toimitetaan dokumentaatio jokaisesta vaiheesta kun samalla rakennetaan Pi-Node imagea pool luomiseen. Viite & opas.
 
-The most popular guides out there are aimed at x86 architecture and '_knowing what to throw away and knowing what to keep_' is not always clear. I aim to change that '_with a little help from my friends_'. 🎸
+Suosituimmat oppaat on tarkoitettu x86-arkkitehtuuriin ja '_tiedostaa se, mitä heittää pois ja, mitä pitää_' ei ole aina selvää. Aion muuttaa tämä '_with a little help from my friends_'. 🎸
 
-## Hardware
+## Laitteisto
 
 {% hint style="Huomaa" %}
-The cardano-node & cardano-cli binaries linked to in this guide require aarch64 architecture to run. You **must** use Pi4B 8GB for the Core & Relays, you can use the Pi3B+ or PI4B 4GB or 8GB version with a micro sd card for your cold offline machine.
+Cardano-node ja cardano-cli, joihin tässä oppaassa viitataan, tarvitsevat toimiakseen aarch64 arkkitehtuurin taakseen. Sinun **täytyy** käyttää Pi4B 8GB Core & Relay laitteina, voit käyttää Pi3B+ tai PI4B 4GB tai 8GB versiota mikro sd-kortilla kylmänä offline koneenasi.
 {% endhint %}
 
 {% hint style="info" %}
-[Here is a list of working adapters.](https://jamesachambers.com/raspberry-pi-4-usb-boot-config-guide-for-ssd-flash-drives/)
+[Tässä pon lista toimivista adaptereista.](https://jamesachambers.com/raspberry-pi-4-usb-boot-config-guide-for-ssd-flash-drives/)
 {% endhint %}
 
-### Shopping list
+### Ostoslista
 
-* 2 [Pi4B 8GB](https://thepihut.com/products/raspberry-pi-4-model-b?variant=31994565689406) version.
+* 2 [Pi4B 8GB](https://thepihut.com/products/raspberry-pi-4-model-b?variant=31994565689406) versio.
 * 2 Drives : \(NVMe **low power**, form & speed\).
 * M.2 key to USB3.1 adapter or whatever works with your drive.
 * A 3'rd 64bit capable Pi as an offline machine\(Cold\).
