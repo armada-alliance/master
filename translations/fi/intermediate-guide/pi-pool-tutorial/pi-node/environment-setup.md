@@ -210,7 +210,7 @@ Nyt meidän täytyy vain:
 
 ## ⛓ Ketjun synkronointi ⛓
 
-Olet nyt valmis käynnistämään cardano-noden. Käynnistäminen aloittaa oman nodesi synkronoinnin Cardano lohkoketjun kanssa. This is going to take about 30 hours and the db folder is about 10GB in size right now. Aiemmin ensimmäinen node tuli synkronoida kokonaan, alusta loppuun jonka jälkeen tietokanta voitiin kopioida toiseen nodeen.
+Olet nyt valmis käynnistämään cardano-noden. Käynnistäminen aloittaa oman nodesi synkronoinnin Cardano lohkoketjun kanssa. Tämä kestää noin 30 tuntia ja db-kansio on kooltaan noin 10GB juuri nyt. Aiemmin ensimmäinen node tuli synkronoida kokonaan, alusta loppuun jonka jälkeen tietokanta voitiin kopioida toiseen nodeen.
 
 ### Lataa tilannekuva
 
@@ -594,7 +594,7 @@ cardano-monitor start
 ```
 
 {% hint style="warning" %}
-Tässä vaiheessa saatat haluta käynnistää cardano-servicen ja synkronoida nodesi lohkoketjun kanssa ennen kuin jatkamme Grafanan konfigurointia. Go to the syncing the chain section. Choose whether you want to wait 30 hours or download the latest chain snapshot. Palaa tähän kun gLiveView.sh näyttää, että olet ketjun kärjessä.
+Tässä vaiheessa saatat haluta käynnistää cardano-servicen ja synkronoida nodesi lohkoketjun kanssa ennen kuin jatkamme Grafanan konfigurointia. Mene ketjun synkronointiosioon ja jatka sitä. Valitse haluatko odottaa 30 tuntia tai ladata viimeisimmän ketjukuvauksen. Palaa tähän kun gLiveView.sh näyttää, että olet ketjun kärjessä.
 {% endhint %}
 
 ## Grafana, Nginx proxy\_pass & snakeoil
@@ -657,7 +657,7 @@ Voit nyt käydä pi-noden ip osoitteessa ilman portin määrittelyä, yhteys pä
 
 ### Määritä Grafana
 
-On your local machine open your browser and enter your nodes private ip address.
+Avaa paikallisella koneellasi selaimesi ja syötä Noden yksityinen Ip-osoite.
 
 Kirjaudu sisään ja aseta uusi salasana. Oletus käyttäjätunnus ja salasana on **admin:admin**.
 
@@ -683,7 +683,7 @@ Täällä voit käyttää poolData api -sovellusta tuodaksesi poolisi tiedot Gra
 
 Noudata ohjeita asentaaksesi Grafana plugin, määritä datasource ja tuo dashboard.
 
-## Useful Commands
+## Hyödyllisiä Komentoja
 
 Seuraa lokin ulostuloa päiväkirjaan.
 
@@ -697,11 +697,11 @@ Seuraa lokin ulostuloa stdoutiin.
 sudo tail -f /var/log/syslog
 ```
 
-View network connections with netstat.
+Tarkastele verkkoyhteyksiä netstatilla.
 
 ```bash
 sudo netstat -puntw
 ```
 
-Nyt sinulla on pi-node, jossa on työkaluja, joilla voit rakentaa stake poolin seuraavien sivujen ohjeiden ja tutoriaalien avulla. Best of luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger! 💪 
+Nyt sinulla on pi-node, jossa on työkaluja, joilla voit rakentaa stake poolin seuraavien sivujen ohjeiden ja tutoriaalien avulla. Onnea projektiisi ja liity [armada-allianssiin](https://armada-alliance.com), yhdessä olemme vahvempi! 💪 
 
