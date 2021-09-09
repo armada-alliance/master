@@ -134,20 +134,20 @@ wget https://ci.zw3rk.com/build/1758/download/1/aarch64-unknown-linux-musl-carda
 Jos olet epävarma, onko tiedosto ladattu oikein tai haluat tietää kansion/tiedostojen nimet, voit käyttää Linuxin [**ls**](https://www.man7.org/linux/man-pages/man1/ls.1.html) komentoa.
 {% endhint %}
 
-Now we need to move the cardano-node folder into our local binary directory.
+Nyt meidän täytyy siirtää cardano-node kansio paikalliseen binääri hakemistoon.
 
 ```bash
 mv cardano-node/* ~/.local/bin
 ```
 
-Before we proceed let's make sure the cardano-node and cardano-cli is in our $PATH
+Ennen kuin jatkamme, varmista, että cardano-node ja cardano-cli ovat meidän $PATH
 
 ```bash
 cardano-node version
 cardano-cli version
 ```
 
-Now we can move into our files folder, and download the four Cardano node configuration files we need from the official [IOHK website](https://hydra.iohk.io/build/5822084/download/1/index.html) and or [documentation](https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles_AND_Connect.html). We will be using the "wget" command to download the files.
+Nyt voimme siirtyä meidän files kansioon, ja ladata tarvittavat neljä Cardano noden virallista asetustiedostoa [IOHK verkkosivuilla](https://hydra.iohk.io/build/5822084/download/1/index.html) ja tai niihin liittyvän [dokumentaation](https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles_AND_Connect.html). Käytämme "wget" -komentoa tiedostojen lataamiseen.
 
 ```bash
 cd $NODE_FILES
@@ -157,31 +157,31 @@ wget https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-she
 wget https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-* **Use the nano bash editor to change a few things in our "testnet-config.json" file**
-* [ ] Change the **"TraceBlockFetchDecisions"** line from "**false**" to "**true**"
-* [ ] Change the **"hasEKG"** to **12600**
-* [ ] Change  the **"hasPrometheus"** address/port to 12700
+* **Käytä nano bash editoria muuttaaksesi muutamia asioita meidän "testnet-config.json" tiedostossa**
+* [ ] Muuta **"TraceBlockFetchDecisions"** riviltä arvo "**false**" arvoon "**true**"
+* [ ] Muuta **"hasEKG"** portiksi **12600**
+* [ ] Muuta **"hasPrometheus"** osoite / portti 12700
 
 ```text
 sudo nano testnet-config.json
 ```
 
-### Create the systemd files
+### Luo systemd järjestelmätiedostot
 
-We will use the Linux systemd service manager to handle the starting, stopping, and restarting of our Cardano node relay.
+Käytämme linuxin systemd järjestelmänvalvojaa Cardano noden käynnistämiseen, pysäyttämiseen ja uudelleenkäynnistämiseen.
 
 {% hint style="info" %}
-If you'd like to find out more about Linux and systemd go to the [Linux manual page](https://www.man7.org/linux/man-pages/man1/systemd.1.html).
+Jos haluat tietää lisää Linuxista ja systemd järjestelmästä, mene [Linux-käsikirjan sivulle](https://www.man7.org/linux/man-pages/man1/systemd.1.html).
 {% endhint %}
 
 ```bash
 sudo nano $HOME/.local/bin/cardano-service
 ```
 
-**Now we need to make the cardano-node startup script**
+**Nyt meidän täytyy tehdä cardano-noden käynnistysskripti**
 
 {% hint style="info" %}
-How to start the cardano-node can be found here on the [Cardano documentation](https://docs.cardano.org/getting-started/installing-the-cardano-node#gatsby-focus-wrapper).
+Cardano noden käynnistämisen ohje löytyy täältä Cardanon dokumentaatiosta.[https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles\_AND\_Connect.html](https://docs.cardano.org/getting-started/installing-the-cardano-node#gatsby-focus-wrapper).
 {% endhint %}
 
 {% tabs %}
@@ -230,7 +230,7 @@ cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
 {% endtab %}
 {% endtabs %}
 
-**Now we must give access permission to our new systemd service script**
+**Nyt meidän on annettava pääsyoikeus uuden järjestelmäpalvelun skriptille**
 
 ```bash
 sudo chmod +x $HOME/.local/bin/cardano-service
@@ -296,13 +296,13 @@ WantedBy= multi-user.target
 {% endtab %}
 {% endtabs %}
 
-We now should reload our systemd service to make sure it picks up our cardano-service
+Meidän pitää nyt käynnistää järjestelmäpalvelu uudelleen varmistaaksemme, että se meidän cardano-palvelumme on mukana
 
 ```bash
 sudo systemctl daemon-reload
 ```
 
-**If we don't want to call "sudo systemctl" everytime we want to start, stop, or restart the cardano-node service we can create a "function" that will be added into our .bashrc shell script that will do this for us**
+**Jos emme halua käyttää "sudo systemctl" joka kerta kun haluamme aloittaa, lopettaa, tai käynnistä uudelleen cardano-node palvelun voimme luoda "funktion", joka lisätään meidän .bashrc shell skriptiin, ja tekee tämän puolestamme**
 
 [https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/](https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/)
 
@@ -320,10 +320,10 @@ cardano-service() {
 source $HOME/.bashrc
 ```
 
-## Download a snapshot of the blockchain to speed the sync process
+## Lataa tilannekuva lohkoketjusta ja nopeuta synkronointiprosessia
 
 {% hint style="info" %}
-Olemme saaneet tilannekuvan testnet tietokannasta Star Forge Pool \[OTG\] ansiosta. Jos et halua ladata tietokantaa, **voit ohittaa tämän vaiheen**. Beware, if you skip downloading our snapshot it may take up to 28 hours to get the node fully synced.
+Olemme saaneet tilannekuvan testnet tietokannasta Star Forge Pool \[OTG\] ansiosta. Jos et halua ladata tietokantaa, **voit ohittaa tämän vaiheen**. Huomaa että, jos jätät tilannekuvan lataamisen väliin, saattaa kestää jopa 28 tuntia, ennen kuin node on täysin synkronoitu.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -346,15 +346,15 @@ wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online
 Tämä lataus kestää 25 minuutista 2 tuntiin riippuen internetin nopeudesta.
 {% endhint %}
 
-* After the database has finished downloading add a clean file to it before we start the relay. Copy/paste the following command into your terminal window.
+* Kun tietokannan lataaminen on päättynyt lisää siihen puhdas tiedosto ennen kuin käynnistämme relayn. Kopioi/liitä seuraava komento pääteikkunaan.
 
 ```bash
 touch db/clean
 ```
 
-## Finish syncing to the blockchain
+## Viimeistele lohkoketjun synkronointi
 
-* Now we can start the "passive" relay node to begin syncing to the blockchain.
+* Nyt voimme käynnistää "passiivisen" relay noden aloittaaksemme synkronoinnin lohkoketjuun.
 
 ```bash
 cd $HOME
@@ -363,9 +363,9 @@ cardano-service start
 cardano-service status
 ```
 
-## Setting up gLiveView to monitor the node during its syncing process
+## gLiveView-ohjelman asennus, noden seuraamiseksi synkronointiprosessin aikana
 
-#### Now you can change to the $NODE\_FILES folder and then download the gLiveView monitor service
+#### Nyt voit siirtyä $NODE\_FILES kansioon ja sitten ladata gLiveView- monitoripalvelun
 
 ```bash
 sudo apt-get install jq
@@ -375,13 +375,13 @@ curl -s -o env https://raw.githubusercontent.com/cardano-community/guild-operato
 chmod 755 gLiveView.sh
 ```
 
-* Need to change the "**CNODE\_PORT**" to the port you set on your cardano-node, in our case let's change it to **3001.**
+* Päivitä "**CNODE\_PORT**" porttiin jonka asetit cardano nodelle, tässä tapauksessa vaihdetaan siihen **3001.**
 
 ```bash
 sudo nano env
 ```
 
-* Finally, we can exit the nano editor and just run the gLiveView script.
+* Lopuksi, voimme poistua nanoeditorista ja vain käynnistää gLiveViewen skripti.
 
 ```bash
 ./gLiveView.sh
@@ -405,7 +405,7 @@ htop
 {% endtab %}
 {% endtabs %}
 
-## References:
+## Viitteet:
 
 {% tabs %}
 {% tab title="📚" %}
