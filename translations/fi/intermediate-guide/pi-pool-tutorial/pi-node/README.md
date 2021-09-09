@@ -1,12 +1,12 @@
 ---
 description: >-
-  Quickly bootstrap a synced configured node in a hour(not an hour anymore 1.29)!
+  Rakenna synkronoitu node noin tunnissa (ei enää tuntia 1.29)!
 ---
 
 # Pi-Node \(pikaopas\)
 
 {% hint style="info" %}
-It will take about 25 minutes to download the chain and another hour or so to sync to the tip. Et voi tehdä paljoakaan ennen kuin node on synkronoitu lohkoketjun kärkeen asti.
+Ketjun lataaminen kestää noin 25 minuuttia ja noin tunti että se on synkronoitu kärkeen saakka. Et voi tehdä paljoakaan ennen kuin node on synkronoitu lohkoketjun kärkeen asti.
 
 Uudelleenkäynnistyksen jälkeen voi kestää 5-50 minuuttia synkronoida ketju uudlleen riippuen siitä, miten node suljettiin tai käynnistettiin uudelleen. Tarkista htopilla, onko prosessi käynnissä. Jos se on, käytä gLiveView.sh -skriptiä monitorointiin tai mene kävelylle. Node synkronoituu ja socket luodaan.
 
