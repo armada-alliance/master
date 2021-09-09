@@ -650,7 +650,7 @@ Tässä vaiheessa saatat haluta käynnistää cardano-servicen ja synkronoida no
 Avaa paikallisessa koneessasi selaimesi ja mene osoitteeseen http://&lt;Pi-Node's private ip&gt;:5000
 
 {% hint style="danger" %}
-Do not change the default password yet, there is no encryption on the wire. Choose skip when it asks. The next time we visit Grafana it will be with a self signed TLS certificate handled by Nginx webservers proxy\_pass and your passwords will be safe from anything listening on your internal network.
+Älä muuta oletussalasanaa vielä, johdolla ei ole salausta. Valitse ohita kun kysytään. Seuraavan kerran kun käymme Grafana se on itse allekirjoitettu TLS sertifikaatti, jonka hoitaa Nginx webservers proxy\_pass ja salasanat ovat turvassa kaikelta sisäinen verkon kuuntelulta.
 {% endhint %}
 
 Kirjaudu sisään ja aseta uusi salasana. Oletus käyttäjätunnus ja salasana on **admin:admin**.
