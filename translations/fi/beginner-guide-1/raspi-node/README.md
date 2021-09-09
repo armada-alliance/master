@@ -1,6 +1,6 @@
 ---
 description: >-
-  Collection of tutorials focused for the beginner Raspberry Pi Stake Pool Operator
+  Aloittelevalle Raspberry Pi Stake Pool operaattorille suunnattuja ohjeita
 ---
 
 # Pi-Node🍓
@@ -10,7 +10,7 @@ description: >-
 {% endhint %}
 
 {% hint style="danger" %}
-**This tutorial is meant to get a single node syncing to the Cardano network! If you wish to build a stake pool, please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/)**.**
+**Tämän tutoriaalin tarkoitus on saada yksi node synkronoitua Cardano lohkoketjuun! Ole hyvä ja käytä**[ **keskitason oppaitamme**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **stake poolin rakentamiseen.**
 {% endhint %}
 
 ## Mitä laitteistoa tarvitset näitä oppitunteja varten
