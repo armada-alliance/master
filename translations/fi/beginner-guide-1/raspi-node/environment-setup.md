@@ -747,5 +747,5 @@ Voit nyt käydä pi-noden ip osoitteessa ilman portin määrittelyä, yhteys pä
 
 ![](../../.gitbook/assets/snakeoil.png)
 
-Nyt sinulla on pi-node, jossa on työkaluja, joilla voit rakentaa stake poolin seuraavien sivujen ohjeiden ja tutoriaalien avulla. Best of Luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger!
+Nyt sinulla on pi-node, jossa on työkaluja, joilla voit rakentaa stake poolin seuraavien sivujen ohjeiden ja tutoriaalien avulla. Onnea projektiisi ja liity [armada-allianssiin](https://armada-alliance.com), yhdessä olemme vahvempi!
 
