@@ -6,7 +6,7 @@ description: >-
 # Pi-Node🍓
 
 {% hint style="danger" %}
-**This tutorial is for those who want to use the 64 bit Raspberry Pi OS\(Raspbian\) with a desktop environment.**
+**Tämä tutoriaali on niille, jotka haluavat käyttää 64 bittistä Raspberry Pi OS(Raspbian) käyttöjärjestelmää työpöytäympäristössä.**
 {% endhint %}
 
 {% hint style="danger" %}
