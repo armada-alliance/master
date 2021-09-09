@@ -38,16 +38,16 @@ Cardano-node ja cardano-cli, joihin tässä oppaassa viitataan, tarvitsevat toim
 ### Ostoslista
 
 * 2 [Pi4B 8GB](https://thepihut.com/products/raspberry-pi-4-model-b?variant=31994565689406) versio.
-* 2 Drives : \(NVMe **low power**, form & speed\).
-* M.2 key to USB3.1 adapter or whatever works with your drive.
-* A 3'rd 64bit capable Pi as an offline machine\(Cold\).
-* Class 10 micro sd card 8GB or larger.
-* Extra USB flash drives for backing up keys and configurations.
-* Consider a single 50+ watt power supply
-* Consider a 5 volt gigabit switch
-* Consider a case with a fan
+* 2 Asemaa: \(NVMe **pieni virrankulutus**, muoto & nopeus\).
+* M.2 avain USB3.1 adapteriin tai mikä tahansa mikä toimii oman asemasi kanssa.
+* Kolmas 64bit kykenevä Pi offline-kone\(Cold\).
+* Luokan 10 micro Sd-kortti 8GB tai suurempi.
+* Ylimääräisiä USB flash-asemia avainten ja konfiguraatioiden varmuuskopiointiin.
+* Harkitse yhtä 50 watin virtalähdettä
+* Harkitse 5 voltin gigabitin kytkintä
+* Harkitse koteloa, jossa tuuletin
 
-## Credit & community
+## Kiitokset ja Yhteisö
 
 * [Alessandro konrad](https://github.com/alessandrokonrad) \|[ Berry](https://adapools.org/pool/2a748e3885f6f73320ad16a8331247b81fe01b8d39f57eec9caa5091) \(@berry\_ales\)
 * Moritz Angermann \| [zw3rk](https://adapools.org/pool/e2c17915148f698723cb234f3cd89e9325f40b89af9fd6e1f9d1701a) \(@zw3rk\)
@@ -57,20 +57,20 @@ Cardano-node ja cardano-cli, joihin tässä oppaassa viitataan, tarvitsevat toim
 * [Berry Pool](https://t.me/berry_pool) Telegram group
 * [Legendary Technology: New Raspberry Pi 4 Bootloader USB](https://jamesachambers.com/new-raspberry-pi-4-bootloader-usb-network-boot-guide/)
 
-## Downloads
+## Lataukset
 
 * [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz)
-* Latest unofficial [static arm binaries](https://ci.zw3rk.com/build/1758)
+* Viimeisimmät epäviralliset [staattiset arm binäärit](https://ci.zw3rk.com/build/1758)
   * [Moritz Angermann](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w)
 * Raspberry Pi Imager \([rpi-imager](https://github.com/raspberrypi/rpi-imager)\)
-  * update eeprom
-  * flash .img files/install Ubuntu
+  * päivitä eeprom
+  * flash .img tiedostot/asenna Ubuntu
 * [PiShrink](https://github.com/Drewsif/PiShrink)
 * [cardanocli-js](https://docs.pipool.online/)
-* Latest chain snapshot for quicker sync
+* Viimeisimmän ketjun tilannekuva nopeampaa synkronointia varten
   * wget -r -np -nH -R "index.html\*" -e robots=off [https://db.adamantium.online/db/](https://db.adamantium.online/db/)
 
-## Links
+## Linkit
 
 * [https://cryptsus.com/blog/how-to-secure-your-ssh-server-with-public-key-elliptic-curve-ed25519-crypto.html](https://cryptsus.com/blog/how-to-secure-your-ssh-server-with-public-key-elliptic-curve-ed25519-crypto.html)
 * [https://www.raspberrypi.org/forums/viewtopic.php?t=245931](https://www.raspberrypi.org/forums/viewtopic.php?t=245931)
