@@ -1,13 +1,13 @@
 ---
 description: >-
-  This section will help with understanding the relay and block producer topology.
+  Tämä osio auttaa ymmärtämään relayn ja block producer noden topologioita.
 ---
 
 # Stake Pool -verkosto: Perusteita
 
 ## Oletukset
 
-For the sake of this tutorial we are assuming that the Raspberry Pi nodes you are running are in your home and connected to either your ISP's internet router or a separate switch connected to your ISP's internet router. Your nodes should have a firewall configured with as few ports open as possible and with your firewall rules as specific as possible. Furthermore, your ISP's internet router should also have firewall settings configured. If you are not familiar with them, leaving the firewall defaults from your ISP are generally okay.
+Tässä tutoriaalissa oletamme, että Raspberry Pi nodesi pyörivät kotonasi, liitettyinä routeriin ja ovat yhteydessä internetiin jonkin palveluntuottajalta ostetun yhteyden kautta. Nodien pitäisi olla määritetyn palomuurin takana, ja avoimia portteja tulisi olla mahdollisimman vähän. Lisäksi palomuuriasetusten tulisi olla mahdollisimman speifisiä. Lisäksi ISP:n internetreitittimessä tulee olla palomuuriasetukset määritettynä. Jos et tunne palomuuriasetuksia, niiden jättäminen ISP:n määrittämiin oletusarvoihin on yleisesti ottaen OK.
 
 If you have a block producer running, at a minimum it's firewall rules should have it's node port available only to your configured relay IPs and then the port you use for ssh. If you want to monitor your block producer metrics using Grafana, you'll also need to provide access to the Grafana port. Same thing if you want to monitor your relays.
 
