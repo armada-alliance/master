@@ -6,7 +6,7 @@ description: Miten lisätä adapools.org summary.json tiedot Grafana tapahtumaks
 
 ## Oletukset
 
-Olet rakentanut Cardano noden käyttäen yhtä tutoriaaleistamme [täällä](pi-pool-tutorial/). Jos näin on, sinulla pitäisi olla tarvittavat riippuvuudet asennettuna, joita alla olevat ohjeet käyttävät. Jos näin ei ole, katso apt install [Environment Setup](../beginner-guide-1/raspi-node/environment-setup.md#install-packages) -osio Pi-pool-tutorialissa.
+Olet rakentanut Cardano noden käyttäen yhtä tutoriaaleistamme [täällä](pi-pool-tutorial/). Jos näin on, sinulla pitäisi olla tarvittavat riippuvuudet asennettuna, joita alla olevat ohjeet käyttävät. If not, see the apt install [Environment Setup](../cardano-node/raspi-node/environment-setup.md#install-packages) section of the Pi-Pool Tutorial.
 
 ## Luo uusi hakemisto
 
