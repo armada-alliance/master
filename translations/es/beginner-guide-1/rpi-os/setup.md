@@ -50,63 +50,63 @@ Ahora vamos a descargar la última versión oficial de Debian OS de Raspberry Pi
 
 Lo primero que queremos hacer es arrancar y configurar la Raspberry Pi para nuestro uso.
 
-To do this we will need to insert the SD card we flashed earlier with the Raspberry Pi OS into the bottom of the Raspberry Pi. Then we can insert our HDMI, Keyboard, Mouse, and power supply.
+Para hacer esto, necesitaremos insertar la tarjeta SD, que flasheamos anteriormente con el sistema operativo Raspberry Pi, en la parte inferior de la Raspberry Pi. Luego podemos insertar nuestro HDMI, teclado, ratón y fuente de alimentación.
 
-Once the Raspberry Pi startup screen is finished and you have booted into the Raspberry Pi OS Desktop screen we can now begin to set up our Raspberry Pi configuration and settings.
+Una vez que arranca el sistema operativo Raspberry Pi, tendrá que seguir algunas configuraciones iniciales que se enumeran a continuación.
 
 {% hint style="info" %}
-If this is your first time booting up the Raspberry Pi OS you will have to follow some initial configurations listed below
+Si esta es la primera vez que inicias el sistema operativo Raspberry Pi, tendrás que seguir algunas configuraciones iniciales listadas a continuación
 {% endhint %}
 
-* [ ] First, you need to change the Raspberry Pi's Hostname and Password, this will make sure you are not just running the basic login information.
-* [ ] Enter Wifi login information \(**you** **may** **skip this if you are using Ethernet**\)
-* [ ] Set your local time zone.
-* [ ] Choose language and keyboard settings.
-* [ ] Update Raspberry Pi \(skip this if you want to update via command line\)
+* [ ] Primero, necesitas cambiar el nombre de host y contraseña de Raspberry Pi, esto te asegurará de que no sólo está ejecutando la información básica de acceso.
+* [ ] Introduce la información de inicio de sesión Wifi \(**usted** **puede** **omitir esto si está usando Ethernet**\)
+* Ajusta tu zona horaria local.
+* [ ] Elige la configuración del idioma y el teclado.
+* [ ] Actualiza la Raspberry Pi \(omite esto si desea actualizar a través de línea de comandos\)
 
 {% hint style="success" %}
-#### After you are done with these initial setup steps, it is time to proceed to get the Rasberry Pi to boot from its USB so that way we can use our external SSD.
+#### Después de haber terminado con estos pasos de configuración iniciales, es hora de proceder a que la Rasberry Pi arranque desde su USB de modo que podamos usar nuestra SSD externa.
 {% endhint %}
 
-### Part 3:
+### Parte 3:
 
-### Getting the Pi to Boot from USB
+### Configurando la Pi para Arrancar desde USB
 
-**This is the final step in this tutorial. We are going to first insert our external SSD into one of the USB 3.0 slots marked blue.**
+**Este es el paso final de este tutorial. Primero vamos a insertar nuestra SSD externa en una de las entradas USB 3.0 marcadas en azul.**
 
 ![](../../.gitbook/assets/pi4.jpeg)
 
-Open the Raspberry Pi applications menu and then click on the **SD Card Copier** application.
+Abra el menú de aplicaciones Raspberry Pi y haga clic en la aplicación **SD Card Copier**.
 
 ![](../../.gitbook/assets/screen-shot-2021-03-29-at-9.11.39-pm%20%281%29.png)
 
-Then we want to select **COPY FROM DEVICE** - **\(mmcblk0\) SD CARD.**
+Luego seleccionamos **COPY FROM DEVICE** - **\(mmcblk0\) SD CARD.**
 
-Next, select **COPY TO DEVICE - \(sda\) SSD Device.**
+A continuación, selecciona **COPY TO DEVICE - \(sda\) SSD Device.**
 
-Once the copy process is complete open a new terminal window and enter the following command.
+Una vez completado el proceso de copia, abra una nueva ventana de la terminal y ejecuta el siguiente comando.
 
 ```text
 sudo raspi-config
 ```
 
-This will bring you to the Raspberry Pi's system configuration settings where you can access the **Advanced Options.**
+Esto te llevará a la configuración del sistema de Raspberry Pi donde podrás acceder a las **Opciones Avanzadas.**
 
 ![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.13.19-pm.png)
 
-Next select **Boot Order.**
+Después selecciona **Boot Order.**
 
 ![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.13.40-pm%20%281%29.png)
 
-Then choose the **USB Boot**.
+A continuación, elija **USB Boot**.
 
 ![](../../.gitbook/assets/screen-shot-2021-03-29-at-10.14.05-pm%20%281%29.png)
 
-Now you can select **&lt;Ok&gt;** then **&lt;Finish&gt;**, close the Raspberry Pi system configuration menu, and reboot the Pi.
+Ahora puedes seleccionar **&lt;Ok&gt;** y luego **&lt;Finish&gt;**, para cerrar el menú de configuración del sistema de Raspberry Pi y reiniciar el Pi.
 
-You should now be able to shut down the Pi after it reboots up, remove the SD Card, then you can power up the Pi and it should boot from your external USB storage device.
+Ahora deberías ser capaz de apagar la Pi después de reiniciar, quitar la tarjeta SD y después encender la Pi, ya debería arrancar desde su dispositivo de almacenamiento USB externo.
 
 {% hint style="success" %}
-#### Now that we have finished most of the initial set-up we can continue getting the Pi ready and move to the next [tutorial](tutorial-2-relaynode.md).
+#### Ahora que hemos terminado la mayor parte de la configuración inicial, podemos continuar con la preparación de la Pi y pasar al siguiente [tutorial](tutorial-2-relaynode.md).
 {% endhint %}
 
