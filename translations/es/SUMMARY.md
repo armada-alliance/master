@@ -7,7 +7,7 @@
 * [RasPi-Node🍓](beginner-guide-1/raspi-node/README.md)
   * [Descargar y Flashear](beginner-guide-1/raspi-node/download.md)
   * [Configuración del servidor](beginner-guide-1/raspi-node/server-setup.md)
-  * [Configuracion de entorno](beginner-guide-1/raspi-node/environment-setup.md)
+  * [Configuración del entorno](beginner-guide-1/raspi-node/environment-setup.md)
 
 ## Guias de Stake Pools <a id="intermediate-guide"></a>
 
@@ -17,7 +17,7 @@
     * [Configuración usuarios](intermediate-guide/pi-pool-tutorial/pi-node/user-setup.md)
     * [Iniciando sesión de forma segura](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
     * [Configuración del servidor](intermediate-guide/pi-pool-tutorial/pi-node/server-setup.md)
-    * [Configuracion de entorno](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md)
+    * [Configuración del entorno](intermediate-guide/pi-pool-tutorial/pi-node/environment-setup.md)
   * [Pi-Relay](intermediate-guide/pi-pool-tutorial/pi-relay.md)
   * [Pi-Core/Frío](intermediate-guide/pi-pool-tutorial/pi-core-and-pi-cold.md)
   * [Rotate KES](intermediate-guide/pi-pool-tutorial/rotate-kes.md)
