@@ -2,12 +2,12 @@
 
 * [Tervetuloa ARM-operaattorit](README.md)
 
-## Cardano Node <a id="beginner-guide-1"></a>
+## Cardano Node
 
-* [RasPi-Node🍓](beginner-guide-1/raspi-node/README.md)
-  * [Lataa & Polta](beginner-guide-1/raspi-node/download.md)
-  * [Palvelimen Asetukset](beginner-guide-1/raspi-node/server-setup.md)
-  * [Ympäristön Asetukset](beginner-guide-1/raspi-node/environment-setup.md)
+* [RasPi-Node🍓](cardano-node/raspi-node/README.md)
+  * [Lataa & Polta](cardano-node/raspi-node/download-and-flash.md)
+  * [Palvelimen Asetukset](cardano-node/raspi-node/server-setup.md)
+  * [Ympäristön Asetukset](cardano-node/raspi-node/environment-setup.md)
 
 ## Stake Pool -oppaat <a id="intermediate-guide"></a>
 
