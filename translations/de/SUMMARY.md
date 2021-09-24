@@ -2,12 +2,12 @@
 
 * [Welcome ARM Operators](README.md)
 
-## Cardano Node <a id="beginner-guide-1"></a>
+## Cardano Node
 
-* [RasPi-Node🍓](beginner-guide-1/raspi-node/README.md)
-  * [Download & Flash](beginner-guide-1/raspi-node/download.md)
-  * [Server Setup](beginner-guide-1/raspi-node/server-setup.md)
-  * [Environment Setup](beginner-guide-1/raspi-node/environment-setup.md)
+* [RasPi-Node🍓](cardano-node/raspi-node/README.md)
+  * [Download & Flash](cardano-node/raspi-node/download-and-flash.md)
+  * [Server Setup](cardano-node/raspi-node/server-setup.md)
+  * [Environment Setup](cardano-node/raspi-node/environment-setup.md)
 
 ## Stake Pool Guides <a id="intermediate-guide"></a>
 
