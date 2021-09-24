@@ -1,36 +1,36 @@
 ---
 description: >-
-  After completing the Raspberry Pi setup we are now ready to download the files needed for the testnet.
+  Después de completar la configuración de la Raspberry Pi, ya estamos listos para descargar los archivos necesarios para Testnet (red de pruebas).
 ---
 
 # Configurar nodo Relay
 
 {% hint style="warning" %}
-**This tutorial is meant to get a single node syncing to the Cardano blockchain! We have skipped certain steps and security in order to make this tutorial as easy as possible - DO NOT USE this tutorial to form a mainnet stake pool. Please use our**[ **intermediate guides**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **for the mainnet.**
+**¡Este tutorial está diseñado para conseguir un nodo completo sincronizado con la blockchain de Cardano! Hemos omitido ciertos pasos de seguridad para hacer este tutorial lo más fácil posible - NO UTILICE este tutorial para crear un Stake Pool de Mainnet. Por favor, utilice nuestras**[ **guías intermedias**](../../intermediate-guide/pi-pool-tutorial/pi-node/) **para la Mainnet.**
 {% endhint %}
 
 {% hint style="warning" %}
-**This tutorial is for use with the official Raspberry Pi 64-bit OS and is solely for development educational purposes to get a Raspberry Pi Cardano node syncing to the blockchain.**
+**Este tutorial es sólo para usar con Raspberry Pi OS 64bit y está pensado sólo para propósitos educativos para conseguir una sincronización de un nodo completo con la cadena de bloques de Cardano.**
 {% endhint %}
 
-## Summary
+## Resumen
 
-1. Configuracion de entorno
-2. Downloading the binaries needed to build a Cardano node relay
-3. Download configuration files from IOHK/Cardano-node
-4. Edit the config settings
-5. Download a database snapshot to speed up the sync process
-6. Run the basic passive relay node to connect to the testnet
-7. Monitor the relay node with [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/)
+1. Configuración del entorno
+2. Descarga de los binarios necesarios para construir un nodo Relay de Cardano
+3. Descarga de los archivos de configuración de IOHK/Cardano-node
+4. Editar los ajustes de configuración
+5. Descargar una instantánea (snapshot) de la base de datos para acelerar el proceso de sincronización
+6. Ejecuta el nodo Relay básico pasivo para conectarse a Testnet (red de pruebas)
+7. Monitorea el nodo Relay con [**Guild Operators gLiveView** ](https://cardano-community.github.io/guild-operators/#/)
 
 ![](../../.gitbook/assets/download-10-%20%281%29.jpeg)
 
-## Setting up our environment
+## Configuración del entorno
 
-* We must first update our OS and install needed upgrades if available.
+* Primero debemos actualizar nuestro sistema operativo e instalar las actualizaciones necesarias que estén disponibles.
 
 {% hint style="info" %}
-It is highly recommended to update the operating system every time you boot up and log in to your **Raspberry Pi** to prevent security vulnerabilities.
+Es muy recomendable actualizar el sistema operativo cada vez que arranca e inicie sesión en su **Raspberry Pi** para prevenir vulnerabilidades de seguridad.
 {% endhint %}
 
 ```text
@@ -40,13 +40,13 @@ sudo apt update
 sudo apt upgrade -y
 ```
 
-* We can now reboot the Pi and let the updates take effect by running this command in a terminal.
+* Ahora podemos reiniciar la Pi y dejar que las actualizaciones surtan efecto ejecutando este comando en una terminal.
 
 ```text
 sudo reboot
 ```
 
-### Make our directories
+### Crear nuestros directorios
 
 {% tabs %}
 {% tab title="testnet" %}
@@ -64,17 +64,17 @@ mkdir -p $HOME/mainnet-relay/files
 {% endtab %}
 {% endtabs %}
 
-### Add ~/.local/bin to our $PATH
+### Añadir ~/.local/bin a nuestro $PATH
 
 {% hint style="info" %}
-[How to Add a Directory to Your $PATH in Linux](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)
+[Cómo añadir un directorio a su $PATH en Linux](https://www.howtogeek.com/658904/how-to-add-a-directory-to-your-path-in-linux/)
 {% endhint %}
 
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
 ```
 
-### Create our bash variables
+### Crear nuestras variables bash
 
 {% tabs %}
 {% tab title="testnet" %}
@@ -104,15 +104,15 @@ source $HOME/.bashrc
 sudo reboot
 ```
 
-### Download the Cardano-node static build
+### Descarga la versión estática de Cardano-node
 
-| Provided By                                                                                                                      | Link to Cardano Static Build                                           |
+| Proporcionado por                                                                                                                | Enlace a Cardano Static Build                                          |
 |:-------------------------------------------------------------------------------------------------------------------------------- |:---------------------------------------------------------------------- |
 | [**ZW3RK**](https://adapools.org/pool/e2c17915148f698723cb234f3cd89e9325f40b89af9fd6e1f9d1701a) **1PCT Haskell CI Support Pool** | [**https://ci.zw3rk.com/build/1758**](https://ci.zw3rk.com/build/1758) |
 
-* A[ **static build**](https://en.wikipedia.org/wiki/Static_build) is a [compiled](https://en.wikipedia.org/wiki/Compiler) version of a program that has been statically linked against[ libraries](https://en.wikipedia.org/wiki/Library_%28computing%29).
+* Una[ **Static Build (compilación estática)**](https://en.wikipedia.org/wiki/Static_build) es una versión ****[**compilada**](https://en.wikipedia.org/wiki/Compiler) **** de un programa que ha sido enlazado estáticamente con las bibliotecas.
 
-Now we need to download the zip file above to our Pi's home directory and then move it to the right location so we can call on it later to start the node.
+Ahora necesitamos descargar el archivo zip de arriba al directorio de inicio de nuestro Pi y luego moverlo a la ubicación correcta para que podamos ejecutarlo más adelante para iniciar el nodo.
 
 ```bash
 # First change to the home directory
@@ -122,32 +122,32 @@ cd $HOME
 wget https://ci.zw3rk.com/build/1758/download/1/aarch64-unknown-linux-musl-cardano-node-1.27.0.zip
 ```
 
-* Use [**unzip**](https://linux.die.net/man/1/unzip) command on the downloaded zip file and extract its contents.
+* Usa el comando [**unzip**](https://linux.die.net/man/1/unzip) para el archivo zip descargado y extrae su contenido.
 
   ```bash
   unzip aarch64-unknown-linux-musl-cardano-node-1.27.0.zip
   ```
 
-* Next, we need to make sure the newly downloaded "cardano-node" folder and its contents are present.
+* A continuación, tenemos que asegurarnos de que la carpeta "cardano-node" y su contenido son correctos.
 
 {% hint style="info" %}
-If you are unsure if the file downloaded properly or need the name of the folder/files, we can use the Linux [**ls**](https://www.man7.org/linux/man-pages/man1/ls.1.html) command.
+Si no estás seguro si el archivo se ha descargado correctamente o necesita el nombre de la carpeta/archivos, podemos usar el comando de Linux [**ls**](https://www.man7.org/linux/man-pages/man1/ls.1.html).
 {% endhint %}
 
-Now we need to move the cardano-node folder into our local binary directory.
+Ahora necesitamos mover la carpeta cardano-node a nuestro directorio binario local.
 
 ```bash
 mv cardano-node/* ~/.local/bin
 ```
 
-Before we proceed let's make sure the cardano-node and cardano-cli is in our $PATH
+Antes de continuar, asegurémonos de que el cardano-node y cardano-cli estén en nuestro $PATH
 
 ```bash
 cardano-node version
 cardano-cli version
 ```
 
-Now we can move into our files folder, and download the four Cardano node configuration files we need from the official [IOHK website](https://hydra.iohk.io/build/5822084/download/1/index.html) and or [documentation](https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles_AND_Connect.html). We will be using the "wget" command to download the files.
+Ahora podemos ir a nuestra carpeta de archivos, y descargar los cuatro archivos de configuración del nodo Cardano que necesitamos desde el sitio web oficial [IOHK](https://hydra.iohk.io/build/5822084/download/1/index.html) y o [documentación](https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles_AND_Connect.html). Utilizaremos el comando "wget" para descargar los archivos.
 
 ```bash
 cd $NODE_FILES
@@ -157,31 +157,31 @@ wget https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-she
 wget https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
 ```
 
-* **Use the nano bash editor to change a few things in our "testnet-config.json" file**
-* [ ] Change the **"TraceBlockFetchDecisions"** line from "**false**" to "**true**"
-* [ ] Change the **"hasEKG"** to **12600**
-* [ ] Change  the **"hasPrometheus"** address/port to 12700
+* **Usa el editor de nano bash para cambiar algunas cosas en nuestro archivo "testnet-config.json"**
+* [ ] Cambia la línea **"TraceBlockFetchDecisions"** de "**false**" a "**true**"
+* [ ] Cambia el **"hasEKG"** a **12600**
+* [ ] Cambia la **"hasPrometheus"** dirección/puerto a 12700
 
 ```text
 sudo nano testnet-config.json
 ```
 
-### Create the systemd files
+### Crear los archivos de systemd
 
-We will use the Linux systemd service manager to handle the starting, stopping, and restarting of our Cardano node relay.
+Utilizaremos el gestor de servicios del sistema linux para manejar el inicio, parado y reinicio nuestro del nodo Relay de Cardano.
 
 {% hint style="info" %}
-If you'd like to find out more about Linux and systemd go to the [Linux manual page](https://www.man7.org/linux/man-pages/man1/systemd.1.html).
+Si quieres saber más sobre Linux y el sistema, ve a la página de [manual de Linux](https://www.man7.org/linux/man-pages/man1/systemd.1.html).
 {% endhint %}
 
 ```bash
 sudo nano $HOME/.local/bin/cardano-service
 ```
 
-**Now we need to make the cardano-node startup script**
+**Ahora necesitamos hacer el script de inicio de cardano-node**
 
 {% hint style="info" %}
-How to start the cardano-node can be found here on the [Cardano documentation](https://docs.cardano.org/getting-started/installing-the-cardano-node#gatsby-focus-wrapper).
+Cómo iniciar el cardano-node se puede encontrar aquí en la [documentación de Cardano](https://docs.cardano.org/getting-started/installing-the-cardano-node#gatsby-focus-wrapper).
 {% endhint %}
 
 {% tabs %}
@@ -230,7 +230,7 @@ cardano-node +RTS -N4 --disable-delayed-os-memory-return -qg -qb -c -RTS run \
 {% endtab %}
 {% endtabs %}
 
-**Now we must give access permission to our new systemd service script**
+**Ahora debemos dar permiso de acceso a nuestro nuevo script de servicio de systemd**
 
 ```bash
 sudo chmod +x $HOME/.local/bin/cardano-service
@@ -296,13 +296,13 @@ WantedBy= multi-user.target
 {% endtab %}
 {% endtabs %}
 
-We now should reload our systemd service to make sure it picks up our cardano-service
+Ahora debemos recargar nuestro servicio systemd para asegurarnos de que recoge nuestro nuevo cardano-service
 
 ```bash
 sudo systemctl daemon-reload
 ```
 
-**If we don't want to call "sudo systemctl" everytime we want to start, stop, or restart the cardano-node service we can create a "function" that will be added into our .bashrc shell script that will do this for us**
+**Si no queremos llamar a "sudo systemctl" cada vez que queremos comenzar, detener, o reinicie el servicio cardano-node podemos crear una "función" que se añadirá a nuestr . Script de shrc que hará esto por nosotros**
 
 [https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/](https://www.routerhosting.com/knowledge-base/what-is-linux-bashrc-and-how-to-use-it-full-guide/)
 
@@ -320,10 +320,10 @@ cardano-service() {
 source $HOME/.bashrc
 ```
 
-## Download a snapshot of the blockchain to speed the sync process
+## Descargar una instantánea (snapshot) del blockchain para acelerar el proceso de sincronización
 
 {% hint style="info" %}
-Se nos ha proporcionado una instantánea (snapshot) de la base de datos de testnet gracias a Star Forge Pool \[OTG\]. Si no desea descargar la base de datos, **puedes saltar este paso**. Beware, if you skip downloading our snapshot it may take up to 28 hours to get the node fully synced.
+Se nos ha proporcionado una instantánea (snapshot) de la base de datos de testnet gracias a Star Forge Pool \[OTG\]. Si no desea descargar la base de datos, **puedes saltar este paso**. Ten en cuenta que si te saltas la descarga de nuestra instantánea (snapshot), puede tardar hasta 28 horas en sincronizar completamente el nodo.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -346,15 +346,15 @@ wget -r -np -nH -R "index.html*" -e robots=off https://test-db.adamantium.online
 Esta descarga tomará entre 25 minutos y 2 horas dependiendo de tu velocidad de Internet.
 {% endhint %}
 
-* After the database has finished downloading add a clean file to it before we start the relay. Copy/paste the following command into your terminal window.
+* Después de que la base de datos haya terminado de descargar, es una buena idea añadir un archivo limpio a él antes de iniciar el Relay. Copia/pega el siguiente comando en la ventana de tu terminal.
 
 ```bash
 touch db/clean
 ```
 
-## Finish syncing to the blockchain
+## Terminar de sincronizar con la blockchain
 
-* Now we can start the "passive" relay node to begin syncing to the blockchain.
+* Ahora podemos iniciar el nodo Relay "pasivo" para comenzar a sincronizar con la cadena de bloques.
 
 ```bash
 cd $HOME
@@ -363,9 +363,9 @@ cardano-service start
 cardano-service status
 ```
 
-## Setting up gLiveView to monitor the node during its syncing process
+## Configurando gLiveView para monitorear el nodo durante su proceso de sincronización
 
-#### Now you can change to the $NODE\_FILES folder and then download the gLiveView monitor service
+#### Ahora puedes irte a la carpeta $NODE\_FILES y luego descargar el servicio de monitoreo de gLiveView
 
 ```bash
 sudo apt-get install jq
@@ -375,13 +375,13 @@ curl -s -o env https://raw.githubusercontent.com/cardano-community/guild-operato
 chmod 755 gLiveView.sh
 ```
 
-* Need to change the "**CNODE\_PORT**" to the port you set on your cardano-node, in our case let's change it to **3001.**
+* Necesitas cambiar el "**CNODE\_PORT**al puerto que configuraste en tu cardano-node, en nuestro caso, vamos a cambiarlo a **3001.**
 
 ```bash
 sudo nano env
 ```
 
-* Finally, we can exit the nano editor and just run the gLiveView script.
+* Por último, podemos salir del nano editor y ejecutar el script gLiveView.
 
 ```bash
 ./gLiveView.sh
@@ -405,7 +405,7 @@ htop
 {% endtab %}
 {% endtabs %}
 
-## References:
+## Referencias:
 
 {% tabs %}
 {% tab title="📚" %}
