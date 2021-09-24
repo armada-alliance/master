@@ -2,7 +2,7 @@
 description: Install packages needed to run cardano-node and configure our environment
 ---
 
-# Configuracion de entorno
+# Configuración del entorno
 
 ## Instalar paquetes
 
