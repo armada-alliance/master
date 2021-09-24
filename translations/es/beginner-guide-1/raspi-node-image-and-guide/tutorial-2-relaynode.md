@@ -30,7 +30,7 @@ description: >-
 * Primero debemos actualizar nuestro sistema operativo e instalar las actualizaciones necesarias que estén disponibles.
 
 {% hint style="info" %}
-It is highly recommended to update the operating system every time you boot up and log in to your **Raspberry Pi** to prevent security vulnerabilities.
+Es muy recomendable actualizar el sistema operativo cada vez que arranca e inicie sesión en su **Raspberry Pi** para prevenir vulnerabilidades de seguridad.
 {% endhint %}
 
 ```text
