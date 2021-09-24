@@ -1,5 +1,5 @@
 ---
-description: This Tutorial is for those who may want to use the Raspberry Pi OS
+description: Este Tutorial es para aquellos que quieran usar el Raspberry Pi OS
 ---
 
 # Raspberry Pi OS 🍓
