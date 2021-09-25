@@ -1,6 +1,6 @@
 # Descargar y Flashear
 
-### Instalar el sistema operativo RaspiNode
+## Instalar el sistema operativo RaspiNode
 
 **1. Descarga la imagen Raspbian del nodo Cardano-node de 64 bits de la Armada Alliance** [**aquí**](https://db.adamantium.online/RasPi-Node.img.gz) **y guárdalo en una ubicación accesible de tu ordenador.**
 
@@ -17,7 +17,7 @@
 
 ![](../../.gitbook/assets/image-2-.png)
 
-### Arranque & Configuración
+## Arranque & Configuración
 
 Inserta la SSD en uno de los puertos azules de usb3. Luego inserta el HDMI, Keyboard, Mouse, Ethernet y fuente de energía.
 
@@ -35,7 +35,7 @@ Todo lo que realmente necesitamos hacer aquí es desactivar el inicio de sesión
 
 ![](../../.gitbook/assets/disable-auto-login.png)
 
-#### Create the ada user
+## Create the ada user
 
 ```text
 sudo adduser ada && sudo adduser ada sudo
