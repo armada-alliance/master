@@ -1,6 +1,6 @@
 # Download & Flash
 
-### Installing the RaspiNode OS
+## Installing the RaspiNode OS
 
 **1. Download the Armada Alliance's pre-configured Raspbian 64bit OS Cardano-node image** [**here**](https://db.adamantium.online/RasPi-Node.img.gz) **and save it in an accessible location for now on your computer.**
 
@@ -17,7 +17,7 @@
 
 ![](../../.gitbook/assets/image-2-.png)
 
-### Boot & Configure
+## Boot & Configure
 
 Insert the SSD into one of the blue usb3 ports. Then insert the HDMI, Keyboard, Mouse, Ethernet and power supply.
 
@@ -35,7 +35,7 @@ All we really need to do here is disable auto login & create the ada user with s
 
 ![](../../.gitbook/assets/disable-auto-login.png)
 
-#### Create the ada user
+## Create the ada user
 
 ```text
 sudo adduser ada && sudo adduser ada sudo
