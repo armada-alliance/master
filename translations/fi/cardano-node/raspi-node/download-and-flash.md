@@ -1,6 +1,6 @@
 # Lataa & Polta
 
-### RaspiNode OS -järjestelmän asentaminen
+## RaspiNode OS -järjestelmän asentaminen
 
 **1. Lataa Armada Alliancen esikonfiguroitu Raspbian 64bit OS Cardano-node kuva** [**tästä**](https://db.adamantium.online/RasPi-Node.img.gz) **ja tallenna se toistaiseksi tietokoneellesi.**
 
@@ -17,7 +17,7 @@
 
 ![](../../.gitbook/assets/image-2-.png)
 
-### Käynnistys & asetukset
+## Käynnistys & asetukset
 
 Aseta SSD yhteen sinisestä usb3-porteista. Seuraavaksi kiinnitetään HDMI kaapeli, näppäimistö, hiiri ja virtalähde.
 
@@ -35,7 +35,7 @@ Kaikki mitä todella tarvitsee tehdä on poistaa automaattinen kirjautuminen & l
 
 ![](../../.gitbook/assets/disable-auto-login.png)
 
-#### Luo ada käyttäjä
+## Luo ada käyttäjä
 
 ```text
 sudo adduser ada && sudo adduser ada sudo
