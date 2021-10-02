@@ -60,7 +60,7 @@ If you use Linux's `htop` service just check for a processing running starting w
 If you are using the [Pi-Node guide](../pi-pool-tutorial/) and your cardano-node & cli in `~/.local/bin`
 
 ```bash
-mv cardano-node/cardano-node cardano-node/cardano-cli ~/.local/bin
+mv cardano-node/* ~/.local/bin
 ```
 
 ### Check your cardano-node version
