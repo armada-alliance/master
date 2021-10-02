@@ -209,24 +209,24 @@ Replace `<tag>` with the latest tag in the next command.
 
 14\) Reboot the system. For the Raspberry Pi 4B 8GB, you should expect around 3.81GB of swap via ZRAM when checking with `htop` \(`sudo apk add htop` if htop is unavailable\).
 
-## Installing the 'cardano-node' and 'cardano-cli' static binaries \(AlpineOS uses static binaries almost exclusively so you should avoid non-static builds\)
+## Installing/Upgrading the 'cardano-node' and 'cardano-cli' static binaries \(AlpineOS uses static binaries almost exclusively so avoid non-static builds\)
 
 {% hint style="info" %}
-**You can obtain the static binaries for version 1.29.0 via this** [**link**](https://ci.zw3rk.com/build/1758) **courtesy of Moritz Angermann, the SPO of ZW3RK pool 🙏**
+**You may obtain the static binaries for version 1.30.1 via this** [**link**](https://ci.zw3rk.com/build/409517) **courtesy of Moritz Angermann, the SPO of ZW3RK pool 🙏**
 {% endhint %}
 
-**Run the following commands to install the binaries and place them into the correct directory.**
+**Run the following commands to download and install the binaries into the correct directory.**
 
 * Download the binaries
 
 ```text
-    wget -O ~/aarch64-unknown-linux-musl-cardano-node-1.29.0.zip https://ci.zw3rk.com/build/1771/download/1/aarch64-unknown-linux-musl-cardano-node-1.29.0.zip
+    wget -O ~/aarch64-unknown-linux-musl-cardano-node-1.30.1.zip https://ci.zw3rk.com/build/409517/download/1/aarch64-unknown-linux-musl-cardano-node-1.30.1.zip
 ```
 
 * Unzip and install the binaries via the commands
 
 ```text
-    unzip -d ~/ aarch64-unknown-linux-musl-cardano-node-1.29.0.zip
+    unzip -d ~/ aarch64-unknown-linux-musl-cardano-node-1.30.1.zip
 
     sudo mv ~/cardano-node/* /usr/local/bin/
 ```
@@ -348,6 +348,6 @@ Make sure this line is not commented out with a`#`
 {% endhint %}
 
 {% hint style="success" %}
-We would like to give a special shoutout to our [alliance member](https://armada-alliance.com) Sayshar, operator of [\[SRN\] Pool](https://www.adasrn.com/), for providing this tutorial 🏴‍☠️ 🙏 😎
+We would like to give a special shoutout to our [alliance member](https://armada-alliance.com), [Sayshar](https://armada-alliance.com/identities/sayshar-srn), operator of [\[SRN\] Pool](https://armada-alliance.com/stake-pools/cc1b1c03798884c636703443a23b8d9e827d6c0417921600394198a0), for providing this tutorial 🏴‍☠️ 🙏 😎
 {% endhint %}
 
