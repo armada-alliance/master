@@ -5,7 +5,7 @@ description: >-
 
 # Hardware Purchase Links 🏪
 
-![GeeekPi Cluster Case](../.gitbook/assets/photo_2021-03-09-13.42.42.jpeg)
+![GeeekPi Cluster Case](../.gitbook/assets/photo_2021-03-09-13.42.42%20%281%29.jpeg)
 
 {% tabs %}
 {% tab title="Raspberry Pi Computers" %}
