@@ -490,7 +490,7 @@ global:
 # Here it's Prometheus itself.
 scrape_configs:
   # The job name is added as a label job=<job_name> to any timeseries scraped from this config.
-  - job_name: 'Prometheus' # To scrape data from the cardano node
+  - job_name: 'Prometheus' # To scrape data from Prometheus Node Exporter
     scrape_interval: 5s
     static_configs:
 #      - targets: ['<CORE PRIVATE IP>:12798']
