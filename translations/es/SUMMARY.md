@@ -24,6 +24,8 @@
 * [Alpine Linux OS 🗻](intermediate-guide/alpine-linux-os.md)
 * [Topología de red de una Stake Pool](intermediate-guide/basic-stake-pool-networking.md)
 * [Cómo añadir las métricas de adapools a Grafana](intermediate-guide/add-adapools-info-to-grafana.md)
+* [Updating a Cardano Node](intermediate-guide/updating-a-cardano-node/README.md)
+  * [Dynamic Build](intermediate-guide/updating-a-cardano-node/using-dynamic-build.md)
 * [CNCLI Leader Logs📑](intermediate-guide/leader-logs.md)
 
 ## Otras Guías sobre Cardano <a id="cardano-developer-guides"></a>
