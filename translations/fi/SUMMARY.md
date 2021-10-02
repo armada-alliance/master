@@ -24,6 +24,8 @@
 * [Alpine Linux OS](intermediate-guide/alpine-linux-os.md)
 * [Stake Pool -verkosto: Perusteita](intermediate-guide/basic-stake-pool-networking.md)
 * [Lisää adapoolien mittareita Grafanaan 📊](intermediate-guide/add-adapools-info-to-grafana.md)
+* [Updating a Cardano Node](intermediate-guide/updating-a-cardano-node/README.md)
+  * [Dynamic Build](intermediate-guide/updating-a-cardano-node/using-dynamic-build.md)
 * [CNCLI Leader Lokit📑](intermediate-guide/leader-logs.md)
 
 ## Muuita Cardano Oppaita <a id="cardano-developer-guides"></a>
