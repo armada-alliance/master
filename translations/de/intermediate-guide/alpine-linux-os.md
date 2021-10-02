@@ -327,7 +327,7 @@ tar -xzvf node_exporter.tar.gz
     mv node_exporter-1.2.2.linux-arm64 node_exporter
 ```
 
-4\) Folgen Sie der Anleitung in README.txt im $HOME Verzeichnis nach erfolgreicher Installation von cnode, Skripten und Dienste.
+4\) Follow the guide written in **README.txt** contained in the $HOME directory after installing cnode, scripts and services to start the services accordingly.
 
 ```text
     more ~/README.txt
