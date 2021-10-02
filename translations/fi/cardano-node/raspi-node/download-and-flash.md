@@ -15,7 +15,7 @@
 * **Nyt, "WRITE" painike ilmestyy ja voit klikata sitä ja aloittaa OS:n kirjoittamisen/todentamisen SD-kortille.**
 * **Lopuksi, kun kirjoitusprosessi on valmis, näet pop-up ikkunan, joka kertoo että käyttöjärjestelmä on asennettu onnistuneesti SD kortille. Klikkaa "CONTINUE" ja poista SD kortti tietokoneesta.**
 
-![](../../.gitbook/assets/image-2-.png)
+![](../../.gitbook/assets/image-2-%20%281%29.png)
 
 ## Käynnistys & asetukset
 
@@ -25,7 +25,7 @@ Aseta SSD yhteen sinisestä usb3-porteista. Seuraavaksi kiinnitetään HDMI kaap
 Ensimmäiset Pi4:t eivät ole oletusarvoisesti käynnistyneet USB3:sta, mutta nykyään niiden pitäisi. Jos imagesi ei käynnisty kaksi yleisintä ongelmaa ovat vanhemmat laiteohjelmistot Pi:ssäsi tai yhteensopimaton USB3 sovitin.
 {% endhint %}
 
-![](../../.gitbook/assets/pi4.jpeg)
+![](../../.gitbook/assets/pi4%20%281%29%20%281%29.jpeg)
 
 {% hint style="info" %}
 Kaikki mitä todella tarvitsee tehdä on poistaa automaattinen kirjautuminen & luoda ada käyttäjä jolla on sudo oikeudet. Kun kirjaudumme takaisin, poistamme oletus Pi käyttäjän ja määrittämme palvelin ympäristön sekä cardan-noden & cardano-clin.
