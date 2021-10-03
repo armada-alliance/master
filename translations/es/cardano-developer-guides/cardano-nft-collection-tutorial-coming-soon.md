@@ -335,9 +335,9 @@ node src/pin-images-to-ipfs.js
 
 {% embed url="https://youtu.be/v6q66zcFqew" caption="" %}
 
-### 7. Create an "open" or "unlocked" minting policy and script \(Optional\)
+### 7. Crear una política (policy) de acuñación "abierta" o "desbloqueada" y el script \(Opcional\)
 
-* We will create an open minting policy script and export it in JSON and TXT format.
+* Crearemos un script de la política (policy) de acuñación abierto y lo exportaremos en formato JSON y TXT.
 
 ```bash
 cd src
@@ -363,9 +363,9 @@ fs.writeFileSync(__dirname + "/mint-policy-id.txt", cardano.transactionPolicyid(
 node src/create-mint-policy.js
 ```
 
-### 8. Create a "time-locked" minting policy and script \(Recommended\)
+### 8. Crear una política de acuñación y el script \(recomendado\) de "bloqueo de tiempo" (time-locked)
 
-* Create a "time-locked" minting policy script and export it in JSON and TXT format.
+* Crearemos un script de la política (policy) de acuñación de "bloqueo de tiempo" (time-locked) y lo exportaremos en formato JSON y TXT.
 
 ```text
 cd src
@@ -404,9 +404,9 @@ fs.writeFileSync(__dirname + "/mint-policy-id.txt", cardano.transactionPolicyid(
 node src/create-time-locked-mint-policy.js
 ```
 
-### 9. Create a script to get our policy ID
+### 9. Crea un script para obtener la ID de nuestra política de acuñación (policy)
 
-* We want to make a script that can get our Policy ID to be used in other parts of our program
+* Queremos hacer un script que pueda obtener nuestro ID de Política para ser usado en otras partes de nuestro programa
 
 ```bash
 cd src
@@ -432,13 +432,13 @@ module.exports = () => {
 node src/get-policy-id.js
 ```
 
-### 9. Define the mint transaction
+### 9. Define la transacción de acuñación
 
-1. build mint transaction with metadata.json
-2. calc fee
-3. rebuild
-4. sign
-5. submit
+1. construir la transacción de acuñación con metadata.json
+2. calculo del gasto (fee)
+3. reconstruir
+4. firmar
+5. enviar
 
 ```bash
 cd src
@@ -545,9 +545,9 @@ console.log(txHash)
 node src/mint-multiple-assets.js
 ```
 
-### 10. Send assets back to wallet
+### 10. Enviar los activos de vuelta a la billetera
 
-* Make a script to send multiple assets back to a wallet in a single transaction.
+* Hacer un script para enviar múltiples activos de vuelta a una billetera en una sola transacción.
 
 ```bash
 cd src
