@@ -4,31 +4,31 @@ description: Style Guide for participating in this project.
 
 # Guía de Estilo
 
-_**From the GitHub Manual of Style, which this style guide inherits from:**_
+_**Del Manual de estilo de GitHub, de la que hereda esta guía de estilo:**_
 
-> Words are an important part of how software works. Just as we have a style guide for our code, we have a style guide for our tone and our voice. Even though there may be dozens of people creating a product, it should still sound like we speak in one consistent voice.
+> Las palabras son una parte importante de cómo funciona el software. Así como tenemos una guía de estilo para nuestro código, tenemos una guía de estilo para nuestro tono y nuestra voz. Aunque haya docenas de personas creando un producto, debería sonar como si habláramos con una sola voz.
 > 
-> In other words, the way we write is just as important as the way we design. Consider these things when writing copy.
+> En otras palabras, la forma en que escribimos es tan importante como la forma en que diseñamos. Considere estas cosas al escribir una copia.
 
-## Content principles
+## Principios Fundamentales
 
-All written content should follow these principles:
+Todo el contenido escrito debe seguir estos principios:
 
-* **Approachability:** Don't assume the reader has prior knowledge
-* **Brevity:** Keep it simple, link to outside content for deeper dives
-* **Curation:** Amplify community best practices vs. any individual's point of view
+* **Accesibilidad:** No asumir que el lector tiene conocimientos previos
+* **Brevedad:** Pon un simple enlace a contenido externo para quien quiera profundizar en determinados aspectos
+* **Conservación:** Potencia las mejores prácticas de la comunidad vs el punto de vista de un individuo
 
-Content should maintain a light-hearted and welcoming tone. Open source is fun! Readers should feel inspired, not discouraged, by the tone of your writing, and they should trust you to help them get started.
+El contenido debe mantener un tono luminoso y acogedor. ¡El Código Abierto es divertido! Los lectores deben sentirse inspirados, no desalentados, por el tono de tu escritura, y deben confiar en que les ayudaremos a empezar.
 
-## Mentions
+## Menciones
 
-When referring to people that use GitHub, use @mentions of their username instead of their full name.
+Cuando te refieras a personas que usan GitHub, usa @menciones del nombre de usuario en lugar del nombre completo.
 
-* 😄 As @Ekkyz put it...
-* 😢 As Ekkyz put it...
+* 😄 Como dijo @Ekkyz...
+* 😢 Como dijo Ekkyz...
 
-When referring to a project on GitHub, link to the repository so others can dive deeper, if they choose.
+Cuando te refieras a un proyecto en GitHub, enlaza al repositorio para que otros puedan bucear más profundo, si así lo desean.
 
-* 😄 @AstroWa3l took a similar approach to [dat](https://github.com/datproject/dat)...
-* 😢 @AstroWa3l took a similar approach to[ dat](https://github.com/datproject/dat)...
+* 😄 @AstroWa3l tomó un enfoque similar a [dat](https://github.com/datproject/dat)...
+* 😢 AstroWa3l tomó un enfoque similar a [dat](https://github.com/datproject/dat)...
 
