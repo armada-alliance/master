@@ -2,11 +2,11 @@
 description: '¡Pon tus ADA a trabajar ahora!'
 ---
 
-# Staking Guide 🚀
+# Guía para Delegar 🚀
 
-* **See this link for an explanation on delegation:**  [**https://cardano.org/stake-pool-delegation/**](https://cardano.org/stake-pool-delegation/)\*\*\*\*
-* **You always maintain full control of your ADA in your own wallet when you delegate.**
-* **The first step to delegating your ADA is to download one of the official Cardano wallets.**
+* **Ver este enlace para una explicación sobre delegar:**  [**https://cardano.org/stake-pool-delegation/**](https://cardano.org/stake-pool-delegation/)
+* **Siempre mantienes el control total de tus ADA en tu propia billetera cuando delegas.**
+* **El primer paso para delegar tus ADA es descargar una de las carteras oficiales de Cardano.**
 
 {% hint style="danger" %}
 Yoroi wallet is a mobile wallet available for Android and Apple devices. Daedalus is not a mobile wallet!
