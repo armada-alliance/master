@@ -1,11 +1,11 @@
 ---
-description: Create the stake pools wallet and and staking key.
+description: Cree la billetera del Stake Pool y delegar las llaves.
 ---
 
-# Pool wallet & staking keys
+# Billetera del Pool y Delegar Llaves
 
 {% hint style="danger" %}
-not done yet sorry.
+no hecho todavía lo sentimos.
 {% endhint %}
 
 {% hint style="warning" %}
