@@ -1,18 +1,18 @@
 ---
-description: This is how you create an image you can flash to other Pi's
+description: Como crear una imagen que puedas flashear en otras Pi
 ---
 
 # Crear archivo .img
 
-## Make the Pi-Node base .img.gz file for reuse
+## Hacer el archivo base .img.gz Pi-Node para su reutilización
 
-Put your micro sd card in your local machine and locate what it's called in /dev. For my laptop it is /dev/mmcblk0. Yours will likely be different.
+Coloca tu tarjeta micro sd en tu máquina local y localiza lo que se llama en /dev. Para mi portátil es /dev/mmcblk0. Es probable que el tuyo sea diferente.
 
 ```text
 sudo fdisk -l
 ```
 
-After locating move into the directory you wish to save the image to and create the image.
+Después de localizarlo muevelo al directorio en el que quieres guardar y crear la imagen.
 
 ```bash
 # example
@@ -21,10 +21,10 @@ sudo cat /dev/<your sd card> > pi-node.img
 ```
 
 {% hint style="info" %}
-cat is better than dd for this. cat will use all of your systems cpu cores, whereas dd uses one core. cat is faster 🙀
+el comando cat es mejor que dd para esto. cat usará todos los núcleos cpu de sus sistemas, mientras que dd usa un núcleo. cat es más rápido 🙀
 {% endhint %}
 
-Once that completes we will use [PiShrink.sh](https://github.com/Drewsif/PiShrink) to deflate partitions and compress \(among a few other tricks\).
+Una vez que finalice usaremos [PiShrink.sh](https://github.com/Drewsif/PiShrink) para simplificar particiones y comprimir \\(entre algunos otros trucos\\).
 
 {% code title="install pishrinks.sh" %}
 ```bash
@@ -40,7 +40,7 @@ sudo pishrink.sh -aZ pi-node.img Pi-Node.img.gz
 
 > pishrink.sh: Shrunk Pi-Node.img.gz from 7.5G to 1.3G ...
 
-And there you have it! 🧙♂ 🧙♂ 🧙♂ 🧙♂
+¡Y ahí esta! 🧙♂
 
-Download [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz)
+Descarga [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz)
 
