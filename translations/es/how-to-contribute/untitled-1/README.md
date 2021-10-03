@@ -6,51 +6,51 @@ description: Guía de Contribución para participar en este proyecto
 
 _**Lo que estamos buscando en nuestros Colaboradores.**_
 
-Firstly, we at Armada-Alliance would like to thank you for your consideration in contributing to us! We can't wait to hear your ideas and experiences. However, we do have some guidelines that we all must be familiar with and adhere to before submitting your contributions.
+En primer lugar, en Armada-Alliance queremos agradecerte tu consideración a la hora de contribuir con nosotros. Estamos impacientes por escuchar tus ideas y experiencias. Sin embargo, tenemos algunas directrices con las que todos debemos estar familiarizados y adherirnos antes de presentar las contribuciones.
 
 ## Tabla de Contenidos
 
-1. What we are looking for
-2. Rules and Expectations
-3. How to contribute
+1. ¿Qué estamos buscando?
+2. Reglas y Expectativas
+3. Cómo contribuir
 4. Guía de Estilo
-5. Community
+5. Comunidad
 
-**What we are looking for**
+**¿Qué estamos buscando?**
 
-_We appreciate all contributions but we do have aspects of the project that take priority._
+_Agradecemos todas las contribuciones, pero tenemos aspectos del proyecto que tienen prioridad._
 
-* Find and fix inconsistencies and errors in guides
-* Translating the guides into different languages
-* Help explain guides to others from different various backgrounds and knowledge levels
+* Encontrar y corregir inconsistencias y errores en las guías
+* Traducir las guías a diferentes idiomas
+* Ayuda a explicar las guías a otros desde diferentes fondos y niveles de conocimiento
 
-**Rules and Expectations**
+**Reglas y Expectativas**
 
-_As an open-source project we expect a certain standard from you:_
+_Como un proyecto de código abierto esperamos un determinado estándar de ti:_
 
-* Be respectful and open-minded to others' opinions and conversations around this project. Understand that as a community we should all be working together. Take into consideration the way in which another contributor is helping may be different from your own and that it is more productive to help each other out rather than argue about which way is "correct".
-* Armada-Alliance's tutorials are released with a Contributors Code of Conduct. Through partaking in this project you agreed to abide by these terms.
-* If you open a pull request, please make sure that your contribution passes all tests, as failures will sunder the project and a fix must be made.
-* Content that is to be added should be relevant to the project and not include self-promotion or the promotion of sponsors. Understand that what is submitted here will be considered open source and will be shared freely amongst everyone.
+* Se respetuoso y abierto a las opiniones y conversaciones de otros en torno a este proyecto. Entender que como comunidad todos deberíamos estar trabajando juntos. Tomar en consideración la forma en que otro colaborador está ayudando puede ser diferente de la tuya y que es más productivo ayudarse unos a otros en lugar de discutir sobre cuál es lo "correcto".
+* Los tutoriales de Armada-Alliance se publican con un Código de Conducta de los Colaboradores. Al participar en este proyecto usted aceptó acatar estas condiciones.
+* Si abres un pull request, por favor asegúrate de que tu contribución pase todas las pruebas, ya que los fracasos echarán por tierra el proyecto y hay que arreglarlo.
+* El contenido que se debe añadir debe ser relevante para el proyecto y no incluir la autopromoción o la promoción de patrocinadores. Entender que lo que se presente aquí se considerará de código abierto y se compartirá libremente entre todos.
 
-_**How to contribute**_
+_**Cómo contribuir**_
 
-_First, thoroughly read through the project and consider what level of contribution yours will be._
+_En primer lugar, leer a fondo el proyecto y considerar cuál será el nivel de tu contribución._
 
-* For a minor contribution, such as grammar, open a pull request.
-* For a major contribution, such as a new tutorial, start by ordering an issue first. This way the community can assess and discuss your idea before you start working on it.
+* Para una contribución menor, como gramática, abra una pull request.
+* Para una contribución importante, como un nuevo tutorial, comienza por ordenar el asunto primero. De esta manera la comunidad puede evaluar y discutir su idea antes de empezar a trabajar en ella.
 
 _**Guía de Estilo**_
 
-_If you are contributing tutorials or guides please check out our_ Style Guide _so that it blends into the project seamlessly._
+_Si estás contribuyendo con tutoriales o guías por favor revisa nuestra_ Guía de Estilo _para que se funda en el proyecto sin problemas._
 
-_**Community**_
+_**Comunidad**_
 
-Discussions about the Open Source Guides take place on this repository's Issues and Pull Requests sections. Anybody is welcome to join these conversations.
+Las discusiones sobre las Guías de Código Abierto tienen lugar en las secciones Problemas y Pull Requests de este repositorio. Cualquiera es bienvenido a unirse a estas conversaciones.
 
-Wherever possible, do not take these conversations to private channels, including contacting the maintainers directly. Keeping communication public means everyone can benefit and learn from the conversation.
+Cuando sea posible, no lleve estas conversaciones a canales privados, incluyendo ponerse en contacto directamente con los mantenedores. Mantener la comunicación pública significa que todo el mundo puede beneficiarse y aprender de la conversación.
 
-Attribution
+Atribuciones
 
-This contributing guide is adapted from the [open-source guide](https://github.com/github/opensource.guide).
+Esta guía de contribución está adaptada de la [guía de código abierto](https://github.com/github/opensource.guide).
 
