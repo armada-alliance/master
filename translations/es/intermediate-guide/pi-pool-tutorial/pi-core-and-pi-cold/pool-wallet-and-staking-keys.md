@@ -1,40 +1,40 @@
 ---
-description: Cree la billetera del Stake Pool y delegar las llaves.
+description: Cree la billetera del Stake Pool y delegar las claves.
 ---
 
-# Billetera del Pool y Delegar Llaves
+# Billetera del Pool y Delegar Claves
 
 {% hint style="danger" %}
 no hecho todavía lo sentimos.
 {% endhint %}
 
 {% hint style="warning" %}
-It is very convenient to create your wallet keys from a mnemonic seed. This will allow you to manage the pools wallet from Yoroi or Daedalus & easily restore the pools wallet into any compatible wallet and manage rewards.
+Es muy conveniente crear las claves de tu billetera desde unas semillas mnemotécnicas. Esto te permitirá administrar la billetera del pool desde Yoroi o Daedalus & fácilmente restaurando la billetera del pool en cualquier billetera compatible y administrar tus recompensas.
 
-cardano-wallet will not build on arm. Below is how to do it with an x86 machine running cardano-wallet and then transfer the keys to your cold offline machine.
+cardano-wallet no se construirá sobre arm. A continuación se muestra cómo hacerlo con una máquina x86 ejecutando cardano-wallet y luego transfiere las claves a su máquina fría fuera de línea.
 
-It is recommended to download the cardano-wallet binary, check it's sha256 hash & then go offline until keys are safely on the cold machine.
+Se recomienda descargar el binario de la billetera de cardano, comprueba su hash sha256 & luego desconecta hasta que las llaves estén seguras en la máquina en frío.
 {% endhint %}
 
-## Generate
+## Generar
 
 {% hint style="danger" %}
-🔥 **Critical Operational Security Advice:** `payment` and `stake` keys must be generated and used to build transactions in cold environment. In other words, your **air-gapped offline Cold machine**. The only steps performed online in a hot environment are those steps that require live data. Namely the follow type of steps:
+🔥 **Consejo crítico de seguridad operativa:** `pago` y `apuesta` claves deben ser generadas y utilizadas para construir transacciones en entorno frío. En otras palabras, tu **máquina fría sin conexión** totalmente desconectada. Los únicos pasos realizados en línea en un ambiente caliente son aquellos pasos que requieren datos en vivo. A saber, el siguiente tipo de pasos:
 
--   querying the current slot tip
--   querying the balance of an address
--   submitting a transaction
+-   consultar el final del slot actual
+-   consultar el saldo de una dirección
+-   enviar una transacción
     {% endhint %}
 
-Create a 15-word or 24-word length Shelley compatible mnemonic with [Daedalus](https://daedaluswallet.io/) or [Yoroi](https://yoroi-wallet.com) on a offline machine preferred.
+Crea 15 o 24 palabras mnemótécnicas compatibles con Shelley de [Daedalus](https://daedaluswallet.io/) o [Yoroi](https://yoroi-wallet.com) en una máquina sin conexión preferentemente.
 
-### Retrieve x86 cardano-wallet binary
+### Recuperar binario cardano-wallet x86
 
 {% hint style="info" %}
 If you are not using Linux on your local machine you can write Ubuntu to a usb stick and boot from it.
 {% endhint %}
 
-Download cardano-wallet to your local machine.
+Descargue cardano-wallet a tu máquina local.
 
 <https://github.com/input-output-hk/cardano-wallet/releases>
 
