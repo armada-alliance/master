@@ -27,7 +27,7 @@ Kytke Pi monitoriin, aseta SD-kortti paikoilleen ja laita virta päälle. Kun n�
 **Choose OS -&gt; Misc utility images -&gt; Raspberry Pi 4 EEPROM boot recovery** [https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
 {% endhint %}
 
-![](../../../.gitbook/assets/otgpoltut%20%281%29%20%281%29%20%283%29.png)
+![](../../../.gitbook/assets/otgpoltut%20%281%29%20%281%29%20%283%29%20%283%29.png)
 
 {% tabs %}
 {% tab title="Pre configured Pi-Node.img.gz" %}
@@ -46,7 +46,7 @@ Locate the .img.gz file you downloaded & wish to flash.
 
 Locate your target drive & write it to disk.
 
-![](../../../.gitbook/assets/image-2-%20%281%29.png)
+![](../../../.gitbook/assets/image-2-%20%281%29%20%283%29.png)
 {% endtab %}
 
 {% tab title="Fresh Ubuntu 21.04 installation" %}
