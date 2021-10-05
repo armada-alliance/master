@@ -20,8 +20,6 @@ This guide follows the same setup as our [Pi-Node guide and image](../pi-pool-tu
 * [ ] Restart your Cardano Node
 * [ ] Check that node has started properly
 
-
-
 ## Download the cardano-node & cli
 
 ### Static binaries and Cardano node configuration files are provided by [\[ZW3RK\]](https://armada-alliance.com/identities/zw3rk) pool🙏 and can be found at our [Github repository](https://github.com/armada-alliance/cardano-node-binaries/tree/main/static-binaries).
