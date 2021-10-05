@@ -15,7 +15,7 @@
 * **Ahora, el botón "WRITE" aparecerá y puedes hacer clic en él para comenzar a escribir/verificar el sistema operativo en la tarjeta SD.**
 * **Finalmente, una vez haya terminado el proceso de escritura/verificación, verás una ventana emergente que dice que el sistema operativo se ha escrito con éxito en la tarjeta SD, haz clic en "CONTINUE" y retira tu tarjeta SD de la computadora.**
 
-![](../../.gitbook/assets/image-2-%20%281%29.png)
+![](../../.gitbook/assets/image-2-%20%281%29%20%283%29.png)
 
 ## Arranque & Configuración
 
@@ -25,7 +25,7 @@ Inserta la SSD en uno de los puertos azules de usb3. Luego inserta el HDMI, Keyb
 Los primeros Pi4's a enviar no arrancan desde USB3 por defecto, hoy en día ya lo hacen. Si tu imagen no arranca los dos problemas más comunes son que el firmware es antiguo en tu Raspberry Pi o un adaptador USB3 incompatible.
 {% endhint %}
 
-![](../../.gitbook/assets/pi4%20%281%29%20%281%29.jpeg)
+![](../../.gitbook/assets/pi4%20%281%29.jpeg)
 
 {% hint style="info" %}
 Todo lo que realmente necesitamos hacer aquí es desactivar el inicio de sesión automático & crear el usuario ada con privilegios sudo. Después de volver a iniciar sesión, eliminaremos el usuario predeterminado de Pi y configuraremos el servidor & entorno para el nodo cardano & cardano-cli.
