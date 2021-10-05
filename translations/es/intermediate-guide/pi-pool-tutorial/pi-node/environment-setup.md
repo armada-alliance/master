@@ -18,7 +18,7 @@ Install the packages we will need.
 sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
          jq make automake unzip net-tools nginx ssl-cert pkg-config \
          libffi-dev libgmp-dev libssl-dev libtinfo-dev libsystemd-dev \
-         zlib1g-dev g++ libncursesw5 libtool autoconf -y
+         zlib1g-dev g++ libncursesw5 libtool autoconf bc -y
 ```
 
 ## Environment
@@ -432,7 +432,7 @@ cd $NODE_HOME/scripts
 ./gLiveView.sh
 ```
 
-![](../../../.gitbook/assets/pi-node-glive%20%284%29%20%285%29.png)
+![](../../../.gitbook/assets/pi-node-glive%20%287%29.png)
 
 ## Prometheus, Node Exporter & Grafana
 
@@ -444,7 +444,7 @@ You can connect a Telegram bot to Grafana which can alert you of problems with t
 
 {% embed url="https://github.com/prometheus" caption="" %}
 
-![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%288%29.png)
+![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%287%29.png)
 
 ### Install Prometheus & Node Exporter.
 
@@ -673,7 +673,7 @@ Guarda los archivos json del dashboard en tu máquina local.
 
 En el menú vertical de la mano izquierda, vaya a **Dashboards** &gt; **Manage** y haga clic en **Import**. Selecciona el archivo que acabas de descargar/crear y guardar. Vuelve a **Dashboards** &gt; **Manage** y haz clic en tu nuevo Panel de control.
 
-![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%286%29.png)
+![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%285%29.png)
 
 ### Configure poolDataLive
 
