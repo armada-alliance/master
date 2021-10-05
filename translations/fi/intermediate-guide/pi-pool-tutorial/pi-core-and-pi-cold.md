@@ -870,5 +870,5 @@ Sinun pitäisi luoda tili ja lunastaa poolisi täällä.
 
 Hanki pari pientä usb-tikkua ja varmuuskopioi kaikki tiedostot ja kansiot\(lukuun ottamatta db/ kansiota\). Varmuuskopioi online Core ensin ja sitten kylmän offline koneen tiedostot ja kansiot. **Tee se nyt**, odottaminen ei ole riskin arvoista! **Älä kytke USB-tikkua mihinkään mikä on verkkossa sen jälkeen, kun kylmät tiedostot ovat siellä!**
 
-![https://twitter.com/insaladaPool/status/1380087586509709312?s=19](../../.gitbook/assets/insalada%20%283%29%20%281%29.png)
+![https://twitter.com/insaladaPool/status/1380087586509709312?s=19](../../.gitbook/assets/insalada%20%282%29.png)
 
