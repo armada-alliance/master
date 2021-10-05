@@ -18,7 +18,7 @@ Asennetaan tarvittavat paketit.
 sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
          jq make automake unzip net-tools nginx ssl-cert pkg-config \
          libffi-dev libgmp-dev libssl-dev libtinfo-dev libsystemd-dev \
-         zlib1g-dev g++ libncursesw5 libtool autoconf -y
+         zlib1g-dev g++ libncursesw5 libtool autoconf bc -y
 ```
 
 ## Ympäristö
@@ -432,7 +432,7 @@ cd $NODE_HOME/scripts
 ./gLiveView.sh
 ```
 
-![](../../../.gitbook/assets/pi-node-glive%20%284%29%20%285%29.png)
+![](../../../.gitbook/assets/pi-node-glive%20%287%29.png)
 
 ## Prometheus, Node Exporter & Grafana
 
@@ -444,7 +444,7 @@ Voit myös yhdistää Telegram botin Grafanaan, joka varoittaa sinua ongelmista 
 
 {% embed url="https://github.com/prometheus" caption="" %}
 
-![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%288%29.png)
+![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%287%29.png)
 
 ### Asenna Prometheus & Node Exporter.
 
@@ -673,7 +673,7 @@ Tallenna kojelaudan json tiedostot paikalliseen koneeseen.
 
 Vasemmalla puolen valikossa mene **Dashboards** &gt; **Manage** ja klikkaa **Import**. Valitse tiedosto, jonka juuri latasit tai loit ja tallenna. Suuntaa takaisin **Dashboards** &gt; **Manage** ja klikkaa uutta kojelautaasi.
 
-![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%286%29.png)
+![](../../../.gitbook/assets/pi-pool-grafana%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%285%29.png)
 
 ### Määritä poolDataLive
 
