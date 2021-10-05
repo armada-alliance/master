@@ -15,7 +15,7 @@
 * **The "WRITE" button will appear and you can click on it to begin writing/verifying the OS onto the target drive.**
 * **Finally, once it has finished the writing/verifying process, you will see a pop-up window saying that the OS was successfully written to the drive, click "CONTINUE" and remove your drive from the computer.**
 
-![](../../.gitbook/assets/image-2-%20%281%29.png)
+![](../../.gitbook/assets/image-2-%20%281%29%20%283%29.png)
 
 ## Boot & Configure
 
@@ -25,7 +25,7 @@ Insert the SSD into one of the blue usb3 ports. Then insert the HDMI, Keyboard, 
 The first Pi4's to ship do not boot from USB3 by default, nowadays they do. If your image does not boot the two most common issues are older firmware on your Pi or an incompatible USB3 adaptor.
 {% endhint %}
 
-![](../../.gitbook/assets/pi4%20%281%29%20%281%29.jpeg)
+![](../../.gitbook/assets/pi4%20%281%29.jpeg)
 
 {% hint style="info" %}
 All we really need to do here is disable auto login & create the ada user with sudo privileges. After we log back in we will delete the default Pi user and configure the server & environment for cardan-node & cardano-cli.
