@@ -5,7 +5,7 @@ description: >-
 
 # Liens d'achat de matériel 🏪
 
-![GeeekPi Cluster Case](../.gitbook/assets/photo_2021-03-09-13.42.42%20%281%29.jpeg)
+![GeeekPi Cluster Case](../.gitbook/assets/photo_2021-03-09-13.42.42.jpeg)
 
 {% tabs %}
 {% tab title="Ordinateurs Raspberry Pi" %}
