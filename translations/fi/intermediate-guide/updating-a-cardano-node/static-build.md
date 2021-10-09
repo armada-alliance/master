@@ -1,14 +1,14 @@
-# Static Build
+# Staattinen Versio
 
 {% hint style="info" %}
-This guide follows the same setup as our [Pi-Node guide and image](../pi-pool-tutorial/) so you may need to adjust sections based on your node's environment and setup.
+Tämä opas noudattaa samoja asetuksia kuin meidän [Pi-Node opas ja image](../pi-pool-tutorial/) joten sinun täytyy ehkä säätää osioita noden ympäristön ja asetusten perusteella.
 {% endhint %}
 
 {% hint style="success" %}
-### Current Official Cardano Node Version: 1.30.1
+### Nykyinen Virallinen Cardano Node Versio: 1.30.1
 {% endhint %}
 
-### Overview 🗒
+### Yleiskatsaus 🗒
 
 * [ ] Download Cardano Node Dynamic build & configuration file
 * [ ] Extract the file's content
