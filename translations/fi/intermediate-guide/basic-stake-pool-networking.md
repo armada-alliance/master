@@ -113,13 +113,13 @@ Kun luot stake poolisi **pool.json** metadatatiedoston huomaat osion nimeltä **
 ```
 {% endcode %}
 
-Tyypillinen kotiverkko altistaa maailmalle vain yhden ulkoisen IP-osoitteen, joka on dynaamisesti määritetty Internet-palveluntarjoajasi kautta \(Internet Service Provider\). Dynaamisesti määritetyt ulkoiset IP-osoitteet voivat olla suhteellisen staattisia pitkäänkin, mutta tämä ei ole taattu ja sinun kannattaa harkita DNS tunnuksen rekisteröimistä, jotta voit käyttää dns merkintöjä pool.json tiedostossa. Otherwise, each time your external IP address changes you'll have to re-register your pool with a new IP for your relays.
+Tyypillinen kotiverkko altistaa maailmalle vain yhden ulkoisen IP-osoitteen, joka on dynaamisesti määritetty Internet-palveluntarjoajasi kautta \(Internet Service Provider\). Dynaamisesti määritetyt ulkoiset IP-osoitteet voivat olla suhteellisen staattisia pitkäänkin, mutta tämä ei ole taattu ja sinun kannattaa harkita DNS tunnuksen rekisteröimistä, jotta voit käyttää dns merkintöjä pool.json tiedostossa. Muuten, joka kerta kun ulkoinen IP-osoitteesi muuttuu sinun täytyy uudelleen rekisteröidä poolisi ja päivittää uudet relay IP-osoitteet.
 
 ## DNS Client
 
-Unless you have a static IP address assigned by your ISP, at some point you're going to have to consider setting up a dynamic DNS client that runs on your internal network and broadcasts your external IP address assigned by your ISP to your dynamic dns domain provider, such as Google domains. Then whenever your ISP changes your external dynamic IP address, your DNS client will see that, push the new IP address to your domain provider and there should be next to no impact to your domain addresses.
+Ellei sinulla ole ISP:n osoittamaa staattista IP-osoitetta, jossain vaiheessa sinun täytyy harkita dynaamisen DNS:n rekisteröimistä. DNS palvelu toimii sisäisessä verkossa ja lähettää ulkoisen,ISP:n määrittämän, IP-osoitteesi dynaamisen DNS verkkotunnuksen tarjoajalle, kuten Google domains. Siten, aina kun ISP muuttaa ulkoisen dynaaminen IP-osoitteesi, DNS palvelu näkee sen ja välittää uuden IP-osoitteen verkkotunnuksen tarjoajalle. Tällä prosessilla ei ole juuri mitään vaikutusta verkkotunnusosoitteisiin.
 
-### DNS Client Examples
+### DNS Client Esimerkkejä
 
 * [ddclient](https://support.google.com/domains/answer/6147083?hl=en)
 * no-ip
