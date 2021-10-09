@@ -94,7 +94,7 @@ Aseta **valenssi** arvoon 0 \(nolla\) poistaaksesi etäkäyttäjän käytöstä,
 
 ## Poolin Rekisteröinti
 
-Kun luot stake poolisi **pool.json** metadatatiedoston huomaat osion nimeltä **poolRelays**. This is where you would add **public** relays, visible to others. You can add them as static IPs or as a domain name, such as **north.acme.com**. If you are running more than one relay on your internal network you will need to have them assigned to different ports, such as 6001 and 6002.
+Kun luot stake poolisi **pool.json** metadatatiedoston huomaat osion nimeltä **poolRelays**. Tässä kohtaa voit lisätä **julkiset** relayt, jotka näkyvät muille. Voit lisätä ne staattisina IP-osoitteina tai verkkotunnuksena, kuten **north.acme.com**. Jos sinulla on käynnissä useampi kuin yksi relay sisäisessä verkossasi, sinun täytyy määrittää niille eri portit, kuten 6001 ja 6002.
 
 {% code title="pool.json" %}
 ```bash
@@ -113,7 +113,7 @@ Kun luot stake poolisi **pool.json** metadatatiedoston huomaat osion nimeltä **
 ```
 {% endcode %}
 
-A typical home network will only expose a single external IP address to the world, dynamically assigned by your ISP \(Internet Service Provider\). Dynamically assigned external IP leases can be relatively static for a good long period, but this is not guaranteed and you should consider registering a domain name so you can use dns entries in the pool.json instead. Otherwise, each time your external IP address changes you'll have to re-register your pool with a new IP for your relays.
+Tyypillinen kotiverkko altistaa maailmalle vain yhden ulkoisen IP-osoitteen, joka on dynaamisesti määritetty Internet-palveluntarjoajasi kautta \(Internet Service Provider\). Dynaamisesti määritetyt ulkoiset IP-osoitteet voivat olla suhteellisen staattisia pitkäänkin, mutta tämä ei ole taattu ja sinun kannattaa harkita DNS tunnuksen rekisteröimistä, jotta voit käyttää dns merkintöjä pool.json tiedostossa. Otherwise, each time your external IP address changes you'll have to re-register your pool with a new IP for your relays.
 
 ## DNS Client
 
