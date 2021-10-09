@@ -1,2 +1,2 @@
-# Updating a Cardano Node
+# Cardano Noden Päivittäminen
 
