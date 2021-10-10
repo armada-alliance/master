@@ -10,34 +10,34 @@ Tämä opas noudattaa samoja asetuksia kuin meidän [Pi-Node opas ja image](../p
 
 ### Yleiskatsaus 🗒
 
-* [ ] Download Cardano Node Dynamic build & configuration file
-* [ ] Extract the file's content
-* [ ] Check if you already have Cardano Node service running
-  * Safely shutdown your Cardano node if it is running
-* [ ] Replace the old binaries with the new cardano-node and cardano-cli
-* [ ] Check cardano-node and cli version is updated to the current version
-* [ ] Replace old configuration files with new ones \(if needed\)
-* [ ] Restart your Cardano Node
-* [ ] Check that node has started properly
+* [ ] Lataa Cardano Noden Dynaaminen versio & konfiguraatiotiedosto
+* [ ] Pura tiedoston sisältö
+* [ ] Tarkista, jos sinulla on jo Cardano Node -palvelu käynnissä
+  * Sammuta turvallisesti Cardano node, jos se on käynnissä
+* [ ] Korvaa vanhat binaarit uudella cardano-nodella ja cardano-cli:llä
+* [ ] Tarkista, että cardano-node ja -cli versio on päivitetty nykyiseen versioon
+* [ ] Korvaa vanhat asetustiedostot uusilla \(jos tarpeen\)
+* [ ] Käynnistä Cardano node uudelleen
+* [ ] Tarkista, että palvelin on käynnistynyt oikein
 
-## Download the cardano-node & cli
+## Lataa cardano-node & cli
 
-### Static binaries and Cardano node configuration files are provided by [\[ZW3RK\]](https://armada-alliance.com/identities/zw3rk) pool🙏 and can be found at our [Github repository](https://github.com/armada-alliance/cardano-node-binaries/tree/main/static-binaries).
+### Staattiset binäärit ja Cardano node -konfiguraatiotiedostot toimittaa [\[ZW3RK\]](https://armada-alliance.com/identities/zw3rk) pool🙏 ja ne löytyvät [Github repositorystamme](https://github.com/armada-alliance/cardano-node-binaries/tree/main/static-binaries).
 
 ```bash
 wget https://github.com/armada-alliance/cardano-node-binaries/raw/main/static-binaries/1_30_1.zip
 ```
 
-Extract the content from the zip file.
+Pura zip tiedoston sisältö.
 
 ```bash
 unzip 1_30_1.zip
 ```
 
-### Check if cardano-node is running already
+### Tarkista, onko kardano-solmu jo käynnissä
 
-{% hint style="Huomaa" %}
-**Now we need to make sure we do not have a cardano-node already running. If we do we must shut it down before proceeding.**
+{% hint style="warning" %}
+**Nyt meidän on varmistettava, ettei meidän kardano-node ole jo käynnissä. Jos näin on, meidän on suljettava se ennen jatkamista.**
 {% endhint %}
 
 You can check if you have a cardano-node process already running a few ways like using`htop` or by checking your systemd service.
