@@ -53,7 +53,7 @@ cardano-service stop
 Jos käytät Linuxin `htop` -komentoa, tarkista vain prosessi, joka alkaa `cardano-node run` ja käytä `SIGINT` lopettaaksesi prosessin.
 {% endhint %}
 
-## Replace the old binaries and config files with the new ones
+## Korvaa vanhat binäärit ja asetustiedostot uusilla
 
 If you are using the [Pi-Node guide](../pi-pool-tutorial/) and your cardano-node & cli in `~/.local/bin`
 
