@@ -25,7 +25,7 @@
 * [Stake Pool -verkosto: Perusteita](intermediate-guide/basic-stake-pool-networking.md)
 * [Lisää adapoolien mittareita Grafanaan 📊](intermediate-guide/add-adapools-info-to-grafana.md)
 * [Cardano Noden Päivittäminen](intermediate-guide/updating-a-cardano-node/README.md)
-  * [Dynamic Build](intermediate-guide/updating-a-cardano-node/using-dynamic-build.md)
+  * [Dynaaminen Versio](intermediate-guide/updating-a-cardano-node/using-dynamic-build.md)
   * [Staattinen Versio](intermediate-guide/updating-a-cardano-node/static-build.md)
 * [CNCLI Leader Lokit📑](intermediate-guide/leader-logs.md)
 
