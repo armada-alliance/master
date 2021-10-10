@@ -1,23 +1,23 @@
-# Dynamic Build
+# Dynaaminen Versio
 
-_**We at the Armada Alliance actively build the required software packages needed to run a Cardano stake pool node on ARM-based computers like the Raspberry Pi or Apple's MacMini M1.**_
+_**Me Armada Allianssissa rakennamme aktiivisesti tarvittavia ohjelmistopaketteja, joita tarvitaan Cardano stake poolin ylläpitoon ARM-pohjaisilla tietokoneilla, kuten Raspberry Pi:llä tai Applen MacMini M1:llä.**_
 
-{% hint style="Huomaa" %}
-### To use our dynamic arm64 cardano-node build you must have [libsodium](https://github.com/input-output-hk/libsodium) installed.
+{% hint style="warning" %}
+### Käyttääksesi dynaamista arm64 cardano-node versiota sinulla täytyy olla [libsodium](https://github.com/input-output-hk/libsodium) asennettuna.
 {% endhint %}
 
 {% hint style="success" %}
-### Current Official Cardano Node Version: 1.30.1
+### Nykyinen Virallinen Cardano Node Versio: 1.30.1
 {% endhint %}
 
-### Overview 🗒
+### Yleiskatsaus 🗒
 
-* [ ] Check if libsodium is installed on the local machine
-  * Build libsodium if not installed already
-* [ ] Download Cardano Node Dynamic build & configuration file
-* [ ] Extract the file's content
-* [ ] Check if you already have Cardano Node service running
-  * Safely shutdown your Cardano node if it is running
+* [ ] Tarkista, onko libsodium asennettu paikalliseen koneeseen
+  * Rakenna libsodium, jos ei ole jo asennettu
+* [ ] Lataa Cardano Noden Dynaaminen versio & konfiguraatiotiedosto
+* [ ] Pura tiedoston sisältö
+* [ ] Tarkista, jos sinulla on jo Cardano Node -palvelu käynnissä
+  * Sammuta Cardano node turvallisesti, jos se on käynnissä
 * [ ] Replace the old binaries with the new cardano-node and cardano-cli
 * [ ] Check cardano-node and cli version is updated to the current version
 * [ ] Replace old configuration files with new ones \(if needed\)
