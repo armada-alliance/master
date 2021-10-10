@@ -13,7 +13,7 @@ To turn Pi-Node into a active relay we have to.
 5. Update port in env file.
 6. Enable cron job.
 7. Configure both topology scripts.
-8. Wait for service on boarding\(4 hours\).
+8. Wait for service on boarding(4 hours).
 9. Pull in new list of peers.
 10. Prune list of best peers.
 11. Update gLiveView's env file.
@@ -22,21 +22,21 @@ To turn Pi-Node into a active relay we have to.
 
 ## Hostname
 
-To set a fully qualified domain name \(FQDN\) for our relay edit /etc/hostname & /etc/hosts.
+To set a fully qualified domain name (FQDN) for our relay edit /etc/hostname & /etc/hosts.
 
-```text
+```
 sudo nano /etc/hostname
 ```
 
 Replace ubuntu with your desired FQDN.
 
-```text
+```
 r1.example.com
 ```
 
 Save and exit.
 
-```text
+```
 sudo nano /etc/hosts
 ```
 
@@ -54,10 +54,6 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ff02::3 ip6-allhosts
 
-## optional entries overide online dns settings
-192.168.1.150 c1.example.com
-#192.168.1.151 r1.example.com
-192.168.1.152 r2.example.com
 ```
 
 Save and exit.
@@ -110,7 +106,7 @@ network: {config: disabled}
 
 Apply your changes.
 
-```text
+```
 sudo netplan apply
 ```
 
@@ -154,7 +150,7 @@ cardano-service restart
 ## Forward port on router
 
 {% hint style="danger" %}
-Do not forward a port to your Core machine it only connects to your relay\(s\) on your LAN
+Do not forward a port to your Core machine it only connects to your relay(s) on your LAN
 {% endhint %}
 
 Log into your router and forward port 3001 to your relay nodes LAN IPv4 address port 3001. Second relay forward port 3002 to LAN IPv4 address for relay 2 to port 3002.
@@ -168,7 +164,7 @@ cd $NODE_HOME/scripts
 Configure the script to match your environment.
 
 {% hint style="warning" %}
-If you are using IPv4 leave CNODE\_HOSTNAME the way it is. The service will pick up your public IP address on it's own. I repeat only change the port to 3001. For DNS change only the first instance. Do not edit "CHANGE ME" further down in the file.
+If you are using IPv4 leave CNODE_HOSTNAME the way it is. The service will pick up your public IP address on it's own. I repeat only change the port to 3001. For DNS change only the first instance. Do not edit "CHANGE ME" further down in the file.
 {% endhint %}
 
 ```bash
@@ -189,7 +185,7 @@ Should look similar to this.
 
 > `{ "resultcode": "201", "datetime":"2021-05-20 10:13:40", "clientIp": "1.2.3.4", "iptype": 4, "msg": "nice to meet you" }`
 
-Enable the cron job by removing the \# character from crontab.
+Enable the cron job by removing the # character from crontab.
 
 ```bash
 crontab -e
@@ -203,9 +199,9 @@ Save and exit.
 
 ### Pull in your list of peers
 
-Wait four hours or so and run the relay-topology\_pull.sh to replace your mainnet-topology file with the list created in the log directory.
+Wait four hours or so and run the relay-topology_pull.sh to replace your mainnet-topology file with the list created in the log directory.
 
-Open relay-topology\_pull.sh and configure it for your environment.
+Open relay-topology_pull.sh and configure it for your environment.
 
 ```bash
 nano /home/ada/pi-pool/scripts/relay-topology_pull.sh
@@ -220,9 +216,9 @@ curl -4 -s -o /home/ada/pi-pool/files/mainnet-topology.json "https://api.clio.on
 
 Save and exit.
 
-After four hours of on boarding your relay\(s\) will start to be available to other peers on the network. **topologyUpdater.sh** will create a list in /home/ada/pi-pool/logs.
+After four hours of on boarding your relay(s) will start to be available to other peers on the network. **topologyUpdater.sh** will create a list in /home/ada/pi-pool/logs.
 
-relay-topology\_pull.sh will replace the contents of your relays mainnet-topology file.
+relay-topology_pull.sh will replace the contents of your relays mainnet-topology file.
 
 ```bash
 cd /home/ada/pi-pool/scripts
@@ -267,7 +263,7 @@ cd /home/ada/pi-pool/scripts
 ./gLiveView.sh
 ```
 
-Many operators block icmp syn packets\(ping\) because of a security flaw that was patched a decade ago. So expect to see --- for RTT because we are not receiving a response from that server.
+Many operators block icmp syn packets(ping) because of a security flaw that was patched a decade ago. So expect to see --- for RTT because we are not receiving a response from that server.
 
 More incoming connections is generally a good thing, it increases the odds that you will get network data sooner. Though you may want to put a limit on how many connect. The only way to stop incoming connections would be to block the IPv4 address with ufw.
 
@@ -340,5 +336,4 @@ scrape_configs:
           type:  'node'
 ```
 
-Reboot the server and give it a while to sync back up. That is just about it. Please feel free to join our Telegram channel for support. [https://t.me/armada\_alli](https://t.me/armada_alli)
-
+Reboot the server and give it a while to sync back up. That is just about it. Please feel free to join our Telegram channel for support. [https://t.me/armada_alli](https://t.me/armada_alli)
