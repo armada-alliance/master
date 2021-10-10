@@ -40,9 +40,9 @@ unzip 1_30_1.zip
 **Nyt meidän on varmistettava, ettei meidän kardano-node ole jo käynnissä. Jos näin on, meidän on suljettava se ennen jatkamista.**
 {% endhint %}
 
-You can check if you have a cardano-node process already running a few ways like using`htop` or by checking your systemd service.
+Voit tarkistaa, jos sinulla on cardano-node prosessi jo käynnissä muutamalla eri tavalla kuten käyttämällä `htop` -komentoa tai tarkistamalla systemd palvelu.
 
-If you have been following our [Pi-Node guide](../pi-pool-tutorial/) you can check your cardano-node status and stop it using the following commands.
+Jos olet seurannut [Pi-Node -opasta](../pi-pool-tutorial/) voit tarkistaa cardano-noden tilan ja lopettaa sen käyttämällä seuraavia komentoja.
 
 ```bash
 cardano-service status
@@ -50,7 +50,7 @@ cardano-service stop
 ```
 
 {% hint style="info" %}
-If you use Linux's `htop` service just check for a processing running starting with `cardano-node run` and use `SIGINT` to terminate the process.
+Jos käytät Linuxin `htop` -komentoa, tarkista vain prosessi, joka alkaa `cardano-node run` ja käytä `SIGINT` lopettaaksesi prosessin.
 {% endhint %}
 
 ## Replace the old binaries and config files with the new ones
