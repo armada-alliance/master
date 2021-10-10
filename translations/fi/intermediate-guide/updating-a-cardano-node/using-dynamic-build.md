@@ -18,32 +18,32 @@ _**Me Armada Allianssissa rakennamme aktiivisesti tarvittavia ohjelmistopakettej
 * [ ] Pura tiedoston sisältö
 * [ ] Tarkista, jos sinulla on jo Cardano Node -palvelu käynnissä
   * Sammuta Cardano node turvallisesti, jos se on käynnissä
-* [ ] Replace the old binaries with the new cardano-node and cardano-cli
-* [ ] Check cardano-node and cli version is updated to the current version
-* [ ] Replace old configuration files with new ones \(if needed\)
-* [ ] Restart your Cardano Node
-* [ ] Check that node has started properly
+* [ ] Korvaa vanhat binaarit uudella cardano-nodella ja cardano-cli:llä
+* [ ] Tarkista, että cardano-node ja -cli versio on päivitetty nykyiseen versioon
+* [ ] Korvaa vanhat asetustiedostot uusilla \(jos tarpeen\)
+* [ ] Käynnistä Cardano node uudelleen
+* [ ] Tarkista, että palvelin on käynnistynyt oikein
 
-## Building Libsodium
+## Libsodiumin Rakentaminen
 
-Check if libsodium is already installed first.
+Tarkista ensin, onko libsodium jo asennettu.
 
 ```bash
 which libsodium
 ```
 
-If this returns no output you need to install libsodium.
+Jos tämä ei palauta mitään tulostetta, sinun täytyy asentaa libsodium.
 
-### Instructions to install libsodium
+### Ohjeet libsodiumin asentamiseen
 
-Create a working directory for your builds:
+Luo työhakemisto omille rakennuksillesi:
 
 ```bash
 mkdir -p ~/src
 cd ~/src
 ```
 
-Download and install libsodium:
+Lataa ja asenna libsodium:
 
 ```bash
 git clone https://github.com/input-output-hk/libsodium
@@ -67,7 +67,7 @@ make
 sudo make install
 ```
 
-Add the following to your .bashrc file and source it:
+Lisää seuraava .bashrc tiedostoon ja aseta lähde:
 
 ```bash
 echo "export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"" >> ~/.bashrc
@@ -77,15 +77,15 @@ echo "export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"" >> ~/.
 source ~/.bashrc
 ```
 
-For those who run cardano-node as a systemd service, run the following:
+Ne, jotka suorittavat cardano-nodea järjestelmäpalveluna, käyttävät seuraavia toimintoja:
 
 ```text
 sudo ldconfig
 ```
 
-This ensures the system is aware of libsodium \(not just at the user level\).
+Tämä varmistaa, että järjestelmä on tietoinen libsodiumista \(ei vain käyttäjätasolla\).
 
-## Download the cardano-node & cli
+## Lataa cardano-node & -cli
 
 Dynamic binaries and Cardano node configuration files provided by [SRN pool ](https://armada-alliance.com/stake-pools/cc1b1c03798884c636703443a23b8d9e827d6c0417921600394198a0)🙏  at our [Github repository](https://github.com/armada-alliance/cardano-node-binaries).
 
