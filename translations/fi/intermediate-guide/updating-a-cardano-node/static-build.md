@@ -55,39 +55,39 @@ Jos käytät Linuxin `htop` -komentoa, tarkista vain prosessi, joka alkaa `carda
 
 ## Korvaa vanhat binäärit ja asetustiedostot uusilla
 
-If you are using the [Pi-Node guide](../pi-pool-tutorial/) and your cardano-node & cli in `~/.local/bin`
+Jos käytät [Pi-Node -opasta](../pi-pool-tutorial/) ja cardano-node & -cli ovat kansiossa `~/.local/bin`
 
 ```bash
 mv cardano-node/* ~/.local/bin
 ```
 
-### Check your cardano-node version
+### Tarkista cardano-node-solmun versio
 
 ```bash
 cardano-node --version
 ```
 
-#### Output:
+#### Tuloste:
 
 ```bash
 cardano-node 1.30.1 - linux-aarch64 - ghc-8.10
 git rev 0000000000000000000000000000000000000000
 ```
 
-### Check your cardano-cli version
+### Tarkista cardano-cli versio
 
 ```bash
 cardano-cli --version
 ```
 
-#### Output:
+#### Tuloste:
 
 ```bash
 cardano-cli 1.30.1 - linux-aarch64 - ghc-8.10
 git rev 0000000000000000000000000000000000000000
 ```
 
-### Download & Replace the Cardano node configuration files
+### Lataa & Korvaa Cardano noden asetustiedostot
 
 {% tabs %}
 {% tab title="Mainnet" %}
@@ -124,15 +124,15 @@ wget https://hydra.iohk.io/build/7370192/download/1/alonzo-purple-topology.json
 {% endtab %}
 {% endtabs %}
 
-## Restart the Cardano Node
+## Käynnistä Cardano Node uudelleen
 
-Now we just need to restart our cardano-node service if you are using our [Pi-Node guide](../pi-pool-tutorial/) use this command
+Nyt meidän täytyy vain käynnistää uudelleen cardano-node palvelu, jos käytät meidän [Pi-Node opasta](../pi-pool-tutorial/) käytä tätä komentoa
 
 ```bash
 cardano-service start
 ```
 
-Wait a few seconds or so then check the status
+Odota muutama sekunti tai tarkista sitten prosessin status
 
 ```bash
 cardano-service status
