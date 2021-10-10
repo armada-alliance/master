@@ -13,7 +13,7 @@ Jotta Pi-Node muuttuisi aktiiviseksi relayksi meidän on tehtävä seurrava.
 5. Päivitä portti env-tiedostossa.
 6. Ota cron työ käyttöön.
 7. Määritä molemmat topologian komentosarjat.
-8. Odota palvelua aktivointia\(4 tuntia\).
+8. Wait for service on boarding(4 hours).
 9. Vedä uusi käyttäjäluettelo.
 10. Jalosta luettelo parhaista käyttäjiä.
 11. Päivitä gLiveViewin env-tiedosto.
@@ -22,21 +22,21 @@ Jotta Pi-Node muuttuisi aktiiviseksi relayksi meidän on tehtävä seurrava.
 
 ## Hostname
 
-Määrittääksesi täysin hyväksytyn verkkotunnuksen \(FQDN\) relaylle muokkaa /etc/hostname & /etc/hosts.
+To set a fully qualified domain name (FQDN) for our relay edit /etc/hostname & /etc/hosts.
 
-```text
+```
 sudo nano /etc/hostname
 ```
 
 Korvaa ubuntu halutulla FQDN:llä.
 
-```text
+```
 r1.example.com
 ```
 
 Tallenna ja sulje.
 
-```text
+```
 sudo nano /etc/hosts
 ```
 
@@ -54,10 +54,6 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ff02::3 ip6-allhosts
 
-## optional entries overide online dns settings
-192.168.1.150 c1.example.com
-#192.168.1.151 r1.example.com
-192.168.1.152 r2.example.com
 ```
 
 Tallenna ja sulje.
@@ -110,7 +106,7 @@ network: {config: disabled}
 
 Ota muutoksesi käyttöön.
 
-```text
+```
 sudo netplan apply
 ```
 
@@ -154,7 +150,7 @@ cardano-service restart
 ## Välitä portti reitittimessä
 
 {% hint style="danger" %}
-Älä siirrä porttia eteenpäin Core koneeseesi, sillä se muodostaa yhteyden vain LAN-verkossasi sijaitsevaan relayhin
+Do not forward a port to your Core machine it only connects to your relay(s) on your LAN
 {% endhint %}
 
 Kirjaudu reitittimeen ja siltaa portti 3001 relay noden LAN IPv4 osoiteporttiin 3001. Toiselle relaylle sillataan portti 3002 relay LAN IPv4 osoitteesseen porttiin 3002.
@@ -168,7 +164,7 @@ cd $NODE_HOME/scripts
 Määritä skripti vastaamaan ympäristöäsi.
 
 {% hint style="Huomaa" %}
-Jos käytät IPv4:ää, jätä CNODE\_HOSTNAME niin kuin se on. Palvelu hakee julkisen IP-osoitteen ja käyttää sitä. Toistan, muuta vain portti arvoon 3001 DNS:llä muuta vain ensimmäinen ilmentymä. Älä muokkaa "CHANGE ME" tiedoston alemmilla riveillä.
+If you are using IPv4 leave CNODE_HOSTNAME the way it is. Palvelu hakee julkisen IP-osoitteen ja käyttää sitä. Toistan, muuta vain portti arvoon 3001 DNS:llä muuta vain ensimmäinen ilmentymä. Älä muokkaa "CHANGE ME" tiedoston alemmilla riveillä.
 {% endhint %}
 
 ```bash
@@ -189,7 +185,7 @@ Pitäisi näyttää samankaltaiselta kuin tämä.
 
 > `{ "resultcode": "201", "datetime":"2021-05-20 10:13:40", "clientIp": "1.2.3.4", "iptype": 4, "msg": "nice to meet you" }`
 
-Ota cron työ käyttöön poistamalla \# merkki crontabista.
+Enable the cron job by removing the # character from crontab.
 
 ```bash
 crontab -e
@@ -203,9 +199,9 @@ Tallenna ja sulje.
 
 ### Vedä uusi käyttäjäluettelo
 
-Odota neljä tuntia ja suorita relay-topology\_pull.sh korvataksesi mainnet-topologian tiedoston lokihakemistoon luodulla listalla.
+Wait four hours or so and run the relay-topology_pull.sh to replace your mainnet-topology file with the list created in the log directory.
 
-Avaa relay-topology\_pull.sh ja määritä se ympäristöllesi.
+Open relay-topology_pull.sh and configure it for your environment.
 
 ```bash
 nano /home/ada/pi-pool/scripts/relay-topology_pull.sh
@@ -220,9 +216,9 @@ curl -4 -s -o /home/ada/pi-pool/files/mainnet-topology.json "https://api.clio.on
 
 Tallenna ja sulje.
 
-Neljän tunnin kuluttua relaysi on saatavilla muiden käyttäjien verkossa. **topologyUpdater.sh** luo listan /home/ada/pi-pool/logs.
+After four hours of on boarding your relay(s) will start to be available to other peers on the network. **topologyUpdater.sh** luo listan /home/ada/pi-pool/logs.
 
-relay-topology\_pull.sh korvaa relaysi mainnet-topology tiedoston sisällön.
+relay-topology_pull.sh will replace the contents of your relays mainnet-topology file.
 
 ```bash
 nano /home/ada/pi-pool/scripts/relay-topology_pull.sh
@@ -266,7 +262,7 @@ cd /home/ada/pi-pool/scripts
 ./gLiveView.sh
 ```
 
-Monet operaattorit estävät icmp syn packets\(ping\) vuosikymmen sitten korjatun turvavirheen vuoksi. Joten odota näkeväsi --- RTT, koska emme saa vastausta kyseiseltä palvelimelta.
+Many operators block icmp syn packets(ping) because of a security flaw that was patched a decade ago. Joten odota näkeväsi --- RTT, koska emme saa vastausta kyseiseltä palvelimelta.
 
 Enemmän saapuvia yhteyksiä on yleensä hyvä asia, sillä se lisää mahdollisuutta, että saat verkon dataa nopeammin. Vaikkakin saatat haluta asettaa rajan sille, kuinka monta yhteyttä voidaan muodostaa. Ainoa tapa pysäyttää saapuvat yhteydet olisi estää IPv4-osoite ufw.
 
@@ -339,5 +335,4 @@ scrape_configs:
           type:  'node'
 ```
 
-Käynnistä palvelin uudelleen ja anna sille aikaa synkronoida ketjun kärkeen. Siinäpä se. Ole hyvä ja liity vapaasti Telegram-kanavamme tukeen. [https://t.me/armada\_alli](https://t.me/armada_alli)
-
+Käynnistä palvelin uudelleen ja anna sille aikaa synkronoida ketjun kärkeen. Siinäpä se. Ole hyvä ja liity vapaasti Telegram-kanavamme tukeen. [https://t.me/armada_alli](https://t.me/armada_alli)
