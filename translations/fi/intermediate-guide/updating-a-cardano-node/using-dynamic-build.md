@@ -102,12 +102,12 @@ unzip cardano-1_30_1-aarch64-ubuntu_2004.zip?raw=true
 ### Tarkista, onko cardano-node jo käynnissä
 
 {% hint style="warning" %}
-**Now we need to make sure we do not have a cardano-node already running. If we do we must shut it down before proceeding.**
+**Nyt meidän on varmistettava, ettei meidän cardano-node ole jo käynnissä. Jos näin on, meidän on suljettava se ennen jatkamista.**
 {% endhint %}
 
-You can check if you have a cardano-node process already running a few ways like using`htop` or by checking your systemd service.
+Voit tarkistaa, jos sinulla on cardano-node prosessi jo käynnissä muutamalla eri tavalla kuten käyttämällä `htop` -komentoa tai tarkistamalla systemd palvelu.
 
-If you have been following our [Pi-Node guide](../pi-pool-tutorial/) you can check your cardano-node status and stop it using the following commands.
+Jos olet seurannut [Pi-Node -opasta](../pi-pool-tutorial/) voit tarkistaa cardano-noden tilan ja lopettaa sen käyttämällä seuraavia komentoja.
 
 ```bash
 cardano-service status
@@ -115,46 +115,46 @@ cardano-service stop
 ```
 
 {% hint style="info" %}
-If you use Linux's `htop` service just check for a processing running starting with `cardano-node run` and use `SIGINT` to terminate the process.
+Jos käytät Linuxin `htop` -komentoa, tarkista vain prosessi, joka alkaa `cardano-node run` ja käytä `SIGINT` lopettaaksesi prosessin.
 {% endhint %}
 
-## Replace the old binaries and config files with the new ones
+## Korvaa vanhat binäärit ja asetustiedostot uusilla
 
-If you are using the [Pi-Node guide](../pi-pool-tutorial/) and your cardano-node & cli in `~/.local/bin`
+Jos käytät [Pi-Node -opasta](../pi-pool-tutorial/) ja cardano-node & -cli ovat kansiossa `~/.local/bin`
 
 ```bash
 mv cardano-1_30_1-aarch64-ubuntu_2004/cardano-node cardano-1_30_1-aarch64-ubuntu_2004/cardano-cli ~/.local/bin
 ```
 
-### Check your cardano-node version
+### Tarkista cardano-noden versio
 
 ```bash
 cardano-node --version
 ```
 
-#### Output:
+#### Tuloste:
 
 ```bash
 cardano-node 1.30.1 - linux-aarch64 - ghc-8.10
 git rev 0fb43f4e3da8b225f4f86557aed90a183981a64f
 ```
 
-### Check your cardano-cli version
+### Tarkista cardano-cli versio
 
 ```bash
 cardano-cli --version
 ```
 
-#### Output:
+#### Tuloste:
 
 ```bash
 cardano-cli 1.30.1 - linux-aarch64 - ghc-8.10
 git rev 0fb43f4e3da8b225f4f86557aed90a183981a64f
 ```
 
-### Replace the Cardano node configuration files
+### Korvaa cardano noden asetustiedostot
 
-We have already downloaded the configuration files needed for three networks mainnet, testnet, and the alonzo-purple testnet.
+Olemme jo ladanneet kolmeen eri verkkoon (mainnet, testnet ja alonzo-purple testnet) liittyvät konfiguraatiotiedostot.
 
 {% tabs %}
 {% tab title="Mainnet Config" %}
@@ -176,15 +176,15 @@ mv cardano-1_30_1-aarch64-ubuntu_2004/files/alonzo-purple/* ~/pi-pool/files
 {% endtab %}
 {% endtabs %}
 
-## Restart the Cardano Node
+## Käynnistä Cardano Node uudelleen
 
-Now we just need to restart our cardano-node service if you are using our [Pi-Node guide](../pi-pool-tutorial/) use this command
+Nyt meidän täytyy vain käynnistää uudelleen cardano-node palvelu, jos käytät meidän [Pi-Node opasta](../pi-pool-tutorial/) käytä tätä komentoa
 
 ```bash
 cardano-service start
 ```
 
-Wait a few seconds or so then check the status
+Odota muutama sekunti tai tarkista sitten prosessin status
 
 ```bash
 cardano-service status
