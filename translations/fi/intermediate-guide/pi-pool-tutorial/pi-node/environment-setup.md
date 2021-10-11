@@ -34,7 +34,7 @@ mkdir $HOME/git
 mkdir $HOME/tmp
 ```
 
-### Create bash variables & add \~/.local/bin to our $PATH 🏃
+### Luo bash muuttujat & lisää ~/.local/bin meidän $PATH🏃
 
 {% hint style="info" %}
 [Ympäristömuuttujat Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
@@ -203,10 +203,10 @@ Lisäämämme funktio antaa meidän hallita cardano-nodea kirjoittamatta pitkiä
 
 Nyt meidän täytyy vain:
 
-* cardano-service enable  (enables cardano-node.service auto start at boot)
-* cardano-service start      (starts cardano-node.service)
-* cardano-service stop       (stops cardano-node.service)
-* cardano-service status    (shows the status of cardano-node.service)
+* cardano-service enable (aktivoi cardano-node.servicen automaattisen käynnistyksen uudelleenkäynnistettäessä)
+* cardano-service start (käynnistä cardano-node.service)
+* cardano-service stop (pysäytä cardano-node.service)
+* cardano-service status (näyttää cardano-node.service tilan)
 
 ## ⛓ Ketjun synkronointi ⛓
 
@@ -260,7 +260,7 @@ wget https://raw.githubusercontent.com/cardano-community/guild-operators/master/
 wget https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/gLiveView.sh
 ```
 
-Meidän täytyy muokata env tiedostoa, jotta se toimii meidän ympäristössämme. Porttinumero on päivitettävä, jotta se vastaa oman cardano-nodemme porttia. **Pi-nodessamme** se on portti 3003. Rakentaessamme poolia valitsemme edelliset portit. For example Pi-Relay(2) will run on port 3002, Pi-Relay(1) on 3001 and Pi-Core on port 3000.
+Meidän täytyy muokata env tiedostoa, jotta se toimii meidän ympäristössämme. Porttinumero on päivitettävä, jotta se vastaa oman cardano-nodemme porttia. **Pi-nodessamme** se on portti 3003. Rakentaessamme poolia valitsemme edelliset portit. Esimerkiksi Pi-Relay (2) ajetaan portilla 3002, Pi-Relay (1) 3001 ja Pi-Core portilla 3000.
 
 {% hint style="info" %}
 Voit vaihtaa portin, jossa cardano-node toimii muokkaamalla /home/ada/.local/bin/cardano-service.
@@ -282,7 +282,7 @@ chmod +x gLiveView.sh
 
 ## topologyUpdater.sh
 
-Kunnes vertaisverkko on otettu käyttöön verkko-operaattorit tarvitsevat tavan saada listan releistä/vertaisverkoista, joihin muodostaa yhteyden. Topologian päivityspalvelu toimii taustalla cron kanssa. Joka tunti skripti toimii ja kertoo palvelulle, että olet relay ja haluat olla osa verkkoa. It will add your relay to it's directory after four hours and start generating a list of relays in a json file in the $NODE_HOME/logs directory. A second script, relay-topology_pull.sh can then be used manually to generate a mainnet-topolgy file with relays/peers that are aware of you and you of them.
+Kunnes vertaisverkko on otettu käyttöön verkko-operaattorit tarvitsevat tavan saada listan releistä/vertaisverkoista, joihin muodostaa yhteyden. Topologian päivityspalvelu toimii taustalla cron kanssa. Joka tunti skripti toimii ja kertoo palvelulle, että olet relay ja haluat olla osa verkkoa. Se lisää relaysi sen hakemistoon neljän tunnin kuluttua ja alkaa luoda listaa relaystä json tiedostoon $NODE_HOME/logs hakemistoon. Toisella skriptillä, relay-topology_pull.sh:lla, voidaan sitten manuaalisesti luoda mainnet-topolgy tiedosto, jossa on relayt, jotka ovat tietoisia sinusta ja jotka itse tiedät.
 
 {% hint style="info" %}
 Luotu lista näyttää sinulle etäisyyden maileina sekä arvion siitä, missä relay sijaitsee.
@@ -298,7 +298,7 @@ nano topologyUpdater.sh
 Liitä seuraavat, tallenna & sulje nano.
 
 {% hint style="warning" %}
-Porttinumero on päivitettävä, jotta se vastaa oman cardano-nodemme porttia. If you are using dns records you can add the FQDN that matches on line 6(line 6 only). Jätä se niin kuin on, jos et käytä dns:ää. Palvelu hakee julkisen IP-osoitteen ja käyttää sitä.
+Porttinumero on päivitettävä, jotta se vastaa oman cardano-nodemme porttia. Jos käytät dns-tietueita, voit lisätä FQDN:n, joka vastaa riviä 6 (vain rivi 6). Jätä se niin kuin on, jos et käytä dns:ää. Palvelu hakee julkisen IP-osoitteen ja käyttää sitä.
 {% endhint %}
 
 ```bash
@@ -362,7 +362,7 @@ crontab -e
 Lisää seuraava tiedoston loppuun omalle riville, tallenna & sulje nano.
 
 {% hint style="info" %}
-Pi-node-imagessassa tämä cron merkintä on oletuksena pois päältä. You can enable it by removing the #.
+Pi-node-imagessassa tämä cron merkintä on oletuksena pois päältä. Voit ottaa sen käyttöön poistamalla #.
 {% endhint %}
 
 ```bash
@@ -371,7 +371,7 @@ Pi-node-imagessassa tämä cron merkintä on oletuksena pois päältä. You can 
 
 Neljän tunnin skriptin ajon jälkeen, nodesi lisätään palveluun ja voit vetää palvelusta uudet vertaisnodet mainnet-topology tiedostoosi.
 
-Create another file relay-topology_pull.sh and paste in the following.
+Luo toinen tiedosto, relay-topology_pull.sh ja liitä siihen seuraavat rivit.
 
 ```bash
 nano relay-topology_pull.sh
@@ -402,7 +402,7 @@ cd $NODE_HOME/scripts
 ```
 
 {% hint style="info" %}
-relay-topology_pull.sh will add 15 peers to your mainnet-topology file. Yleensä poistan kauimmat 5 relaytä ja käyttän lähimpiä 10:tä.
+relay-topology_pull.sh lisää 15 vertaista mainnet-topology tiedostoon. Yleensä poistan kauimmat 5 relaytä ja käyttän lähimpiä 10:tä.
 {% endhint %}
 
 ```bash
@@ -421,7 +421,7 @@ Muutokset tässä tiedostossa tulevat käyttöön vasta kun cardano-service käy
 
 Tilan tulisi näyttää enabled & running.
 
-Once your node syncs past epoch 208(shelley era) you can use gLiveView.sh to monitor.
+Kun noden synkronointi on ohittanut epochin 208 (shelley era), voit käyttää gLiveView.sh skriptiä monitorointiin.
 
 {% hint style="danger" %}
 Se voi kestää jopa tunnin, kun cardano-node synkronoituu takaisin lohkoketjun kärkeen. Käytä ./gliveView.sh, htop ja log tietoja tarkastellaksesi prosessia. Olipa kärsivällinen, kärki saavutetaan kyllä.
@@ -436,7 +436,7 @@ cd $NODE_HOME/scripts
 
 ## Prometheus, Node Exporter & Grafana
 
-Prometheus yhdistää cardano-noden backendiin ja lähettää metriikkaa http:n kautta. Grafana puolestaan voi käyttää näitä tietoja kaavioiden näyttämiseen ja hälytysten luomiseen. Meidän Grafana kojelautamme koostuu Ubuntu järjestelmän & cardano-noden datasta. Grafana can display data from other sources as well, like [adapools.org](https://adapools.org).
+Prometheus yhdistää cardano-noden backendiin ja lähettää metriikkaa http:n kautta. Grafana puolestaan voi käyttää näitä tietoja kaavioiden näyttämiseen ja hälytysten luomiseen. Meidän Grafana kojelautamme koostuu Ubuntu järjestelmän & cardano-noden datasta. Grafana voi näyttää tietoja myös muista lähteistä, kuten [adapools.org](https://adapools.org).
 
 {% hint style="info" %}
 Voit myös yhdistää Telegram botin Grafanaan, joka varoittaa sinua ongelmista palvelimen kanssa. Tämä on paljon helpompaa kuin yrittää määritellä sähköpostihälytyksiä.
@@ -599,9 +599,9 @@ Tässä vaiheessa saatat haluta käynnistää cardano-servicen ja synkronoida no
 
 ## Grafana, Nginx proxy_pass & snakeoil
 
-Let's put Grafana behind Nginx with self signed(snakeoil) certificate. Sertifikaatti luotiin, kun asensimme ssl-cert paketin.
+Asetetaan Grafana Nginxin taakse itse allekirjoitetulla (snakeoil) sertifikaatilla. Sertifikaatti luotiin, kun asensimme ssl-cert paketin.
 
-Voit saada varoituksen selaimestasi. This is because ca-certificates cannot follow a trust chain to a trusted (centralized) source. Yhteys on kuitenkin salattu, ja se suojaa salasanojasi, jotka liitelevät bittiavaruudessa pelkkänä tekstinä.
+Voit saada varoituksen selaimestasi. Tämä johtuu siitä, että ca-sertifikaatit eivät voi seurata luottamusketjua luotettuun (keskitetty) lähteeseen. Yhteys on kuitenkin salattu, ja se suojaa salasanojasi, jotka liitelevät bittiavaruudessa pelkkänä tekstinä.
 
 ```bash
 sudo nano /etc/nginx/sites-available/default
@@ -651,7 +651,7 @@ sudo nginx -t
 sudo service nginx restart
 ```
 
-You can now visit your pi-nodes ip address without any port specification, the connection will be upgraded to SSL/TLS and you will get a scary message(not really scary at all). Jatka kohti kojelautaasi.
+Voit nyt käydä pi-noden ip osoitteessa ilman portin määrittelyä, yhteys päivitetään SSL / TLS ja saat pelottavan viesti (ei oikeastaan pelottava ollenkaan). Jatka kohti kojelautaasi.
 
 ![](../../../../.gitbook/assets/snakeoil.png)
 
@@ -663,7 +663,7 @@ Kirjaudu sisään ja aseta uusi salasana. Oletus käyttäjätunnus ja salasana o
 
 #### Määritä tietolähde
 
-In the left hand vertical menu go to **Configure** > **Datasources** and click to **Add data source**. Valitse Prometheus. Syötä [http://localhost:9090](http://localhost:9090) kaikki harmaa voidaan jättää oletusarvoiseksi. Alareunassa save & test. Sinun pitäisi saada vihreä "Data source is working", jos kardano-monitor on päällä. Jos jostain syystä nämä palvelut eivät käynnistyneet, käytä komentoa **cardano-service restart**.
+Vasemman puolen pystysuorassa valikossa siirry **Configure** > **Datasources** ja klikkaa **Add data source**. Valitse Prometheus. Syötä [http://localhost:9090](http://localhost:9090) kaikki harmaa voidaan jättää oletusarvoiseksi. Alareunassa save & test. Sinun pitäisi saada vihreä "Data source is working", jos kardano-monitor on päällä. Jos jostain syystä nämä palvelut eivät käynnistyneet, käytä komentoa **cardano-service restart**.
 
 #### Tuo kojelaudat
 
@@ -671,7 +671,7 @@ Tallenna kojelaudan json tiedostot paikalliseen koneeseen.
 
 {% embed url="https://github.com/armada-alliance/dashboards" %}
 
-In the left hand vertical menu go to **Dashboards** > **Manage** and click on **Import**. Valitse tiedosto, jonka juuri latasit tai loit ja tallenna. Head back to **Dashboards** > **Manage** and click on your new dashboard.
+Vasemmalla puolen valikossa mene **Dashboards** > **Manage** ja klikkaa **Import**. Valitse tiedosto, jonka juuri latasit tai loit ja tallenna. Suuntaa takaisin **Dashboards** > **Manage** ja klikkaa uutta kojelautaasi.
 
 ![](../../../../.gitbook/assets/pi-pool-grafana (2) (2) (2) (2) (1) (5).png)
 
