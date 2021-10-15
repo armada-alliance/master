@@ -9,10 +9,10 @@
   * [Configuración del servidor](cardano-node/raspi-node/server-setup.md)
   * [Configuración del entorno](cardano-node/raspi-node/environment-setup.md)
 
-## Guias de Stake Pools <a id="intermediate-guide"></a>
+## Guias de Stake Pools <a href="intermediate-guide" id="intermediate-guide"></a>
 
 * [Pi-Node Image & Guide](intermediate-guide/pi-pool-tutorial/README.md)
-  * [Pi-Node \(inicio rápido\)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
+  * [Pi-Node (quick start)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
     * [Descargar y Flashear](intermediate-guide/pi-pool-tutorial/pi-node/download-and-write-it.md)
     * [Configuración usuarios](intermediate-guide/pi-pool-tutorial/pi-node/user-setup.md)
     * [Iniciando sesión de forma segura](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
@@ -28,10 +28,11 @@
   * [Dynamic Build](intermediate-guide/updating-a-cardano-node/using-dynamic-build.md)
   * [Static Build](intermediate-guide/updating-a-cardano-node/static-build.md)
 * [CNCLI Leader Logs📑](intermediate-guide/leader-logs.md)
+* [Wireguard Guide](intermediate-guide/wireguard-guide.md)
 
-## Otras Guías sobre Cardano <a id="cardano-developer-guides"></a>
+## Otras Guías sobre Cardano <a href="cardano-developer-guides" id="cardano-developer-guides"></a>
 
-* [NFT (Tokens no fungibles) en Cardano 💰](cardano-developer-guides/nft-native-assets.md)
+* [Cardano Native Asset (NFT) 💰](cardano-developer-guides/nft-native-assets.md)
 * [Colección de Tutoriales NFT en Cardano](cardano-developer-guides/cardano-nft-collection-tutorial-coming-soon.md)
 * [Crear archivo .img](cardano-developer-guides/create-.img-file.md)
 * [Guía de Staking 🚀](cardano-developer-guides/how-to-delegate-ada.md)
@@ -41,8 +42,7 @@
     * [Guía de Estilo](cardano-developer-guides/how-to-contribute/untitled-1/style-guide.md)
     * [Código de conducta](cardano-developer-guides/how-to-contribute/untitled-1/code-of-conduct.md)
 
-## Recursos <a id="before-you-get-started..."></a>
+## Recursos <a href="before-you-get-started..." id="before-you-get-started..."></a>
 
 * [Library 🏫](before-you-get-started.../library.md)
 * [Enlaces de compra de hardware 🏪](before-you-get-started.../hardware.md)
-
