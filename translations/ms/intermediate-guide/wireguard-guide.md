@@ -139,7 +139,6 @@ Useful commands.
 ```bash
 sudo wg show # metrics on the interface
 ip a # should see a wg0 interface
-alias wgstrip='wg syncconf wg0 <(wg-quick strip wg0)'
 ```
 
 Once both interfaces are up you can try and ping each other.
@@ -238,7 +237,7 @@ sudo ufw enable
 sudo ufw status numbered
 ```
 
-Notes & links
+Notes & links/To Do
 
 ```c
 PostUp = resolvectl domain %i "~."; resolvectl dns %i 192.0.2.1; resolvectl dnssec %i yes
@@ -246,4 +245,10 @@ PostUp = resolvectl domain %i "~."; resolvectl dns %i 192.0.2.1; resolvectl dnss
 
 ```c
 PostUp = wg set %i private-key /etc/wireguard/wg0.key <(cat /some/path/%i/privkey)
+```
+
+Reload conf without taking VPN down.
+
+```
+alias wgstrip='wg syncconf wg0 <(wg-quick strip wg0)'
 ```
