@@ -9,10 +9,10 @@
   * [Palvelimen Asetukset](cardano-node/raspi-node/server-setup.md)
   * [Ympäristön Asetukset](cardano-node/raspi-node/environment-setup.md)
 
-## Stake Pool -oppaat <a id="intermediate-guide"></a>
+## Stake Pool -oppaat <a href="intermediate-guide" id="intermediate-guide"></a>
 
 * [Pi-Node Image & Ohjeet](intermediate-guide/pi-pool-tutorial/README.md)
-  * [Pi-Node \(pikaopas\)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
+  * [Pi-Node (quick start)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
     * [Lataa & Polta](intermediate-guide/pi-pool-tutorial/pi-node/download-and-write-it.md)
     * [Käyttäjän Asetukset](intermediate-guide/pi-pool-tutorial/pi-node/user-setup.md)
     * [Suojattu kirjautuminen](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
@@ -28,10 +28,11 @@
   * [Dynaaminen Versio](intermediate-guide/updating-a-cardano-node/using-dynamic-build.md)
   * [Staattinen Versio](intermediate-guide/updating-a-cardano-node/static-build.md)
 * [CNCLI Leader Lokit📑](intermediate-guide/leader-logs.md)
+* [Wireguard Guide](intermediate-guide/wireguard-guide.md)
 
-## Muuita Cardano Oppaita <a id="cardano-developer-guides"></a>
+## Muuita Cardano Oppaita <a href="cardano-developer-guides" id="cardano-developer-guides"></a>
 
-* [Cardano Native Asset \(NFT\) 💰](cardano-developer-guides/nft-native-assets.md)
+* [Cardano Native Asset (NFT) 💰](cardano-developer-guides/nft-native-assets.md)
 * [Cardano NFT Collection Tutorial](cardano-developer-guides/cardano-nft-collection-tutorial-coming-soon.md)
 * [Luo .img-tiedosto](cardano-developer-guides/create-.img-file.md)
 * [Staking Guide 🚀](cardano-developer-guides/how-to-delegate-ada.md)
@@ -41,8 +42,7 @@
     * [Tyyliohjeet](cardano-developer-guides/how-to-contribute/untitled-1/style-guide.md)
     * [Ohjesääntö](cardano-developer-guides/how-to-contribute/untitled-1/code-of-conduct.md)
 
-## Resursseja <a id="before-you-get-started..."></a>
+## Resursseja <a href="before-you-get-started..." id="before-you-get-started..."></a>
 
 * [Kirjasto 🏫](before-you-get-started.../library.md)
 * [Hyödyllisiä linkkeja laitteiston hankintaan 🏪](before-you-get-started.../hardware.md)
-
