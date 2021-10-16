@@ -51,11 +51,11 @@ Dieser Verhaltenskodex gilt in allen Gemeinschaftsräumen und auch dann, wenn ei
 
 ### Vollzug
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at \[INSERT CONTACT METHOD\]. All complaints will be reviewed and investigated promptly and fairly.
+Fälle von Missbrauch, Belästigung oder anderweitigem inakzeptablen Verhalten können an die für die Durchsetzung verantwortlichen Leiter der Gemeinschaft bei \[INSERT KONTACT METHOD\] gemeldet werden. Alle Beschwerden werden umgehend und auf fairer Weise geprüft.
 
-All community leaders are obligated to respect the privacy and security of the reporter of any incident.
+Alle Verantwortlichen der Community sind verpflichtet, die Privatsphäre und die Sicherheit der Person, die einen Vorfall meldet, zu respektieren.
 
-### Enforcement Guidelines
+### Durchsetzungsrichtlinien
 
 Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct:
 
