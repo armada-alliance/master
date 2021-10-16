@@ -1,31 +1,31 @@
-# Code of Conduct
+# Verhaltenskodex
 
-## Code of Conduct
+## Verhaltenskodex
 
-### Our Pledge
+### Unsere Verpflichtung
 
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity, and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, caste, color, religion, or sexual identity and orientation.
+Wir als Mitglieder, Beitragende und Leiter verpflichten uns, die Teilnahme an unserer Gemeinschaft zu einer belästigungsfreien Erfahrung für jeden zu machen, unabhängig von Alter, Körpergröße, sichtbarer oder unsichtbarer Behinderung, ethnischer Zugehörigkeit, Geschlechtsmerkmalen, Geschlechtsidentität und -ausdruck, Erfahrungsgrad, Bildung, sozioökonomischem Status, Nationalität, persönlichem Erscheinungsbild, Rasse, Kaste, Hautfarbe, Religion oder sexueller Identität und Orientierung.
 
-We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
+Wir verpflichten uns, in einer Weise zu handeln und zu interagieren, die zu einer offenen, einladenden, vielseitigen, integrativen und gesunden Gemeinschaft beiträgt.
 
-### Our Standards
+### Unsere Standards
 
-Examples of behavior that contributes to a positive environment for our community include:
+Beispiele für Verhaltensweisen, die zu einer positiven Umgebung für unsere Community beitragen:
 
-* Demonstrating empathy and kindness toward other people
-* Being respectful of differing opinions, viewpoints, and experiences
-* Giving and gracefully accepting constructive feedback
-* Accepting responsibility and apologizing to those affected by our mistakes,
+* Empathie und Freundlichkeit gegenüber anderen Leuten zeigen
+* Respekt vor unterschiedlichen Meinungen, Sichtweisen und Erfahrungen
+* Konstruktives Feedback geben und würdevoll annehmen
+* Verantwortung übernehmen und sich bei den von unseren Fehlern betroffenen Personen entschuldigen
 
-  and learning from the experience
+  und aus der Erfahrung lernen
 
-* Focusing on what is best not just for us as individuals, but for the
+* Sich auf das zu fokussieren, was nicht nur für uns als Einzelpersonen, sondern für die gesamte
 
-  overall community
+  Gemeinschaft am besten ist
 
-Examples of unacceptable behavior include:
+Beispiele für inakzeptables Verhalten sind:
 
-* The use of sexualized language or imagery, and sexual attention or
+* Der Gebrauch sexualisierter Sprache oder Bilder und sexuelle Aufmerksamkeit oder
 
   advances of any kind
 
