@@ -5,7 +5,7 @@ description: Luo toiminnalliset avaimet & sertifikaatit. Luo lompakko & rekister
 # Pi-Core/Kylmä kone
 
 {% hint style="danger" %}
-Tarvitset Pi-Noden, joka on konfiguroitu uudella staattisella IP-osoitteella omassa lähiverkossasi. Täysin pätevä verkkotunnus ja cardano-service tiedosto on asetettu käyttämään porttia 3000. You also need to update the env file used by gLiveView.sh located in $NODE_HOME/scripts.
+Tarvitset Pi-Noden, joka on konfiguroitu uudella staattisella IP-osoitteella omassa lähiverkossasi. Täysin pätevä verkkotunnus ja cardano-service tiedosto on asetettu käyttämään porttia 3000. Sinun täytyy myös päivittää env-tiedosto, jota gLiveView.sh käyttää osoitteessa $NODE_HOME/skripts.
 
 Et ota käyttöön topologian päivityspalvelua core nodessa, joten voit poistaa nämä kaksi komentosarjaa ja poistaa kommentoidun cron työn cron-taulukosta.
 
@@ -93,7 +93,7 @@ Kirjoita **startKesPeriod** arvo ylös & kopioi **kes.vkey** kylmään offline k
 
 Myönnä **node.cert** sertifikaatti käyttäen: **kes.vkey**, **node.skey**, **node.counter** ja **startKesPeriod** arvoa.
 
-Replace **\<startKesPeriod>** with the value you wrote down.
+Korvaa **\<startKesPeriod>** arvolla, jonka kirjoitit ylös.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -172,7 +172,7 @@ cardano-node run +RTS -N4 -RTS \
 {% endtab %}
 {% endtabs %}
 
-Add your relay(s) to mainnet-topolgy.json.
+Lisää relaysi mainnet-topolgy.jsoniin.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -423,7 +423,7 @@ Jos sinulle tulee
 
 Se johtuu siitä, että ydin ei ole lopettanut synkronointia lohkoketjun kärkeen. Tämä voi kestää pitkän aikaa uudelleenkäynnistyksen jälkeen. Jos katsot db/ kansioon cardano-palvelun pysähdyksen jälkeen, näet tiedoston nimeltä 'puhdas'. Se on vahvistustiedosto tietokannan puhtaasta sammutuksesta. Kestää yleensä 5-10 minuuttia synkronoida takaisin ketjun kärkeen Raspberry Pi :lla (näin ainakin epochin 267 kohdalla).
 
-If however the cardano-node does not shutdown 'cleanly' for whatever reason it can take up to an hour to verify the database(chain) and create the socket file. Socket tiedosto luodaan, kun synkronointi on valmis.
+Jos cardano-nodea ei kuitenkaan sammutettu 'puhtaasti', mistä tahansa syystä, voi kestää jopa tunnin tarkistaa tietokanta (ketju) ja luoda uusi socket tiedosto. Socket tiedosto luodaan, kun synkronointi on valmis.
 {% endhint %}
 
 Kysy mainnet protokollan parametrit.
@@ -450,7 +450,7 @@ Staking osoitteen rekisteröinti on 2000 000 lovelacea tai 2 adaa.
 {% endhint %}
 
 {% hint style="Huomaa" %}
-Huomaa, invalid-hereafter syöte. We are taking the current slot number(tip of the chain) and adding 1,000 slots. Jos emme anna allekirjoitettua tapahtumaa ennen kuin ketju saavuttaa tämän syötetyn slotin numeron, tx mitätöidään. Slotti on yksi sekunti, joten sinulla on 166.666667 minuuttia aikaa saada tämä valmiiksi. 🐌
+Huomaa, invalid-hereafter syöte. Otamme nykyisen slotin numeron (ketjun kärki) ja lisäämme siihen 10000 paikkaa. Jos emme anna allekirjoitettua tapahtumaa ennen kuin ketju saavuttaa tämän syötetyn slotin numeron, tx mitätöidään. Slotti on yksi sekunti, joten sinulla on 166.666667 minuuttia aikaa saada tämä valmiiksi. 🐌
 {% endhint %}
 
 Rakenna **tx.tmp** tiedosto, jossa on jo joitakin tx tietoja.
@@ -552,10 +552,10 @@ metadata-url must be less than 64 characters.
 {% endhint %}
 
 {% embed url="https://pages.github.com/" %}
-Hosting your poolMetaData.json on github is popular choice
+poolMetaData.json tiedoston ylläpitäminen githubissa on suosittu tapa.
 {% endembed %}
 
-I say host it on your Pi with NGINX.
+Kannatan tiedoston hostaamista Pi:ssä NGINX:in kanssa.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -567,10 +567,10 @@ nano poolMetaData.json
 {% endtabs %}
 
 {% hint style="Huomaa" %}
-The **extendedPoolMetaData.json** file is used by adapools and others to scrape information like where to find your pool logo and social media links. Unlike the **poolMetaData.json** this files hash is not stored in your registration certificate and can be edited without having to rehash and resubmit **pool.cert**.
+Laajennettua **PoolMetaData.json** tiedostoa käyttävät adapools ja muut palvelut hakeakseen tietoja, kuten mistä löytyy poolisi logo ja sosiaalisen median linkkejä. Toisin kuin **poolMetaData.json** tämän tiedoston hash ei ole tallennettu rekisteröintitodistukseesi ja sitä voidaan muokata ilman poolin rekisterin ** pool.cert ** uudelleenlähettämistä.
 {% endhint %}
 
-Add the following and customize to your metadata.
+Lisää seuraavat muokataksesi metatietojasi.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -595,10 +595,10 @@ cardano-cli stake-pool metadata-hash \
 {% endtab %}
 {% endtabs %}
 
-Copy poolMetaData.json to [https://pages.github.io](https://pages.github.io) or host it yourself along with your website. Be careful not to accidentally insert a space or a new line, which would result in a different hash.
+Kopioi poolMetaData.json osoitteeseen [https://pages.github.io](https://pages.github.io) tai isännöi sitä itse verkkosivustosi mukana. Be careful not to accidentally insert a space or a new line, which would result in a different hash.
 
 {% hint style="info" %}
-Here is my **poolMetaData.json** & **extendedPoolMetaData.json** as a reference and shameless links back to my site. 😰
+Tässä on minun **poolMetaData.json** & **laajennettuPoolMetaData.json** viitteenä ja häpeämättömänä linkkinä takaisin sivustolleni. 😰
 
 [https://adamantium.online/poolMetaData.json](https://adamantium.online/poolMetaData.json)
 
@@ -614,7 +614,7 @@ echo minPoolCost: ${minPoolCost}
 {% endtab %}
 {% endtabs %}
 
-Use the format below to register single or multiple relays.
+Käytä alla olevaa muotoa rekisteröityäksesi yhden tai useamman relayn.
 
 {% tabs %}
 {% tab title="DNS Relay(1)" %}
@@ -651,10 +651,10 @@ Use the format below to register single or multiple relays.
 {% endtabs %}
 
 {% hint style="danger" %}
-Edit the information below to match your pools desired configuration.
+Muokkaa alla olevia tietoja vastaamaan haluamaasi konfiguraatiota.
 {% endhint %}
 
-Copy vrf.vkey and poolMetaDataHash.txt to your cold machine and issue a stake pool registration certificate.
+Kopioi vrf.vkey ja poolMetaDataHash.txt kylmä koneeseen ja myönnä stake poolin rekisteröintitodistus.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
