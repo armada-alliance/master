@@ -8,7 +8,7 @@
 
 ![](../../../.gitbook/assets/screen-shot-2021-03-12-at-5.36.30-pm.png)
 
-**3. Insert the target drive(your SSD or NVMe with usb3 adapter) into your computer and open the "Raspberry Pi Imager".**
+**3. Aseta kohdeasema (SSD tai NVMe usb3-sovittimen avulla) tietokoneeseesi ja avaa "Raspberry Pi Imager".**
 
 ![](../../.gitbook/assets/custom_os.png)
 
