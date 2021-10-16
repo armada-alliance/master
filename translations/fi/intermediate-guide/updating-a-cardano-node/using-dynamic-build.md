@@ -10,7 +10,7 @@ _**Me Armada Allianssissa rakennamme aktiivisesti tarvittavia ohjelmistopakettej
 ### Nykyinen Virallinen Cardano Node Versio: 1.30.1
 {% endhint %}
 
-### Yleiskatsaus 🗒
+### Overview :notepad_spiral:
 
 * [ ] Tarkista, onko libsodium asennettu paikalliseen koneeseen
   * Rakenna libsodium, jos ei ole jo asennettu
@@ -20,7 +20,7 @@ _**Me Armada Allianssissa rakennamme aktiivisesti tarvittavia ohjelmistopakettej
   * Sammuta Cardano node turvallisesti, jos se on käynnissä
 * [ ] Korvaa vanhat binaarit uudella cardano-nodella ja cardano-cli:llä
 * [ ] Tarkista, että cardano-node ja -cli versio on päivitetty nykyiseen versioon
-* [ ] Korvaa vanhat asetustiedostot uusilla \(jos tarpeen\)
+* [ ] Replace old configuration files with new ones (if needed)
 * [ ] Käynnistä Cardano node uudelleen
 * [ ] Tarkista, että palvelin on käynnistynyt oikein
 
@@ -79,15 +79,15 @@ source ~/.bashrc
 
 Ne, jotka suorittavat cardano-nodea järjestelmäpalveluna, käyttävät seuraavia toimintoja:
 
-```text
+```
 sudo ldconfig
 ```
 
-Tämä varmistaa, että järjestelmä on tietoinen libsodiumista \(ei vain käyttäjätasolla\).
+This ensures the system is aware of libsodium (not just at the user level).
 
 ## Lataa cardano-node & -cli
 
-Dynaamiset binaarit ja Cardano node asetustiedostot tarjoaa [SRN pool ](https://armada-alliance.com/stake-pools/cc1b1c03798884c636703443a23b8d9e827d6c0417921600394198a0)🙏 ja ovat saatavissa [Github repositoryssamme](https://github.com/armada-alliance/cardano-node-binaries).
+Dynamic binaries and Cardano node configuration files provided by [SRN pool ](https://armada-alliance.com/stake-pools/cc1b1c03798884c636703443a23b8d9e827d6c0417921600394198a0):pray:  at our [Github repository](https://github.com/armada-alliance/cardano-node-binaries).
 
 ```bash
 wget https://github.com/armada-alliance/cardano-node-binaries/blob/main/dynamic-binaries/1.30.1/cardano-1_30_1-aarch64-ubuntu_2004.zip?raw=true
@@ -189,6 +189,4 @@ Odota muutama sekunti tai tarkista sitten prosessin status
 ```bash
 cardano-service status
 ```
-
-
 
