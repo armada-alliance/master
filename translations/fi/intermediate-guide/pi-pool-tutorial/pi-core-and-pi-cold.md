@@ -5,7 +5,7 @@ description: Luo toiminnalliset avaimet & sertifikaatit. Luo lompakko & rekister
 # Pi-Core/Kylmä kone
 
 {% hint style="danger" %}
-Tarvitset Pi-Noden, joka on konfiguroitu uudella staattisella IP-osoitteella omassa lähiverkossasi. Täysin pätevä verkkotunnus ja cardano-service tiedosto on asetettu käyttämään porttia 3000. Sinun täytyy myös päivittää env-tiedosto, jota gLiveView.sh käyttää osoitteessa $NODE\_HOME/skripts.
+Tarvitset Pi-Noden, joka on konfiguroitu uudella staattisella IP-osoitteella omassa lähiverkossasi. Täysin pätevä verkkotunnus ja cardano-service tiedosto on asetettu käyttämään porttia 3000. You also need to update the env file used by gLiveView.sh located in $NODE_HOME/scripts.
 
 Et ota käyttöön topologian päivityspalvelua core nodessa, joten voit poistaa nämä kaksi komentosarjaa ja poistaa kommentoidun cron työn cron-taulukosta.
 
@@ -24,7 +24,7 @@ Cardano-lompakko ei rakennu Arm koneisiin riippuvuuden epäonnistumisen vuoksi. 
 
 ### Ota blockfetch seuranta käyttöön
 
-```text
+```
 sed -i ${NODE_FILES}-mainnet-config.json \
     -e "s/TraceBlockFetchDecisions\": false/TraceBlockFetchDecisions\": true/g"
 ```
@@ -93,7 +93,7 @@ Kirjoita **startKesPeriod** arvo ylös & kopioi **kes.vkey** kylmään offline k
 
 Myönnä **node.cert** sertifikaatti käyttäen: **kes.vkey**, **node.skey**, **node.counter** ja **startKesPeriod** arvoa.
 
-Korvaa **&lt;startKesPeriod&gt;** arvolla, jonka kirjoitit ylös.
+Replace **\<startKesPeriod>** with the value you wrote down.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -172,7 +172,7 @@ cardano-node run +RTS -N4 -RTS \
 {% endtab %}
 {% endtabs %}
 
-Lisää relaysi mainnet-topolgy.jsoniin.
+Add your relay(s) to mainnet-topolgy.json.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -188,7 +188,7 @@ Valency suurempi kuin yksi käytetään vain DNS round robin srv tietueiden kans
 
 {% tabs %}
 {% tab title="1 Relay DNS" %}
-```text
+```
 {
   "Producers": [
     {
@@ -202,7 +202,7 @@ Valency suurempi kuin yksi käytetään vain DNS round robin srv tietueiden kans
 {% endtab %}
 
 {% tab title="2 Relays DNS" %}
-```text
+```
 {
   "Producers": [
     {
@@ -221,7 +221,7 @@ Valency suurempi kuin yksi käytetään vain DNS round robin srv tietueiden kans
 {% endtab %}
 
 {% tab title="1 Relay IPv4" %}
-```text
+```
 {
   "Producers": [
     {
@@ -235,7 +235,7 @@ Valency suurempi kuin yksi käytetään vain DNS round robin srv tietueiden kans
 {% endtab %}
 
 {% tab title="2 Relays IPv4" %}
-```text
+```
 {
   "Producers": [
     {
@@ -331,7 +331,7 @@ cardano-cli address build \
 
 ### 5. Siirrä varoja lompakkoon
 
-```text
+```
 cat payment.addr
 ```
 
@@ -423,12 +423,12 @@ Jos sinulle tulee
 
 Se johtuu siitä, että ydin ei ole lopettanut synkronointia lohkoketjun kärkeen. Tämä voi kestää pitkän aikaa uudelleenkäynnistyksen jälkeen. Jos katsot db/ kansioon cardano-palvelun pysähdyksen jälkeen, näet tiedoston nimeltä 'puhdas'. Se on vahvistustiedosto tietokannan puhtaasta sammutuksesta. Kestää yleensä 5-10 minuuttia synkronoida takaisin ketjun kärkeen Raspberry Pi :lla (näin ainakin epochin 267 kohdalla).
 
-Jos cardano-nodea ei kuitenkaan sammutettu 'puhtaasti', mistä tahansa syystä, voi kestää jopa tunnin tarkistaa tietokanta \(ketju \) ja luoda uusi socket tiedosto. Socket tiedosto luodaan, kun synkronointi on valmis.
+If however the cardano-node does not shutdown 'cleanly' for whatever reason it can take up to an hour to verify the database(chain) and create the socket file. Socket tiedosto luodaan, kun synkronointi on valmis.
 {% endhint %}
 
 Kysy mainnet protokollan parametrit.
 
-```text
+```
 cardano-cli query protocol-parameters \
     --mainnet \
     --out-file params.json
@@ -450,7 +450,7 @@ Staking osoitteen rekisteröinti on 2000 000 lovelacea tai 2 adaa.
 {% endhint %}
 
 {% hint style="Huomaa" %}
-Huomaa, invalid-hereafter syöte. Otamme nykyisen slotin numeron\(ketjun kärki\) ja lisäämme siihen 10000 paikkaa. Jos emme anna allekirjoitettua tapahtumaa ennen kuin ketju saavuttaa tämän syötetyn slotin numeron, tx mitätöidään. Slotti on yksi sekunti, joten sinulla on 166.666667 minuuttia aikaa saada tämä valmiiksi. 🐌
+Huomaa, invalid-hereafter syöte. We are taking the current slot number(tip of the chain) and adding 1,000 slots. Jos emme anna allekirjoitettua tapahtumaa ennen kuin ketju saavuttaa tämän syötetyn slotin numeron, tx mitätöidään. Slotti on yksi sekunti, joten sinulla on 166.666667 minuuttia aikaa saada tämä valmiiksi. 🐌
 {% endhint %}
 
 Rakenna **tx.tmp** tiedosto, jossa on jo joitakin tx tietoja.
@@ -551,9 +551,11 @@ Luo **poolMetaData.json** tiedosto. Se sisältää tärkeitä tietoja poolistasi
 metadata-url must be less than 64 characters.
 {% endhint %}
 
-{% embed url="https://pages.github.com/" caption="Hosting your poolMetaData.json on github is popular choice" %}
+{% embed url="https://pages.github.com/" %}
+Hosting your poolMetaData.json on github is popular choice
+{% endembed %}
 
-Kannatan tiedoston hostaamista Pi:ssä NGINX:in kanssa.
+I say host it on your Pi with NGINX.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -565,14 +567,14 @@ nano poolMetaData.json
 {% endtabs %}
 
 {% hint style="Huomaa" %}
-Laajennettua **PoolMetaData.json** tiedostoa käyttävät adapoolit ja muut hakeakseen tietoja, kuten mistä löytyy poolisi logo ja sosiaalisen median linkkejä. Toisin kuin **poolMetaData.json** tämän tiedoston hash ei ole tallennettu rekisteröintitodistukseesi ja sitä voidaan muokata ilman poolin rekisterin ** pool.cert ** uudelleenlähettämistä.
+The **extendedPoolMetaData.json** file is used by adapools and others to scrape information like where to find your pool logo and social media links. Unlike the **poolMetaData.json** this files hash is not stored in your registration certificate and can be edited without having to rehash and resubmit **pool.cert**.
 {% endhint %}
 
-Lisää seuraavat ja muokkaa metatietojasi.
+Add the following and customize to your metadata.
 
 {% tabs %}
 {% tab title="Core" %}
-```text
+```
 {
 "name": "Pool Name",
 "description": "Pool description, no longer than 255 characters.",
@@ -593,10 +595,10 @@ cardano-cli stake-pool metadata-hash \
 {% endtab %}
 {% endtabs %}
 
-Kopioi poolMetaData.json osoitteeseen [https://pages.github.io](https://pages.github.io) tai isännöi sitä itse verkkosivustosi mukana. Varo ettet vahingossa syötä uutta välilyöntiä tai riviä, mikä johtaisi erilaiseen hashiin.
+Copy poolMetaData.json to [https://pages.github.io](https://pages.github.io) or host it yourself along with your website. Be careful not to accidentally insert a space or a new line, which would result in a different hash.
 
 {% hint style="info" %}
-Tässä on minun **poolMetaData.json** & **laajennettuPoolMetaData.json** viitteenä ja häpeämättömänä linkkinä takaisin sivustolleni. 😰
+Here is my **poolMetaData.json** & **extendedPoolMetaData.json** as a reference and shameless links back to my site. 😰
 
 [https://adamantium.online/poolMetaData.json](https://adamantium.online/poolMetaData.json)
 
@@ -612,25 +614,25 @@ echo minPoolCost: ${minPoolCost}
 {% endtab %}
 {% endtabs %}
 
-Käytä alla olevaa muotoa rekisteröityäksesi yhden tai useamman releen.
+Use the format below to register single or multiple relays.
 
 {% tabs %}
-{% tab title="DNS Relay\(1\)" %}
-```text
+{% tab title="DNS Relay(1)" %}
+```
 --single-host-pool-relay <r1.example.com> \
 --pool-relay-port <R1 NODE PORT> \
 ```
 {% endtab %}
 
-{% tab title="IPv4 Relay\(1\)" %}
-```text
+{% tab title="IPv4 Relay(1)" %}
+```
 --pool-relay-ipv4 <RELAY NODE PUBLIC IP> \
 --pool-relay-port <R1 NODE PORT> \
 ```
 {% endtab %}
 
-{% tab title="DNS Relay\(2\)" %}
-```text
+{% tab title="DNS Relay(2)" %}
+```
 --single-host-pool-relay <r1.example.com> \
 --pool-relay-port <R1 NODE PORT> \
 --single-host-pool-relay <r2.example.com> \
@@ -638,8 +640,8 @@ Käytä alla olevaa muotoa rekisteröityäksesi yhden tai useamman releen.
 ```
 {% endtab %}
 
-{% tab title="IPv4 Relay\(2\)" %}
-```text
+{% tab title="IPv4 Relay(2)" %}
+```
 --pool-relay-ipv4 <R1 NODE PUBLIC IP> \
 --pool-relay-port <R1 NODE PORT> \
 --pool-relay-ipv4 <R2 NODE PUBLIC IP> \
@@ -649,10 +651,10 @@ Käytä alla olevaa muotoa rekisteröityäksesi yhden tai useamman releen.
 {% endtabs %}
 
 {% hint style="danger" %}
-Muokkaa alla olevia tietoja vastaamaan haluamaasi konfiguraatiota.
+Edit the information below to match your pools desired configuration.
 {% endhint %}
 
-Kopioi vrf.vkey ja poolMetaDataHash.txt kylmä koneeseen ja myönnä stake poolin rekisteröintitodistus.
+Copy vrf.vkey and poolMetaDataHash.txt to your cold machine and issue a stake pool registration certificate.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -675,7 +677,7 @@ cardano-cli stake-pool registration-certificate \
 {% endtab %}
 {% endtabs %}
 
-Anna delegointitodistus **stake.skey** & **node.vkey**.
+Issue a delegation certificate from **stake.skey** & **node.vkey**.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -688,7 +690,7 @@ cardano-cli stake-address delegation-certificate \
 {% endtab %}
 {% endtabs %}
 
-Nouda stake poolisi id.
+Retrieve your stake pool id.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -699,9 +701,9 @@ cat stakePoolId.txt
 {% endtab %}
 {% endtabs %}
 
-Siirrä **pool.cert**, **deleg.cert** & **stakePoolId.txt** online core node koneeseesi.
+Move **pool.cert**, **deleg.cert** & **stakePoolId.txt** to your online core machine.
 
-Kysy ketjun nykyinen slotti eli kärki.
+Query the current slot number or tip of the chain.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -742,7 +744,7 @@ echo Number of UTXOs: ${txcnt}
 {% endtab %}
 {% endtabs %}
 
-Tiedustele **params.json** -tiedostosta stake poolin rekisteröintitalletuksen arvo. Spoiler: se on 500 ada mutta se voi muuttua tulevaisuudessa.
+Parse **params.json** for stake pool registration deposit value. Spoiler: it's 500 ada but that could change in the future.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -753,7 +755,7 @@ echo stakePoolDeposit: ${stakePoolDeposit}
 {% endtab %}
 {% endtabs %}
 
-Rakenna väliaikainen **tx.tmp** pitääksesi tietoja samalla kun rakennamme raakatapahtumatiedostomme.
+Build temporary **tx.tmp** to hold information while we build our raw transaction file.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -770,7 +772,7 @@ cardano-cli transaction build-raw \
 {% endtab %}
 {% endtabs %}
 
-Laske tapahtumamaksu.
+Calculate the transaction fee.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -788,7 +790,7 @@ fee=$(cardano-cli transaction calculate-min-fee \
 {% endtab %}
 {% endtabs %}
 
-Laske muutoksesi tulos.
+Calculate your change output.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -799,7 +801,7 @@ echo txOut: ${txOut}
 {% endtab %}
 {% endtabs %}
 
-Rakenna **tx.raw** \(allekirjoittamaton\) tapahtumatiedosto.
+Build your **tx.raw** (unsigned) transaction file.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -816,9 +818,9 @@ cardano-cli transaction build-raw \
 {% endtab %}
 {% endtabs %}
 
-Siirrä **tx.raw** kylmään offline-koneeseen.
+Move **tx.raw** to your cold offline machine.
 
-Allekirjoita tapahtuma **payment.skey**, **node.skey** & **stake.skey**.
+Sign the transaction with your **payment.skey**, **node.skey** & **stake.skey**.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -834,7 +836,7 @@ cardano-cli transaction sign \
 {% endtab %}
 {% endtabs %}
 
-Siirrä **tx.signed** takaisin core palvelimellesi & lähetä tapahtuma lohkoketjuun.
+Move **tx.signed** back to your core node & submit the transaction to the blockchain.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -850,25 +852,24 @@ cardano-cli transaction submit \
 
 ### pool.vet
 
-pool.vet on verkkosivusto, jossa poolin operaattorit voivat tarkistaa poolinsa ketjuun lähtetetyt tiedot. Voit tarkistaa tämän sivuston löytääksesi ongelmia ja vihjeitä siitä, miten korjata ne.
+pool.vet is a website for pool operators to check the validity of their stake pools on chain data. You can check this site for problems and clues as to how to fix them.
 
-{% embed url="https://pool.vet/" caption="" %}
+{% embed url="https://pool.vet/" %}
 
 ### adapools.org
 
 Sinun pitäisi luoda tili ja lunastaa poolisi täällä.
 
-{% embed url="https://adapools.org/" caption="" %}
+{% embed url="https://adapools.org/" %}
 
 ### pooltool.io
 
 Sinun pitäisi luoda tili ja lunastaa poolisi täällä.
 
-{% embed url="https://pooltool.io/" caption="" %}
+{% embed url="https://pooltool.io/" %}
 
 ## Varmuuskopiointi
 
-Hanki pari pientä usb-tikkua ja varmuuskopioi kaikki tiedostot ja kansiot\(lukuun ottamatta db/ kansiota\). Varmuuskopioi online Core ensin ja sitten kylmän offline koneen tiedostot ja kansiot. **Tee se nyt**, odottaminen ei ole riskin arvoista! **Älä kytke USB-tikkua mihinkään mikä on verkkossa sen jälkeen, kun kylmät tiedostot ovat siellä!**
+Get a couple small usb sticks and backup all your files and folders(except the db/ folder). Backup your online Core first then the Cold offline files and folders. **Do it now**, not worth the risk! **Do not plug the USB stick into anything online after Cold files are on it!**
 
-![https://twitter.com/insaladaPool/status/1380087586509709312?s=19](../../.gitbook/assets/insalada%20%282%29.png)
-
+![https://twitter.com/insaladaPool/status/1380087586509709312?s=19](../../../.gitbook/assets/insalada (2).png)
