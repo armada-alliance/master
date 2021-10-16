@@ -7,7 +7,7 @@ description: >-
 
 [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz) on ennalta määritetty Cardano Node, jota voidaan käyttää NFT:n luomiseen, lähettämään tapahtumia tai edelleen konfiguroida relay tai ydin nodeksi stake pool käyttöön. Se on konfiguroitu kaikella mitä tarvitset asentaaksesi nopeasti synkronoidun noden sisältäen Nginx proxypass Grafanan TLS salaukselle itse allekirjoitetulla varmenteella, toimintavalmiin topology updaterin ja gLiveView-ohjelman.
 
-![](../../.gitbook/assets/photo_2021-03-09-13.40.29.jpeg)
+![](../../../.gitbook/assets/photo\_2021-03-09-13.40.29.jpeg)
 
 {% hint style="danger" %}
 On erittäin suositeltavaa käydä läpi Cardano Foundationin [Stake Pool School](https://cardano-foundation.gitbook.io/stake-pool-course/) -kurssi.
@@ -19,7 +19,7 @@ Jos haluat luoda .img tiedoston työstäsi, joka voidaan ottaa uudelleenkäyttö
 
 ## Miksi tämä opas?
 
-Yhdistämme ja järjestelemme eri oppaita yhteen asiakirjaan, jota on helppo seurata tai johon voidaan viitata _erityisesti_ stake poolin ylläpitoon kahdella \(tai useammalla\) Raspberry Pi 4B:llä \(8GB versio\) ja yhdellä offline Pi:llä, joka tarvitaan kylmä avain operaatioihin.
+Consolidate and organize the various guides into a single document that can be followed or referenced _specifically_ for running a pool using two (or more) Raspberry Pi 4B (the 8GB version) and one offline Pi for cold key operations.
 
 Toimitetaan dokumentaatio jokaisesta vaiheesta kun samalla rakennetaan Pi-Node imagea pool luomiseen. Viite & opas.
 
@@ -38,9 +38,9 @@ Cardano-node ja cardano-cli, joihin tässä oppaassa viitataan, tarvitsevat toim
 ### Ostoslista
 
 * 2 [Pi4B 8GB](https://thepihut.com/products/raspberry-pi-4-model-b?variant=31994565689406) versio.
-* 2 Asemaa: \(NVMe **pieni virrankulutus**, muoto & nopeus\).
+* 2 Drives : (NVMe **low power**, form & speed).
 * M.2 avain USB3.1 adapteriin tai mikä tahansa mikä toimii oman asemasi kanssa.
-* Kolmas 64bit kykenevä Pi offline-kone\(Cold\).
+* A 3'rd 64bit capable Pi as an offline machine(Cold).
 * Luokan 10 micro Sd-kortti 8GB tai suurempi.
 * Ylimääräisiä USB flash-asemia avainten ja konfiguraatioiden varmuuskopiointiin.
 * Harkitse yhtä 50 watin virtalähdettä
@@ -49,8 +49,8 @@ Cardano-node ja cardano-cli, joihin tässä oppaassa viitataan, tarvitsevat toim
 
 ## Kiitokset ja Yhteisö
 
-* [Alessandro konrad](https://github.com/alessandrokonrad) \|[ Berry](https://adapools.org/pool/2a748e3885f6f73320ad16a8331247b81fe01b8d39f57eec9caa5091) \(@berry\_ales\)
-* Moritz Angermann \| [zw3rk](https://adapools.org/pool/e2c17915148f698723cb234f3cd89e9325f40b89af9fd6e1f9d1701a) \(@zw3rk\)
+* [Alessandro konrad](https://github.com/alessandrokonrad) |[ Berry](https://adapools.org/pool/2a748e3885f6f73320ad16a8331247b81fe01b8d39f57eec9caa5091) (@berry_ales)
+* Moritz Angermann | [zw3rk](https://adapools.org/pool/e2c17915148f698723cb234f3cd89e9325f40b89af9fd6e1f9d1701a) (@zw3rk)
 * [CoinCashew: guide-how-to-build-a-haskell-stakepool-node](https://www.coincashew.com/coins/overview-ada/guide-how-to-build-a-haskell-stakepool-node)
 * [Chris-Graffagnino](https://github.com/Chris-Graffagnino)/[Setup Cardano Shelley staking node](https://github.com/Chris-Graffagnino/Jormungandr-for-Newbs/blob/master/docs/jormungandr_node_setup_guide.md)
 * [Arming Cardano](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w) Telegram Group
@@ -62,11 +62,11 @@ Cardano-node ja cardano-cli, joihin tässä oppaassa viitataan, tarvitsevat toim
 * [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz)
 * Viimeisimmät epäviralliset [staattiset arm binäärit](https://ci.zw3rk.com/build/1758)
   * [Moritz Angermann](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w)
-* Raspberry Pi Imager \([rpi-imager](https://github.com/raspberrypi/rpi-imager)\)
+* Raspberry Pi Imager ([rpi-imager](https://github.com/raspberrypi/rpi-imager))
   * päivitä eeprom
   * flash .img tiedostot/asenna Ubuntu
 * [PiShrink](https://github.com/Drewsif/PiShrink)
-* [cardanocli-js](https://docs.pipool.online/)
+* [cardanocli-js](https://docs.pipool.online)
 * Viimeisimmän ketjun tilannekuva nopeampaa synkronointia varten
   * wget -r -np -nH -R "index.html\*" -e robots=off [https://db.adamantium.online/db/](https://db.adamantium.online/db/)
 
@@ -74,4 +74,3 @@ Cardano-node ja cardano-cli, joihin tässä oppaassa viitataan, tarvitsevat toim
 
 * [https://cryptsus.com/blog/how-to-secure-your-ssh-server-with-public-key-elliptic-curve-ed25519-crypto.html](https://cryptsus.com/blog/how-to-secure-your-ssh-server-with-public-key-elliptic-curve-ed25519-crypto.html)
 * [https://www.raspberrypi.org/forums/viewtopic.php?t=245931](https://www.raspberrypi.org/forums/viewtopic.php?t=245931)
-
