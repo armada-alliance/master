@@ -9,7 +9,7 @@ description: Flash image
 Lataa, asenna & avaa [Raspberry Pi Imager](https://github.com/raspberrypi/rpi-imager/releases/latest). Kytke USB-asema laittteeseen.
 
 {% tabs %}
-{% välilehden otsikko="Paikallinen kone \(Ubuntu\)" %}
+{% tab title="Local Machine (Ubuntu)" %}
 ```bash
 # Ubuntu users can download and install with snapd
 sudo apt update
@@ -24,41 +24,39 @@ Vanhempien Pi4B 8GB mallien bootloader täytyy päivittää, jotta laite käynni
 
 Kytke Pi monitoriin, aseta SD-kortti paikoilleen ja laita virta päälle. Kun näet vihreän näytön, laitteesi pitäisi olla valmis käynnistymään USB3 asemasta. Uudemmat RPi4B versiot toimitetaan bootloaderilla joka tukee valmiiksi USB-käynnistystä. **Feeling lucky?**
 
-**Choose OS -&gt; Misc utility images -&gt; Raspberry Pi 4 EEPROM boot recovery** [https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
+**Choose OS -> Misc utility images -> Raspberry Pi 4 EEPROM boot recovery** [https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
 {% endhint %}
 
-![](../../../.gitbook/assets/otgpoltut%20%281%29%20%281%29%20%283%29%20%283%29.png)
+![](../../../../.gitbook/assets/otgpoltut (1) (1) (3) (3).png)
 
 {% tabs %}
 {% tab title="Pre configured Pi-Node.img.gz" %}
 ### Hanki Pi-Pool .img.gz tiedosto
 
 | [Pi-Node](https://db.adamantium.online/Pi-Node.img.gz) |
-|:------------------------------------------------------ |
+| ------------------------------------------------------ |
 |                                                        |
-
 
 ### Raspberry Pi Imager -ohjelmassa
 
-**Choose OS -&gt; Use custom**
+**Choose OS -> Use custom**
 
 Locate the .img.gz file you downloaded & wish to flash.
 
 Locate your target drive & write it to disk.
 
-![](../../../.gitbook/assets/image-2-%20%281%29%20%283%29.png)
+![](../../../.gitbook/assets/custom_os.png)
 {% endtab %}
 
 {% tab title="Fresh Ubuntu 21.04 installation" %}
 ### Raspberry Pi Imager -ohjelmassa
 
-### Valitse Ubuntu Palvelin 21.04 \(RPI 3/4/400\)
+### Select  Ubuntu Server 21.04 (RPI 3/4/400)
 
-**Choose OS -&gt; Other general purpose OS -&gt; Ubuntu -&gt; Ubuntu Server 21.04 \(RPI 3/4/400\)**. 64-bittinen palvelin vaihtoehto.
+**Choose OS -> Other general purpose OS -> Ubuntu -> Ubuntu Server 21.04 (RPI 3/4/400)**. 64-bittinen palvelin vaihtoehto.
 
 Etsi kohdeasema & kirjoita se levylle.
 
-![](../../../.gitbook/assets/21.04-rpi-imager.png)
+![](../../../../.gitbook/assets/21.04-rpi-imager.png)
 {% endtab %}
 {% endtabs %}
-
