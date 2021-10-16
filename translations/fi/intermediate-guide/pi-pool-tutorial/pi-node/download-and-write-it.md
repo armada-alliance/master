@@ -9,7 +9,7 @@ description: Flash image
 Lataa, asenna & avaa [Raspberry Pi Imager](https://github.com/raspberrypi/rpi-imager/releases/latest). Kytke USB-asema laittteeseen.
 
 {% tabs %}
-{% tab title="Local Machine (Ubuntu)" %}
+{% välilehden otsikko="Paikallinen kone (Ubuntu)" %}
 ```bash
 # Ubuntu users can download and install with snapd
 sudo apt update
@@ -51,7 +51,7 @@ Locate your target drive & write it to disk.
 {% tab title="Fresh Ubuntu 21.04 installation" %}
 ### Raspberry Pi Imager -ohjelmassa
 
-### Select  Ubuntu Server 21.04 (RPI 3/4/400)
+### Valitse Ubuntu Palvelin 21.04 (RPI 3/4/400)
 
 **Choose OS -> Other general purpose OS -> Ubuntu -> Ubuntu Server 21.04 (RPI 3/4/400)**. 64-bittinen palvelin vaihtoehto.
 
