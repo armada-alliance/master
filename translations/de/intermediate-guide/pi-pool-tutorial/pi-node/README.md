@@ -3,7 +3,7 @@ description: >-
   Quickly bootstrap a synced configured node in a hour(not an hour anymore 1.29)!
 ---
 
-# Pi-Node \(quick start\)
+# Pi-Node (Schnellstart)
 
 {% hint style="info" %}
 It will take about 25 minutes to download the chain and another hour or so to sync to the tip. You will not be able to do much until your node has synced with the tip of the block chain.
@@ -67,6 +67,13 @@ cardano-service status
 cardano-monitor status
 ```
 
+Journal-Ausgabe oder Syslog folgen
+
+```
+sudo journalctl --unit=cardano-node --follow
+sudo tail -f /var/log/syslog
+```
+
 ### 8. 8. gliveview.sh
 
 ```bash
@@ -76,17 +83,16 @@ cd $NODE_HOME/scripts
 
 ### 9. Grafana.
 
-Enter your Node's IPv4 address in your browser.
+Geben Sie die IPv4-Adresse Ihres Knotens in Ihren Browser ein.
 
-Default credentials = **admin:admin**
+Standard-Anmeldedaten = **admin:admin**
 
 #### Dashboards can be found here.
 
-{% embed url="https://github.com/armada-alliance/dashboards" caption="" %}
+{% embed url="https://github.com/armada-alliance/dashboards" %}
 
-{% embed url="https://api.pooldata.live/" caption="" %}
+{% embed url="https://api.pooldata.live/" %}
 
 {% hint style="info" %}
-The following guide builds out the image, use it as a reference and please feel free to ask for clarification in our Telegram channel. [https://t.me/armada\_alli](https://t.me/armada_alli)
+Der folgende Guide baut das Image auf und benutzt ihn als Referenz. Bitte fragt in unserem Telegram-Kanal nach falls Unklarheiten herrschen sollten. [https://t.me/armada_alli](https://t.me/armada_alli)
 {% endhint %}
-
