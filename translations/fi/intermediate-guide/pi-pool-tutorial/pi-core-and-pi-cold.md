@@ -677,7 +677,7 @@ cardano-cli stake-pool registration-certificate \
 {% endtab %}
 {% endtabs %}
 
-Issue a delegation certificate from **stake.skey** & **node.vkey**.
+Anna delegointitodistus **stake.skey** & **node.vkey** avainten avulla.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -690,7 +690,7 @@ cardano-cli stake-address delegation-certificate \
 {% endtab %}
 {% endtabs %}
 
-Retrieve your stake pool id.
+Nouda stake poolisi id.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
