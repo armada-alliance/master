@@ -3,7 +3,7 @@ description: >-
   Rakenna synkronoitu node noin tunnissa (ei enää tuntia 1.29)!
 ---
 
-# Pi-Node (quick start)
+# Pi-Node (pikaopas)
 
 {% hint style="info" %}
 Ketjun lataaminen kestää noin 25 minuuttia ja noin tunti että se on synkronoitu kärkeen saakka. Et voi tehdä paljoakaan ennen kuin node on synkronoitu lohkoketjun kärkeen asti.
@@ -67,7 +67,7 @@ cardano-service status
 cardano-monitor status
 ```
 
-Follow journal output or syslog
+Seuraa päiväkirja tai syslogia
 
 ```
 sudo journalctl --unit=cardano-node --follow
@@ -83,9 +83,9 @@ cd $NODE_HOME/scripts
 
 ### 9. Grafana.
 
-Enter your Node's IPv4 address in your browser.
+Syötä Node:n IPv4 -osoite selaimesi osoitekenttään.
 
-Default credentials = **admin:admin**
+Oletus käyttäjätunnus ja salasana = **admin:admin**
 
 #### Kojelaudat löytyvät täältä.
 
@@ -94,5 +94,5 @@ Default credentials = **admin:admin**
 {% embed url="https://api.pooldata.live/" %}
 
 {% hint style="info" %}
-The following guide builds out the image, use it as a reference and please feel free to ask for clarification in our Telegram channel. [https://t.me/armada_alli](https://t.me/armada_alli)
+Seuraava opas rakentaa imagen, käytä sitä viitteenä ja voit vapaasti pyytää selvennystä Telegram kanavassamme. [https://t.me/armada_alli](https://t.me/armada_alli)
 {% endhint %}
