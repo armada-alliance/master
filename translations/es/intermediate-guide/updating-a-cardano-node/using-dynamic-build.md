@@ -10,7 +10,7 @@ _**We at the Armada Alliance actively build the required software packages neede
 ### Current Official Cardano Node Version: 1.30.1
 {% endhint %}
 
-### Overview 🗒
+### Overview :notepad_spiral:
 
 * [ ] Check if libsodium is installed on the local machine
   * Build libsodium if not installed already
@@ -20,7 +20,7 @@ _**We at the Armada Alliance actively build the required software packages neede
   * Safely shutdown your Cardano node if it is running
 * [ ] Replace the old binaries with the new cardano-node and cardano-cli
 * [ ] Check cardano-node and cli version is updated to the current version
-* [ ] Replace old configuration files with new ones \(if needed\)
+* [ ] Replace old configuration files with new ones (if needed)
 * [ ] Restart your Cardano Node
 * [ ] Check that node has started properly
 
@@ -79,15 +79,15 @@ source ~/.bashrc
 
 For those who run cardano-node as a systemd service, run the following:
 
-```text
+```
 sudo ldconfig
 ```
 
-This ensures the system is aware of libsodium \(not just at the user level\).
+This ensures the system is aware of libsodium (not just at the user level).
 
 ## Download the cardano-node & cli
 
-Dynamic binaries and Cardano node configuration files provided by [SRN pool ](https://armada-alliance.com/stake-pools/cc1b1c03798884c636703443a23b8d9e827d6c0417921600394198a0)🙏  at our [Github repository](https://github.com/armada-alliance/cardano-node-binaries).
+Dynamic binaries and Cardano node configuration files provided by [SRN pool ](https://armada-alliance.com/stake-pools/cc1b1c03798884c636703443a23b8d9e827d6c0417921600394198a0):pray:  at our [Github repository](https://github.com/armada-alliance/cardano-node-binaries).
 
 ```bash
 wget https://github.com/armada-alliance/cardano-node-binaries/blob/main/dynamic-binaries/1.30.1/cardano-1_30_1-aarch64-ubuntu_2004.zip?raw=true
@@ -189,6 +189,4 @@ Wait a few seconds or so then check the status
 ```bash
 cardano-service status
 ```
-
-
 
