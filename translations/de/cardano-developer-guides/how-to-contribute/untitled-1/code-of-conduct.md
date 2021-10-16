@@ -27,29 +27,29 @@ Beispiele für inakzeptables Verhalten sind:
 
 * Der Gebrauch sexualisierter Sprache oder Bilder und sexuelle Aufmerksamkeit oder
 
-  advances of any kind
+  Anmachungen jeglicher Art
 
-* Trolling, insulting or derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing other's private information, such as a physical or email
+* Schikanen, beleidigende oder herabsetzende Kommentare und persönliche oder politische Angriffe
+* Öffentliche oder private Belästigung
+* Veröffentlichen von privaten Informationen anderer wie schriftlicher oder elektronischer Mail
 
-  address, without their explicit permission
+  ohne deren ausdrückliche Erlaubnis
 
-* Other conduct which could reasonably be considered inappropriate in a
+* Sonstiges Verhalten, das in einem
 
-  professional setting
+  beruflichen Umfeld als unangemessen angesehen werden könnte
 
-### Enforcement Responsibilities
+### Durchsetzungsaufgaben
 
-Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
+Die Verantwortlichen der Community sind für die Klärung und Durchsetzung unserer Standards für akzeptables Verhalten verantwortlich und werden angemessene und gerechte Korrekturmaßnahmen ergreifen, um auf jedes Verhalten zu reagieren, das sie für unangemessen halten. bedrohend, beleidigend oder schädlich.
 
-Community leaders have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, and will communicate reasons for moderation decisions when appropriate.
+Die Verantwortlichen der Community haben das Recht und die Verantwortung, Kommentare, Commits, Code, Wiki-Bearbeitungen, Probleme zu entfernen, zu bearbeiten oder abzulehnen und andere Beiträge, die nicht auf diesen Verhaltenskodex abgestimmt sind und gegebenenfalls Gründe für gemäßigte Entscheidungen mitteilen werden.
 
-### Scope
+### Themenfeld
 
-This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces. Examples of representing our community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
+Dieser Verhaltenskodex gilt in allen Gemeinschaftsräumen und auch dann, wenn eine Person die Community offiziell in öffentlichen Räumen repräsentiert vertritt. Beispiele für die Vertretung unserer Community sind die Verwendung einer offiziellen E-Mail-Adresse, posten über einen offiziellen Social Media-Account oder als ernannter Vertreter bei einer Online- oder Offline-Veranstaltung auftreten.
 
-### Enforcement
+### Vollzug
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at \[INSERT CONTACT METHOD\]. All complaints will be reviewed and investigated promptly and fairly.
 
