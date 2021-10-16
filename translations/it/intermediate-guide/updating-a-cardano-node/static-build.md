@@ -10,13 +10,13 @@ This guide follows the same setup as our [Pi-Node guide and image](../pi-pool-tu
 
 ### Overview 🗒
 
-* [ ] Download Cardano Node Dynamic build & configuration file
+* [ ] Download Cardano Node Static build & configuration file
 * [ ] Extract the file's content
 * [ ] Check if you already have Cardano Node service running
   * Safely shutdown your Cardano node if it is running
 * [ ] Replace the old binaries with the new cardano-node and cardano-cli
 * [ ] Check cardano-node and cli version is updated to the current version
-* [ ] Replace old configuration files with new ones \(if needed\)
+* [ ] Replace old configuration files with new ones (if needed)
 * [ ] Restart your Cardano Node
 * [ ] Check that node has started properly
 
@@ -137,4 +137,3 @@ Wait a few seconds or so then check the status
 ```bash
 cardano-service status
 ```
-
