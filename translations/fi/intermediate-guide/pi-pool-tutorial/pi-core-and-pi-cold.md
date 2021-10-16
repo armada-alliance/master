@@ -701,9 +701,9 @@ cat stakePoolId.txt
 {% endtab %}
 {% endtabs %}
 
-Move **pool.cert**, **deleg.cert** & **stakePoolId.txt** to your online core machine.
+Siirrä **pool.cert**, **deleg.cert** & **stakePoolId.txt** online core node koneeseesi.
 
-Query the current slot number or tip of the chain.
+Kysy ketjun nykyinen slotti eli kärki.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -744,7 +744,7 @@ echo Number of UTXOs: ${txcnt}
 {% endtab %}
 {% endtabs %}
 
-Parse **params.json** for stake pool registration deposit value. Spoiler: it's 500 ada but that could change in the future.
+Tiedustele **params.json** -tiedostosta stake poolin rekisteröintitalletuksen arvo. Spoiler: se on 500 ada mutta se voi muuttua tulevaisuudessa.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -755,7 +755,7 @@ echo stakePoolDeposit: ${stakePoolDeposit}
 {% endtab %}
 {% endtabs %}
 
-Build temporary **tx.tmp** to hold information while we build our raw transaction file.
+Rakenna väliaikainen **tx.tmp** säilyttämään tietoja samalla kun rakennamme raakatapahtumatiedostomme.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -772,7 +772,7 @@ cardano-cli transaction build-raw \
 {% endtab %}
 {% endtabs %}
 
-Calculate the transaction fee.
+Laske tapahtumapalkkio.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -790,7 +790,7 @@ fee=$(cardano-cli transaction calculate-min-fee \
 {% endtab %}
 {% endtabs %}
 
-Calculate your change output.
+Laske muutoksesi tulos.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -801,7 +801,7 @@ echo txOut: ${txOut}
 {% endtab %}
 {% endtabs %}
 
-Build your **tx.raw** (unsigned) transaction file.
+Rakenna **tx.raw** (allekirjoittamaton) tapahtumatiedosto.
 
 {% tabs %}
 {% tab title="Core" %}
@@ -818,9 +818,9 @@ cardano-cli transaction build-raw \
 {% endtab %}
 {% endtabs %}
 
-Move **tx.raw** to your cold offline machine.
+Siirrä **tx.raw** kylmään offline-koneeseen.
 
-Sign the transaction with your **payment.skey**, **node.skey** & **stake.skey**.
+Allekirjoita tapahtuma **payment.skey**, **node.skey** & **stake.skey** avainten avulla.
 
 {% tabs %}
 {% tab title="Cold Offline" %}
@@ -836,7 +836,7 @@ cardano-cli transaction sign \
 {% endtab %}
 {% endtabs %}
 
-Move **tx.signed** back to your core node & submit the transaction to the blockchain.
+Siirrä **tx.signed** takaisin core palvelimellesi & lähetä tapahtuma lohkoketjuun.
 
 {% tabs %}
 {% tab title="Core" %}
