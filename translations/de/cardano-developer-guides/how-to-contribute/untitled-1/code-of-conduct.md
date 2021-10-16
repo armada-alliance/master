@@ -57,37 +57,37 @@ Alle Verantwortlichen der Community sind verpflichtet, die Privatsphäre und die
 
 ### Durchsetzungsrichtlinien
 
-Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct:
+Die Leiter der Community werden diese Richtlinien für die Auswirkungen auf die Gemeinschaft befolgen, wenn sie die Konsequenzen für Handlungen festlegen, die sie als Verstoß gegen diesen Verhaltenskodex ansehen:
 
-#### 1. Correction
+#### 1. Korrekturen
 
-**Community Impact**: Use of inappropriate language or other behavior deemed unprofessional or unwelcome in the community.
+**Auswirkungen auf die Community**: Verwendung unangemessener Sprache oder anderes Verhalten, das als unprofessionell oder unerwünscht in der Community gilt.
 
-**Consequence**: A private, written warning from community leaders, providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
+**Konsequenz**: Eine private, schriftliche Verwarnung durch die Leiter der Community, die Klarheit über die Art des Verstoßes schafft und eine Erklärung liefert, warum das Verhalten unangemessen war. Es kann eine öffentliche Entschuldigung beantragt werden.
 
-#### 2. Warning
+#### 2. Warnung
 
-**Community Impact**: A violation through a single incident or series of actions.
+**Auswirkungen auf die Community**: Ein Verstoß durch einen einzelnen Vorfall oder eine Reihe von Aktionen.
 
-**Consequence**: A warning with consequences for continued behavior. No interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
+**Konsequenz**: Eine Warnung mit Folgen für fortgesetztes Verhalten. Keine Interaktion mit den beteiligten Personen, einschließlich unaufgeforderter Interaktion mit denjenigen, die den Verhaltenskodex durchsetzen, für einen bestimmten Zeitraum. Dazu gehört die Vermeidung von Interaktionen in Community Räumen sowie von externen Kanälen wie z.B. sozialen Medien. Ein Verstoß gegen diese Bestimmungen kann zu einer vorübergehenden oder dauerhaften Ausweisung führen.
 
-#### 3. Temporary Ban
+#### 3. Temporärer Ausschluss
 
-**Community Impact**: A serious violation of community standards, including sustained inappropriate behavior.
+**Auswirkungen auf die Community**: Ein schwerwiegender Verstoß gegen die Community Standards, einschließlich anhaltend unangemessenen Verhaltens.
 
-**Consequence**: A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, is allowed during this period. Violating these terms may lead to a permanent ban.
+**Folgen**: Ein temporärer Ausschluss von jeglicher Art von Interaktion oder öffentlicher Kommunikation mit der Community für einen bestimmten Zeitraum. Während dieser Zeit ist keine öffentliche oder private Interaktion mit den beteiligten Personen erlaubt, auch nicht mit denjenigen, die den Verhaltenskodex durchsetzen. Ein Verstoß gegen diese Bestimmungen kann zu einer vorübergehenden oder dauerhaften Ausschluss führen.
 
-#### 4. Permanent Ban
+#### 4. Dauerhafter Ausschluss
 
-**Community Impact**: Demonstrating a pattern of violation of community standards, including sustained inappropriate behavior, harassment of an individual, or aggression toward or disparagement of classes of individuals.
+**Auswirkungen auf die Community**: Nachweis eines Verstoßes gegen die Gemeinschaftsnormen, einschließlich eines anhaltenden unangemessenen Verhaltens, der Belästigung einer Person oder der Aggression gegenüber oder der Verunglimpfung von Gruppen von Personen.
 
-**Consequence**: A permanent ban from any sort of public interaction within the community.
+**Folgen**: Ein dauerhaftes Verbot jeder Art von öffentlicher Interaktion innerhalb der Community.
 
-### Attribution
+### Zuweisung
 
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.0, available at [https://www.contributor-covenant.org/version/2/0/code\_of\_conduct.html](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html).
+Dieser Verhaltenskodex basiert auf dem [Contributor Covenant](http://contributor-covenant.org), Version 1.4, verfügbar unter [http://contributor-covenant.org/version/1/4/de/](http://contributor-covenant.org/version/1/4/)
 
-Community Impact Guidelines were inspired by [Mozilla's code of conduct enforcement ladder](https://github.com/mozilla/diversity).
+Community Impact Guidelines wurden durch die [Mozilla's code of conduct enforcement ladder](https://github.com/mozilla/diversity) inspiriert.
 
-For answers to common questions about this code of conduct, see the FAQ at [https://www.contributor-covenant.org/faq](https://www.contributor-covenant.org/faq). Translations are available at [https://www.contributor-covenant.org/translations](https://www.contributor-covenant.org/translations).
+Antworten auf häufige Fragen zu diesem Verhaltenskodex finden Sie in der FAQ unter [https://www.contributor-covenant.org/faq](https://www.contributor-covenant.org/faq). Übersetzungen sind unter [https://www.contributor-covenant.org/translations](https://www.contributor-covenant.org/translations) verfügbar.
 
