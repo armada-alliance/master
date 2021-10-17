@@ -10,7 +10,7 @@ _**Me Armada Allianssissa rakennamme aktiivisesti tarvittavia ohjelmistopakettej
 ### Nykyinen Virallinen Cardano Node Versio: 1.30.1
 {% endhint %}
 
-### Overview :notepad_spiral:
+### Yleiskatsaus :notepad_spiral:
 
 * [ ] Tarkista, onko libsodium asennettu paikalliseen koneeseen
   * Rakenna libsodium, jos ei ole jo asennettu
@@ -20,7 +20,7 @@ _**Me Armada Allianssissa rakennamme aktiivisesti tarvittavia ohjelmistopakettej
   * Sammuta Cardano node turvallisesti, jos se on käynnissä
 * [ ] Korvaa vanhat binaarit uudella cardano-nodella ja cardano-cli:llä
 * [ ] Tarkista, että cardano-node ja -cli versio on päivitetty nykyiseen versioon
-* [ ] Replace old configuration files with new ones (if needed)
+* [ ] Korvaa vanhat asetustiedostot uusilla (jos tarpeen)
 * [ ] Käynnistä Cardano node uudelleen
 * [ ] Tarkista, että palvelin on käynnistynyt oikein
 
@@ -83,7 +83,7 @@ Ne, jotka suorittavat cardano-nodea järjestelmäpalveluna, käyttävät seuraav
 sudo ldconfig
 ```
 
-This ensures the system is aware of libsodium (not just at the user level).
+Tämä varmistaa, että järjestelmä on tietoinen libsodiumista (ei vain käyttäjätasolla).
 
 ## Lataa cardano-node & -cli
 
