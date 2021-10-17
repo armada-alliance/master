@@ -852,7 +852,7 @@ cardano-cli transaction submit \
 
 ### pool.vet
 
-pool.vet is a website for pool operators to check the validity of their stake pools on chain data. You can check this site for problems and clues as to how to fix them.
+pool.vet on verkkosivusto, jossa stake pool operaattorit voivat tarkistaa omasta poolistaan ketjuun lähtetetyt tiedot. Voit tarkistaa tämän sivuston löytääksesi mahdollisia ongelmia ja saat vihjeitä siitä miten korjata ne.
 
 {% embed url="https://pool.vet/" %}
 
@@ -870,6 +870,6 @@ Sinun pitäisi luoda tili ja lunastaa poolisi täällä.
 
 ## Varmuuskopiointi
 
-Get a couple small usb sticks and backup all your files and folders(except the db/ folder). Backup your online Core first then the Cold offline files and folders. **Do it now**, not worth the risk! **Do not plug the USB stick into anything online after Cold files are on it!**
+Hanki pari pientä usb-tikkua ja varmuuskopioi kaikki tiedostot ja kansiot (lukuun ottamatta db/ kansiota). Varmuuskopioi online Core ensin ja sitten kylmän offline koneen tiedostot ja kansiot. **Tee se nyt**, odottaminen ei ole riskin arvoista! **Älä kytke USB-tikkua mihinkään mikä on verkkossa sen jälkeen, kun kylmät tiedostot ovat siellä!**
 
 ![https://twitter.com/insaladaPool/status/1380087586509709312?s=19](../../../.gitbook/assets/insalada (2).png)
