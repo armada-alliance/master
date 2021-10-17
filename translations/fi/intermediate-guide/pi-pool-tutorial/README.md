@@ -19,7 +19,7 @@ Jos haluat luoda .img tiedoston työstäsi, joka voidaan ottaa uudelleenkäyttö
 
 ## Miksi tämä opas?
 
-Consolidate and organize the various guides into a single document that can be followed or referenced _specifically_ for running a pool using two (or more) Raspberry Pi 4B (the 8GB version) and one offline Pi for cold key operations.
+Yhdistämme ja järjestelemme eri oppaita yhteen asiakirjaan, jota on helppo seurata tai johon voidaan viitata _erityisesti_ stake poolin ylläpitoon kahdella (tai useammalla) Raspberry Pi 4B:llä (8GB versio) ja yhdellä offline Pi:llä, joka tarvitaan kylmä avain operaatioihin.
 
 Toimitetaan dokumentaatio jokaisesta vaiheesta kun samalla rakennetaan Pi-Node imagea pool luomiseen. Viite & opas.
 
@@ -38,9 +38,9 @@ Cardano-node ja cardano-cli, joihin tässä oppaassa viitataan, tarvitsevat toim
 ### Ostoslista
 
 * 2 [Pi4B 8GB](https://thepihut.com/products/raspberry-pi-4-model-b?variant=31994565689406) versio.
-* 2 Drives : (NVMe **low power**, form & speed).
+* 2 Asemaa: (NVMe **pieni virrankulutus**, muoto & nopeus).
 * M.2 avain USB3.1 adapteriin tai mikä tahansa mikä toimii oman asemasi kanssa.
-* A 3'rd 64bit capable Pi as an offline machine(Cold).
+* Kolmas 64bit kykenevä Pi offline-kone (Cold).
 * Luokan 10 micro Sd-kortti 8GB tai suurempi.
 * Ylimääräisiä USB flash-asemia avainten ja konfiguraatioiden varmuuskopiointiin.
 * Harkitse yhtä 50 watin virtalähdettä
