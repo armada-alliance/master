@@ -12,7 +12,7 @@
 ## Stake Pool -oppaat <a href="intermediate-guide" id="intermediate-guide"></a>
 
 * [Pi-Node Image & Ohjeet](intermediate-guide/pi-pool-tutorial/README.md)
-  * [Pi-Node (quick start)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
+  * [Pi-Node (pikaopas)](intermediate-guide/pi-pool-tutorial/pi-node/README.md)
     * [Lataa & Polta](intermediate-guide/pi-pool-tutorial/pi-node/download-and-write-it.md)
     * [Käyttäjän Asetukset](intermediate-guide/pi-pool-tutorial/pi-node/user-setup.md)
     * [Suojattu kirjautuminen](intermediate-guide/pi-pool-tutorial/pi-node/logging-in-securely.md)
@@ -28,7 +28,7 @@
   * [Dynaaminen Versio](intermediate-guide/updating-a-cardano-node/using-dynamic-build.md)
   * [Staattinen Versio](intermediate-guide/updating-a-cardano-node/static-build.md)
 * [CNCLI Leader Lokit📑](intermediate-guide/leader-logs.md)
-* [Wireguard Guide](intermediate-guide/wireguard-guide.md)
+* [Wireguard Ohje](intermediate-guide/wireguard-guide.md)
 
 ## Muuita Cardano Oppaita <a href="cardano-developer-guides" id="cardano-developer-guides"></a>
 
