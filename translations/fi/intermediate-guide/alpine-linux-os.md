@@ -123,19 +123,19 @@ addgroup cardano video
 
 9) Joko poistu root roolista `exit` komennon avulla tai käynnistä uudelleen ja kirjaudu sisään käyttäjänä cardano
 
-10\) Install bash to ensure bash script compatibility
+10) Asenna bash varmistaaksesi bash skriptien yhteensopivuus
 
 ```
     sudo apk add bash
 ```
 
-11\) Also install git and wget, we will need it later.
+11) Asenna myös git ja wget, tarvitsemme niitä myöhemmin.
 
 ```
     sudo apk add git wget
 ```
 
-12\) By default, AlpineOS uses the powersave governor which sets CPU frequency at the lowest. To use the ondemand governor which scales CPU frequency according to system load, `cpufreq.start` is included in this repo which should be added to /etc/local.d/. You may run the following commands to do this for you.
+12) Oletuksena AlpineOS käyttää virransäästön hallintaa, joka asettaa suorittimen taajuuden alhaisimmille mahdolliselle. Käyttääksesi ondemand säätöä, joka skaalaa suorittimen taajuutta järjestelmän kuormituksen mukaan, `cpufreq.start` sisältyy tähän repositoryyn, joka tulee lisätä kansioon /etc/local.d/. Voit käyttää seuraavia komentoja tehdäksesi tämän.
 
 ```
     cd ~
@@ -149,7 +149,7 @@ addgroup cardano video
     git tag
 ```
 
-Replace `<tag>` with the latest tag in the next command.
+Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
 
 ```
     git checkout tags/<tag>
@@ -167,7 +167,7 @@ Replace `<tag>` with the latest tag in the next command.
     sudo rc-update add local default
 ```
 
-12\) **\[CPU Governor - Optional]** By default, AlpineOS uses the powersave governor which sets CPU frequency at the lowest. To use the ondemand governor which scales CPU frequency according to system load, `cpufreq.start` is included in this repo which should be added to /etc/local.d/. You may run the following commands to do this for you.
+12\) **\[CPU Governor - Optional]** By default, AlpineOS uses the powersave governor which sets CPU frequency at the lowest. Käyttääksesi ondemand säätöä, joka skaalaa suorittimen taajuutta järjestelmän kuormituksen mukaan, `cpufreq.start` sisältyy tähän repositoryyn, joka tulee lisätä kansioon /etc/local.d/. Voit käyttää seuraavia komentoja tehdäksesi tämän.
 
 ```
     cd ~
@@ -255,7 +255,7 @@ Replace `<tag>` with the latest tag in the next command.
     git tag
 ```
 
-Replace `<tag>` with the latest tag in the next command.
+Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
 
 ```
     git checkout tags/<tag>
