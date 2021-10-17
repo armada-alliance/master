@@ -87,7 +87,7 @@ Tämä varmistaa, että järjestelmä on tietoinen libsodiumista (ei vain käytt
 
 ## Lataa cardano-node & -cli
 
-Dynamic binaries and Cardano node configuration files provided by [SRN pool ](https://armada-alliance.com/stake-pools/cc1b1c03798884c636703443a23b8d9e827d6c0417921600394198a0):pray:  at our [Github repository](https://github.com/armada-alliance/cardano-node-binaries).
+Dynaamiset binaarit ja Cardano node asetustiedostot tarjoaa [SRN pool ](https://armada-alliance.com/stake-pools/cc1b1c03798884c636703443a23b8d9e827d6c0417921600394198a0)🙏 ja ovat saatavissa [Github repositoryssamme](https://github.com/armada-alliance/cardano-node-binaries).
 
 ```bash
 wget https://github.com/armada-alliance/cardano-node-binaries/blob/main/dynamic-binaries/1.30.1/cardano-1_30_1-aarch64-ubuntu_2004.zip?raw=true
