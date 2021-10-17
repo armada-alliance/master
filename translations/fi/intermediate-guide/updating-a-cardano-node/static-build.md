@@ -10,13 +10,13 @@ Tämä opas noudattaa samoja asetuksia kuin meidän [Pi-Node opas ja image](../p
 
 ### Yleiskatsaus 🗒
 
-* [ ] Download Cardano Node Static build & configuration file
+* [ ] Lataa Cardano Noden Staattinen versio & konfiguraatiotiedosto
 * [ ] Pura tiedoston sisältö
 * [ ] Tarkista, jos sinulla on jo Cardano Node -palvelu käynnissä
   * Sammuta turvallisesti Cardano node, jos se on käynnissä
 * [ ] Korvaa vanhat binaarit uudella cardano-nodella ja cardano-cli:llä
 * [ ] Tarkista, että cardano-node ja -cli versio on päivitetty nykyiseen versioon
-* [ ] Replace old configuration files with new ones (if needed)
+* [ ] Korvaa vanhat asetustiedostot uusilla (jos tarpeen)
 * [ ] Käynnistä Cardano node uudelleen
 * [ ] Tarkista, että palvelin on käynnistynyt oikein
 
