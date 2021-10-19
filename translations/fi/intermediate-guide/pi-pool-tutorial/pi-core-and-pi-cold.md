@@ -595,7 +595,7 @@ cardano-cli stake-pool metadata-hash \
 {% endtab %}
 {% endtabs %}
 
-Kopioi poolMetaData.json osoitteeseen [https://pages.github.io](https://pages.github.io) tai isännöi sitä itse verkkosivustosi mukana. Be careful not to accidentally insert a space or a new line, which would result in a different hash.
+Kopioi poolMetaData.json osoitteeseen [https://pages.github.io](https://pages.github.io) tai isännöi sitä itse verkkosivustosi mukana. Varo ettet vahingossa syötä uutta välilyöntiä tai riviä, mikä johtaisi erilaiseen hashiin.
 
 {% hint style="info" %}
 Tässä on minun **poolMetaData.json** & **laajennettuPoolMetaData.json** viitteenä ja häpeämättömänä linkkinä takaisin sivustolleni. 😰
