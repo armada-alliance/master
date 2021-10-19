@@ -167,7 +167,7 @@ Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
     sudo rc-update add local default
 ```
 
-12\) **\[CPU Governor - Optional]** By default, AlpineOS uses the powersave governor which sets CPU frequency at the lowest. Käyttääksesi ondemand säätöä, joka skaalaa suorittimen taajuutta järjestelmän kuormituksen mukaan, `cpufreq.start` sisältyy tähän repositoryyn, joka tulee lisätä kansioon /etc/local.d/. Voit käyttää seuraavia komentoja tehdäksesi tämän.
+12) **[CPU Governor - Optional]** AlpineOS käyttää oletuksena powersave säädintä, joka asettaa suorittimen taajuuden alhaisimmille. Käyttääksesi ondemand säätöä, joka skaalaa suorittimen taajuutta järjestelmän kuormituksen mukaan, `cpufreq.start` sisältyy tähän repositoryyn, joka tulee lisätä kansioon /etc/local.d/. Voit käyttää seuraavia komentoja tehdäksesi tämän.
 
 ```
     cd ~
@@ -193,7 +193,7 @@ Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
     sudo rc-update add local default
 ```
 
-13\) **\[ZRAM - Optional]** To alleviate RAM limitation on RPi, ZRAM is recommended to enable RAM compression. Use the following steps to install zram-init and install the scripts. The scripts provided will enable a 50% boost in useable RAM capacity. This step assumes you have followed step 12.
+13) **[ZRAM - Valinnainen]** RPin RAM-muistin rajallisuuden helpottamiseksi ZRAM:n käyttöönotto on suositeltavaa jotta saat RAM-kompression käyttöön. Käytä seuraavia vaiheita zram-initin ja skriptien asentamiseen. Annetut skriptit mahdollistavat 50 %: n lisäyksen käytettävissä olevaan RAM-kapasiteettiin. Tämä kohta olettaa, että olet seurannut vaihetta 12.
 
 ```
     sudo apk add zram-init
@@ -207,7 +207,7 @@ Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
     sudo chmod +x /etc/local.d/zram.*
 ```
 
-14\) Reboot the system. For the Raspberry Pi 4B 8GB, you should expect around 3.81GB of swap via ZRAM when checking with `htop` (`sudo apk add htop` if htop is unavailable).
+14) Käynnistä järjestelmä uudelleen. Raspberry Pi 4B 8GB koneella, voit odottaa noin 3.81 Gt swapia ZRAMin kautta kun tarkastelet sitä `htop` -käskyn kautta (`sudo apk add htop` jos htop ei ole käytettävissä).
 
 ## Installing/Upgrading the 'cardano-node' and 'cardano-cli' static binaries (AlpineOS uses static binaries almost exclusively so avoid non-static builds)
 
