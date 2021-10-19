@@ -307,7 +307,7 @@ Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
     wget -O ~/node_exporter.tar.gz https://github.com/prometheus/node_exporter/releases/download/v1.2.2/node_exporter-1.2.2.linux-arm64.tar.gz
 ```
 
-2\) Extract the tarballs
+2) Pura tarballit
 
 ```
 tar -xzvf prometheus.tar.gz
@@ -317,7 +317,7 @@ tar -xzvf prometheus.tar.gz
 tar -xzvf node_exporter.tar.gz
 ```
 
-3\) Rename the folders with the following commands
+3) Nimeä kansiot uudelleen seuraavilla komennoilla
 
 ```
     mv prometheus-2.29.2.linux-arm64 prometheus
@@ -327,26 +327,26 @@ tar -xzvf node_exporter.tar.gz
     mv node_exporter-1.2.2.linux-arm64 node_exporter
 ```
 
-4\) Follow the guide written in **README.txt** contained in the $HOME directory after installing cnode, scripts and services to start the services accordingly.
+4) Käynnistääksesi palvelut asianmukaisesti, seuraa $HOME hakemistossa olevan **README.txt** tiedoston ohjeita asennettuasi cnoden, skriptit ja palvelut.
 
 ```
     more ~/README.txt
 ```
 
-## General Troubleshooting
+## Yleinen Vianmääritys
 
-* If you have trouble with port forwarding via SSH, run the following command
+* Jos sinulla on vaikeuksia siirtää porttia SSH:n kautta, suorita seuraava komento
 
 ```
 sudo nano /etc/ssh/sshd_config
 ```
 
-* Edit the line `AllowTcpForwarding no` to `AllowTcpForwarding yes`
+* Muokkaa riviä `AllowTcpForwarding no` vastaamaan `AllowTcpForwarding yes`
 
 {% hint style="info" %}
-Make sure this line is not commented out with a`#`
+Varmista, ettei tätä riviä ole kommentoitu pois `#` -merkillä
 {% endhint %}
 
 {% hint style="success" %}
-We would like to give a special shoutout to our [alliance member](https://armada-alliance.com), [Sayshar](https://armada-alliance.com/identities/sayshar-srn), operator of [\[SRN\] Pool](https://armada-alliance.com/stake-pools/cc1b1c03798884c636703443a23b8d9e827d6c0417921600394198a0), for providing this tutorial 🏴‍☠️ 🙏 😎
+Haluamme antaa erityiset kiitokset [allianssimme jäsenelle](https://armada-alliance.com), [Sayshar](https://armada-alliance.com/identities/sayshar-srn), [\[SRN\] Poolin](https://armada-alliance.com/stake-pools/cc1b1c03798884c636703443a23b8d9e827d6c0417921600394198a0) operaattorille, tämän oppaan tuottamisesta 🏴‍☠️ 🙏 😎
 {% endhint %}
