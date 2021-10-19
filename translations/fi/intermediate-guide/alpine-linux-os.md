@@ -209,21 +209,21 @@ Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
 
 14) Käynnistä järjestelmä uudelleen. Raspberry Pi 4B 8GB koneella, voit odottaa noin 3.81 Gt swapia ZRAMin kautta kun tarkastelet sitä `htop` -käskyn kautta (`sudo apk add htop` jos htop ei ole käytettävissä).
 
-## Installing/Upgrading the 'cardano-node' and 'cardano-cli' static binaries (AlpineOS uses static binaries almost exclusively so avoid non-static builds)
+## 'cardano-node' ja 'cardano-cli' staattisten binäärien Asentaminen/päivittäminen (AlpineOS käyttää lähes yksinomaan staattisia binäärejä, joten vältä ei-staattiset rakennelmia)
 
 {% hint style="info" %}
-**You may obtain the static binaries for version 1.30.1 via this** [**link**](https://ci.zw3rk.com/build/409517) **courtesy of Moritz Angermann, the SPO of ZW3RK pool 🙏**
+**Saat staattiset binäärit versiolle 1.30.1 tästä ** [**linkistä**](https://ci.zw3rk.com/build/409517) **kiitokset Moritz Angermanille, ZW3RK poolin SPO 🙏**
 {% endhint %}
 
-**Run the following commands to download and install the binaries into the correct directory.**
+**Suorita seuraavat komennot ladataksesi ja asentaaksesi binäärit oikeaan kansioon.**
 
-* Download the binaries
+* Lataa binäärit
 
 ```
     wget -O ~/aarch64-unknown-linux-musl-cardano-node-1.30.1.zip https://ci.zw3rk.com/build/409517/download/1/aarch64-unknown-linux-musl-cardano-node-1.30.1.zip
 ```
 
-* Unzip and install the binaries via the commands
+* Pura ja asenna binäärit komentojen kautta
 
 ```
     unzip -d ~/ aarch64-unknown-linux-musl-cardano-node-1.30.1.zip
@@ -231,14 +231,14 @@ Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
     sudo mv ~/cardano-node/* /usr/local/bin/
 ```
 
-## Install the Armada Alliance Alpine Linux Cardano node service
+## Asenna Armada Alliancen Alpine Linux Cardano node -palvelu
 
 {% hint style="success" %}
 ### If you have decided to use AlpineOS for your Cardano stake pool operations, you may find this collection of scripts and services useful.
 {% endhint %}
 
 {% hint style="info" %}
-### To install the scripts and services correctly don't skip steps 🏴‍☠️😎
+### Asentaaksesi skriptit ja palvelut oikein, älä ohita vaiheita 🏴‍☠️😎
 {% endhint %}
 
 1\) Clone this repo to obtain the neccessary folder and scripts to quickly start your cardano node. You may skip this step if you have already clonned this repo from step 12 when setting up AlpineOS.
@@ -261,7 +261,7 @@ Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
     git checkout tags/<tag>
 ```
 
-2\) Run the following commands to then install the **cnode** folder, scripts, and services into the correct folders. The **cnode** folder contains everything a **Cardano node** needs to start as a functional relay node.
+2) Suorita seuraavat komennot ja asenna sitten **cnode** -kansio, skriptit ja palvelut oikeisiin kansioihin. **cnode** kansio sisältää kaiken mitä **Cardano node** tarvitsee käynnistyäkseen toiminnallisena relay nodena.
 
 ```
     cd ~
@@ -283,21 +283,21 @@ Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
     sudo chmod +x /etc/init.d/cardano-node /etc/init.d/prometheus /etc/init.d/node-exporter
 ```
 
-3\) For faster syncing, consider this optional command for downloading the latest db folder hosted by one of our Alliance members.
+3) Nopeampaa synkronointia varten, harkitse tätä valinnaista komentoa uusimman db-kansion lataamiseen yhden Alliance-jäsenemme ylläpitämältä serveriltä.
 
 ```
     wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/ -P ~/cnode
 ```
 
-4\) Follow the guide written in **README.txt** contained in the **$HOME** directory after installing **cnode**, scripts, and services.
+4) Asennettuasi **cnode**, skriptit ja palvelut, noudata **$HOME** hakemiston **README.txt** tiedoston sisältämää opasta.
 
 ```
     more ~/README.txt
 ```
 
-## Setup prometheus and node exporter
+## Asenna prometheus ja node exporter
 
-1\) Download Prometheus and node-exporter into the home directory
+1) Lataa Prometheus ja node exporter kotihakemistoon
 
 ```
     wget -O ~/prometheus.tar.gz https://github.com/prometheus/prometheus/releases/download/v2.29.2/prometheus-2.29.2.linux-arm64.tar.gz
