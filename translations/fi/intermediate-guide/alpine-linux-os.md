@@ -234,14 +234,14 @@ Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
 ## Asenna Armada Alliancen Alpine Linux Cardano node -palvelu
 
 {% hint style="success" %}
-### If you have decided to use AlpineOS for your Cardano stake pool operations, you may find this collection of scripts and services useful.
+### Jos olet päättänyt käyttää AlpineOS käyttöjärjestelmää Cardano stake poolissasi, voit löytää tästä skripti ja palvelu kokoelmasta hyödyllisiä työkaluja.
 {% endhint %}
 
 {% hint style="info" %}
 ### Asentaaksesi skriptit ja palvelut oikein, älä ohita vaiheita 🏴‍☠️😎
 {% endhint %}
 
-1\) Clone this repo to obtain the neccessary folder and scripts to quickly start your cardano node. You may skip this step if you have already clonned this repo from step 12 when setting up AlpineOS.
+1) Kloonaa tämä repo saadaksesi tarvittavat kansiot ja skriptit cardano noden nopeaan käynnistämiseen. You may skip this step if you have already clonned this repo from step 12 when setting up AlpineOS.
 
 ```
     cd ~
