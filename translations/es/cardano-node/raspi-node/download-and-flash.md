@@ -8,14 +8,14 @@
 
 ![](../../../.gitbook/assets/screen-shot-2021-03-12-at-5.36.30-pm.png)
 
-**3. Insert the target drive(your SSD or NVMe with usb3 adapter) into your computer and open the "Raspberry Pi Imager".**
+**3. Insert the target drive(your SSD with usb3 adapter) into your computer and open the "Raspberry Pi Imager".**
 
-![](../../.gitbook/assets/custom_os.png)
+![](../../.gitbook/assets/custom\_os.png)
 
-* **Haz clic en "CHOOSE OS" y luego en "Use custom" elija el archivo de imagen Raspbian que haya descargado.**
+* **Click on "CHOOSE OS"  then "Use custom" choose the Raspbian image file you downloaded.**&#x20;
 * **Luego, haz clic en el "CHOSE SD" y busca la tarjeta SD que has introducido en la computadora.**
-* **Ahora, el botón "WRITE" aparecerá y puedes hacer clic en él para comenzar a escribir/verificar el sistema operativo en la tarjeta SD.**
-* **Finalmente, una vez haya terminado el proceso de escritura/verificación, verás una ventana emergente que dice que el sistema operativo se ha escrito con éxito en la tarjeta SD, haz clic en "CONTINUE" y retira tu tarjeta SD de la computadora.**
+* **The "WRITE" button will appear and you can click on it to begin writing/verifying the OS onto the target drive.** &#x20;
+* **Finally, once it has finished the writing/verifying process, you will see a pop-up window saying that the OS was successfully written to the drive, click "CONTINUE" and remove your drive from the computer.**&#x20;
 
 ## Arranque & Configuración
 
