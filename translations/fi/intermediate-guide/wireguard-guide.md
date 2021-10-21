@@ -5,37 +5,37 @@ Projektin [WireGuard](https://www.wireguard.com) kotisivulta:
 WireGuard on erittäin yksinkertainen mutta nopea ja moderni VPN, joka hyödyntää uusinta kryptografiaa. Sen tavoitteena on olla nopeampi, yksinkertaisempi, kevyempi ja hyödyllisempi kuin IPsec, välttäen massiivista päänsärkyä. Se aikoo olla huomattavasti suorituskykyisempi kuin OpenVPN. WireGuard on suunniteltu yleiskäyttöiseksi VPN:ksi ja tarkoitettu käytettäväksi sulautettuista rajapinnoista supertietokoneisiin, ja sopii moniin erilaisiin olosuhteisiin. Aluksi julkaistu Linuxille, mutta nyt se on yhteensopiva useimmille alustoille (Windows, macOS, BSD, iOS, Android) ja laajalti käytössä.
 
 {% hint style="success" %}
-This guide will create a VPN from a core node behind a firewall to a relay node with Wireguard listening on the default port 51820. We will then control traffic between the connected interfaces with UFW.
+Tämä opas luo VPN:n ydin nodesta palomuurin takana relay nodeen, jossa Wireguard kuuntelee oletuksena porttia 51820. Sen jälkeen ohjaamme liikennettä UFW:n kautta.
 
-Feel free to use a different port!
+Voit vapaasti käyttää eri porttia!
 {% endhint %}
 
 {% embed url="https://github.com/pirate/wireguard-docs" %}
 
-### Install Wireguard
+### Asenna Wireguard
 
-Do this on both machines.
+Tee tämä molemmilla koneilla.
 
 ```bash
 sudo apt install wireguard
 ```
 
-Become root.
+Ryhdy juurikäyttäjäksi.
 
 ```bash
 sudo su
 ```
 
-Enter the Wireguard folder and set permissions for any new files created to root only.
+Siirry Wireguard kansioon ja aseta käyttöoikeudet kaikkiin uusiin tiedostoihin, vain juurikäyttäjälle.
 
 ```bash
 cd /etc/wireguard
 umask 077
 ```
 
-#### Configure
+#### Konfiguroi
 
-Generate key pairs on each machine.
+Luo avainparit molemmissa koneissa.
 
 {% tabs %}
 {% tab title="C1" %}
@@ -51,13 +51,13 @@ wg genkey | tee R1-privkey | wg pubkey > R1-pubkey
 {% endtab %}
 {% endtabs %}
 
-Create a Wireguard configuration file on both machines.
+Luo Wireguard konfiguraatiotiedosto molemmissa koneissa.
 
 ```bash
 nano /etc/wireguard/wg0.conf
 ```
 
-Use cat to print out the key values. Public keys are then used in the other machines conf file.
+Käytä cat-komentoa tulostaaksesi avainten arvot. Julkisia avaimia käytetään sitten muissa koneissa conf tiedostossa.
 
 {% tabs %}
 {% tab title="C1" %}
@@ -128,20 +128,20 @@ PersistentKeepalive = 21
 
 #### [wg-quick](https://manpages.debian.org/unstable/wireguard-tools/wg-quick.8.en.html)
 
-Use wg-quick to create the interface & manage Wireguard as a Systemd service on both machines
+Käytä wg-quick luodaksesi käyttöliittymän & hallitaksesi Wireguardia Systemd palveluna molemmissa koneissa
 
 ```bash
 wg-quick up wg0
 ```
 
-Useful commands.
+Hyödyllisiä Komentoja.
 
 ```bash
 sudo wg show # metrics on the interface
 ip a # should see a wg0 interface
 ```
 
-Once both interfaces are up you can try and ping each other.
+Kun molemmat liitännät ovat käynnissä, voit yrittää pingata toisiaan.
 
 {% tabs %}
 {% tab title="C1" %}
@@ -157,14 +157,14 @@ ping 10.220.0.1
 {% endtab %}
 {% endtabs %}
 
-If they are connected bring them down and back up with Systemd
+Jos ne on yhdistetty lopeta ja uudelleenkäynnistä Systemd:n kautta
 
 ```bash
 wg-quick down wg0
 sudo systemctl start wg-quick@wg0
 ```
 
-Enable the Wireguard service on both machines to automatically start on boot.
+Salli molempien koneiden Wireguard palvelun automaattinen käyttöönotto käynnistyksen yhteydessä.
 
 ```bash
 sudo systemctl enable wg-quick@wg0
@@ -172,9 +172,9 @@ sudo systemctl status wg-quick@wg0
 ```
 
 {% hint style="danger" %}
-SaveConfig saves the loaded wg0.conf file in runtime and overwrites the file when it stops. Therefore you must stop the wg-quick@wg0 service before editing the configuration file or your changes will be overwritten when you try to restart the service or reboot the server.
+SaveConfig tallentaa ladatun wg0.conf tiedoston suoritettaessa ja korvaa tiedoston kun se pysähtyy. Siksi sinun on lopetettava wg-quick@wg0 palvelu ennen asetustiedoston muokkaamista tai muutoksesi ylikirjoitetaan, kun yrität käynnistää palvelun uudelleen tai käynnistää palvelimen uudelleen.
 
-Like so
+Kuten näin
 
 ```bash
 # become root
@@ -188,17 +188,17 @@ systemctl start wg-quick@wg0
 ```
 {% endhint %}
 
-#### Topology
+#### Topologia
 
-You can now update your C1 & R1 topology files so they point 10.220.0.2 & 10.220.0.1 respectively through the Wireguard VPN.
+Voit nyt päivittää C1 & R1 topologian tiedostot, jotta ne yhdistävät 10.220.0.2 & 10.220.0.1 vastaavasti Wireguard VPN:n kautta.
 
 #### Prometheus
 
-Likewise update IPv4 address' in /etc/prometheus/prometheus.yml to use the VPN.
+Samoin päivitetään IPv4-osoite /etc/prometheus/prometheus.yml tiedostossa käyttämään VPN:ää.
 
 ### UFW
 
-Control traffic through the VPN. The following allows for Prometheus/Grafana on C1 to scrape metrics from node-exporter on R1.
+Ohjaa liikennettä VPN:n kautta. Seuraavassa sallitaan, että Prometheus/Grafana C1:ssä voi tiedustella metriikkaa node exportterilta R1:ssä.
 
 {% tabs %}
 {% tab title="C1" %}
@@ -227,9 +227,9 @@ sudo ufw allow in on wg0 to any port 9090 proto tcp
 {% endtab %}
 {% endtabs %}
 
-**Bring up ufw**
+**Käynnistä ufw**
 
-When you're sure you are not going to lock yourself out and that all the ports for your pool that need to be open are you can bring up the firewall. Don't forget 80 & 443 if you have nginx proxying Grafana.
+Kun olet varma, että et lukitse itseäsi ulos ja että kaikki poolisi portit, joiden pitää olla auki ovat auki, voit käynnistää palomuurin. Älä unohda 80 & 443 jos sinulla on nginx liitettynä Grafanaan.
 
 ```c
 sudo ufw enable
@@ -237,7 +237,7 @@ sudo ufw enable
 sudo ufw status numbered
 ```
 
-Notes & links/To Do
+Huomautuksia & linkkejä/tehtäviä
 
 ```c
 PostUp = resolvectl domain %i "~."; resolvectl dns %i 192.0.2.1; resolvectl dnssec %i yes
@@ -247,7 +247,7 @@ PostUp = resolvectl domain %i "~."; resolvectl dns %i 192.0.2.1; resolvectl dnss
 PostUp = wg set %i private-key /etc/wireguard/wg0.key <(cat /some/path/%i/privkey)
 ```
 
-Reload conf without taking VPN down.
+Lataa conf uudelleen ottamatta VPN:ää alas.
 
 ```
 alias wgstrip='wg syncconf wg0 <(wg-quick strip wg0)'
