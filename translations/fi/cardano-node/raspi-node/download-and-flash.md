@@ -8,14 +8,14 @@
 
 ![](../../../.gitbook/assets/screen-shot-2021-03-12-at-5.36.30-pm.png)
 
-**3. Insert the target drive(your SSD with usb3 adapter) into your computer and open the "Raspberry Pi Imager".**
+**3. Aseta kohdeasema (SSD usb3-sovittimen avulla) tietokoneeseesi ja avaa "Raspberry Pi Imager".**
 
 ![](../../.gitbook/assets/custom\_os.png)
 
-* **Click on "CHOOSE OS"  then "Use custom" choose the Raspbian image file you downloaded.**&#x20;
+* **Klikkaa "CHOOSE OS" sitten "Use custom" valitse Raspbian image tiedosto, jonka latasit.**&#x20;
 * **Seuraavaksi klikkaa "CHOOSE SD" ja etsi SD-kortti, jonka asetit tietokoneeseen.**
-* **The "WRITE" button will appear and you can click on it to begin writing/verifying the OS onto the target drive.** &#x20;
-* **Finally, once it has finished the writing/verifying process, you will see a pop-up window saying that the OS was successfully written to the drive, click "CONTINUE" and remove your drive from the computer.**&#x20;
+* **"WRITE" -painike ilmestyy ja voit klikata sitä aloittaaksesi käyttöjärjestelmän kirjoittamisen / todentamisen kohdeasemalle.** &#x20;
+* **Lopuksi, kun se on päättynyt kirjoitus/todentamisprosessi, Näet ponnahdusikkunan sanoen, että käyttöjärjestelmä on onnistuneesti kirjoitettu asemalle, klikkaa "CONTINUE" ja poista asemasi tietokoneesta.**&#x20;
 
 ## Käynnistys & asetukset
 
