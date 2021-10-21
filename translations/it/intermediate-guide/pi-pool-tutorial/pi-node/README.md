@@ -25,6 +25,14 @@ ssh ada@<pi-node private IPv4>
 
 Default credentials = **ada:lovelace**
 
+{% hint style="warning" %}
+Check which version of cardano-node is on the image. Follow the static build upgrade instructions to upgrade. [static-build.md](../../updating-a-cardano-node/static-build.md "mention")
+
+```bash
+cardano-node version
+```
+{% endhint %}
+
 ### 3. Enter the pi-pool folder.
 
 ```bash
@@ -94,5 +102,5 @@ Default credentials = **admin:admin**
 {% embed url="https://api.pooldata.live/" %}
 
 {% hint style="info" %}
-The following guide builds out the image, use it as a reference and please feel free to ask for clarification in our Telegram channel. [https://t.me/armada_alli](https://t.me/armada_alli)
+The following guide builds out the image, use it as a reference and please feel free to ask for clarification in our Telegram channel. [https://t.me/armada\_alli](https://t.me/armada\_alli)
 {% endhint %}
