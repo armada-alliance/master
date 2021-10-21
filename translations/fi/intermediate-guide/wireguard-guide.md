@@ -1,8 +1,8 @@
 # Wireguard Guide
 
-From the [WireGuard](https://www.wireguard.com) project homepage:
+Projektin [WireGuard](https://www.wireguard.com) kotisivulta:
 
-WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner, and more useful than IPsec, while avoiding the massive headache. It intends to be considerably more performant than OpenVPN. WireGuard is designed as a general purpose VPN for running on embedded interfaces and super computers alike, fit for many different circumstances. Initially released for the Linux kernel, it is now cross-platform (Windows, macOS, BSD, iOS, Android) and widely deployable.
+WireGuard on erittäin yksinkertainen mutta nopea ja moderni VPN, joka hyödyntää uusinta kryptografiaa. Sen tavoitteena on olla nopeampi, yksinkertaisempi, kevyempi ja hyödyllisempi kuin IPsec, välttäen massiivista päänsärkyä. Se aikoo olla huomattavasti suorituskykyisempi kuin OpenVPN. WireGuard on suunniteltu yleiskäyttöiseksi VPN:ksi ja tarkoitettu käytettäväksi sulautettuista rajapinnoista supertietokoneisiin, ja sopii moniin erilaisiin olosuhteisiin. Aluksi julkaistu Linuxille, mutta nyt se on yhteensopiva useimmille alustoille (Windows, macOS, BSD, iOS, Android) ja laajalti käytössä.
 
 {% hint style="success" %}
 This guide will create a VPN from a core node behind a firewall to a relay node with Wireguard listening on the default port 51820. We will then control traffic between the connected interfaces with UFW.
