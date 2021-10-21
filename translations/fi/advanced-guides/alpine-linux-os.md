@@ -88,11 +88,11 @@ addgroup cardano video
 ## Asenna Armada Alliancen Alpine Linux Cardano node -palvelu
 
 {% hint style="success" %}
-#### If you have decided to use AlpineOS for your Cardano stake pool operations, you may find this collection of scripts and services useful.
+#### Jos olet päättänyt käyttää AlpineOS käyttöjärjestelmää Cardano stake poolissasi, saatat löytää tästä skripti ja palvelu kokoelmasta hyödyllisiä työkaluja.
 {% endhint %}
 
 {% hint style="info" %}
-#### To install the scripts and services correctly don't skip steps 🏴‍☠️😎
+#### Asentaaksesi skriptit ja palvelut oikein, älä ohita vaiheita 🏴‍☠️😎
 {% endhint %}
 
 1\) Clone this repo to obtain the necessary folder and scripts to quickly start your Cardano node. Use the command:
