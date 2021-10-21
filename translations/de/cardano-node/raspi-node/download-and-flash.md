@@ -8,14 +8,14 @@
 
 ![](../../../.gitbook/assets/screen-shot-2021-03-12-at-5.36.30-pm.png)
 
-**3. Legen Sie das Ziellaufwerk\(Ihr SSD oder NVMe mit usb3-Adapter\) in Ihren Computer ein und öffnen Sie den "Raspberry Pi Imager".**
+**3. Insert the target drive(your SSD with usb3 adapter) into your computer and open the "Raspberry Pi Imager".**
 
-![](../../.gitbook/assets/custom_os.png)
+![](../../.gitbook/assets/custom\_os.png)
 
-* **Klicken Sie auf "CHOOSE OS" und dann "Use custom" wählen Sie die Raspbian Image-Datei, die Sie heruntergeladen haben.**
+* **Click on "CHOOSE OS"  then "Use custom" choose the Raspbian image file you downloaded.**&#x20;
 * **Als nächstes klicken Sie auf "CHOOSE SD" und wählen das Laufwerk aus, das Sie in die USB Schnittstelle ihres Computers eingelegt haben.**
-* **Die Schaltfläche "WRITE" erscheint und Sie können nun darauf klicken, um das Betriebssystem auf das Ziellaufwerk zu schreiben/zu überprüfen.**
-* **Schließlich, sobald der Schreib-/Überprüfungsprozess beendet ist, erscheint ein Pop-Up-Fenster, das sagt, dass das Betriebssystem erfolgreich auf das Laufwerk geschrieben wurde, klicken Sie auf "CONTINUE" und entfernen Sie Ihr Laufwerk vom Computer.**
+* **The "WRITE" button will appear and you can click on it to begin writing/verifying the OS onto the target drive.** &#x20;
+* **Finally, once it has finished the writing/verifying process, you will see a pop-up window saying that the OS was successfully written to the drive, click "CONTINUE" and remove your drive from the computer.**&#x20;
 
 ## Booten & konfigurieren
 
