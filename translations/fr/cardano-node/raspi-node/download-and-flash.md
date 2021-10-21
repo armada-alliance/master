@@ -8,14 +8,14 @@
 
 ![](../../../.gitbook/assets/screen-shot-2021-03-12-at-5.36.30-pm.png)
 
-**3. Insert the target drive(your SSD or NVMe with usb3 adapter) into your computer and open the "Raspberry Pi Imager".**
+**3. Insert the target drive(your SSD with usb3 adapter) into your computer and open the "Raspberry Pi Imager".**
 
-![](../../.gitbook/assets/custom_os.png)
+![](../../.gitbook/assets/custom\_os.png)
 
-* **Click on "CHOOSE OS"  then "Use custom" choose the Raspbian image file you downloaded.**
+* **Click on "CHOOSE OS"  then "Use custom" choose the Raspbian image file you downloaded.**&#x20;
 * **Next, click on the "CHOOSE SD" and choose the target drive you inserted into the computers usb port.**
-* **The "WRITE" button will appear and you can click on it to begin writing/verifying the OS onto the target drive.**
-* **Finally, once it has finished the writing/verifying process, you will see a pop-up window saying that the OS was successfully written to the drive, click "CONTINUE" and remove your drive from the computer.**
+* **The "WRITE" button will appear and you can click on it to begin writing/verifying the OS onto the target drive.** &#x20;
+* **Finally, once it has finished the writing/verifying process, you will see a pop-up window saying that the OS was successfully written to the drive, click "CONTINUE" and remove your drive from the computer.**&#x20;
 
 ## Boot & Configure
 
