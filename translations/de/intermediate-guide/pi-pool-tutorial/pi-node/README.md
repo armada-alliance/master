@@ -25,6 +25,14 @@ ssh ada@<pi-node private IPv4>
 
 Default credentials = **ada:lovelace**
 
+{% hint style="warning" %}
+Check which version of cardano-node is on the image. Follow the static build upgrade instructions to upgrade. [static-build.md](../../updating-a-cardano-node/static-build.md "mention")
+
+```bash
+cardano-node version
+```
+{% endhint %}
+
 ### 3. Enter the pi-pool folder.
 
 ```bash
@@ -67,7 +75,7 @@ cardano-service status
 cardano-monitor status
 ```
 
-Journal-Ausgabe oder Syslog folgen
+Follow journal output or syslog
 
 ```
 sudo journalctl --unit=cardano-node --follow
@@ -83,9 +91,9 @@ cd $NODE_HOME/scripts
 
 ### 9. Grafana.
 
-Geben Sie die IPv4-Adresse Ihres Knotens in Ihren Browser ein.
+Enter your Node's IPv4 address in your browser.
 
-Standard-Anmeldedaten = **admin:admin**
+Default credentials = **admin:admin**
 
 #### Dashboards can be found here.
 
@@ -94,5 +102,5 @@ Standard-Anmeldedaten = **admin:admin**
 {% embed url="https://api.pooldata.live/" %}
 
 {% hint style="info" %}
-Der folgende Guide baut das Image auf und benutzt ihn als Referenz. Bitte fragt in unserem Telegram-Kanal nach falls Unklarheiten herrschen sollten. [https://t.me/armada_alli](https://t.me/armada_alli)
+The following guide builds out the image, use it as a reference and please feel free to ask for clarification in our Telegram channel. [https://t.me/armada\_alli](https://t.me/armada\_alli)
 {% endhint %}
