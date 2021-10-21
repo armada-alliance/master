@@ -241,7 +241,7 @@ Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
 ### Asentaaksesi skriptit ja palvelut oikein, älä ohita vaiheita 🏴‍☠️😎
 {% endhint %}
 
-1) Kloonaa tämä repo saadaksesi tarvittavat kansiot ja skriptit cardano noden nopeaan käynnistämiseen. You may skip this step if you have already clonned this repo from step 12 when setting up AlpineOS.
+1) Kloonaa tämä repo saadaksesi tarvittavat kansiot ja skriptit cardano noden nopeaan käynnistämiseen. Voit ohittaa tämän vaiheen, jos olet jo kloonannut tämän repon vaiheesta 12 AlpineOS:n perustamisen yhteydessä.
 
 ```
     cd ~
