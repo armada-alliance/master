@@ -26,7 +26,7 @@ ssh ada@<pi-node private IPv4>
 Oletustiedot = **ada:lovelace**
 
 {% hint style="Huomaa" %}
-Check which version of cardano-node is on the image. Follow the static build upgrade instructions to upgrade. [static-build.md](../../updating-a-cardano-node/static-build.md "mention")
+Tarkista, mikä cardano-noden versio imagessa on. Noudata staattisen rakentamisen päivityksen ohjeita päivittääksesi. [static-build.md](../../updating-a-cardano-node/static-build.md "mention")
 
 ```bash
 cardano-node version
@@ -48,7 +48,7 @@ wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/
 ### 5. Ota käyttöön & aloita cardano-palvelu.
 
 {% hint style="Huomaa" %}
-Wait for wget to finish downloading the chain before starting the cardano-service. While you are waiting update Ubuntu by entering the server from another terminal.
+Odota, että wget saa ketjun lataamisen loppuun ennen cardano-servicen aloittamista. Odottaessasi, voit päivittää Ubuntun avaamalla palvelimeen toisen pääteikkunan.
 
 ```bash
 sudo apt update
@@ -75,7 +75,7 @@ cardano-service status
 cardano-monitor status
 ```
 
-Follow journal output or syslog
+Seuraa päiväkirja tai syslogia
 
 ```
 sudo journalctl --unit=cardano-node --follow
@@ -91,9 +91,9 @@ cd $NODE_HOME/scripts
 
 ### 9. Grafana.
 
-Enter your Node's IPv4 address in your browser.
+Syötä Node:n IPv4 -osoite selaimesi osoitekenttään.
 
-Default credentials = **admin:admin**
+Oletus käyttäjätunnus ja salasana = **admin:admin**
 
 #### Kojelaudat löytyvät täältä.
 
@@ -102,5 +102,5 @@ Default credentials = **admin:admin**
 {% embed url="https://api.pooldata.live/" %}
 
 {% hint style="info" %}
-The following guide builds out the image, use it as a reference and please feel free to ask for clarification in our Telegram channel. [https://t.me/armada\_alli](https://t.me/armada\_alli)
+Seuraava opas rakentaa imagen, käytä sitä viitteenä ja voit vapaasti pyytää selvennystä Telegram kanavassamme. [https://t.me/armada\_alli](https://t.me/armada\_alli)
 {% endhint %}
