@@ -95,13 +95,13 @@ addgroup cardano video
 #### Asentaaksesi skriptit ja palvelut oikein, älä ohita vaiheita 🏴‍☠️😎
 {% endhint %}
 
-1\) Clone this repo to obtain the necessary folder and scripts to quickly start your Cardano node. Use the command:
+1) Kloonaa tämä repo saadaksesi tarvittavat kansiot ja skriptit cardano noden nopeaan käynnistämiseen. Käytä komentoa:
 
 ```text
     git clone https://github.com/armada-alliance/alpine-rpi-os
 ```
 
-2\) Run the following commands to then install the **cnode** folder, scripts, and services into the correct folders. The **cnode** folder contains everything a **Cardano node** needs to start as a functional relay node:
+2) Suorita seuraavat komennot ja asenna sitten **cnode** -kansio, skriptit ja palvelut oikeisiin kansioihin. **cnode** kansio sisältää kaiken mitä **Cardano node** tarvitsee käynnistyäkseen toiminnallisena relay nodena:
 
 ```text
     cp -r alpine-rpi-os/alpine_cnode_scripts_and_services/home/cardano/* ~/
@@ -119,21 +119,21 @@ addgroup cardano video
     sudo chmod +x /etc/init.d/cardano-node /etc/init.d/prometheus /etc/init.d/node-exporter
 ```
 
-3\) For faster syncing, consider this optional command for downloading the latest db folder hosted by one of our Alliance members.
+3) Nopeampaa synkronointia varten, harkitse tätä valinnaista komentoa uusimman db-kansion lataamiseen yhden Alliance-jäsenemme ylläpitämältä serveriltä.
 
 ```text
     wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/ -P ~/cnode
 ```
 
-4\) Follow the guide written in **README.txt** contained in the **$HOME** directory after installing **cnode**, scripts, and services.
+4) Asennettuasi **cnode**, skriptit ja palvelut, noudata **$HOME** hakemiston **README.txt** tiedoston sisältämää opasta.
 
 ```text
     more ~/README.txt
 ```
 
-## Setup prometheus and node exporter
+## Asenna prometheus ja node exporter
 
-1\) Download Prometheus and node-exporter into the home directory
+1) Lataa Prometheus ja node exporter kotihakemistoon
 
 ```text
     wget -O ~/prometheus.tar.gz https://github.com/prometheus/prometheus/releases/download/v2.27.1/prometheus-2.27.1.linux-arm64.tar.gz
@@ -143,7 +143,7 @@ addgroup cardano video
     wget -O ~/node_exporter.tar.gz https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-arm64.tar.gz
 ```
 
-2\) Extract the tarballs
+2) Pura tarballit
 
 ```text
 tar -xzvf prometheus.tar.gz
@@ -153,7 +153,7 @@ tar -xzvf prometheus.tar.gz
 tar -xzvf node_exporter.tar.gz
 ```
 
-3\) Rename the folders with the following commands
+3) Nimeä kansiot uudelleen seuraavilla komennoilla
 
 ```text
     mv prometheus-2.27.1.linux-arm64 prometheus
@@ -163,15 +163,15 @@ tar -xzvf node_exporter.tar.gz
     mv node_exporter-1.1.2.linux-arm64 node_exporter
 ```
 
-4\) Follow the guide written in README.txt contained in the $HOME directory after installing cnode, scripts and services to start the services accordingly.
+4) Käynnistääksesi palvelut asianmukaisesti, seuraa $HOME hakemistossa olevan README.txt tiedoston ohjeita asennettuasi cnoden, skriptit ja palvelut.
 
 ```text
     more ~/README.txt
 ```
 
-## General Troubleshooting
+## Yleinen Vianmääritys
 
-* If you happen to use another than username other than cardano, do use the following commands and replace `username` with your chosen username.
+* Jos satut käyttämään muuta käyttäjänimeä kuin cardano, käytä seuraavia komentoja ja vaihda `käyttäjätunnus` valitsemaasi käyttäjätunnukseen.
 
 ```text
     sed -i 's@/home/cardano@/home/<username>@g' ~/cnode_env
@@ -189,20 +189,20 @@ tar -xzvf node_exporter.tar.gz
     sudo sed -i 's@/home/cardano@/home/<username>@g' /etc/init.d/node-export
 ```
 
-* If you have trouble with port forwarding via SSH, run the following command
+* Jos sinulla on vaikeuksia siirtää porttia SSH:n kautta, suorita seuraava komento
 
 ```text
 sudo nano /etc/ssh/sshd_config
 ```
 
-* Edit the line `AllowTcpForwarding no` to `AllowTcpForwarding yes`
+* Muokkaa riviä `AllowTcpForwarding no` vastaamaan `AllowTcpForwarding yes`
 
 {% hint style="info" %}
-  Make sure this line is not commented out with a`#`
+  Varmista, ettei tätä riviä ole kommentoitu pois `#` -merkillä
 {% endhint %}
 
 {% hint style="success" %}
-We would like to give a special shoutout to our [alliance member](https://armada-alliance.com) Sayshar, operator of [\[SRN\] Pool](https://www.adasrn.com/), for providing this tutorial 🏴‍☠️ 🙏 😎
+Haluamme antaa erityisen kiitoksen [Alliancen jäsen](https://armada-alliance.com) Saysharille, [\[SRN\] Poolin](https://www.adasrn.com/) operaattorille, tämän oppaan tuottamisesta 🏴‍☠️ 🙏 😎
 {% endhint %}
 
 
