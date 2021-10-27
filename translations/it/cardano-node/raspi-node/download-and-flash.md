@@ -4,6 +4,10 @@
 
 **1. Download the Armada Alliance's pre-configured Raspbian 64bit OS Cardano-node image** [**here** ](https://mainnet.adamantium.online/Raspi-Node.img.gz)**and save it in an accessible location for now on your computer.**
 
+{% hint style="warning" %}
+There is a testnet image you can download [here](https://testnet.adamantium.online/Test-Raspi-node.img.gz). May need binaries upgraded.
+{% endhint %}
+
 **2. Next, download the Raspberry Pi Imager software that we will use in order to write the OS image onto our target drive. This software is located on the** [**Raspberry Pi website**](https://www.raspberrypi.org/software/)**. Please download the correct version for your computer.**
 
 ![](../../../.gitbook/assets/screen-shot-2021-03-12-at-5.36.30-pm.png)
