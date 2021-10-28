@@ -6,16 +6,16 @@ description: >-
 # Pi-Node (quick start)
 
 {% hint style="info" %}
-It will take about 25 minutes to download the chain and another hour or so to sync to the tip. You will not be able to do much until your node has synced with the tip of the block chain.
+It will take about 30 minutes to download the chain and another couple hours or so to sync to the tip. You will not be able to do much until your node has synced with the tip of the block chain.
 
-It can take anywhere from 5 to 50 minutes to sync after a reboot depending how the node was shut down or restarted. Check if process is running with htop. If it is, use gLiveView.sh or go for walk. It will sync and the socket will be created.
+It can take anywhere from 2 to 30 minutes to sync after a reboot depending how the node was shut down or restarted. Check if process is running with htop. If it is, use gLiveView.sh or go for walk. It will sync and the socket will be created.
 
 It is best to just leave it running. 🏃♀
 {% endhint %}
 
 ## Quick Start
 
-### **1. Download and flash the** [**Pi-Node.img.gz**](https://db.adamantium.online/Pi-Node.img.gz)**.**
+### **1. Download and flash the** [**Pi-Node.img.gz**](https://mainnet.adamantium.online/Pi-Node.img.gz)**.**
 
 ### 2. 2. ssh into the server.
 
@@ -42,7 +42,7 @@ cd /home/ada/pi-pool
 ### 4. Download database snapshot.
 
 ```bash
-wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/
+wget -r -np -nH -R "index.html*" -e robots=off https://mainnet.adamantium.online/db/
 ```
 
 ### 5. Enable & start the cardano-service.
