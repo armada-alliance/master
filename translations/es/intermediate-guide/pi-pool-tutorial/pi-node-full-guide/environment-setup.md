@@ -226,7 +226,7 @@ cardano-service start
 cardano-service status
 ```
 
-Otherwise be sure your node is **not** running & delete the db folder if it exists and download db/.
+Otherwise, be sure your node is **not** running & delete the db folder if it exists and download db/.
 
 ```bash
 cardano-service stop
@@ -234,13 +234,25 @@ cd $NODE_HOME
 rm -r db/
 ```
 
-For mainnet chain use.
+#### Download Database
 
+{% tabs %}
+{% tab title="Testnet DB" %}
+```shell
+wget -r -np -nH -R "index.html*" -e robots=off https://testnet.adamantium.online/db/
+```
+{% endtab %}
+
+{% tab title="Mainnet DB" %}
 ```bash
-wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/
+wget -r -np -nH -R "index.html*" -e robots=off https://mainnet.adamantium.online/db/
 ```
 
-Once wget completes enable & start cardano-node.
+
+{% endtab %}
+{% endtabs %}
+
+Una vez que wget se haya completado habilitar & iniciar cardano-nodo.
 
 ```bash
 cardano-service enable
@@ -260,10 +272,10 @@ wget https://raw.githubusercontent.com/cardano-community/guild-operators/master/
 wget https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/gLiveView.sh
 ```
 
-We have to edit the env file to work with our environment. The port number here will have to be updated to match the port cardano-node is running on. For the **Pi-Node** it's port 3003. As we build the pool we will work down. For example Pi-Relay(2) will run on port 3002, Pi-Relay(1) on 3001 and Pi-Core on port 3000.
+Tenemos que editar el archivo env para trabajar con nuestro entorno. El número de puerto aquí tendrá que ser actualizado para que coincida con el puerto en el que se está ejecutando el nodo cardano-nodo. Para el **Pi-Node** es el puerto 3003. A medida que construyamos el Pool iremos adaptándolo. For example Pi-Relay(2) will run on port 3002, Pi-Relay(1) on 3001 and Pi-Core on port 3000.
 
 {% hint style="info" %}
-You can change the port cardano-node runs on in /home/ada/.local/bin/cardano-service.
+Puedes cambiar la ejecución del puerto de cardano-node en /home/ada/.local/bin/cardano-service.
 {% endhint %}
 
 ```bash
@@ -274,7 +286,7 @@ sed -i env \
     -e "s/\#SOCKET=\"\${CNODE_HOME}\/sockets\/node0.socket\"/SOCKET=\"\${NODE_HOME}\/db\/socket\"/g"
 ```
 
-Allow execution of gLiveView.sh.
+Permitir la ejecución de gLiveView.sh.
 
 ```bash
 chmod +x gLiveView.sh
@@ -282,23 +294,23 @@ chmod +x gLiveView.sh
 
 ## topologyUpdater.sh
 
-Until peer to peer is enabled on the network operators need a way to get a list of relays/peers to connect to. The topology updater service runs in the background with cron. Every hour the script will run and tell the service you are a relay and want to be a part of the network. It will add your relay to it's directory after four hours and start generating a list of relays in a json file in the $NODE_HOME/logs directory. A second script, relay-topology_pull.sh can then be used manually to generate a mainnet-topolgy file with relays/peers that are aware of you and you of them.
+Hasta que el peer to peer no esté habilitado en los operadores de red se necesita una forma de obtener una lista de relays/peers a los que conectarse. El servicio de actualizador de topología (topology updater) se ejecuta en segundo plano con cron. Cada hora el script se ejecutará y le dirá al servicio que eres un relay y quieres ser parte de la red. Añadirá tu relay a su directorio después de cuatro horas y comenzará a generar una lista de relays en un archivo json en el directorio $NODE\_HOME/logs. Un segundo script, relay-topology\_pull.sh puede ser usado manualmente para generar un archivo mainnet-topolgy con relays/peers que sean relacionados directamente entre tú y ellos.
 
 {% hint style="info" %}
-The list generated will show you the distance in miles & a clue as to where the relay is located.
+La lista generada te mostrará la distancia en millas &  para saber dónde se encuentra ubicado el relay.
 {% endhint %}
 
-Open a file named topologyUpdater.sh
+Abrir un archivo llamado topologyUpdater.sh
 
 ```bash
 cd $NODE_HOME/scripts
 nano topologyUpdater.sh
 ```
 
-Paste in the following, save & exit.
+Pega lo siguiente, guardar & salir.
 
 {% hint style="warning" %}
-The port number here must match the port cardano-node is running on. If you are using dns records you can add the FQDN that matches on line 6(line 6 only). Leave it as is if you are not using dns. The service will pick up the public IP and use that.
+El número de puerto aquí tendrá que ser actualizado para que coincida con el puerto en el que se está ejecutando el nodo cardano-nodo. If you are using dns records you can add the FQDN that matches on line 6(line 6 only). Déjalo como si no estuviera usando dns. El servicio recogerá la IP pública y la utilizará.
 {% endhint %}
 
 ```bash
@@ -339,21 +351,21 @@ fi
 curl -s -f -4 "https://api.clio.one/htopology/v1/?port=${CNODE_PORT}&blockNo=${blockNo}&valency=${CNODE_VALENCY}&magic=${NWMAGIC}${T_HOSTNAME}" | tee -a "${LOG_DIR}"/topologyUpdater_lastresult.json
 ```
 
-Save, exit and make it executable.
+Guardar, salir y hacerlo ejecutable.
 
 ```bash
 chmod +x topologyUpdater.sh
 ```
 
 {% hint style="warning" %}
-You will not be able to successfully execute ./topologyUpdater.sh until you are fully synced up to the tip of the chain.
+No podrá ejecutar con éxito ./topologyUpdater.sh hasta que esté completamente sincronizado hasta el final de la cadena.
 {% endhint %}
 
 {% hint style="info" %}
-Choose nano when prompted for editor.
+Elegir nano cuando se te pida que editor quieres usar.
 {% endhint %}
 
-Create a cron job that will run the script every hour.
+Crea una tarea de cron (cron job) que ejecutará el script cada hora.
 
 ```bash
 crontab -e
@@ -362,16 +374,16 @@ crontab -e
 Add the following to the bottom, save & exit.
 
 {% hint style="info" %}
-The Pi-Node image has this cron entry disabled by default. You can enable it by removing the #.
+La imagen de Pi-Node tiene esta línea de cron deshabilitada por defecto. You can enable it by removing the #.
 {% endhint %}
 
 ```bash
 33 * * * * /home/ada/pi-pool/scripts/topologyUpdater.sh
 ```
 
-After 4 hours of on boarding you will be added to the service and can pull your new list of peers into the mainnet-topology file.
+Después de 4 horas corriendo se añadirá al servicio y podrá llevar su nueva lista de peers al archivo de topología principal.
 
-Create another file relay-topology_pull.sh and paste in the following.
+Crear otro archivo relay-topology\_pull.sh y pegar en lo siguiente.
 
 ```bash
 nano relay-topology_pull.sh
@@ -384,17 +396,17 @@ BLOCKPRODUCING_PORT=3000
 curl -4 -s -o /home/ada/pi-pool/files/mainnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1|relays-new.cardano-mainnet.iohk.io:3001:2"
 ```
 
-Save, exit and make it executable.
+Guardar, salir y hacerlo ejecutable.
 
 ```bash
 chmod +x relay-topology_pull.sh
 ```
 
 {% hint style="danger" %}
-Pulling in a new list will overwrite your existing topology file. Keep that in mind.
+Al arrastrar una nueva lista se sobrescribirá tu archivo de topología existente. Ten esto en cuenta.
 {% endhint %}
 
-After 4 hours you can pull in your new list and restart the cardano-service.
+Después de 4 horas puede instalar su nueva lista y reiniciar el servicio de cardano.
 
 ```bash
 cd $NODE_HOME/scripts
@@ -402,7 +414,7 @@ cd $NODE_HOME/scripts
 ```
 
 {% hint style="info" %}
-relay-topology_pull.sh will add 15 peers to your mainnet-topology file. I usually remove the furthest 5 relays and use the closest 10.
+relay-topology\_pull.sh añadirá 15 peers a tu archivo mainnet-topology. Normalmente retiro los 5 relays más lejanos y uso los 10 más cercanos.
 {% endhint %}
 
 ```bash
@@ -410,21 +422,21 @@ nano $NODE_FILES/${NODE_CONFIG}-topology.json
 ```
 
 {% hint style="info" %}
-You can use gLiveView.sh to view ping times in relation to the peers in your mainnet-topology file. Use Ping to resolve hostnames to IP's.
+Puedes usar gLiveView.sh para ver qué tiempos de ping tienes en relación a los peers de tu archivo mainnet-topology. Usa Ping para resolver el hostname de la IP.
 {% endhint %}
 
-Changes to this file will take affect upon restarting the cardano-service.
+Los cambios en este archivo se verán afectados al reiniciar cardano-service.
 
 {% hint style="warning" %}
-Don't forget to remove the last comma in your topology file!
+¡No olvides eliminar la última coma en tu archivo topology!
 {% endhint %}
 
-Status should show as enabled & running.
+El estado debe mostrarse como habilitado y en ejecución.
 
 Once your node syncs past epoch 208(shelley era) you can use gLiveView.sh to monitor.
 
 {% hint style="danger" %}
-It can take up to an hour for cardano-node to sync to the tip of the chain. Use ./gliveView.sh, htop and log outputs to view process. Be patient it will come up.
+Puede tardar hasta una hora en sincronizar el nodo cardano con el final de la cadena. Use el script ./gliveView.sh, el comando htop y la salida del log para ver cómo evoluciona el proceso. Ten paciencia finalizará.
 {% endhint %}
 
 ```bash
@@ -436,10 +448,10 @@ cd $NODE_HOME/scripts
 
 ## Prometheus, Node Exporter & Grafana
 
-Prometheus connects to cardano-nodes backend and serves metrics over http. Grafana in turn can use that data to display graphs and create alerts. Our Grafana dashboard will be made up of data from our Ubuntu system & cardano-node. Grafana can display data from other sources as well, like [adapools.org](https://adapools.org).
+Prometheus se conecta al backend de los cardano-nodes y muestra sus métricas mediante http. Grafana a su vez puede usar esos datos para mostrar gráficos y crear alertas. Nuestro panel de control de Grafana estará compuesto de datos de nuestro sistema Ubuntu & nodo de tarjeta. Grafana can display data from other sources as well, like [adapools.org](https://adapools.org).
 
 {% hint style="info" %}
-You can connect a Telegram bot to Grafana which can alert you of problems with the server. Much easier than trying to configure email alerts.
+Puedes conectar un bot de Telegram a Grafana que te puede alertar de problemas con el servidor. Mucho más fácil que intentar configurar las alertas por correo electrónico.
 {% endhint %}
 
 {% embed url="https://github.com/prometheus" %}
@@ -449,14 +461,14 @@ You can connect a Telegram bot to Grafana which can alert you of problems with t
 ### Install Prometheus & Node Exporter.
 
 {% hint style="info" %}
-Prometheus can scrape the http endpoints of other servers running node exporter. Meaning Grafana and Prometheus does not have to be installed on your core and relays. Only the package prometheus-node-exporter is required if you would like to build a central Grafana dashboard for the pool, freeing up resources.
+Prometheus puede tomar los datos http de otros servidores ejecutando el node-exporter. El mantenimiento de Grafana y Prometheus no tiene que ser instalado en su core ni en sus relays. Sólo se requiere el paquete de prometheus-node-exporter para construir un tablero de control de Grafana para el Pool, liberando así recursos.
 {% endhint %}
 
 ```bash
 sudo apt-get install -y prometheus prometheus-node-exporter
 ```
 
-Disable them in systemd for now.
+Desactívalos en el systemd por ahora.
 
 ```bash
 sudo systemctl disable prometheus.service
@@ -465,16 +477,16 @@ sudo systemctl disable prometheus-node-exporter.service
 
 ### Configure Prometheus
 
-Open prometheus.yml.
+Abre prometheus.yml.
 
 ```bash
 sudo nano /etc/prometheus/prometheus.yml
 ```
 
-Replace the contents of the file with.
+Reemplaza el contenido del archivo.
 
 {% hint style="warning" %}
-Indentation must be correct YAML format or Prometheus will fail to start.
+La indentación debe ser correcta en formato YAML o Prometheus no podrá iniciarse.
 {% endhint %}
 
 ```yaml
@@ -522,7 +534,7 @@ scrape_configs:
 
 Save & exit.
 
-Edit mainnet-config.json so cardano-node exports traces on all interfaces.
+Editar mainnet-config.json para que cardano-node exporta trazas en todas las interfaces.
 
 ```bash
 cd $NODE_FILES
@@ -533,26 +545,26 @@ sed -i ${NODE_CONFIG}-config.json -e "s/127.0.0.1/0.0.0.0/g"
 
 {% embed url="https://github.com/grafana/grafana" %}
 
-Add Grafana's gpg key to Ubuntu.
+Añade la clave gpg de Grafana a Ubuntu.
 
 ```bash
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 ```
 
-Add latest stable repo to apt sources.
+Añade el último repositorio estable a las fuentes apt.
 
 ```bash
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 ```
 
-Update your package lists & install Grafana.
+Actualiza tus listas de paquetes e instala Grafana.
 
 ```bash
 sudo apt update
 sudo apt install grafana
 ```
 
-Change the port Grafana listens on so it does not clash with cardano-node.
+Cambia el puerto que escucha Grafana para que no choque con el nodo cardano.
 
 ```bash
 sudo sed -i /etc/grafana/grafana.ini \
@@ -569,7 +581,7 @@ cd $HOME
 nano .bashrc
 ```
 
-Down at the bottom add.
+Abajo en la parte inferior.
 
 ```bash
 cardano-monitor() {
@@ -586,7 +598,7 @@ Save, exit & source.
 source .bashrc
 ```
 
-Here we tied all three services under one function. Enable Prometheus.service, prometheus-node-exporter.service & grafana-server.service to run on boot and start the services.
+Aquí vinculamos los tres servicios bajo una sola función. Habilita a Prometheus.service, prometheub node-exporter.service & grafana-server.service para ejecutarse en el arranque e iniciar los servicios.
 
 ```bash
 cardano-monitor enable
@@ -594,10 +606,10 @@ cardano-monitor start
 ```
 
 {% hint style="warning" %}
-At this point you may want to start cardano-service and get synced up before we continue to configure Grafana. Go to the syncing the chain section. Choose whether you want to wait 30 hours or download the latest chain snapshot. Return here once gLiveView.sh shows you are at the tip of the chain.
+En este punto es posible que quieras iniciar el cardano-service y que se sincronice antes de continuar con la configuración de Grafana. Go to the syncing the chain section. Choose whether you want to wait 30 hours or download the latest chain snapshot. Vuelve aquí una vez que gLiveView.sh muestra que estás al final de la cadena.
 {% endhint %}
 
-## Grafana, Nginx proxy_pass & snakeoil
+## Grafana, Nginx proxy\_pass & snakeoil
 
 Let's put Grafana behind Nginx with self signed(snakeoil) certificate. El certificado se generó cuando instalamos el paquete ssl-cert.
 
@@ -661,11 +673,11 @@ On your local machine open your browser and enter your nodes private ip address.
 
 Inicie sesión y establezca una nueva contraseña. El nombre de usuario y contraseña por defecto son **admin:admin**.
 
-#### Configure data source
+#### Configurar la fuente de datos
 
 In the left hand vertical menu go to **Configure** > **Datasources** and click to **Add data source**. Elige Prometheus. Escribe [http://localhost:9090](http://localhost:9090) donde está en gris, el resto puede dejarse por defecto. En la parte inferior pinchar en save & test. Deberías obtener el verde "Data source is working" si el cardano-monitor está iniciado. Si por alguna razón estos servicios no pudieron iniciar, reinicie con **cardano-service restart**.
 
-#### Import dashboards
+#### Importar Panel de Control (Dashboards)
 
 Guarda los archivos json del dashboard en tu máquina local.
 
@@ -703,4 +715,4 @@ View network connections with netstat.
 sudo netstat -puntw
 ```
 
-Desde aquí tienes un pi-node con herramientas para construir un Stake Pool desde las siguientes páginas. Best of luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger! :muscle: 
+Desde aquí tienes un pi-node con herramientas para construir un Stake Pool desde las siguientes páginas. Best of luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger! :muscle:&#x20;
