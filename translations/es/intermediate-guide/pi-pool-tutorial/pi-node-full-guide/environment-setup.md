@@ -55,6 +55,7 @@ Changes to this file require reloading .bashrc & .adaenv or logging out then bac
 
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
+echo . ~/.adaenv >> $HOME/.bashrc
 echo export NODE_HOME=$HOME/pi-pool >> $HOME/.adaenv
 echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.adaenv
 echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.adaenv
@@ -81,7 +82,7 @@ sed -i ${NODE_CONFIG}-config.json \
 ```
 
 {% hint style="info" %}
-**Consejo para nodos Relay**: Es posible reducir el uso de memoria y cpu estableciendo "TraceMemPool" en "false" en **mainnet-config.json.** Esto desactivará los datos de mempool en Grafana y gLiveView.sh.
+**Tip for relay nodes**: It's possible to reduce memory and cpu usage by setting "TraceMemPool" to "false" in **{NODE_CONFIG}-config.json.** This will turn off mempool data in Grafana and gLiveView.sh.
 {% endhint %}
 
 ### Recuperar binarios aarch64
@@ -310,7 +311,6 @@ El número de puerto aquí tendrá que ser actualizado para que coincida con el 
 ```bash
 #!/bin/bash
 # shellcheck disable=SC2086,SC2034
-
 USERNAME=ada
 NODE_CONFIG=$(grep NODE_CONFIG /home/ada/.adaenv | cut -d '=' -f2)
 CNODE_PORT=3003 # must match your relay node port as set in the startup command
@@ -386,6 +386,7 @@ nano relay-topology_pull.sh
 
 ```bash
 #!/bin/bash
+NODE_CONFIG=$(grep NODE_CONFIG /home/ada/.adaenv | cut -d '=' -f2)
 BLOCKPRODUCING_IP=<BLOCK PRODUCERS PRIVATE IP>
 BLOCKPRODUCING_PORT=3000
 curl -4 -s -o /home/ada/pi-pool/files/{${NODE_CONFIG}-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1|relays-new.cardano-${NODE_CONFIG}.iohk.io:3001:2"
