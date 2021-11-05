@@ -23,6 +23,15 @@ sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
 
 ## Ympäristö
 
+### Choose mainnet or testnet.
+
+Create a .adaenv file, choose which network you want to be on and source the file.
+
+```shell
+echo -e NODE_CONFIG=mainnet >> $HOME/.pienv
+source $HOME/.adaenv
+```
+
 Tee muutamia kansioita.
 
 ```bash
@@ -34,24 +43,23 @@ mkdir $HOME/git
 mkdir $HOME/tmp
 ```
 
-### Luo bash muuttujat & lisää ~/.local/bin meidän $PATH🏃
+### Create bash variables & add \~/.local/bin to our $PATH 🏃
 
 {% hint style="info" %}
 [Ympäristömuuttujat Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
 {% endhint %}
 
-{% hint style="warning" %}
-Muutokset tähän tiedostoon vaativat .bashrc:n uudelleenlataamista tai uloskirjautumista ja sitten uuden sisäänkirjautumisen.
+{% hint style="Huomaa" %}
+Changes to this file require reloading .bashrc & .adaenv or logging out then back in.
 {% endhint %}
 
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
-echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
-echo export NODE_CONFIG=mainnet >> $HOME/.bashrc
-echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.bashrc
-echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.bashrc
-echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
-source $HOME/.bashrc
+echo export NODE_HOME=$HOME/pi-pool >> $HOME/.adaenv
+echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.adaenv
+echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.adaenv
+echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.adaenv
+source $HOME/.bashrc && source .adaenv
 ```
 
 ### Nouda palvelintiedostot
@@ -65,7 +73,7 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-topology.json
 ```
 
-Suorita seuraavat käskyt muokataksesi mainnet-config.json tiedostoa ja päivittääksesi TraceBlockFetchDecisions arvoon "true"
+Run the following to modify mainnet-config.json and update TraceBlockFetchDecisions to "true"
 
 ```bash
 sed -i ${NODE_CONFIG}-config.json \
@@ -91,7 +99,7 @@ rm -r cardano*
 cd $HOME
 ```
 
-{% hint style="warning" %}
+{% hint style="Huomaa" %}
 Jos binäärit ovat jo olemassa, sinun on vahvistettava vanhojen binäärien ylikirjoittaminen.
 {% endhint %}
 
@@ -117,17 +125,15 @@ Liitä seuraavat, tallenna & sulje nano.
 DIRECTORY=/home/ada/pi-pool
 FILES=/home/ada/pi-pool/files
 PORT=3003
-HOSTADDR=0.0.0.0
-TOPOLOGY=${FILES}/mainnet-topology.json
+TOPOLOGY=${FILES}/${NODE_CONFIG}-topology.json
 DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
-CONFIG=${FILES}/mainnet-config.json
+CONFIG=${FILES}/${NODE_CONFIG}-config.json
 ## +RTS -N4 -RTS = Multicore(4)
 cardano-node run +RTS -N4 -RTS \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
-  --host-addr ${HOSTADDR} \
   --port ${PORT} \
   --config ${CONFIG}
 ```
@@ -166,7 +172,7 @@ TimeoutStopSec=3
 LimitNOFILE=32768
 Restart=always
 RestartSec=5
-EnvironmentFile=-/home/ada/.pienv
+EnvironmentFile=-/home/ada/.adaenv
 
 [Install]
 WantedBy= multi-user.target
@@ -178,10 +184,10 @@ Määritä käyttöoikeudet ja uudelleenlataa systemd niin se poimii uuden palve
 sudo systemctl daemon-reload
 ```
 
-Lisätään funktio .bashrc tiedostomme loppuun, jotta elämä olisi hieman helpompaa.
+Let's add a function to the bottom of our .pienv file to make life a little easier.
 
 ```bash
-nano $HOME/.bashrc
+nano $HOME/.adaenv
 ```
 
 ```bash
@@ -194,7 +200,7 @@ cardano-service() {
 Tallenna & poistu.
 
 ```bash
-source $HOME/.bashrc
+source $HOME/.adaenv
 ```
 
 Lisäämämme funktio antaa meidän hallita cardano-nodea kirjoittamatta pitkiä komentoja kuten:
@@ -210,7 +216,7 @@ Nyt meidän täytyy vain:
 
 ## ⛓ Ketjun synkronointi ⛓
 
-Olet nyt valmis käynnistämään cardano-noden. Käynnistäminen aloittaa oman nodesi synkronoinnin Cardano lohkoketjun kanssa. Tämä kestää noin 30 tuntia ja db-kansio on kooltaan noin 10GB juuri nyt. Aiemmin ensimmäinen node tuli synkronoida kokonaan, alusta loppuun jonka jälkeen tietokanta voitiin kopioida toiseen nodeen.
+Olet nyt valmis käynnistämään cardano-noden. Käynnistäminen aloittaa oman nodesi synkronoinnin Cardano lohkoketjun kanssa. This is going to take about 30 hours and the db folder is about 10GB in size right now. Aiemmin ensimmäinen node tuli synkronoida kokonaan, alusta loppuun jonka jälkeen tietokanta voitiin kopioida toiseen nodeen.
 
 ### Lataa tilannekuva
 
@@ -578,7 +584,7 @@ Open .bashrc.
 
 ```bash
 cd $HOME
-nano .bashrc
+nano .adaenv
 ```
 
 Lisää tiedoston loppuun:
@@ -595,7 +601,7 @@ cardano-monitor() {
 Tallenna, poistu & source.
 
 ```bash
-source .bashrc
+source .adaenv
 ```
 
 Täällä yhdistimme kaikki kolme palvelua yhteen tehtävään. Ota Prometheus.service, prometheus-node-exporter.service & grafana-server.service käyttöön käynnistyksen yhteydessä ja käynnistä palvelut.
