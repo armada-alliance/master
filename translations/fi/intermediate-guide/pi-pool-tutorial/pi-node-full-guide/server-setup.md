@@ -36,47 +36,14 @@ sudo hdparm -Tt /dev/sda
 
 ### Ylikellotus, muisti & radiot
 
-Muokkaa /boot/firmware/config.txt. Liitä Pi Pool lisäykset tiedoston loppuun.
+Muokkaa /boot/firmware/config.txt. Just paste Pi Node additions in at the bottom.
 
 ```bash
 sudo nano /boot/firmware/config.txt
 ```
 
 ```
-[pi4]
-max_framebuffers=2
-
-[all]
-kernel=vmlinuz
-cmdline=cmdline.txt
-initramfs initrd.img followkernel
-
-# Enable the audio output, I2C and SPI interfaces on the GPIO header
-dtparam=audio=on
-dtparam=i2c_arm=on
-dtparam=spi=on
-
-# Enable the serial pins
-enable_uart=1
-
-# Comment out the following line if the edges of the desktop appear outside
-# the edges of your display
-disable_overscan=1
-
-# If you have issues with audio, you may try uncommenting the following line
-# which forces the HDMI output into HDMI mode instead of DVI (which doesn't
-# support audio output)
-#hdmi_drive=2
-
-# If you have a CM4, uncomment the following line to enable the USB2 outputs
-# on the IO board (assuming your CM4 is plugged into such a board)
-#dtoverlay=dwc2,dr_mode=host
-
-# Config settings specific to arm64
-arm_64bit=1
-dtoverlay=dwc2
-
-## Pi Pool ##
+## Pi Node ##
 over_voltage=6
 arm_freq=2000
 gpu_mem=16
@@ -136,7 +103,7 @@ Lisää seuraava /etc/sysctl.conf tiedoston loppuun. Tallenna ja sulje.
 {% endhint %}
 
 {% hint style="Huomaa" %}
-Olen poistamassa IPv6 ja IPv4 siirtoa käytöstä. Saatat haluta pitää nämä. Olen nähnyt väitteitä, että IPv6 on hitaampi ja saattaa häiritä toimintaa.
+If you would like to disable ipv6 or turn on forwarding you can below.
 {% endhint %}
 
 ```
@@ -144,7 +111,7 @@ sudo nano /etc/sysctl.conf
 ```
 
 ```
-## Pi Pool ##
+## Pi Node ##
 
 # swap more to zram                     
 vm.vfs_cache_pressure=500
@@ -296,8 +263,7 @@ Swapping to disk is slow, swapping to compressed ram space is faster and gives u
 {% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" %}
 
 ```
-sudo apt install linux-modules-extra-raspi
-sudo apt install zram-config
+sudo apt install linux-modules-extra-raspi zram-config
 ```
 
 ```bash
