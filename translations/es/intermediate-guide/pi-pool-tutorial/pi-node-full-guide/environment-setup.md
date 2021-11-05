@@ -206,7 +206,7 @@ Ahora estás listo para empezar a usar cardano-node. Hacer esto iniciará el pro
 No intente esto con una tarjeta sd de 8GB. ¡No hay suficiente espacio! [Crea tu archivo de la imagen](https://app.gitbook.com/@wcatz/s/pi-pool-guide/create-.img-file) y flashealo en tu ssd.
 {% endhint %}
 
-He empezado a tomar instantáneas de mi carpeta db de backup y la he alojado en un directorio web. Con este método tarda unos 15 minutos en tirar la última instantánea y tal vez otros 30 minutos en sincronizar hasta el final de la cadena. El servicio se presta según lo establecido. Depende de ti. Si quieres sincronizar la cadena por tu cuenta simplemente:
+He empezado a tomar instantáneas de mi carpeta db de backup y la he alojado en un directorio web. With this service it takes around 20 minutes to pull the latest snapshot and maybe another hour to sync up to the tip of the chain. El servicio se presta según lo establecido. Depende de ti. Si quieres sincronizar la cadena por tu cuenta simplemente:
 
 ```bash
 cardano-service enable
