@@ -23,7 +23,16 @@ sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
 
 ## Environment
 
-Make some directories.
+### Choose mainnet or testnet.
+
+Create a .adaenv file, choose which network you want to be on and source the file.
+
+```shell
+echo -e NODE_CONFIG=mainnet >> $HOME/.pienv
+source $HOME/.adaenv
+```
+
+Crear algunos directorios.
 
 ```bash
 mkdir -p $HOME/.local/bin
@@ -37,24 +46,23 @@ mkdir $HOME/tmp
 ### Create bash variables & add \~/.local/bin to our $PATH 🏃
 
 {% hint style="info" %}
-[Environment Variables in Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
+[Variables de entorno en Linux/Unix](https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells/247769#247769).
 {% endhint %}
 
 {% hint style="warning" %}
-Changes to this file require reloading .bashrc or logging out then back in.
+Changes to this file require reloading .bashrc & .adaenv or logging out then back in.
 {% endhint %}
 
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
-echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
-echo export NODE_CONFIG=mainnet >> $HOME/.bashrc
-echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.bashrc
-echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.bashrc
-echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
-source $HOME/.bashrc
+echo export NODE_HOME=$HOME/pi-pool >> $HOME/.adaenv
+echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.adaenv
+echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.adaenv
+echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.adaenv
+source $HOME/.bashrc && source .adaenv
 ```
 
-### Retrieve node files
+### Recuperar archivos del nodo
 
 ```bash
 cd $NODE_FILES
@@ -73,13 +81,13 @@ sed -i ${NODE_CONFIG}-config.json \
 ```
 
 {% hint style="info" %}
-**Tip for relay nodes**: It's possible to reduce memory and cpu usage by setting "TraceMemPool" to "false" in **mainnet-config.json.** This will turn off mempool data in Grafana and gLiveView.sh.
+**Consejo para nodos Relay**: Es posible reducir el uso de memoria y cpu estableciendo "TraceMemPool" en "false" en **mainnet-config.json.** Esto desactivará los datos de mempool en Grafana y gLiveView.sh.
 {% endhint %}
 
-### Retrieve aarch64 binaries
+### Recuperar binarios aarch64
 
 {% hint style="info" %}
-The **unofficial** cardano-node & cardano-cli binaries available to us are being built by an IOHK engineer in his **spare time**. Please visit the '[Arming Cardano](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w)' Telegram group for more information.
+Los **binarios de cardano** no oficiales & cardano-cli disponibles para nosotros están siendo construidos por un ingeniero de IOHK en su **tiempo libre**. Visita el grupo '[Arming Cardano](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w)' Telegram para más información.
 {% endhint %}
 
 ```bash
@@ -92,59 +100,57 @@ cd $HOME
 ```
 
 {% hint style="warning" %}
-If binaries already exist you will have to confirm overwriting the old ones.
+Si ya existen binarios tendrás que confirmar la sobreescritura de los antiguos.
 {% endhint %}
 
-Confirm binaries are in ada $PATH.
+Confirma que los binarios están en ada $PATH.
 
 ```bash
 cardano-node version
 cardano-cli version
 ```
 
-### Systemd unit files
+### Creación de Systemd
 
-Let us now create the systemd unit file and startup script so systemd can manage cardano-node.
+Vamos a crear ahora el archivo systemd y su script de arranque para que systemd pueda gestionar cardano-node.
 
 ```bash
 nano $HOME/.local/bin/cardano-service
 ```
 
-Paste the following, save & exit.
+Pega lo siguiente, guardar & salir.
 
 ```bash
 #!/bin/bash
 DIRECTORY=/home/ada/pi-pool
 FILES=/home/ada/pi-pool/files
 PORT=3003
-HOSTADDR=0.0.0.0
-TOPOLOGY=${FILES}/mainnet-topology.json
+TOPOLOGY=${FILES}/${NODE_CONFIG}-topology.json
 DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
-CONFIG=${FILES}/mainnet-config.json
+CONFIG=${FILES}/${NODE_CONFIG}-config.json
 ## +RTS -N4 -RTS = Multicore(4)
 cardano-node run +RTS -N4 -RTS \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
-  --host-addr ${HOSTADDR} \
   --port ${PORT} \
   --config ${CONFIG}
 ```
 
-Allow execution of our new startup script.
+Permitir la ejecución de nuestro nuevo script de arranque.
 
 ```bash
 chmod +x $HOME/.local/bin/cardano-service
 ```
 
-Open /etc/systemd/system/cardano-node.service.
+Abre /etc/systemd/system/cardano-node.service
 
 ```bash
 sudo nano /etc/systemd/system/cardano-node.service
 ```
 
-Paste the following, save & exit.
+Pega lo siguiente, guardar & salir.
 
 ```bash
 # The Cardano Node Service (part of systemd)
@@ -166,22 +172,22 @@ TimeoutStopSec=3
 LimitNOFILE=32768
 Restart=always
 RestartSec=5
-EnvironmentFile=-/home/ada/.pienv
+EnvironmentFile=-/home/ada/.adaenv
 
 [Install]
 WantedBy= multi-user.target
 ```
 
-Set permissions and reload systemd so it picks up our new service file..
+Establezca los permisos y vuelva a cargar systemd para que recoja nuestro nuevo archivo del servicio.
 
 ```bash
 sudo systemctl daemon-reload
 ```
 
-Let's add a function to the bottom of our .bashrc file to make life a little easier.
+Let's add a function to the bottom of our .pienv file to make life a little easier.
 
 ```bash
-nano $HOME/.bashrc
+nano $HOME/.adaenv
 ```
 
 ```bash
@@ -191,17 +197,17 @@ cardano-service() {
 }
 ```
 
-Save & exit.
+Guardar y salir
 
 ```bash
-source $HOME/.bashrc
+source $HOME/.adaenv
 ```
 
-What we just did there was add a function to control our cardano-service without having to type out
+Lo que acabamos de hacer fue añadir una función para controlar nuestro cardano-service sin tener que escribir:
 
 > > sudo systemctl enable cardano-node.service sudo systemctl start cardano-node.service sudo systemctl stop cardano-node.service sudo systemctl status cardano-node.service
 
-Now we just have to:
+Ahora sólo tenemos que hacer:
 
 * cardano-service enable  (enables cardano-node.service auto start at boot)
 * cardano-service start      (starts cardano-node.service)
@@ -210,15 +216,15 @@ Now we just have to:
 
 ## ⛓ Syncing the chain ⛓
 
-You are now ready to start cardano-node. Doing so will start the process of 'syncing the chain'. This is going to take about 30 hours and the db folder is about 10GB in size right now. We used to have to sync it to one node and copy it from that node to our new ones to save time.
+Ahora estás listo para empezar a usar cardano-node. Hacer esto iniciará el proceso de "sincronización de la cadena". This is going to take about 30 hours and the db folder is about 10GB in size right now. Si tenemos un nodo y sincronizado podemos copiar de ese nodo la carpeta db a nuestros nuevo nodo para ahorrar tiempo.
 
-### Download snapshot
+### Descargar la instantánea
 
 {% hint style="danger" %}
-Do not attempt this on an 8GB sd card. Not enough space! [Create your image file](https://app.gitbook.com/@wcatz/s/pi-pool-guide/create-.img-file) and flash it to your ssd.
+No intente esto con una tarjeta sd de 8GB. ¡No hay suficiente espacio! [Crea tu archivo de la imagen](https://app.gitbook.com/@wcatz/s/pi-pool-guide/create-.img-file) y flashealo en tu ssd.
 {% endhint %}
 
-I have started taking snapshots of my backup nodes db folder and hosting it in a web directory. With this service it takes around 15 minutes to pull the latest snapshot and maybe another 30 minutes to sync up to the tip of the chain. This service is provided as is. It is up to you. If you want to sync the chain on your own simply:
+He empezado a tomar instantáneas de mi carpeta db de backup y la he alojado en un directorio web. Con este método tarda unos 15 minutos en tirar la última instantánea y tal vez otros 30 minutos en sincronizar hasta el final de la cadena. El servicio se presta según lo establecido. Depende de ti. Si quieres sincronizar la cadena por tu cuenta simplemente:
 
 ```bash
 cardano-service enable
@@ -458,7 +464,7 @@ Puedes conectar un bot de Telegram a Grafana que te puede alertar de problemas c
 
 ![](../../../../.gitbook/assets/pi-pool-grafana (2) (2) (2) (2) (1) (7).png)
 
-### Install Prometheus & Node Exporter.
+### Instalar Prometheus & Node Exporter.
 
 {% hint style="info" %}
 Prometheus puede tomar los datos http de otros servidores ejecutando el node-exporter. El mantenimiento de Grafana y Prometheus no tiene que ser instalado en su core ni en sus relays. Sólo se requiere el paquete de prometheus-node-exporter para construir un tablero de control de Grafana para el Pool, liberando así recursos.
@@ -475,7 +481,7 @@ sudo systemctl disable prometheus.service
 sudo systemctl disable prometheus-node-exporter.service
 ```
 
-### Configure Prometheus
+### Configurar Prometheus
 
 Abre prometheus.yml.
 
@@ -532,7 +538,7 @@ scrape_configs:
           type:  'node'
 ```
 
-Save & exit.
+Guardar y salir
 
 Editar mainnet-config.json para que cardano-node exporta trazas en todas las interfaces.
 
@@ -541,7 +547,7 @@ cd $NODE_FILES
 sed -i ${NODE_CONFIG}-config.json -e "s/127.0.0.1/0.0.0.0/g"
 ```
 
-### Install Grafana
+### Instalar Grafana
 
 {% embed url="https://github.com/grafana/grafana" %}
 
@@ -572,13 +578,13 @@ sudo sed -i /etc/grafana/grafana.ini \
 -e "s/3000/5000/"
 ```
 
-### cardano-monitor bash function
+### Función de cardano-monitor bash
 
 Open .bashrc.
 
 ```bash
 cd $HOME
-nano .bashrc
+nano .adaenv
 ```
 
 Abajo en la parte inferior.
@@ -595,7 +601,7 @@ cardano-monitor() {
 Save, exit & source.
 
 ```bash
-source .bashrc
+source .adaenv
 ```
 
 Aquí vinculamos los tres servicios bajo una sola función. Habilita a Prometheus.service, prometheub node-exporter.service & grafana-server.service para ejecutarse en el arranque e iniciar los servicios.
@@ -667,7 +673,7 @@ You can now visit your pi-nodes ip address without any port specification, the c
 
 ![](../../../../.gitbook/assets/snakeoil.png)
 
-### Configure Grafana
+### Configurar Grafana
 
 On your local machine open your browser and enter your nodes private ip address.
 
@@ -687,7 +693,7 @@ In the left hand vertical menu go to **Dashboards** > **Manage** and click on **
 
 ![](../../../../.gitbook/assets/pi-pool-grafana (2) (2) (2) (2) (1) (5).png)
 
-### Configure poolDataLive
+### Configurar poolDataLive
 
 Aquí puedes utilizar la api de PoolData para traer sus datos del Pool a Grafana.
 
