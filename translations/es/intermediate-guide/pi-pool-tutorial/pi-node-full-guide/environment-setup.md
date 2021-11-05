@@ -28,7 +28,7 @@ sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
 Create a .adaenv file, choose which network you want to be on and source the file.
 
 ```shell
-echo -e NODE_CONFIG=mainnet >> $HOME/.pienv
+echo -e NODE_CONFIG=mainnet >> $HOME/.adaenv
 source $HOME/.adaenv
 ```
 
