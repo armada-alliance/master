@@ -25,7 +25,7 @@ Cardano-wallet will not build on arm due to dependency failure. @ZW3RK tried to 
 ### Enable blockfetch tracing
 
 ```
-sed -i ${NODE_FILES}/mainnet-config.json \
+sed -i ${NODE_FILES}/${NODE_CONFIG}-config.json \
     -e "s/TraceBlockFetchDecisions\": false/TraceBlockFetchDecisions\": true/g"
 ```
 
@@ -70,8 +70,8 @@ Create variables with the number of slots per KES period from the genesis file a
 {% tabs %}
 {% tab title="Core" %}
 ```bash
-slotsPerKesPeriod=$(cat $NODE_FILES/mainnet-shelley-genesis.json | jq -r '.slotsPerKESPeriod')
-slotNo=$(cardano-cli query tip --mainnet | jq -r '.slot')
+slotsPerKesPeriod=$(cat $NODE_FILES/${NODE_CONFIG}-shelley-genesis.json | jq -r '.slotsPerKESPeriod')
+slotNo=$(cardano-cli query tip --${NODE_CONFIG} | jq -r '.slot')
 echo slotsPerKesPeriod: ${slotsPerKesPeriod}
 echo slotNo: ${slotNo}
 ```
@@ -149,11 +149,10 @@ nano $HOME/.local/bin/cardano-service
 DIRECTORY=/home/ada/pi-pool
 FILES=/home/ada/pi-pool/files
 PORT=3000
-HOSTADDR=0.0.0.0
-TOPOLOGY=${FILES}/mainnet-topology.json
+TOPOLOGY=${FILES}/${NODE_CONFIG}-topology.json
 DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
-CONFIG=${FILES}/mainnet-config.json
+CONFIG=${FILES}/${NODE_CONFIG}-config.json
 KES=${DIRECTORY}/kes.skey
 VRF=${DIRECTORY}/vrf.skey
 CERT=${DIRECTORY}/node.cert
@@ -162,7 +161,6 @@ cardano-node run +RTS -N4 -RTS \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
-  --host-addr ${HOSTADDR} \
   --port ${PORT} \
   --config ${CONFIG} \
   --shelley-kes-key ${KES} \
@@ -172,12 +170,12 @@ cardano-node run +RTS -N4 -RTS \
 {% endtab %}
 {% endtabs %}
 
-Add your relay(s) to mainnet-topolgy.json.
+Add your relay(s) to ${NODE_CONFIG}-topolgy.json.
 
 {% tabs %}
 {% tab title="Core" %}
 ```bash
-nano $NODE_FILES/mainnet-topology.json
+nano $NODE_FILES/${NODE_CONFIG}-topology.json
 ```
 {% endtab %}
 {% endtabs %}
@@ -310,7 +308,7 @@ cardano-cli stake-address key-gen \
 cardano-cli stake-address build \
   --stake-verification-key-file stake.vkey \
   --out-file stake.addr \
-  --mainnet
+  --${NODE_CONFIG}
 ```
 {% endtab %}
 {% endtabs %}
@@ -324,7 +322,7 @@ cardano-cli address build \
   --payment-verification-key-file payment.vkey \
   --stake-verification-key-file stake.vkey \
   --out-file payment.addr \
-  --mainnet
+  --${NODE_CONFIG}
 ```
 {% endtab %}
 {% endtabs %}
@@ -354,7 +352,7 @@ Core node needs to be synced to the tip of the blockchain.
 ```bash
 cardano-cli query utxo \
   --address $(cat payment.addr) \
-  --mainnet
+  --${NODE_CONFIG}
 ```
 {% endtab %}
 {% endtabs %}
@@ -380,7 +378,7 @@ Query current slot number or tip of the chain.
 {% tabs %}
 {% tab title="Core" %}
 ```bash
-slotNo=$(cardano-cli query tip --mainnet | jq -r '.slot')
+slotNo=$(cardano-cli query tip --${NODE_CONFIG} | jq -r '.slot')
 echo slotNo: ${slotNo}
 ```
 {% endtab %}
@@ -393,7 +391,7 @@ Get the utxo or balance of the wallet.
 ```bash
 cardano-cli query utxo \
   --address $(cat payment.addr) \
-  --mainnet > fullUtxo.out
+  --${NODE_CONFIG} > fullUtxo.out
 
 tail -n +3 fullUtxo.out | sort -k3 -nr > balance.out
 cat balance.out
@@ -426,11 +424,11 @@ It is because the core has not finished syncing to the tip of the blockchain. Th
 If however the cardano-node does not shutdown 'cleanly' for whatever reason it can take up to an hour to verify the database(chain) and create the socket file. Socket file is created once your synced.
 {% endhint %}
 
-Query mainnet for protocol parameters.
+Query ${NODE_CONFIG} for protocol parameters.
 
 ```
 cardano-cli query protocol-parameters \
-    --mainnet \
+    --${NODE_CONFIG} \
     --out-file params.json
 ```
 
@@ -478,7 +476,7 @@ fee=$(cardano-cli transaction calculate-min-fee \
   --tx-body-file tx.tmp \
   --tx-in-count ${txcnt} \
   --tx-out-count 1 \
-  --mainnet \
+  --${NODE_CONFIG} \
   --witness-count 2 \
   --byron-witness-count 0 \
   --protocol-params-file params.json | awk '{ print $1 }')
@@ -523,7 +521,7 @@ cardano-cli transaction sign \
   --tx-body-file tx.raw \
   --signing-key-file payment.skey \
   --signing-key-file stake.skey \
-  --mainnet \
+  --${NODE_CONFIG} \
   --out-file tx.signed
 ```
 {% endtab %}
@@ -538,7 +536,7 @@ Submit the transaction to the blockchain.
 ```bash
 cardano-cli transaction submit \
   --tx-file tx.signed \
-  --mainnet
+  --${NODE_CONFIG}
 ```
 {% endtab %}
 {% endtabs %}
@@ -667,7 +665,7 @@ cardano-cli stake-pool registration-certificate \
   --pool-margin 0.01 \
   --pool-reward-account-verification-key-file stake.vkey \
   --pool-owner-stake-verification-key-file stake.vkey \
-  --mainnet \
+  --${NODE_CONFIG} \
   --single-host-pool-relay <r1.example.com> \
   --pool-relay-port 3001 \
   --metadata-url <https://example.com/poolMetaData.json> \
@@ -708,7 +706,7 @@ Query the current slot number or tip of the chain.
 {% tabs %}
 {% tab title="Core" %}
 ```bash
-slotNo=$(cardano-cli query tip --mainnet | jq -r '.slot')
+slotNo=$(cardano-cli query tip --${NODE_CONFIG} | jq -r '.slot')
 echo slotNo: ${slotNo}
 ```
 {% endtab %}
@@ -721,7 +719,7 @@ Get the utxo or balance of the wallet.
 ```bash
 cardano-cli query utxo \
   --address $(cat payment.addr) \
-  --mainnet > fullUtxo.out
+  --${NODE_CONFIG} > fullUtxo.out
 
 tail -n +3 fullUtxo.out | sort -k3 -nr > balance.out
 cat balance.out
@@ -781,7 +779,7 @@ fee=$(cardano-cli transaction calculate-min-fee \
   --tx-body-file tx.tmp \
   --tx-in-count ${txcnt} \
   --tx-out-count 1 \
-  --mainnet \
+  --${NODE_CONFIG} \
   --witness-count 3 \
   --byron-witness-count 0 \
   --protocol-params-file params.json | awk '{ print $1 }')
@@ -830,7 +828,7 @@ cardano-cli transaction sign \
   --signing-key-file payment.skey \
   --signing-key-file $HOME/cold-keys/node.skey \
   --signing-key-file stake.skey \
-  --mainnet \
+  --${NODE_CONFIG} \
   --out-file tx.signed
 ```
 {% endtab %}
@@ -843,7 +841,7 @@ Move **tx.signed** back to your core node & submit the transaction to the blockc
 ```bash
 cardano-cli transaction submit \
   --tx-file tx.signed \
-  --mainnet
+  --${NODE_CONFIG}
 ```
 {% endtab %}
 {% endtabs %}
