@@ -1,29 +1,10 @@
 ---
-description: Asenna tarvittavat paketit, joita tarvitaan cardano-noden ylläpitämiseen ja määritetään ympäristömme
+description: Configure the environment for Cardano Node
 ---
 
 # Ympäristön Asetukset
 
-## Asenna paketit
-
-Ota käyttöön automaattiset tietoturvapäivitykset.
-
-```bash
-sudo dpkg-reconfigure -plow unattended-upgrades
-```
-
-Asennetaan tarvittavat paketit.
-
-```bash
-sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
-         jq make automake unzip net-tools nginx ssl-cert pkg-config \
-         libffi-dev libgmp-dev libssl-dev libtinfo-dev libsystemd-dev \
-         zlib1g-dev g++ libncursesw5 libtool autoconf bc -y
-```
-
-## Ympäristö
-
-### Choose mainnet or testnet.
+## Choose mainnet or testnet.
 
 Create a .adaenv file, choose which network you want to be on and source the file.
 
@@ -179,7 +160,7 @@ EnvironmentFile=-/home/ada/.adaenv
 WantedBy= multi-user.target
 ```
 
-Määritä käyttöoikeudet ja uudelleenlataa systemd niin se poimii uuden palvelutiedostomme.
+Reload systemd so it picks up our new service file.
 
 ```bash
 sudo systemctl daemon-reload
@@ -217,7 +198,7 @@ Nyt meidän täytyy vain:
 
 ## ⛓ Ketjun synkronointi ⛓
 
-Olet nyt valmis käynnistämään cardano-noden. Käynnistäminen aloittaa oman nodesi synkronoinnin Cardano lohkoketjun kanssa. This is going to take about 30 hours and the db folder is about 10GB in size right now. Aiemmin ensimmäinen node tuli synkronoida kokonaan, alusta loppuun jonka jälkeen tietokanta voitiin kopioida toiseen nodeen.
+Olet nyt valmis käynnistämään cardano-noden. Käynnistäminen aloittaa oman nodesi synkronoinnin Cardano lohkoketjun kanssa. This is going to take about 48 hours and the db folder is about 13GB in size right now. Aiemmin ensimmäinen node tuli synkronoida kokonaan, alusta loppuun jonka jälkeen tietokanta voitiin kopioida toiseen nodeen.
 
 ### Lataa tilannekuva
 
@@ -691,7 +672,7 @@ Täällä voit käyttää poolData api -sovellusta tuodaksesi poolisi tiedot Gra
 
 Noudata ohjeita asentaaksesi Grafana plugin, määritä datasource ja tuo dashboard.
 
-## Hyödyllisiä Komentoja
+## Useful Commands
 
 Seuraa lokin ulostuloa päiväkirjaan.
 
