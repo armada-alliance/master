@@ -23,6 +23,15 @@ sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
 
 ## Environment
 
+### Choose mainnet or testnet.
+
+Create a .adaenv file, choose which network you want to be on and source the file.
+
+```shell
+echo -e NODE_CONFIG=mainnet >> $HOME/.pienv
+source $HOME/.adaenv
+```
+
 Make some directories.
 
 ```bash
@@ -41,17 +50,16 @@ mkdir $HOME/tmp
 {% endhint %}
 
 {% hint style="warning" %}
-Changes to this file require reloading .bashrc or logging out then back in.
+Changes to this file require reloading .bashrc & .adaenv or logging out then back in.
 {% endhint %}
 
 ```bash
 echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
-echo export NODE_HOME=$HOME/pi-pool >> $HOME/.bashrc
-echo export NODE_CONFIG=mainnet >> $HOME/.bashrc
-echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.bashrc
-echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.bashrc
-echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.bashrc
-source $HOME/.bashrc
+echo export NODE_HOME=$HOME/pi-pool >> $HOME/.adaenv
+echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.adaenv
+echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.adaenv
+echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.adaenv
+source $HOME/.bashrc && source .adaenv
 ```
 
 ### Retrieve node files
@@ -117,17 +125,15 @@ Paste the following, save & exit.
 DIRECTORY=/home/ada/pi-pool
 FILES=/home/ada/pi-pool/files
 PORT=3003
-HOSTADDR=0.0.0.0
-TOPOLOGY=${FILES}/mainnet-topology.json
+TOPOLOGY=${FILES}/${NODE_CONFIG}-topology.json
 DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
-CONFIG=${FILES}/mainnet-config.json
+CONFIG=${FILES}/${NODE_CONFIG}-config.json
 ## +RTS -N4 -RTS = Multicore(4)
 cardano-node run +RTS -N4 -RTS \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
-  --host-addr ${HOSTADDR} \
   --port ${PORT} \
   --config ${CONFIG}
 ```
@@ -166,7 +172,7 @@ TimeoutStopSec=3
 LimitNOFILE=32768
 Restart=always
 RestartSec=5
-EnvironmentFile=-/home/ada/.pienv
+EnvironmentFile=-/home/ada/.adaenv
 
 [Install]
 WantedBy= multi-user.target
@@ -178,10 +184,10 @@ Set permissions and reload systemd so it picks up our new service file..
 sudo systemctl daemon-reload
 ```
 
-Let's add a function to the bottom of our .bashrc file to make life a little easier.
+Let's add a function to the bottom of our .pienv file to make life a little easier.
 
 ```bash
-nano $HOME/.bashrc
+nano $HOME/.adaenv
 ```
 
 ```bash
@@ -194,7 +200,7 @@ cardano-service() {
 Save & exit.
 
 ```bash
-source $HOME/.bashrc
+source $HOME/.adaenv
 ```
 
 What we just did there was add a function to control our cardano-service without having to type out
@@ -578,7 +584,7 @@ Open .bashrc.
 
 ```bash
 cd $HOME
-nano .bashrc
+nano .adaenv
 ```
 
 Down at the bottom add.
@@ -595,7 +601,7 @@ cardano-monitor() {
 Save, exit & source.
 
 ```bash
-source .bashrc
+source .adaenv
 ```
 
 Here we tied all three services under one function. Enable Prometheus.service, prometheus-node-exporter.service & grafana-server.service to run on boot and start the services.
