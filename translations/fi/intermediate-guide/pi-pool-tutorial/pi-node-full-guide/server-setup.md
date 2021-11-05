@@ -1,5 +1,5 @@
 ---
-description: 'Optimoi laitteistot, suojaa (harden) Ubuntu'
+description: Optimoi laitteistot, suojaa (harden) Ubuntu
 ---
 
 # Palvelimen Asetukset
@@ -24,13 +24,13 @@ Huomaa, että Ubuntu tallentaa config.txt -tiedoston eri paikkaan kuin Raspbian.
 
 #### Kirjoitusnopeus
 
-```text
+```
 sudo dd if=/dev/zero of=/tmp/output conv=fdatasync bs=384k count=1k; sudo rm -f /tmp/output
 ```
 
 #### Lukunopeus
 
-```text
+```
 sudo hdparm -Tt /dev/sda
 ```
 
@@ -42,7 +42,7 @@ Muokkaa /boot/firmware/config.txt. Liitä Pi Pool lisäykset tiedoston loppuun.
 sudo nano /boot/firmware/config.txt
 ```
 
-```text
+```
 [pi4]
 max_framebuffers=2
 
@@ -86,7 +86,7 @@ disable-bt
 
 Tallenna ja käynnistä uudelleen.
 
-```text
+```
 sudo reboot
 ```
 
@@ -94,7 +94,7 @@ sudo reboot
 
 ### Poista root käyttäjä käytöstä
 
-```text
+```
 sudo passwd -l root
 ```
 
@@ -102,13 +102,13 @@ sudo passwd -l root
 
 Avaa /etc/fstab.
 
-```text
+```
 sudo nano /etc/fstab
 ```
 
 Lisää seuraava tiedoston loppuun omalle riville, tallenna & sulje nano.
 
-```text
+```
 tmpfs    /run/shm    tmpfs    ro,noexec,nosuid    0 0
 ```
 
@@ -116,13 +116,13 @@ tmpfs    /run/shm    tmpfs    ro,noexec,nosuid    0 0
 
 Avaa /etc/security/limits.conf.
 
-```text
+```
 sudo nano /etc/security/limits.conf
 ```
 
 Lisää seuraava tiedoston loppuun omalle riville, tallenna & sulje nano.
 
-```text
+```
 ada soft nofile 800000
 ada hard nofile 1048576
 ```
@@ -139,11 +139,11 @@ Lisää seuraava /etc/sysctl.conf tiedoston loppuun. Tallenna ja sulje.
 Olen poistamassa IPv6 ja IPv4 siirtoa käytöstä. Saatat haluta pitää nämä. Olen nähnyt väitteitä, että IPv6 on hitaampi ja saattaa häiritä toimintaa.
 {% endhint %}
 
-```text
+```
 sudo nano /etc/sysctl.conf
 ```
 
-```text
+```
 ## Pi Pool ##
 
 # swap more to zram                     
@@ -194,11 +194,11 @@ net.ipv4.tcp_congestion_control = bbr
 
 Luo uusi tiedosto. Liitä seuraava, tallenna & sulje.
 
-```text
+```
 sudo nano /etc/rc.local
 ```
 
-```text
+```
 #!/bin/bash
 
 # Anna suorittimen käynnistyksen rutiinien aika asettua.
@@ -219,11 +219,11 @@ Sinun pitäisi poistaa IRQ Balance käytöstä varmistaaksesi, ettet saa laittei
 
 Avaa /etc/default/irqbalance ja lisää alareunaan. Tallenna, poistu ja käynnistä uudelleen.
 
-```text
+```
 sudo nano /etc/default/irqbalance
 ```
 
-```text
+```
 ENABLED="0"
 ```
 
@@ -231,7 +231,7 @@ ENABLED="0"
 
 Meidän täytyy saada aikamme synkronoitua niin tarkasti kuin mahdollista. Avaa /etc/chrony/chrony.conf
 
-```text
+```
 sudo apt install chrony
 ```
 
@@ -290,13 +290,14 @@ sudo service chrony restart
 Olemme havainneet, että kardano-node voi turvallisesti käyttää tätä pakattua swapia RAM:ina periaatteessatämä antaa meille noin 20 gb RAM:ia. Olemme jo asettaneet ytimen parametrit zram:ia varten /etc/sysctl.conf tiedostossa
 {% endhint %}
 
-Vaihto levylle on hidasta, vaihtaminen pakattuun ram tilaan on nopeampaa ja antaa meille jonkin verran enemmän marginaalia ennen muistin loppumista \(oom\).
+Swapping to disk is slow, swapping to compressed ram space is faster and gives us some overhead before out of memory (oom).
 
-{% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters" caption="" %}
+{% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters/" %}
 
-{% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" caption="" %}
+{% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" %}
 
-```text
+```
+sudo apt install linux-modules-extra-raspi
 sudo apt install zram-config
 ```
 
@@ -304,10 +305,10 @@ sudo apt install zram-config
 sudo nano /usr/bin/init-zram-swapping
 ```
 
-Kerro oletusasetukset kolmella. Tämä antaa sinulle 12,5 Gt virtuaalista pakattua swapia RAM:ksi.
+Kerro oletusasetukset kolmella. This will give you 11.5GB of virtual compressed swap in ram.
 
 {% hint style="info" %}
-mem=$\(\(\(totalmem / 2 / ${NRDEVICES}\) \* 1024 \* 3\)\)
+mem=$(((totalmem / 2 / ${NRDEVICES}) \* 1024 \* 3))
 {% endhint %}
 
 ```bash
@@ -338,7 +339,7 @@ done
 {% hint style="info" %}
 Katso, kuinka paljon zram swap:ia cardano-node käyttää.
 
-```text
+```
 CNZRAM=$(pidof cardano-node)
 grep --color VmSwap /proc/$CNZRAM/status
 ```
@@ -354,13 +355,12 @@ Ennen kuin alamme tuottaa avaimia palvelimella meidän pitää luoda turvallinen
 [https://github.com/nhorman/rng-tools](https://github.com/nhorman/rng-tools)
 {% endhint %}
 
-> Mietitäänpä yksittäisen, "headless" palvelimen \(tai mikro-ohjaimenkin\) kohtaloa, ilman ihmisen syöttämiä kirjoituksia tai hiiren liikkeitä, eikä kehräävää asemaa tarjoamassa mekaanista epäsäännöllisyyttä. Mistä _se_ saa entropiaa käynnistyttyään? Entä jos hyökkääjä tai huono onni, pakottaa säännöllisiä uudelleenkäynnistyksiä? Tämä on [todellinen ongelma](http://www.theregister.co.uk/2015/12/02/raspberry_pi_weak_ssh_keys/).
+> But consider the fate of a standalone, headless server (or a micro controller for that matter) with no human typing or mousing around, and no spinning iron drive providing mechanical irregularity. Mistä _se_ saa entropiaa käynnistyttyään? Entä jos hyökkääjä tai huono onni, pakottaa säännöllisiä uudelleenkäynnistyksiä? This is a [real problem](http://www.theregister.co.uk/2015/12/02/raspberry\_pi\_weak\_ssh\_keys/).
 
-```text
+```
 sudo apt-get install rng-tools
 ```
 
-```text
+```
 sudo reboot
 ```
-
