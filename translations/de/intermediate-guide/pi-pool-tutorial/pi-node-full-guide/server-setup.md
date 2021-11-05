@@ -1,5 +1,5 @@
 ---
-description: 'optimize hardware, harden Ubuntu'
+description: optimize hardware, harden Ubuntu
 ---
 
 # Server Setup
@@ -24,13 +24,13 @@ Take note that Ubuntu stores config.txt in a different location than Raspbian.
 
 #### Write speed
 
-```text
+```
 sudo dd if=/dev/zero of=/tmp/output conv=fdatasync bs=384k count=1k; sudo rm -f /tmp/output
 ```
 
 #### Read speed
 
-```text
+```
 sudo hdparm -Tt /dev/sda
 ```
 
@@ -42,7 +42,7 @@ Edit /boot/firmware/config.txt. Just paste Pi Pool additions in at the bottom.
 sudo nano /boot/firmware/config.txt
 ```
 
-```text
+```
 [pi4]
 max_framebuffers=2
 
@@ -86,7 +86,7 @@ disable-bt
 
 Save and reboot.
 
-```text
+```
 sudo reboot
 ```
 
@@ -94,7 +94,7 @@ sudo reboot
 
 ### Disable the root user
 
-```text
+```
 sudo passwd -l root
 ```
 
@@ -102,13 +102,13 @@ sudo passwd -l root
 
 Open /etc/fstab.
 
-```text
+```
 sudo nano /etc/fstab
 ```
 
 Add this line at the bottom, save & exit.
 
-```text
+```
 tmpfs    /run/shm    tmpfs    ro,noexec,nosuid    0 0
 ```
 
@@ -116,13 +116,13 @@ tmpfs    /run/shm    tmpfs    ro,noexec,nosuid    0 0
 
 Open /etc/security/limits.conf.
 
-```text
+```
 sudo nano /etc/security/limits.conf
 ```
 
 Add the following to the bottom, save & exit.
 
-```text
+```
 ada soft nofile 800000
 ada hard nofile 1048576
 ```
@@ -139,11 +139,11 @@ Add the following to the bottom of /etc/sysctl.conf. Save and exit.
 I am disabling IPv6 and IPv4 forwarding. You may want these. I have seen claims that IPv6 is slower and gets in the way.
 {% endhint %}
 
-```text
+```
 sudo nano /etc/sysctl.conf
 ```
 
-```text
+```
 ## Pi Pool ##
 
 # swap more to zram                     
@@ -194,11 +194,11 @@ net.ipv4.tcp_congestion_control = bbr
 
 Create a new file. Paste, save & close.
 
-```text
+```
 sudo nano /etc/rc.local
 ```
 
-```text
+```
 #!/bin/bash
 
 # Give CPU startup routines time to settle.
@@ -219,11 +219,11 @@ You should turn off IRQ Balance to make sure you do not get hardware interrupts 
 
 Open /etc/default/irqbalance and add to the bottom. Save, exit and reboot.
 
-```text
+```
 sudo nano /etc/default/irqbalance
 ```
 
-```text
+```
 ENABLED="0"
 ```
 
@@ -231,7 +231,7 @@ ENABLED="0"
 
 We need to get our time synchronization as accurate as possible. Open /etc/chrony/chrony.conf
 
-```text
+```
 sudo apt install chrony
 ```
 
@@ -290,13 +290,14 @@ sudo service chrony restart
 We have found that cardano-node can safely use this compressed swap in ram essentially giving us around 20gb of ram. We already set kernel parameters for zram in /etc/sysctl.conf
 {% endhint %}
 
-Swapping to disk is slow, swapping to compressed ram space is faster and gives us some overhead before out of memory \(oom\).
+Swapping to disk is slow, swapping to compressed ram space is faster and gives us some overhead before out of memory (oom).
 
-{% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters/" caption="" %}
+{% embed url="https://haydenjames.io/raspberry-pi-performance-add-zram-kernel-parameters/" %}
 
-{% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" caption="" %}
+{% embed url="https://lists.ubuntu.com/archives/lubuntu-users/2013-October/005831.html" %}
 
-```text
+```
+sudo apt install linux-modules-extra-raspi
 sudo apt install zram-config
 ```
 
@@ -304,10 +305,10 @@ sudo apt install zram-config
 sudo nano /usr/bin/init-zram-swapping
 ```
 
-Multiply default config by 3. This will give you 12.5GB of virtual compressed swap in ram.
+Multiply default config by 3. This will give you 11.5GB of virtual compressed swap in ram.
 
 {% hint style="info" %}
-mem=$\(\(\(totalmem / 2 / ${NRDEVICES}\) \* 1024 \* 3\)\)
+mem=$(((totalmem / 2 / ${NRDEVICES}) \* 1024 \* 3))
 {% endhint %}
 
 ```bash
@@ -338,7 +339,7 @@ done
 {% hint style="info" %}
 View how much zram swap cardano-node is using.
 
-```text
+```
 CNZRAM=$(pidof cardano-node)
 grep --color VmSwap /proc/$CNZRAM/status
 ```
@@ -354,13 +355,12 @@ Before we start generating keys with a headless server we should have a safe amo
 [https://github.com/nhorman/rng-tools](https://github.com/nhorman/rng-tools)
 {% endhint %}
 
-> But consider the fate of a standalone, headless server \(or a micro controller for that matter\) with no human typing or mousing around, and no spinning iron drive providing mechanical irregularity. Where does _it_ get entropy after it starts up? What if an attacker, or bad luck, forces periodic reboots? This is a [real problem](http://www.theregister.co.uk/2015/12/02/raspberry_pi_weak_ssh_keys/).
+> But consider the fate of a standalone, headless server (or a micro controller for that matter) with no human typing or mousing around, and no spinning iron drive providing mechanical irregularity. Where does _it_ get entropy after it starts up? What if an attacker, or bad luck, forces periodic reboots? This is a [real problem](http://www.theregister.co.uk/2015/12/02/raspberry\_pi\_weak\_ssh\_keys/).
 
-```text
+```
 sudo apt-get install rng-tools
 ```
 
-```text
+```
 sudo reboot
 ```
-
