@@ -242,21 +242,9 @@ rm -r db/
 
 #### Download Database
 
-{% tabs %}
-{% tab title="Testnet DB" %}
-```shell
-wget -r -np -nH -R "index.html*" -e robots=off https://testnet.adamantium.online/db/
-```
-{% endtab %}
-
-{% tab title="Mainnet DB" %}
 ```bash
-wget -r -np -nH -R "index.html*" -e robots=off https://mainnet.adamantium.online/db/
+wget -r -np -nH -R "index.html*" -e robots=off https://$NODE_CONFIG.adamantium.online/db/
 ```
-
-
-{% endtab %}
-{% endtabs %}
 
 Once wget completes enable & start cardano-node.
 
@@ -288,7 +276,7 @@ You can change the port cardano-node runs on in /home/ada/.local/bin/cardano-ser
 sed -i env \
     -e "s/\#CNODE_HOME=\"\/opt\/cardano\/cnode\"/CNODE_HOME=\"\home\/ada\/pi-pool\"/g" \
     -e "s/"6000"/"3003"/g" \
-    -e "s/\#CONFIG=\"\${CNODE_HOME}\/files\/config.json\"/CONFIG=\"\${NODE_FILES}\/mainnet-config.json\"/g" \
+    -e "s/\#CONFIG=\"\${CNODE_HOME}\/files\/config.json\"/CONFIG=\"\${NODE_FILES}\/${NODE_CONFIG}-config.json\"/g" \
     -e "s/\#SOCKET=\"\${CNODE_HOME}\/sockets\/node0.socket\"/SOCKET=\"\${NODE_HOME}\/db\/socket\"/g"
 ```
 
@@ -324,12 +312,13 @@ The port number here must match the port cardano-node is running on. If you are 
 # shellcheck disable=SC2086,SC2034
 
 USERNAME=ada
+NODE_CONFIG=$(grep NODE_CONFIG /home/ada/.adaenv | cut -d '=' -f2)
 CNODE_PORT=3003 # must match your relay node port as set in the startup command
 CNODE_HOSTNAME="CHANGE ME"  # optional. must resolve to the IP you are requesting from
 CNODE_BIN="/home/ada/.local/bin"
 CNODE_HOME="/home/ada/pi-pool"
 LOG_DIR="${CNODE_HOME}/logs"
-GENESIS_JSON="${CNODE_HOME}/files/mainnet-shelley-genesis.json"
+GENESIS_JSON="${CNODE_HOME}/files/${NODE_CONFIG}-shelley-genesis.json"
 NETWORKID=$(jq -r .networkId $GENESIS_JSON)
 CNODE_VALENCY=1   # optional for multi-IP hostnames
 NWMAGIC=$(jq -r .networkMagic < $GENESIS_JSON)
@@ -387,7 +376,7 @@ The Pi-Node image has this cron entry disabled by default. You can enable it by 
 33 * * * * /home/ada/pi-pool/scripts/topologyUpdater.sh
 ```
 
-After 4 hours of on boarding you will be added to the service and can pull your new list of peers into the mainnet-topology file.
+After 4 hours of on boarding you will be added to the service and can pull your new list of peers into the {NODE_CONFIG}-topology file.
 
 Create another file relay-topology\_pull.sh and paste in the following.
 
@@ -399,7 +388,7 @@ nano relay-topology_pull.sh
 #!/bin/bash
 BLOCKPRODUCING_IP=<BLOCK PRODUCERS PRIVATE IP>
 BLOCKPRODUCING_PORT=3000
-curl -4 -s -o /home/ada/pi-pool/files/mainnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1|relays-new.cardano-mainnet.iohk.io:3001:2"
+curl -4 -s -o /home/ada/pi-pool/files/{${NODE_CONFIG}-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1|relays-new.cardano-${NODE_CONFIG}.iohk.io:3001:2"
 ```
 
 Save, exit and make it executable.
@@ -428,7 +417,7 @@ nano $NODE_FILES/${NODE_CONFIG}-topology.json
 ```
 
 {% hint style="info" %}
-You can use gLiveView.sh to view ping times in relation to the peers in your mainnet-topology file. Use Ping to resolve hostnames to IP's.
+You can use gLiveView.sh to view ping times in relation to the peers in your {NODE_CONFIG}-topology file. Use Ping to resolve hostnames to IP's.
 {% endhint %}
 
 Changes to this file will take affect upon restarting the cardano-service.
@@ -540,7 +529,7 @@ scrape_configs:
 
 Save & exit.
 
-Edit mainnet-config.json so cardano-node exports traces on all interfaces.
+Edit {NODE_CONFIG}-config.json so cardano-node exports traces on all interfaces.
 
 ```bash
 cd $NODE_FILES
@@ -580,7 +569,7 @@ sudo sed -i /etc/grafana/grafana.ini \
 
 ### cardano-monitor bash function
 
-Open .bashrc.
+Open .adaenv.
 
 ```bash
 cd $HOME
