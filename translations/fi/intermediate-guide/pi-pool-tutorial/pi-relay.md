@@ -125,17 +125,15 @@ Tallenna ja sulje. **ctrl+x ja y**.
 DIRECTORY=/home/ada/pi-pool
 FILES=/home/ada/pi-pool/files
 PORT=3001
-HOSTADDR=0.0.0.0
-TOPOLOGY=${FILES}/mainnet-topology.json
+TOPOLOGY=${FILES}/${NODE_CONFIG}-topology.json
 DB_PATH=${DIRECTORY}/db
 SOCKET_PATH=${DIRECTORY}/db/socket
-CONFIG=${FILES}/mainnet-config.json
+CONFIG=${FILES}/${NODE_CONFIG}-config.json
 ## +RTS -N4 -RTS = Multicore(4)
 cardano-node run \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${SOCKET_PATH} \
-  --host-addr ${HOSTADDR} \
   --port ${PORT} \
   --config ${CONFIG}
 ```
@@ -211,7 +209,7 @@ nano /home/ada/pi-pool/scripts/relay-topology_pull.sh
 #!/bin/bash
 BLOCKPRODUCING_IP=<core nodes private IPv4 address>
 BLOCKPRODUCING_PORT=3000
-curl -4 -s -o /home/ada/pi-pool/files/mainnet-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1|relays-new.cardano-mainnet.iohk.io:3001:2"
+curl -4 -s -o /home/ada/pi-pool/files/${NODE_CONFIG}-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1|relays-new.cardano-mainnet.iohk.io:3001:2"
 ```
 
 Tallenna ja sulje.
