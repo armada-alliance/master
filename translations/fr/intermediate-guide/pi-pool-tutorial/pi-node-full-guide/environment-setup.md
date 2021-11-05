@@ -1,29 +1,10 @@
 ---
-description: Install packages needed to run cardano-node and configure our environment
+description: Configure the environment for Cardano Node
 ---
 
 # Configuration de l'environnement
 
-## Install packages
-
-Enable automatic security updates.
-
-```bash
-sudo dpkg-reconfigure -plow unattended-upgrades
-```
-
-Install the packages we will need.
-
-```bash
-sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
-         jq make automake unzip net-tools nginx ssl-cert pkg-config \
-         libffi-dev libgmp-dev libssl-dev libtinfo-dev libsystemd-dev \
-         zlib1g-dev g++ libncursesw5 libtool autoconf bc -y
-```
-
-## Environment
-
-### Choose mainnet or testnet.
+## Choose mainnet or testnet.
 
 Create a .adaenv file, choose which network you want to be on and source the file.
 
@@ -179,7 +160,7 @@ EnvironmentFile=-/home/ada/.adaenv
 WantedBy= multi-user.target
 ```
 
-Set permissions and reload systemd so it picks up our new service file..
+Reload systemd so it picks up our new service file.
 
 ```bash
 sudo systemctl daemon-reload
@@ -217,7 +198,7 @@ Now we just have to:
 
 ## ⛓ Syncing the chain ⛓
 
-You are now ready to start cardano-node. Doing so will start the process of 'syncing the chain'. This is going to take about 30 hours and the db folder is about 10GB in size right now. We used to have to sync it to one node and copy it from that node to our new ones to save time.
+You are now ready to start cardano-node. Doing so will start the process of 'syncing the chain'. This is going to take about 48 hours and the db folder is about 13GB in size right now. We used to have to sync it to one node and copy it from that node to our new ones to save time.
 
 ### Download snapshot
 
