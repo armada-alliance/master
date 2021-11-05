@@ -1,29 +1,10 @@
 ---
-description: Install packages needed to run cardano-node and configure our environment
+description: Configure the environment for Cardano Node
 ---
 
 # Configuración del entorno
 
-## Instalar paquetes
-
-Enable automatic security updates.
-
-```bash
-sudo dpkg-reconfigure -plow unattended-upgrades
-```
-
-Install the packages we will need.
-
-```bash
-sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
-         jq make automake unzip net-tools nginx ssl-cert pkg-config \
-         libffi-dev libgmp-dev libssl-dev libtinfo-dev libsystemd-dev \
-         zlib1g-dev g++ libncursesw5 libtool autoconf bc -y
-```
-
-## Environment
-
-### Choose mainnet or testnet.
+## Choose mainnet or testnet.
 
 Create a .adaenv file, choose which network you want to be on and source the file.
 
@@ -179,7 +160,7 @@ EnvironmentFile=-/home/ada/.adaenv
 WantedBy= multi-user.target
 ```
 
-Establezca los permisos y vuelva a cargar systemd para que recoja nuestro nuevo archivo del servicio.
+Reload systemd so it picks up our new service file.
 
 ```bash
 sudo systemctl daemon-reload
@@ -215,9 +196,9 @@ Ahora sólo tenemos que hacer:
 * cardano-service stop       (stops cardano-node.service)
 * cardano-service status    (shows the status of cardano-node.service)
 
-## ⛓ Syncing the chain ⛓
+## ⛓ Sincronización de la cadena ⛓
 
-Ahora estás listo para empezar a usar cardano-node. Hacer esto iniciará el proceso de "sincronización de la cadena". This is going to take about 30 hours and the db folder is about 10GB in size right now. Si tenemos un nodo y sincronizado podemos copiar de ese nodo la carpeta db a nuestros nuevo nodo para ahorrar tiempo.
+Ahora estás listo para empezar a usar cardano-node. Hacer esto iniciará el proceso de "sincronización de la cadena". This is going to take about 48 hours and the db folder is about 13GB in size right now. Si tenemos un nodo y sincronizado podemos copiar de ese nodo la carpeta db a nuestros nuevo nodo para ahorrar tiempo.
 
 ### Descargar la instantánea
 
