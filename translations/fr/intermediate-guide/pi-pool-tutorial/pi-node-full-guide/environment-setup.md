@@ -226,7 +226,7 @@ cardano-service start
 cardano-service status
 ```
 
-Otherwise be sure your node is **not** running & delete the db folder if it exists and download db/.
+Otherwise, be sure your node is **not** running & delete the db folder if it exists and download db/.
 
 ```bash
 cardano-service stop
@@ -234,11 +234,23 @@ cd $NODE_HOME
 rm -r db/
 ```
 
-For mainnet chain use.
+#### Download Database
 
-```bash
-wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/
+{% tabs %}
+{% tab title="Testnet DB" %}
+```shell
+wget -r -np -nH -R "index.html*" -e robots=off https://testnet.adamantium.online/db/
 ```
+{% endtab %}
+
+{% tab title="Mainnet DB" %}
+```bash
+wget -r -np -nH -R "index.html*" -e robots=off https://mainnet.adamantium.online/db/
+```
+
+
+{% endtab %}
+{% endtabs %}
 
 Once wget completes enable & start cardano-node.
 
@@ -282,7 +294,7 @@ chmod +x gLiveView.sh
 
 ## topologyUpdater.sh
 
-Until peer to peer is enabled on the network operators need a way to get a list of relays/peers to connect to. The topology updater service runs in the background with cron. Every hour the script will run and tell the service you are a relay and want to be a part of the network. It will add your relay to it's directory after four hours and start generating a list of relays in a json file in the $NODE_HOME/logs directory. A second script, relay-topology_pull.sh can then be used manually to generate a mainnet-topolgy file with relays/peers that are aware of you and you of them.
+Until peer to peer is enabled on the network operators need a way to get a list of relays/peers to connect to. The topology updater service runs in the background with cron. Every hour the script will run and tell the service you are a relay and want to be a part of the network. It will add your relay to it's directory after four hours and start generating a list of relays in a json file in the $NODE\_HOME/logs directory. A second script, relay-topology\_pull.sh can then be used manually to generate a mainnet-topolgy file with relays/peers that are aware of you and you of them.
 
 {% hint style="info" %}
 The list generated will show you the distance in miles & a clue as to where the relay is located.
@@ -371,7 +383,7 @@ The Pi-Node image has this cron entry disabled by default. You can enable it by 
 
 After 4 hours of on boarding you will be added to the service and can pull your new list of peers into the mainnet-topology file.
 
-Create another file relay-topology_pull.sh and paste in the following.
+Create another file relay-topology\_pull.sh and paste in the following.
 
 ```bash
 nano relay-topology_pull.sh
@@ -402,7 +414,7 @@ cd $NODE_HOME/scripts
 ```
 
 {% hint style="info" %}
-relay-topology_pull.sh will add 15 peers to your mainnet-topology file. I usually remove the furthest 5 relays and use the closest 10.
+relay-topology\_pull.sh will add 15 peers to your mainnet-topology file. I usually remove the furthest 5 relays and use the closest 10.
 {% endhint %}
 
 ```bash
@@ -597,7 +609,7 @@ cardano-monitor start
 At this point you may want to start cardano-service and get synced up before we continue to configure Grafana. Go to the syncing the chain section. Choose whether you want to wait 30 hours or download the latest chain snapshot. Return here once gLiveView.sh shows you are at the tip of the chain.
 {% endhint %}
 
-## Grafana, Nginx proxy_pass & snakeoil
+## Grafana, Nginx proxy\_pass & snakeoil
 
 Let's put Grafana behind Nginx with self signed(snakeoil) certificate. The certificate was generated when we installed the ssl-cert package.
 
@@ -703,4 +715,4 @@ View network connections with netstat.
 sudo netstat -puntw
 ```
 
-From here you have a pi-node with tools to build a stake pool from the following pages. Best of luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger! :muscle: 
+From here you have a pi-node with tools to build a stake pool from the following pages. Best of luck and please join the [armada-alliance](https://armada-alliance.com), together we are stronger! :muscle:&#x20;
