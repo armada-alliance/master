@@ -326,6 +326,23 @@ Before we start generating keys with a headless server we should have a safe amo
 sudo apt-get install rng-tools
 ```
 
+## Automatic security updates
+
+Enable automatic security updates.
+
+```bash
+sudo dpkg-reconfigure -plow unattended-upgrades
+```
+## Install packages
+Install the packages we will need.
+
+```bash
+sudo apt install build-essential libssl-dev tcptraceroute python3-pip \
+         jq make automake unzip net-tools nginx ssl-cert pkg-config \
+         libffi-dev libgmp-dev libssl-dev libtinfo-dev libsystemd-dev \
+         zlib1g-dev g++ libncursesw5 libtool autoconf bc -y
+```
+
 ```
 sudo reboot
 ```
