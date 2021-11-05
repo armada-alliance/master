@@ -9,19 +9,19 @@ description: Configure the environment for Cardano Node
 Create a .adaenv file, choose which network you want to be on and source the file.
 
 ```shell
-echo -e NODE_CONFIG=mainnet >> $HOME/.adaenv
-source $HOME/.adaenv
+echo -e NODE_CONFIG=mainnet >> ${HOME}/.adaenv
+source ${HOME}/.adaenv
 ```
 
 Crear algunos directorios.
 
 ```bash
-mkdir -p $HOME/.local/bin
-mkdir -p $HOME/pi-pool/files
-mkdir -p $HOME/pi-pool/scripts
-mkdir -p $HOME/pi-pool/logs
-mkdir $HOME/git
-mkdir $HOME/tmp
+mkdir -p ${HOME}/.local/bin
+mkdir -p ${HOME}/pi-pool/files
+mkdir -p ${HOME}/pi-pool/scripts
+mkdir -p ${HOME}/pi-pool/logs
+mkdir ${HOME}/git
+mkdir ${HOME}/tmp
 ```
 
 ### Create bash variables & add \~/.local/bin to our $PATH 🏃
@@ -35,13 +35,13 @@ Changes to this file require reloading .bashrc & .adaenv or logging out then bac
 {% endhint %}
 
 ```bash
-echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
-echo . ~/.adaenv >> $HOME/.bashrc
-echo export NODE_HOME=$HOME/pi-pool >> $HOME/.adaenv
-echo export NODE_FILES=$HOME/pi-pool/files >> $HOME/.adaenv
-echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.adaenv
-echo export CARDANO_NODE_SOCKET_PATH="$HOME/pi-pool/db/socket" >> $HOME/.adaenv
-source $HOME/.bashrc && source .adaenv
+echo PATH="${HOME}/.local/bin:$PATH" >> ${HOME}/.bashrc
+echo . ~/.adaenv >> ${HOME}/.bashrc
+echo export NODE_HOME=${HOME}/pi-pool >> ${HOME}/.adaenv
+echo export NODE_FILES=${HOME}/pi-pool/files >> ${HOME}/.adaenv
+echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> ${HOME}/.adaenv
+echo export CARDANO_NODE_SOCKET_PATH="${HOME}/pi-pool/db/socket" >> ${HOME}/.adaenv
+source ${HOME}/.bashrc && source .adaenv
 ```
 
 ### Recuperar archivos del nodo
@@ -73,12 +73,12 @@ Los **binarios de cardano** no oficiales & cardano-cli disponibles para nosotros
 {% endhint %}
 
 ```bash
-cd $HOME/tmp
+cd ${HOME}/tmp
 wget -O cardano_node_$(date +"%m-%d-%y").zip wget https://github.com/armada-alliance/cardano-node-binaries/raw/main/static-binaries/1_30_1.zip
 unzip *.zip
-mv cardano-node/* $HOME/.local/bin
+mv cardano-node/* ${HOME}/.local/bin
 rm -r cardano*
-cd $HOME
+cd ${HOME}
 ```
 
 {% hint style="warning" %}
@@ -97,7 +97,7 @@ cardano-cli version
 Vamos a crear ahora el archivo systemd y su script de arranque para que systemd pueda gestionar cardano-node.
 
 ```bash
-nano $HOME/.local/bin/cardano-service
+nano ${HOME}/.local/bin/cardano-service
 ```
 
 Pega lo siguiente, guardar & salir.
@@ -123,7 +123,7 @@ cardano-node run +RTS -N4 -RTS \
 Permitir la ejecución de nuestro nuevo script de arranque.
 
 ```bash
-chmod +x $HOME/.local/bin/cardano-service
+chmod +x ${HOME}/.local/bin/cardano-service
 ```
 
 Abre /etc/systemd/system/cardano-node.service
@@ -169,7 +169,7 @@ sudo systemctl daemon-reload
 Let's add a function to the bottom of our .pienv file to make life a little easier.
 
 ```bash
-nano $HOME/.adaenv
+nano ${HOME}/.adaenv
 ```
 
 ```bash
@@ -182,7 +182,7 @@ cardano-service() {
 Guardar y salir
 
 ```bash
-source $HOME/.adaenv
+source ${HOME}/.adaenv
 ```
 
 Lo que acabamos de hacer fue añadir una función para controlar nuestro cardano-service sin tener que escribir:
@@ -554,7 +554,7 @@ sudo sed -i /etc/grafana/grafana.ini \
 Open .adaenv.
 
 ```bash
-cd $HOME
+cd ${HOME}
 nano .adaenv
 ```
 
