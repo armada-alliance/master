@@ -134,7 +134,7 @@ Avaa /etc/systemd/system/cardano-node.service.
 sudo nano /etc/systemd/system/cardano-node.service
 ```
 
-Liitä seuraavat, tallenna & sulje nano.
+Paste the following, You will need to edit the username here if you chose to not use ada. save & exit.
 
 ```bash
 # The Cardano Node Service (part of systemd)
@@ -149,7 +149,7 @@ After           = network-online.target
 User            = ada
 Type            = simple
 WorkingDirectory= /home/ada/pi-pool
-ExecStart       = /bin/bash -c "PATH=/home/ada/.local/bin:$PATH exec /home/ada}/.local/bin/cardano-service"
+ExecStart       = /bin/bash -c "PATH=/home/ada/.local/bin:$PATH exec /home/ada/.local/bin/cardano-service"
 KillSignal=SIGINT
 RestartKillSignal=SIGINT
 TimeoutStopSec=3
