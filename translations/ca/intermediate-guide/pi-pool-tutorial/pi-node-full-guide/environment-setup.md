@@ -4,13 +4,16 @@ description: Configure the environment for Cardano Node
 
 # Environment Setup
 
-## Choose mainnet or testnet.
+## Choose testnet or mainnet.
 
-Create a .adaenv file, choose which network you want to be on and source the file.
+{% hint style="alert" %}
+There is a 500 ₳ Registration deposit and another 5 ₳ in registration costs. First time users are strongly reccomended to use testnet. You can get tada (test ada) from the testnet faucet or ask Alliance members in Telegram. Try not to lose it please.
+{% endhint %}
+
+Create an .adaenv file, choose which network you want to be on and source the file. This folder will hold the variables for operating a Pi-Node.
 
 ```shell
-echo -e NODE_CONFIG=mainnet >> ${HOME}/.adaenv
-source ${HOME}/.adaenv
+echo -e NODE_CONFIG=testnet >> ${HOME}/.adaenv && source ${HOME}/.adaenv
 ```
 
 Make some directories.
@@ -31,7 +34,7 @@ mkdir ${HOME}/tmp
 {% endhint %}
 
 {% hint style="warning" %}
-Changes to this file require reloading .bashrc & .adaenv or logging out then back in.
+You must reload environment files after updating them. Same goes for cardano-node, chamges to the topology or config files require a cardano-service restart.
 {% endhint %}
 
 ```bash
@@ -75,7 +78,7 @@ The **unofficial** cardano-node & cardano-cli binaries available to us are being
 
 ```bash
 cd ${HOME}/tmp
-wget -O cardano_node_$(date +"%m-%d-%y").zip wget https://github.com/armada-alliance/cardano-node-binaries/raw/main/static-binaries/1_30_1.zip
+wget -O cardano_node_$(date +"%m-%d-%y").zip wget https://ci.zw3rk.com/build/410011/download/1/aarch64-unknown-linux-musl-cardano-node-1.31.0.zip
 unzip *.zip
 mv cardano-node/* ${HOME}/.local/bin
 rm -r cardano*
@@ -255,10 +258,9 @@ You can change the port cardano-node runs on in the .adaenv file in your home di
 
 ```bash
 sed -i env \
-    -e "s/\#NODE_HOME=\"\/opt\/cardano\/cnode\"/NODE_HOME=\"\home\/${USER}\/pi-pool\"/g" \
+    -e "s/\#CNODE_HOME=\"\/opt\/cardano\/cnode\"/NODE_HOME=\"\home\/${USER}\/pi-pool\"/g" \
     -e "s/"6000"/"3003"/g" \
-    -e "s/\#CONFIG=\"\${NODE_HOME}\/files\/config.json\"/CONFIG=\"\${NODE_FILES}\/${NODE_CONFIG}-config.json\"/g" \
-    -e "s/\#SOCKET=\"\${NODE_HOME}\/sockets\/node0.socket\"/SOCKET=\"\${NODE_HOME}\/db\/socket\"/g"
+    -e "s/\#CONFIG=\"\${CNODE_HOME}\/files\/config.json\"/CONFIG=\"\${NODE_FILES}\/${NODE_CONFIG}-config.json\"/g"
 ```
 
 Allow execution of gLiveView.sh.
