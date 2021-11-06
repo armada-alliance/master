@@ -38,6 +38,7 @@ Changes to this file require reloading .bashrc & .adaenv or logging out then bac
 echo PATH="${HOME}/.local/bin:$PATH" >> ${HOME}/.bashrc
 echo . ~/.adaenv >> ${HOME}/.bashrc
 echo export NODE_HOME=${HOME}/pi-pool >> ${HOME}/.adaenv
+echo export PORT=3003 >> ${HOME}/.adaenv
 echo export NODE_FILES=${HOME}/pi-pool/files >> ${HOME}/.adaenv
 echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> ${HOME}/.adaenv
 echo export CARDANO_NODE_SOCKET_PATH="${HOME}/pi-pool/db/socket" >> ${HOME}/.adaenv
@@ -85,7 +86,7 @@ cd ${HOME}
 If binaries already exist you will have to confirm overwriting the old ones.
 {% endhint %}
 
-Confirm binaries are in ada $PATH.
+Confirm binaries are in $USER's $PATH.
 
 ```bash
 cardano-node version
@@ -104,18 +105,17 @@ Paste the following, save & exit.
 
 ```bash
 #!/bin/bash
-DIRECTORY=/home/ada/pi-pool
-FILES=/home/ada/pi-pool/files
-PORT=3003
-TOPOLOGY=${FILES}/${NODE_CONFIG}-topology.json
-DB_PATH=${DIRECTORY}/db
-SOCKET_PATH=${DIRECTORY}/db/socket
-CONFIG=${FILES}/${NODE_CONFIG}-config.json
+. /home/ada/.adaenv
+#PORT=3003
+TOPOLOGY=${NODE_FILES}/${NODE_CONFIG}-topology.json
+DB_PATH=${NODE_HOME}/db
+#SOCKET_PATH=${NODE_HOME}/db/socket
+CONFIG=${NODE_FILES}/${NODE_CONFIG}-config.json
 ## +RTS -N4 -RTS = Multicore(4)
 cardano-node run +RTS -N4 -RTS \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
-  --socket-path ${SOCKET_PATH} \
+  --socket-path ${CARDANO_NODE_SOCKET_PATH} \
   --port ${PORT} \
   --config ${CONFIG}
 ```
@@ -147,14 +147,14 @@ After           = network-online.target
 User            = ada
 Type            = simple
 WorkingDirectory= /home/ada/pi-pool
-ExecStart       = /bin/bash -c "PATH=/home/ada/.local/bin:$PATH exec /home/ada/.local/bin/cardano-service"
+ExecStart       = /bin/bash -c "PATH=/home/${USER}/.local/bin:$PATH exec /home/$USER}/.local/bin/cardano-service"
 KillSignal=SIGINT
 RestartKillSignal=SIGINT
 TimeoutStopSec=3
 LimitNOFILE=32768
 Restart=always
 RestartSec=5
-EnvironmentFile=-/home/ada/.adaenv
+EnvironmentFile=-/home/${USER}/.adaenv
 
 [Install]
 WantedBy= multi-user.target
@@ -256,10 +256,10 @@ You can change the port cardano-node runs on in /home/ada/.local/bin/cardano-ser
 
 ```bash
 sed -i env \
-    -e "s/\#CNODE_HOME=\"\/opt\/cardano\/cnode\"/CNODE_HOME=\"\home\/${USER}\/pi-pool\"/g" \
+    -e "s/\#NODE_HOME=\"\/opt\/cardano\/cnode\"/NODE_HOME=\"\home\/${USER}\/pi-pool\"/g" \
     -e "s/"6000"/"3003"/g" \
-    -e "s/\#CONFIG=\"\${CNODE_HOME}\/files\/config.json\"/CONFIG=\"\${NODE_FILES}\/${NODE_CONFIG}-config.json\"/g" \
-    -e "s/\#SOCKET=\"\${CNODE_HOME}\/sockets\/node0.socket\"/SOCKET=\"\${NODE_HOME}\/db\/socket\"/g"
+    -e "s/\#CONFIG=\"\${NODE_HOME}\/files\/config.json\"/CONFIG=\"\${NODE_FILES}\/${NODE_CONFIG}-config.json\"/g" \
+    -e "s/\#SOCKET=\"\${NODE_HOME}\/sockets\/node0.socket\"/SOCKET=\"\${NODE_HOME}\/db\/socket\"/g"
 ```
 
 Allow execution of gLiveView.sh.
@@ -292,30 +292,28 @@ The port number here must match the port cardano-node is running on. If you are 
 ```bash
 #!/bin/bash
 # shellcheck disable=SC2086,SC2034
-USERNAME=ada
-NODE_CONFIG=$(grep NODE_CONFIG /home/ada/.adaenv | cut -d '=' -f2)
-CNODE_PORT=3003 # must match your relay node port as set in the startup command
-CNODE_HOSTNAME="CHANGE ME"  # optional. must resolve to the IP you are requesting from
-CNODE_BIN="/home/ada/.local/bin"
-CNODE_HOME="/home/ada/pi-pool"
-LOG_DIR="${CNODE_HOME}/logs"
-GENESIS_JSON="${CNODE_HOME}/files/${NODE_CONFIG}-shelley-genesis.json"
+NODE_PORT=3003 # must match your relay node port as set in the startup command
+NODE_HOSTNAME="CHANGE ME"  # optional. must resolve to the IP you are requesting from
+NODE_CONFIG=$(grep NODE_CONFIG /home/${USER}/.adaenv | cut -d '=' -f2)
+NODE_BIN="/home/${USER}/.local/bin"
+LOG_DIR="${NODE_HOME}/scripts/topo-logs"
+GENESIS_JSON="${NODE_HOME}/files/${NODE_CONFIG}-shelley-genesis.json"
 NETWORKID=$(jq -r .networkId $GENESIS_JSON)
-CNODE_VALENCY=1   # optional for multi-IP hostnames
+NODE_VALENCY=1   # optional for multi-IP hostnames
 NWMAGIC=$(jq -r .networkMagic < $GENESIS_JSON)
 [[ "${NETWORKID}" = "Mainnet" ]] && HASH_IDENTIFIER="--mainnet" || HASH_IDENTIFIER="--testnet-magic ${NWMAGIC}"
 [[ "${NWMAGIC}" = "1097911063" ]] && NETWORK_IDENTIFIER="--mainnet" || NETWORK_IDENTIFIER="--testnet-magic ${NWMAGIC}"
 
-export PATH="${CNODE_BIN}:${PATH}"
-export CARDANO_NODE_SOCKET_PATH="${CNODE_HOME}/db/socket"
+export PATH="${NODE_BIN}:${PATH}"
+export CARDANO_NODE_SOCKET_PATH="${NODE_HOME}/db/socket"
 
-blockNo=$(/home/ada/.local/bin/cardano-cli query tip ${NETWORK_IDENTIFIER} | jq -r .block )
+blockNo=$(/home/${USER}/.local/bin/cardano-cli query tip ${NETWORK_IDENTIFIER} | jq -r .block )
 
 # Note:
 # if you run your node in IPv4/IPv6 dual stack network configuration and want announced the
 # IPv4 address only please add the -4 parameter to the curl command below  (curl -4 -s ...)
-if [ "${CNODE_HOSTNAME}" != "CHANGE ME" ]; then
-  T_HOSTNAME="&hostname=${CNODE_HOSTNAME}"
+if [ "${NODE_HOSTNAME}" != "CHANGE ME" ]; then
+  T_HOSTNAME="&hostname=${NODE_HOSTNAME}"
 else
   T_HOSTNAME=''
 fi
@@ -324,7 +322,8 @@ if [ ! -d ${LOG_DIR} ]; then
   mkdir -p ${LOG_DIR};
 fi
 
-curl -s -f -4 "https://api.clio.one/htopology/v1/?port=${CNODE_PORT}&blockNo=${blockNo}&valency=${CNODE_VALENCY}&magic=${NWMAGIC}${T_HOSTNAME}" | tee -a "${LOG_DIR}"/topologyUpdater_lastresult.json
+curl -s -f "https://api.clio.one/htopology/v1/?port=${NODE_PORT}&blockNo=${blockNo}&valency=${NODE_VALENCY}&magic=${NWMAGIC}${T_HOSTNAME}" | tee -a "${LOG_DIR}"/topologyUpdater_lastresult.json
+
 ```
 
 Save, exit and make it executable.
@@ -354,7 +353,7 @@ The Pi-Node image has this cron entry disabled by default. You can enable it by 
 {% endhint %}
 
 ```bash
-33 * * * * /home/ada/pi-pool/scripts/topologyUpdater.sh
+33 * * * * . $HOME/.adaenv; /home/$USER/pi-pool/scripts/topologyUpdater.sh
 ```
 
 After 4 hours of on boarding you will be added to the service and can pull your new list of peers into the {NODE_CONFIG}-topology file.
@@ -367,10 +366,10 @@ nano relay-topology_pull.sh
 
 ```bash
 #!/bin/bash
-NODE_CONFIG=$(grep NODE_CONFIG /home/ada/.adaenv | cut -d '=' -f2)
+NODE_CONFIG=$(grep NODE_CONFIG /home/${USER}/.adaenv | cut -d '=' -f2)
 BLOCKPRODUCING_IP=<BLOCK PRODUCERS PRIVATE IP>
 BLOCKPRODUCING_PORT=3000
-curl -4 -s -o /home/ada/pi-pool/files/{${NODE_CONFIG}-topology.json "https://api.clio.one/htopology/v1/fetch/?max=15&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1|relays-new.cardano-${NODE_CONFIG}.iohk.io:3001:2"
+curl -4 -s -o /home/${USER}/pi-pool/files/{${NODE_CONFIG}-topology.json "https://api.clio.one/htopology/v1/fetch/?max=10&customPeers=${BLOCKPRODUCING_IP}:${BLOCKPRODUCING_PORT}:1|relays-new.cardano-${NODE_CONFIG}.iohk.io:3001:2"
 ```
 
 Save, exit and make it executable.
@@ -442,7 +441,7 @@ Prometheus can scrape the http endpoints of other servers running node exporter.
 {% endhint %}
 
 ```bash
-sudo apt-get install -y prometheus prometheus-node-exporter
+sudo apt install prometheus prometheus-node-exporter -y
 ```
 
 Disable them in systemd for now.
