@@ -6,7 +6,7 @@ description: Configure the environment for Cardano Node
 
 ## Choose testnet or mainnet.
 
-{% hint style="alert" %}
+{% hint style="danger" %}
 There is a 500 ₳ Registration deposit and another 5 ₳ in registration costs. First time users are strongly reccomended to use testnet. You can get tada (test ada) from the testnet faucet or ask Alliance members in Telegram. Try not to lose it please.
 {% endhint %}
 
@@ -59,11 +59,12 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-
 wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-topology.json
 ```
 
-Run the following to modify mainnet-config.json and update TraceBlockFetchDecisions to "true"
+Run the following to modify mainnet-config.json and update TraceBlockFetchDecisions to "true" & listen on all interfaces with Prometheus Node Exporter.
 
 ```bash
 sed -i ${NODE_CONFIG}-config.json \
-    -e "s/TraceBlockFetchDecisions\": false/TraceBlockFetchDecisions\": true/g"
+    -e "s/TraceBlockFetchDecisions\": false/TraceBlockFetchDecisions\": true/g" \
+    -e "s/127.0.0.1/0.0.0.0/g"
 ```
 
 {% hint style="info" %}
@@ -258,7 +259,7 @@ You can change the port cardano-node runs on in the .adaenv file in your home di
 
 ```bash
 sed -i env \
-    -e "s/\#CNODE_HOME=\"\/opt\/cardano\/cnode\"/NODE_HOME=\"\home\/${USER}\/pi-pool\"/g" \
+    -e "s/\#CNODE_HOME=\"\/opt\/cardano\/cnode\"/NODE_HOME=\"\/home\/${USER}\/pi-pool\"/g" \
     -e "s/"6000"/"3003"/g" \
     -e "s/\#CONFIG=\"\${CNODE_HOME}\/files\/config.json\"/CONFIG=\"\${NODE_FILES}\/${NODE_CONFIG}-config.json\"/g"
 ```
@@ -284,46 +285,10 @@ cd $NODE_HOME/scripts
 nano topologyUpdater.sh
 ```
 
-Paste in the following, save & exit.
-
-{% hint style="warning" %}
-The port number here must match the port cardano-node is running on. If you are using dns records you can add the FQDN that matches on line 6(line 6 only). Leave it as is if you are not using dns. The service will pick up the public IP and use that.
-{% endhint %}
+Download the topologyUpdater script.
 
 ```bash
-#!/bin/bash
-# shellcheck disable=SC2086,SC2034
-NODE_HOSTNAME="CHANGE ME"  # optional. must resolve to the IP you are requesting from
-NODE_PORT=$(grep NODE_PORT /home/${USER}/.adaenv | cut -d '=' -f2)
-NODE_CONFIG=$(grep NODE_CONFIG /home/${USER}/.adaenv | cut -d '=' -f2)
-NODE_BIN="/home/${USER}/.local/bin"
-LOG_DIR="${NODE_HOME}/scripts/topo-logs"
-GENESIS_JSON="${NODE_HOME}/files/${NODE_CONFIG}-shelley-genesis.json"
-NETWORKID=$(jq -r .networkId $GENESIS_JSON)
-NODE_VALENCY=1   # optional for multi-IP hostnames
-NWMAGIC=$(jq -r .networkMagic < $GENESIS_JSON)
-[[ "${NETWORKID}" = "Mainnet" ]] && HASH_IDENTIFIER="--mainnet" || HASH_IDENTIFIER="--testnet-magic ${NWMAGIC}"
-[[ "${NWMAGIC}" = "1097911063" ]] && NETWORK_IDENTIFIER="--mainnet" || NETWORK_IDENTIFIER="--testnet-magic ${NWMAGIC}"
-
-export PATH="${NODE_BIN}:${PATH}"
-export CARDANO_NODE_SOCKET_PATH="${NODE_HOME}/db/socket"
-
-blockNo=$(/home/${USER}/.local/bin/cardano-cli query tip ${NETWORK_IDENTIFIER} | jq -r .block )
-
-# Note:
-# if you run your node in IPv4/IPv6 dual stack network configuration and want announced the
-# IPv4 address only please add the -4 parameter to the curl command below  (curl -4 -s ...)
-if [ "${NODE_HOSTNAME}" != "CHANGE ME" ]; then # Do not edit this leave as "CHANGE ME"
-  T_HOSTNAME="&hostname=${NODE_HOSTNAME}"
-else
-  T_HOSTNAME=''
-fi
-
-if [ ! -d ${LOG_DIR} ]; then
-  mkdir -p ${LOG_DIR};
-fi
-
-curl -s -f "https://api.clio.one/htopology/v1/?port=${NODE_PORT}&blockNo=${blockNo}&valency=${NODE_VALENCY}&magic=${NWMAGIC}${T_HOSTNAME}" | tee -a "${LOG_DIR}"/topologyUpdater_lastresult.json
+wget https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/topologyUpdater.sh
 
 ```
 
@@ -364,6 +329,9 @@ Create another file relay-topology\_pull.sh and paste in the following.
 ```bash
 nano relay-topology_pull.sh
 ```
+{% hint style="warning" %}
+If your running just an active relay you can add a random ip and port. Just remove it from the topology file after you pull and restart node.
+{% endhint %}
 
 ```bash
 #!/bin/bash
@@ -510,13 +478,6 @@ scrape_configs:
 ```
 
 Save & exit.
-
-Edit {NODE_CONFIG}-config.json so cardano-node exports traces on all interfaces.
-
-```bash
-cd $NODE_FILES
-sed -i ${NODE_CONFIG}-config.json -e "s/127.0.0.1/0.0.0.0/g"
-```
 
 ### Install Grafana
 
