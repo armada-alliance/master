@@ -5,12 +5,12 @@ description: 'Create the ada user, add to group sudo'
 # User Setup
 
 {% hint style="warning" %}
-If you are using a Pi-Node image you need only reference this material until we start configuring the Relay & Core.
+If you are using a Pi-Node image you need only reference this material until we start configuring the Relay & Core. The guide builds the image you can download.
 {% endhint %}
 
 ## Create the ada user
 
-Create a new user and add them to the sudo group.
+Create a new user and add it to the sudo group.
 
 ```bash
 sudo adduser ada && sudo adduser ada sudo
