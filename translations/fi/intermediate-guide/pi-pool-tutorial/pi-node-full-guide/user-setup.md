@@ -5,12 +5,12 @@ description: 'Luo ada käyttäjä, lisää ryhmään sudo'
 # Käyttäjän Asetukset
 
 {% hint style="Huomaa" %}
-Jos käytät Pi-Node -imagea, tarvitset tätä aineistoa vain antamaan osviittaa, kunnes aloitamme Relay & Coren asetusten määrittämisen.
+If you are using a Pi-Node image you need only reference this material until we start configuring the Relay & Core. The guide builds the image you can download.
 {% endhint %}
 
 ## Luo ada käyttäjä
 
-Luo uusi käyttäjä ja lisää se sudo-ryhmään.
+Create a new user and add it to the sudo group.
 
 ```bash
 sudo adduser ada && sudo adduser ada sudo
