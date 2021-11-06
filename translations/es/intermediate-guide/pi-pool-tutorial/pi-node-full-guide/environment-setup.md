@@ -10,7 +10,7 @@ description: Configure the environment for Cardano Node
 There is a 500 ₳ Registration deposit and another 5 ₳ in registration costs. First time users are strongly reccomended to use testnet. You can get tada (test ada) from the testnet faucet or ask Alliance members in Telegram. Try not to lose it please.
 {% endhint %}
 
-Create an .adaenv file, choose which network you want to be on and source the file. This folder will hold the variables for operating a Pi-Node.
+Create an .adaenv file, choose which network you want to be on and source the file. This file will hold the variables for operating a Pi-Node.
 
 ```shell
 echo -e NODE_CONFIG=testnet >> ${HOME}/.adaenv && source ${HOME}/.adaenv
@@ -34,7 +34,7 @@ mkdir ${HOME}/tmp
 {% endhint %}
 
 {% hint style="warning" %}
-You must reload environment files after updating them. Same goes for cardano-node, chamges to the topology or config files require a cardano-service restart.
+You must reload environment files after updating them. Same goes for cardano-node, changes to the topology or config files require a cardano-service restart.
 {% endhint %}
 
 ```bash
@@ -87,7 +87,7 @@ cd ${HOME}
 ```
 
 {% hint style="warning" %}
-Si ya existen binarios tendrás que confirmar la sobreescritura de los antiguos.
+If binaries already exist (if updating) you will have to confirm overwriting the old ones.
 {% endhint %}
 
 Confirm binaries are in $USER's $PATH.
@@ -99,7 +99,7 @@ cardano-cli version
 
 ### Creación de Systemd
 
-Vamos a crear ahora el archivo systemd y su script de arranque para que systemd pueda gestionar cardano-node.
+Create the systemd unit file and startup script so systemd can manage cardano-node.
 
 ```bash
 nano ${HOME}/.local/bin/cardano-service
@@ -169,7 +169,7 @@ Reload systemd so it picks up our new service file.
 sudo systemctl daemon-reload
 ```
 
-Let's add a function to the bottom of our .pienv file to make life a little easier.
+Let's add a function to the bottom of our .adaenv file to make life a little easier.
 
 ```bash
 nano ${HOME}/.adaenv
@@ -201,13 +201,9 @@ Ahora sólo tenemos que hacer:
 
 ## ⛓ Sincronización de la cadena ⛓
 
-Ahora estás listo para empezar a usar cardano-node. Hacer esto iniciará el proceso de "sincronización de la cadena". This is going to take about 48 hours and the db folder is about 13GB in size right now. Si tenemos un nodo y sincronizado podemos copiar de ese nodo la carpeta db a nuestros nuevo nodo para ahorrar tiempo.
+Ahora estás listo para empezar a usar cardano-node. Hacer esto iniciará el proceso de "sincronización de la cadena". This is going to take about 48 hours and the db folder is about 13GB in size right now. Si tenemos un nodo y sincronizado podemos copiar de ese nodo la carpeta db a nuestros nuevo nodo para ahorrar tiempo. However...
 
 ### Descargar la instantánea
-
-{% hint style="danger" %}
-No intente esto con una tarjeta sd de 8GB. ¡No hay suficiente espacio! [Crea tu archivo de la imagen](https://app.gitbook.com/@wcatz/s/pi-pool-guide/create-.img-file) y flashealo en tu ssd.
-{% endhint %}
 
 He empezado a tomar instantáneas de mi carpeta db de backup y la he alojado en un directorio web. With this service it takes around 20 minutes to pull the latest snapshot and maybe another hour to sync up to the tip of the chain. El servicio se presta según lo establecido. Depende de ti. Si quieres sincronizar la cadena por tu cuenta simplemente:
 
