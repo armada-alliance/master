@@ -14,6 +14,10 @@ On parasta vain jättää se käyntiin. 🏃♀
 {% endhint %}
 
 ## Pikaohje
+Switch between testnet & mainnet
+```bash
+sed -i .adaenv -e "s/NODE_CONFIG=mainnet/NODE_CONFIG=testnet/g"
+```
 
 ### **1. Download and flash the** [**Pi-Node.img.gz**](https://mainnet.adamantium.online/Pi-Node.img.gz)**.**
 
@@ -23,10 +27,10 @@ On parasta vain jättää se käyntiin. 🏃♀
 ssh ada@<pi-node private IPv4>
 ```
 
-Oletustiedot = **ada:lovelace**
+Default credentials = **ada:lovelace**
 
 {% hint style="Huomaa" %}
-Tarkista, mikä cardano-noden versio imagessa on. Noudata staattisen rakentamisen päivityksen ohjeita päivittääksesi. [static-build.md](../updating-a-cardano-node/static-build.md "mention")
+Check which version of cardano-node is on the image. Follow the static build upgrade instructions to upgrade. [static-build.md](../updating-a-cardano-node/static-build.md "mention")
 
 ```bash
 cardano-node version
@@ -48,7 +52,7 @@ wget -r -np -nH -R "index.html*" -e robots=off https://mainnet.adamantium.online
 ### 5. Ota käyttöön & aloita cardano-palvelu.
 
 {% hint style="Huomaa" %}
-Odota, että wget saa ketjun lataamisen loppuun ennen cardano-servicen aloittamista. Odottaessasi, voit päivittää Ubuntun avaamalla palvelimeen toisen pääteikkunan.
+Wait for wget to finish downloading the chain before starting the cardano-service. While you are waiting update Ubuntu by entering the server from another terminal.
 
 ```bash
 sudo apt update
@@ -75,7 +79,7 @@ cardano-service status
 cardano-monitor status
 ```
 
-Seuraa päiväkirja tai syslogia
+Follow journal output or syslog
 
 ```
 sudo journalctl --unit=cardano-node --follow
@@ -91,9 +95,9 @@ cd $NODE_HOME/scripts
 
 ### 9. Grafana.
 
-Syötä Node:n IPv4 -osoite selaimesi osoitekenttään.
+Enter your Node's IPv4 address in your browser.
 
-Oletus käyttäjätunnus ja salasana = **admin:admin**
+Default credentials = **admin:admin**
 
 #### Kojelaudat löytyvät täältä.
 
@@ -102,5 +106,5 @@ Oletus käyttäjätunnus ja salasana = **admin:admin**
 {% embed url="https://api.pooldata.live/" %}
 
 {% hint style="info" %}
-Seuraava opas rakentaa imagen, käytä sitä viitteenä ja voit vapaasti pyytää selvennystä Telegram kanavassamme. [https://t.me/armada\_alli](https://t.me/armada\_alli)
+The following guide builds out the image, use it as a reference and please feel free to ask for clarification in our Telegram channel. [https://t.me/armada\_alli](https://t.me/armada\_alli)
 {% endhint %}
