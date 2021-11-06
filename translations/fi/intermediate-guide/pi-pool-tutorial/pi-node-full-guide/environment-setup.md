@@ -38,7 +38,7 @@ Changes to this file require reloading .bashrc & .adaenv or logging out then bac
 echo PATH="${HOME}/.local/bin:$PATH" >> ${HOME}/.bashrc
 echo . ~/.adaenv >> ${HOME}/.bashrc
 echo export NODE_HOME=${HOME}/pi-pool >> ${HOME}/.adaenv
-echo export PORT=3003 >> ${HOME}/.adaenv
+echo export NODE_PORT=3003 >> ${HOME}/.adaenv
 echo export NODE_FILES=${HOME}/pi-pool/files >> ${HOME}/.adaenv
 echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> ${HOME}/.adaenv
 echo export CARDANO_NODE_SOCKET_PATH="${HOME}/pi-pool/db/socket" >> ${HOME}/.adaenv
@@ -106,17 +106,16 @@ Liitä seuraavat, tallenna & sulje nano.
 ```bash
 #!/bin/bash
 . /home/ada/.adaenv
-#PORT=3003
+#DIRECTORY=/home/${USER}/pi-pool
 TOPOLOGY=${NODE_FILES}/${NODE_CONFIG}-topology.json
 DB_PATH=${NODE_HOME}/db
-#SOCKET_PATH=${NODE_HOME}/db/socket
 CONFIG=${NODE_FILES}/${NODE_CONFIG}-config.json
 ## +RTS -N4 -RTS = Multicore(4)
 cardano-node run +RTS -N4 -RTS \
   --topology ${TOPOLOGY} \
   --database-path ${DB_PATH} \
   --socket-path ${CARDANO_NODE_SOCKET_PATH} \
-  --port ${PORT} \
+  --port ${NODE_PORT} \
   --config ${CONFIG}
 ```
 
@@ -147,14 +146,14 @@ After           = network-online.target
 User            = ada
 Type            = simple
 WorkingDirectory= /home/ada/pi-pool
-ExecStart       = /bin/bash -c "PATH=/home/${USER}/.local/bin:$PATH exec /home/$USER}/.local/bin/cardano-service"
+ExecStart       = /bin/bash -c "PATH=/home/ada/.local/bin:$PATH exec /home/ada}/.local/bin/cardano-service"
 KillSignal=SIGINT
 RestartKillSignal=SIGINT
 TimeoutStopSec=3
 LimitNOFILE=32768
 Restart=always
 RestartSec=5
-EnvironmentFile=-/home/${USER}/.adaenv
+EnvironmentFile=-/home/ada/.adaenv
 
 [Install]
 WantedBy= multi-user.target
@@ -251,7 +250,7 @@ wget https://raw.githubusercontent.com/cardano-community/guild-operators/master/
 Meidän täytyy muokata env tiedostoa, jotta se toimii meidän ympäristössämme. Porttinumero on päivitettävä, jotta se vastaa oman cardano-nodemme porttia. **Pi-nodessamme** se on portti 3003. Rakentaessamme poolia valitsemme edelliset portit. For example Pi-Relay(2) will run on port 3002, Pi-Relay(1) on 3001 and Pi-Core on port 3000.
 
 {% hint style="info" %}
-Voit vaihtaa portin, jossa cardano-node toimii muokkaamalla /home/ada/.local/bin/cardano-service.
+You can change the port cardano-node runs on in the .adaenv file in your home directory.
 {% endhint %}
 
 ```bash
@@ -292,8 +291,8 @@ Porttinumero on päivitettävä, jotta se vastaa oman cardano-nodemme porttia. I
 ```bash
 #!/bin/bash
 # shellcheck disable=SC2086,SC2034
-NODE_PORT=3003 # must match your relay node port as set in the startup command
 NODE_HOSTNAME="CHANGE ME"  # optional. must resolve to the IP you are requesting from
+NODE_PORT=$(grep NODE_PORT /home/${USER}/.adaenv | cut -d '=' -f2)
 NODE_CONFIG=$(grep NODE_CONFIG /home/${USER}/.adaenv | cut -d '=' -f2)
 NODE_BIN="/home/${USER}/.local/bin"
 LOG_DIR="${NODE_HOME}/scripts/topo-logs"
@@ -312,7 +311,7 @@ blockNo=$(/home/${USER}/.local/bin/cardano-cli query tip ${NETWORK_IDENTIFIER} |
 # Note:
 # if you run your node in IPv4/IPv6 dual stack network configuration and want announced the
 # IPv4 address only please add the -4 parameter to the curl command below  (curl -4 -s ...)
-if [ "${NODE_HOSTNAME}" != "CHANGE ME" ]; then
+if [ "${NODE_HOSTNAME}" != "CHANGE ME" ]; then # Do not edit this leave as "CHANGE ME"
   T_HOSTNAME="&hostname=${NODE_HOSTNAME}"
 else
   T_HOSTNAME=''
