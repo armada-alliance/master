@@ -76,15 +76,6 @@ touch /home/ada/pi-pool/db/clean
 
 ### 5. Enable & start the cardano-service.
 
-{% hint style="warning" %}
-Wait for wget to finish downloading the chain before starting the cardano-service. While you are waiting update Ubuntu by entering the server from another terminal.
-
-```bash
-sudo apt update
-sudo apt upgrade
-```
-{% endhint %}
-
 ```bash
 cardano-service enable
 cardano-service start
