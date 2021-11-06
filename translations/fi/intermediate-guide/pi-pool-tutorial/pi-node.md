@@ -1,23 +1,18 @@
 ---
 description: >-
-  Rakenna synkronoitu node noin tunnissa (ei enää tuntia 1.29)!
+  Quickly bootstrap a synced configured node in a few hours.
 ---
 
 # Pi-Node (pikaopas)
 
 {% hint style="info" %}
-It will take about 30 minutes to download the chain and another couple hours or so to sync to the tip. Et voi tehdä paljoakaan ennen kuin node on synkronoitu lohkoketjun kärkeen asti.
+After booting the image it will take about 30 minutes to download the chain and another couple hours or so to sync to the tip. Et voi tehdä paljoakaan ennen kuin node on synkronoitu lohkoketjun kärkeen asti.
 
-It can take anywhere from 2 to 30 minutes to sync after a reboot depending how the node was shut down or restarted. Tarkista htopilla, onko prosessi käynnissä. Jos se on, käytä gLiveView.sh -skriptiä monitorointiin tai mene kävelylle. Node synkronoituu ja socket luodaan.
+It can take anywhere from 2 to 60 minutes to sync after a reboot depending how the node was shut down or restarted. Tarkista htopilla, onko prosessi käynnissä. Jos se on, käytä gLiveView.sh -skriptiä monitorointiin tai mene kävelylle. Node synkronoituu ja socket luodaan.
 
 On parasta vain jättää se käyntiin. 🏃♀
 {% endhint %}
 
-## Pikaohje
-Switch between testnet & mainnet
-```bash
-sed -i .adaenv -e "s/NODE_CONFIG=mainnet/NODE_CONFIG=testnet/g"
-```
 
 ### **1. Download and flash the** [**Pi-Node.img.gz**](https://mainnet.adamantium.online/Pi-Node.img.gz)**.**
 
@@ -37,19 +32,49 @@ cardano-node version
 ```
 {% endhint %}
 
-### 3. Mene pi-poolin kansioon.
+## Choose testnet or mainnet. Defaults to testnet.
+Switch between testnet & mainnet
+```bash
+sed -i .adaenv -e "s/NODE_CONFIG=mainnet/NODE_CONFIG=testnet/g"
+```
+```bash
+source .adaenv
+```
+### Nouda palvelintiedostot
+
+```bash
+cd $NODE_FILES
+wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-config.json
+wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-byron-genesis.json
+wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-shelley-genesis.json
+wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-alonzo-genesis.json
+wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/${NODE_CONFIG}-topology.json
+```
+
+Run the following to modify ${NODE_CONFIG}-config.json and update TraceBlockFetchDecisions to "true" & listen on all interfaces with Prometheus Node Exporter.
+
+```bash
+sed -i ${NODE_CONFIG}-config.json \
+    -e "s/TraceBlockFetchDecisions\": false/TraceBlockFetchDecisions\": true/g" \
+    -e "s/127.0.0.1/0.0.0.0/g"
+```
+
+### 3. Enter the pi-pool folder.
 
 ```bash
 cd /home/ada/pi-pool
 ```
 
-### 4. Lataa tietokannan tilannekuva.
+### 4. Download database snapshot.
 
 ```bash
-wget -r -np -nH -R "index.html*" -e robots=off https://mainnet.adamantium.online/db/
+wget -r -np -nH -R "index.html*" -e robots=off https://$NODE_CONFIG.adamantium.online/db/
+```
+```bash
+touch /home/ada/pi-pool/db/clean
 ```
 
-### 5. Ota käyttöön & aloita cardano-palvelu.
+### 5. Enable & start the cardano-service.
 
 {% hint style="Huomaa" %}
 Wait for wget to finish downloading the chain before starting the cardano-service. While you are waiting update Ubuntu by entering the server from another terminal.
@@ -65,14 +90,14 @@ cardano-service enable
 cardano-service start
 ```
 
-### 6. Ota käyttöön & aloita cardano-monitor.
+### 6. Enable & start the cardano-monitor.
 
 ```bash
 cardano-monitor enable
 cardano-monitor start
 ```
 
-### 7. Vahvista että palvelut ovat käynnissä.
+### 7. Confirm they are running.
 
 ```bash
 cardano-service status
@@ -86,7 +111,8 @@ sudo journalctl --unit=cardano-node --follow
 sudo tail -f /var/log/syslog
 ```
 
-### 8. gLiveView.sh
+### 8. gliveview.sh
+allow these files to update if they wish to.
 
 ```bash
 cd $NODE_HOME/scripts
