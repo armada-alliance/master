@@ -2,7 +2,7 @@
 description: Let's make some native assets on Cardano ❤️✨
 ---
 
-# Cardano Native Asset \(NFT\) 💰
+# Cardano Native Asset (NFT) 💰
 
 ## Who is this guide for?
 
@@ -44,9 +44,9 @@ cardano-cli version; cardano-node version
 Your output should look like this 👇
 
 ```bash
-cardano-cli 1.26.2 - linux-aarch64 - ghc-8.10
+cardano-cli 1.30.1 - linux-aarch64 - ghc-8.10
 git rev 0000000000000000000000000000000000000000
-cardano-node 1.26.2 - linux-aarch64 - ghc-8.10
+cardano-node 1.30.1 - linux-aarch64 - ghc-8.10
 git rev 0000000000000000000000000000000000000000
 ```
 
@@ -58,26 +58,33 @@ node -v
 ```
 
 ```bash
-v14.16.1
+v14.18.1
 ```
 
 #### Video Walk-through:
 
-{% embed url="https://youtu.be/oP3jZyPxB-I" caption="" %}
+{% embed url="https://youtu.be/oP3jZyPxB-I" %}
 
 ## Create our project directory and initial setup
+
+Make sure our `$NODE_HOME` environment variable exists
 
 ```bash
 # check for $NODE_HOME
 echo $NODE_HOME
+```
 
-# if the above echo didn't return anything, you need to set a $NODE_HOME
-# or use a static path for the CARDANO_NODE_SOCKET_PATH location
+If the above command didn't return anything, you need to set the`$NODE_HOME`bash environment variable or use a static path for the Cardano node's socket location in`db`C in your Cardano node directory.
 
+```
 export NODE_HOME="/home/ada/pi-pool"
 # Change this to where cardano-node creates socket
 export CARDANO_NODE_SOCKET_PATH="$NODE_HOME/db/socket"
+```
 
+Now let's make our projects directory then create our <mark style="color:blue;">package.json</mark> file and install the <mark style="color:blue;">cardanocli-js</mark> package.
+
+```bash
 mkdir cardano-minter
 cd cardano-minter
 npm init -y #creates package.json)
@@ -93,20 +100,17 @@ nano fetch-config.sh
 ```
 
 {% tabs %}
-{% tab title="MAINNET" %}
+{% tab title="TESTNET" %}
 ```bash
-#NODE_BUILD_NUM may be different
-NODE_BUILD_NUM=6198010
 echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.bashrc
-wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/mainnet-shelley-genesis.json
+wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/testnet-shelley-genesis.json
 ```
 {% endtab %}
 
-{% tab title="TESTNET" %}
+{% tab title="MAINNET" %}
 ```bash
-NODE_BUILD_NUM=6198010
 echo export NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g') >> $HOME/.bashrc
-wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/testnet-shelley-genesis.json
+wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/mainnet-shelley-genesis.json
 ```
 {% endtab %}
 {% endtabs %}
@@ -127,7 +131,9 @@ nano cardano.js
 ```
 
 {% hint style="info" %}
-If you are using testnet make sure you have the correct testnet-magic version number. You can find the current testnet version [here](https://docs.cardano.org/projects/cardano-node/en/latest/stake-pool-operations/getConfigFiles_AND_Connect.html).
+If you are using testnet make sure you have the correct testnet-magic version number. You can find the current testnet version [here](https://hydra.iohk.io/build/7926804/download/1/testnet-shelley-genesis.json) or simply look in your <mark style="color:blue;">testnet-shelley-genesis.json</mark> file in your cardano node directory.
+
+<mark style="color:blue;"></mark>
 {% endhint %}
 
 {% tabs %}
@@ -163,16 +169,28 @@ module.exports = cardano;
 #### _Video Walk-through_ :
 
 {% tabs %}
+{% tab title="Create Project" %}
+{% embed url="https://youtu.be/Xkx9vdibbq0" %}
+
+
+{% endtab %}
+
+{% tab title="Get Cardano genisis files" %}
+{% embed url="https://www.youtube.com/watch?v=X5cRGA0qyQE" %}
+
+
+{% endtab %}
+
+{% tab title="Setup Cardano js client" %}
+{% embed url="https://youtu.be/-fnaF3FWL3k" %}
+
+
+{% endtab %}
+{% endtabs %}
 
 
 
-{% embed url="https://youtu.be/Xkx9vdibbq0" caption="" %}
 
-
-
-{% embed url="https://www.youtube.com/watch?v=X5cRGA0qyQE" caption="" %}
-
-{% embed url="https://youtu.be/-fnaF3FWL3k" caption="" %}
 
 ## Create a local wallet
 
@@ -184,10 +202,13 @@ nano create-wallet.js
 const cardano = require('./cardano')
 
 const createWallet = (account) => {
-  cardano.addressKeyGen(account);
-  cardano.stakeAddressKeyGen(account);
+  const payment = cardano.addressKeyGen(account);
+  const stake = cardano.stakeAddressKeyGen(account);
   cardano.stakeAddressBuild(account);
-  cardano.addressBuild(account);
+  cardano.addressBuild(account, {
+    paymentVkey: payment.vkey,
+    stakeVkey: stake.vkey,
+  });
   return cardano.wallet(account);
 };
 
@@ -221,12 +242,12 @@ console.log(
 
 * **Now, Check the balance of our wallet.**
 
-```text
+```
 cd ..
 node src/get-balance.js
 ```
 
-* We can go ahead and send some funds \(ADA\) into our wallet we created, wait a few minutes, and then check the balance again to make sure the transaction was successful.
+* We can go ahead and send some funds (ADA) into our wallet we created, wait a few minutes, and then check the balance again to make sure the transaction was successful.
 
 {% hint style="info" %}
 If you are using testnet you must get your tADA from the testnet faucet [here](https://developers.cardano.org/en/testnets/cardano/tools/faucet/).
@@ -235,16 +256,16 @@ If you are using testnet you must get your tADA from the testnet faucet [here](h
 #### _Video Walk-through_ :
 
 {% tabs %}
-{% tab %}
+{% tab title="undefined" %}
 
 {% endtab %}
 {% endtabs %}
 
 ## Mint our Native-Asset/NFT on Cardano
 
-Before we proceed to mint our Native Asset we must have a few things taken care of. We need to first get our "asset" onto our [IPFS](https://ipfs.io/#install) node and generate the IPFS link. If you do not know about IPFS or what it actually does we recommend having a read through the documentation [here](https://docs.ipfs.io/) or watching this [video](https://www.youtube.com/watch?v=5Uj6uR3fp-U).
+Before we proceed to mint our Native Asset we must have a few things taken care of. We need to first get our "asset" onto our [IPFS](https://ipfs.io/#install) node and generate the IPFS link. If you do not know about IPFS or what it actually does we recommend having a read through the documentation [here](https://docs.ipfs.io) or watching this [video](https://www.youtube.com/watch?v=5Uj6uR3fp-U).
 
-Since we are using an image file to be our asset we should upload a smaller thumbnail-sized version of our image \(ideally less than 1MB\). This will be used on sites like [pool.pm](https://pool.pm) to display our assets nicely in our wallets. We then upload the full-size image as our source image.
+Since we are using an image file to be our asset we should upload a smaller thumbnail-sized version of our image (ideally less than 1MB). This will be used on sites like [pool.pm](https://pool.pm) to display our assets nicely in our wallets. We then upload the full-size image as our source image.
 
 * [ ] Download [IPFS](https://ipfs.io/#install)
 * [ ] Upload your asset's files to IPFS
@@ -253,8 +274,8 @@ Since we are using an image file to be our asset we should upload a smaller thum
 
 #### For reference:
 
-* **image \(thumbnail version\) - ipfs://QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE**
-* **src \(full-size version\) - ipfs://Qmaou5UzxPmPKVVTM9GzXPrDufP55EDZCtQmpy3T64ab9N**
+* **image (thumbnail version) - ipfs://QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE**
+* **src (full-size version) - ipfs://Qmaou5UzxPmPKVVTM9GzXPrDufP55EDZCtQmpy3T64ab9N**
 
 ### Create our mint-asset.js script
 
@@ -269,86 +290,106 @@ nano mint-asset.js
 ```
 
 ```javascript
-const fs = require("fs");
-const cardano = require("./cardano");
+const cardano = require("./cardano")
 
 // 1. Get the wallet
+
+const wallet = cardano.wallet("ADAPI")
+
 // 2. Define mint script
-// 3. Create POLICY_ID
-// 4. Define ASSET_NAME
-// 5. Create ASSET_ID
-// 6. Define metadata
-// 7. Define transaction
-// 8. Build transaction
-// 9. Sign transaction
-// 10. Submit transaction
-
-const buildTransaction = (tx) => {
-  const raw = cardano.transactionBuildRaw(tx);
-  const fee = cardano.transactionCalculateMinFee({
-    ...tx,
-    txBody: raw,
-  });
-  tx.txOut[0].amount.lovelace -= fee;
-  return cardano.transactionBuildRaw({ ...tx, fee });
-};
-
-const signTransaction = (wallet, tx, script) => {
-  return cardano.transactionSign({
-    signingKeys: [wallet.payment.skey, wallet.payment.skey],
-    scriptFile: script,
-    txBody: tx,
-  });
-};
-
-const wallet = cardano.wallet("ADAPI");
 
 const mintScript = {
-  keyHash: cardano.addressKeyHash(wallet.name),
-  type: "sig",
-};
+    keyHash: cardano.addressKeyHash(wallet.name),
+    type: "sig"
+}
 
-const POLICY_ID = cardano.transactionPolicyid(mintScript);
-const ASSET_NAME = "BerrySpaceGreen";
-const ASSET_ID = POLICY_ID + "." + ASSET_NAME;
+// 3. Create POLICY_ID
+
+const POLICY_ID = cardano.transactionPolicyid(mintScript)
+
+// 4. Define ASSET_NAME
+
+const ASSET_NAME = "BerrySpaceGreen"
+
+// 5. Create ASSET_ID
+
+const ASSET_ID = POLICY_ID + "." + ASSET_NAME
+
+// 6. Define metadata
 
 const metadata = {
-  721: {
-    [POLICY_ID]: {
-      [ASSET_NAME]: {
-        name: "token name",
-        image: "ipfs://QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE",
-        description: "Super Fancy Berry Space Green NFT",
-        type: "image/png",
-        src: "ipfs://Qmaou5UzxPmPKVVTM9GzXPrDufP55EDZCtQmpy3T64ab9N",
-        authors: ["PIADA", "SBLYR"],
-      },
-    },
-  },
-};
+    721: {
+        [POLICY_ID]: {
+            [ASSET_NAME]: {
+                name: ASSET_NAME,
+                image: "ipfs://QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE",
+                description: "Super Fancy Berry Space Green NFT",
+                type: "image/png",
+                src: "ipfs://Qmaou5UzxPmPKVVTM9GzXPrDufP55EDZCtQmpy3T64ab9N",
+                // other properties of your choice
+                authors: ["PIADA", "SBLYR"]
+            }
+        }
+    }
+}
+
+// 7. Define transaction
 
 const tx = {
-  txIn: wallet.balance().utxo,
-  txOut: [
-    {
-      address: wallet.paymentAddr,
-      amount: { ...wallet.balance().amount, [ASSET_ID]: 1 },
+    txIn: wallet.balance().utxo,
+    txOut: [
+        {
+            address: wallet.paymentAddr,
+            value: { ...wallet.balance().value, [ASSET_ID]: 1 }
+        }
+    ],
+    mint: {
+        actions: [{ type: "mint", quantity: 1, asset: ASSET_ID }],
+        script: [mintScript]
     },
-  ],
-  mint: [{ action: "mint", amount: 1, token: ASSET_ID }],
-  metadata,
-  witnessCount: 2,
-};
+    metadata,
+    witnessCount: 2
+}
 
-const raw = buildTransaction(tx);
-const signed = signTransaction(wallet, raw, mintScript);
-const txHash = cardano.transactionSubmit(signed);
-console.log(txHash);
+// 8. Build transaction
+
+const buildTransaction = (tx) => {
+
+    const raw = cardano.transactionBuildRaw(tx)
+    const fee = cardano.transactionCalculateMinFee({
+        ...tx,
+        txBody: raw
+    })
+
+    tx.txOut[0].value.lovelace -= fee
+
+    return cardano.transactionBuildRaw({ ...tx, fee })
+}
+
+const raw = buildTransaction(tx)
+
+// 9. Sign transaction
+
+const signTransaction = (wallet, tx) => {
+
+    return cardano.transactionSign({
+        signingKeys: [wallet.payment.skey, wallet.payment.skey],
+        txBody: tx
+    })
+}
+
+const signed = signTransaction(wallet, raw)
+
+// 10. Submit transaction
+
+const txHash = cardano.transactionSubmit(signed)
+
+console.log(txHash)
 ```
 
 * **Run the minting script, then wait a few moments to check the balance in our wallet**
 
-```text
+```
 cd ..
 node src/mint-asset.js
 ```
@@ -356,8 +397,12 @@ node src/mint-asset.js
 _**Video Walk-through:**_
 
 {% tabs %}
+{% tab title="" %}
+{% embed url="https://youtu.be/qTzLgMyJC7s" %}
 
-{% embed url="https://youtu.be/qTzLgMyJC7s" caption="" %}
+
+{% endtab %}
+{% endtabs %}
 
 ## Sending your NFT back to Daedulus or Yoroi wallet
 
@@ -380,61 +425,72 @@ There are few main parts we have to this script in order to send the asset:
 8. Submit the transaction
 
 ```javascript
-const cardano = require("./cardano");
+const cardano = require("./cardano")
 
-const sender = cardano.wallet("ADAPI");
+// 1. get the wallet
+
+const sender = cardano.wallet("ADAPI")
+
+// 2. define the transaction
 
 console.log(
-  "Balance of Sender wallet: " +
-    cardano.toAda(sender.balance().amount.lovelace) +
-    " ADA"
-);
+    "Balance of Sender wallet: " +
+    cardano.toAda(sender.balance().value.lovelace) + " ADA"
+)
 
-const receiver =
-  "addr1qym6pxg9q4ussr96c9e6xjdf2ajjdmwyjknwculadjya488pqap23lgmrz38glvuz8qlzdxyarygwgu3knznwhnrq92q0t2dv0";
+const receiver = "addr1qym6pxg9q4ussr96c9e6xjdf2ajjdmwyjknwculadjya488pqap23lgmrz38glvuz8qlzdxyarygwgu3knznwhnrq92q0t2dv0"
 
 const txInfo = {
-  txIn: cardano.queryUtxo(sender.paymentAddr),
-  txOut: [
-    {
-      address: sender.paymentAddr,
-      amount: {
-        lovelace: sender.balance().amount.lovelace - cardano.toLovelace(1.5),
-      },
-    },
-    {
-      address: receiver,
-      amount: {
-        lovelace: cardano.toLovelace(1.5),
-        "ad9c09fa0a62ee42fb9555ef7d7d58e782fa74687a23b62caf3a8025.BerrySpaceGreen": 1,
-      },
-    },
-  ],
-};
+    txIn: cardano.queryUtxo(sender.paymentAddr),
+    txOut: [
+        {
+            address: sender.paymentAddr,
+            value: {
+                lovelace: sender.balance().value.lovelace - cardano.toLovelace(1.5)
+            }
+        },
+        {
+            address: receiver,
+            value: {
+                lovelace: cardano.toLovelace(1.5),
+                "ad9c09fa0a62ee42fb9555ef7d7d58e782fa74687a23b62caf3a8025.BerrySpaceGreen": 1
+            }
+        }
+    ]
+}
 
-const raw = cardano.transactionBuildRaw(txInfo);
+// 3. build the transaction
+
+const raw = cardano.transactionBuildRaw(txInfo)
+
+// 4. calculate the fee
 
 const fee = cardano.transactionCalculateMinFee({
-  ...txInfo,
-  txBody: raw,
-  witnessCount: 1,
-});
+    ...txInfo,
+    txBody: raw,
+    witnessCount: 1
+})
 
-//pay the fee by subtracting it from the sender utxo
-txInfo.txOut[0].amount.lovelace -= fee;
+// 5. pay the fee by subtracting it from the sender utxo
 
-//create final transaction
-const tx = cardano.transactionBuildRaw({ ...txInfo, fee });
+txInfo.txOut[0].value.lovelace -= fee
 
-//sign the transaction
+// 6. build the final transaction
+
+const tx = cardano.transactionBuildRaw({ ...txInfo, fee })
+
+// 7. sign the transaction
+
 const txSigned = cardano.transactionSign({
-  txBody: tx,
-  signingKeys: [sender.payment.skey],
-});
+    txBody: tx,
+    signingKeys: [sender.payment.skey]
+})
 
-//subm transaction
-const txHash = cardano.transactionSubmit(txSigned);
-console.log("TxHash: " + txHash);
+// 8. submit the transaction
+
+const txHash = cardano.transactionSubmit(txSigned)
+
+console.log(txHash)
 ```
 
 ```javascript
@@ -446,15 +502,14 @@ node src/send-back-asset-to-wallet.js
 
 1. View your nft in your wallet
 2. View your asset on cardanoassets.com
-3. View your asset on pool.pm \(see the actual picture\)
+3. View your asset on pool.pm (see the actual picture)
 4. Show the original minting metadata
 5. Open the src and image ipfs links in your browser to prove that it worked
 
 #### _Video Walk-through:_
 
-{% embed url="https://youtu.be/awxVkFbWoKM" caption="" %}
+{% embed url="https://youtu.be/awxVkFbWoKM" %}
 
 {% hint style="success" %}
 **If you liked this tutorial and want to see more like it please consider staking your ADA with any of our Alliance's** [**Stake Pools**](https://armada-alliance.com/stake-pools)**, or giving a one-time donation to our Alliance** [**https://cointr.ee/armada-alliance**](https://cointr.ee/armada-alliance)**.**
 {% endhint %}
-
