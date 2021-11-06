@@ -68,7 +68,7 @@ Cardano-node ja cardano-cli, joihin tässä oppaassa viitataan, tarvitsevat toim
 * [PiShrink](https://github.com/Drewsif/PiShrink)
 * [cardanocli-js](https://docs.pipool.online)
 * Viimeisimmän ketjun tilannekuva nopeampaa synkronointia varten
-  * wget -r -np -nH -R "index.html\*" -e robots=off [https://db.adamantium.online/db/](https://db.adamantium.online/db/)
+  * wget -r -np -nH -R "index.html\*" -e robots=off [https://mainnet.adamantium.online/db/](https://mainnet.adamantium.online/db/)
 
 ## Linkit
 
