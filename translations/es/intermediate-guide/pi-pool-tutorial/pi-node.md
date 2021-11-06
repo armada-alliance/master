@@ -14,6 +14,10 @@ It is best to just leave it running. 🏃♀
 {% endhint %}
 
 ## Quick Start
+Switch between testnet & mainnet
+```bash
+sed -i .adaenv -e "s/NODE_CONFIG=mainnet/NODE_CONFIG=testnet/g"
+```
 
 ### **1. Download and flash the** [**Pi-Node.img.gz**](https://mainnet.adamantium.online/Pi-Node.img.gz)**.**
 
