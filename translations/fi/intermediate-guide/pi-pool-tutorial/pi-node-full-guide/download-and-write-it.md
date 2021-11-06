@@ -31,11 +31,11 @@ Kytke Pi monitoriin, aseta SD-kortti paikoilleen ja laita virta päälle. Kun n�
 
 {% tabs %}
 {% tab title="Pre configured Pi-Node.img.gz" %}
-### Hanki Pi-Pool .img.gz tiedosto
+### Obtain Pi-Node.img.gz file
 
-| [Pi-Node](https://db.adamantium.online/Pi-Node.img.gz) |
-| ------------------------------------------------------ |
-|                                                        |
+| [Pi-Node](https://mainnet.adamantium.online/Pi-Node.img.gz) |
+| ----------------------------------------------------------- |
+|                                                             |
 
 ### Raspberry Pi Imager -ohjelmassa
 
@@ -48,15 +48,14 @@ Locate your target drive & write it to disk.
 ![](../../../.gitbook/assets/custom_os.png)
 {% endtab %}
 
-{% tab title="Fresh Ubuntu 21.04 installation" %}
+{% tab title="Fresh Ubuntu 21.10 installation" %}
 ### Raspberry Pi Imager -ohjelmassa
 
-### Valitse Ubuntu Palvelin 21.04 (RPI 3/4/400)
+### Select  Ubuntu Server 21.10 (RPI 3/4/400)
 
-**Choose OS -> Other general purpose OS -> Ubuntu -> Ubuntu Server 21.04 (RPI 3/4/400)**. 64-bittinen palvelin vaihtoehto.
+**Choose OS -> Other general purpose OS -> Ubuntu -> Ubuntu Server 21.10 (RPI 3/4/400)**. 64-bittinen palvelin vaihtoehto.
 
 Etsi kohdeasema & kirjoita se levylle.
 
-![](../../../../.gitbook/assets/21.04-rpi-imager.png)
 {% endtab %}
 {% endtabs %}
