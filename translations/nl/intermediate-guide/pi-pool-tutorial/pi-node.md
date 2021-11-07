@@ -35,7 +35,7 @@ cardano-node version
 ## Choose testnet or mainnet. Defaults to testnet.
 Switch between testnet & mainnet, for mainnet issue..
 ```bash
-sed -i .adaenv -e "s/NODE_CONFIG=mainnet/NODE_CONFIG=testnet/g"
+sed -i .adaenv -e "s/NODE_CONFIG=testnet/NODE_CONFIG=mainnet/g"
 ```
 ```bash
 source .adaenv
