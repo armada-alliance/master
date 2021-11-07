@@ -12,7 +12,7 @@
 ## Stake Pool -oppaat <a href="intermediate-guide" id="intermediate-guide"></a>
 
 * [Pi-Node Image & Ohjeet](intermediate-guide/pi-pool-tutorial/README.md)
-  * [Pi-Node (Full Guide)](intermediate-guide/pi-pool-tutorial/pi-node-full-guide/README.md)
+  * [Pi-node (täydellinen opas)](intermediate-guide/pi-pool-tutorial/pi-node-full-guide/README.md)
     * [Lataa & Polta](intermediate-guide/pi-pool-tutorial/pi-node-full-guide/download-and-write-it.md)
     * [Käyttäjän Asetukset](intermediate-guide/pi-pool-tutorial/pi-node-full-guide/user-setup.md)
     * [Suojattu kirjautuminen](intermediate-guide/pi-pool-tutorial/pi-node-full-guide/logging-in-securely.md)
