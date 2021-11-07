@@ -67,14 +67,14 @@ v14.18.1
 
 ## Luo projektihakemisto ja aloitusasetukset
 
-Make sure our `$NODE_HOME` environment variable exists
+Varmista, että ympäristömuuttujamme `$NODE_HOME` on olemassa
 
 ```bash
 # check for $NODE_HOME
 echo $NODE_HOME
 ```
 
-If the above command didn't return anything, you need to set the`$NODE_HOME`bash environment variable or use a static path for the Cardano node's socket location in`db`C in your Cardano node directory.
+Jos yllä oleva komento ei palauta mitään, sinun täytyy asettaa `$NODE_HOME` bash ympäristömuuttuja tai käyttää staattista polkua Cardano noden socket-tiedoston sijaintiin `/db` Cardano node hakemistossa.
 
 ```
 export NODE_HOME="/home/ada/pi-pool"
@@ -82,7 +82,7 @@ export NODE_HOME="/home/ada/pi-pool"
 export CARDANO_NODE_SOCKET_PATH="$NODE_HOME/db/socket"
 ```
 
-Now let's make our projects directory then create our <mark style="color:blue;">package.json</mark> file and install the <mark style="color:blue;">cardanocli-js</mark> package.
+Tehdään nyt projektihakemistoon ja luodaan sitten <mark style="color:blue;">package.json</mark> tiedosto ja asennetaan <mark style="color:blue;">cardanocli-js</mark> paketti.
 
 ```bash
 mkdir cardano-minter
@@ -115,7 +115,7 @@ wget -N https://hydra.iohk.io/build/${NODE_BUILD_NUM}/download/1/mainnet-shelley
 {% endtab %}
 {% endtabs %}
 
-**Now we need to give permissions to our new script to execute then we will run our script and download the genesis files.**
+**Nyt meidän täytyy antaa käyttöoikeudet meidän uudelle skriptillemme, sitten ajamme skriptin ja lataamme genesis tiedostot.**
 
 ```bash
 sudo chmod +x fetch-config.sh
