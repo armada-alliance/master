@@ -1,5 +1,5 @@
 ---
-description: Guía de Contribución para participar en este proyecto
+description: Guía de Contribución para participar en este proyecto.
 ---
 
 # Guía de Contribución
