@@ -2,10 +2,10 @@
 
 ## RaspiNode OS -järjestelmän asentaminen
 
-**1. Download the Armada Alliance's pre-configured Raspbian 64bit OS Cardano-node image** [**here** ](https://mainnet.adamantium.online/Raspi-Node.img.gz)**and save it in an accessible location for now on your computer.**
+**1. Lataa Armada Alliancen esikonfiguroitu Raspbian 64bit OS Cardano-node kuva** [**tästä**](https://mainnet.adamantium.online/Raspi-Node.img.gz) **ja tallenna se toistaiseksi tietokoneellesi.**
 
 {% hint style="Huomaa" %}
-There is a testnet image you can download [here](https://testnet.adamantium.online/Test-Raspi-node.img.gz). May need binaries upgraded.
+On olemassa testnet kuva, jonka voit ladata [täältä](https://testnet.adamantium.online/Test-Raspi-node.img.gz). May need binaries upgraded.
 {% endhint %}
 
 **2. Seuraavaksi, lataa Raspberry Pi Imager ohjelma, jota käytetään asentamaan yllä mainittu käyttöjärjestelmä Raspberry Pi:lle. Tämä ohjelmisto on saatavilla** [**Raspberry Pi verkkosivuilla**](https://www.raspberrypi.org/software/)**. Tarkasta, että lataat koneellesi oikean version.**
