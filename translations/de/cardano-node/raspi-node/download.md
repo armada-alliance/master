@@ -6,7 +6,7 @@ description: 'Raspbian-Bild abrufen, Bild auf das Zielgerät schreiben, Benutzer
 
 ## RaspiNode OS installieren
 
-**1. Laden Sie das vorkonfigurierte Armada Alliance 64bit OS Cardano-Node Bild ** [**hier herunter**](https://db.adamantium.online/RasPi-Node.img.gz) **und speichern Sie es an einem zugänglichen Ort auf Ihrem Computer.**
+**1. Download the Armada Alliance's pre-configured Raspbian 64bit OS Cardano-node image** [**here**](https://mainnet.adamantium.online/RasPi-Node.img.gz) **and save it in an accessible location for now on your computer.**
 
 **2. Als nächstes laden Sie die Raspberry Pi Imager Software herunter, die wir verwenden werden, um das OS-Image auf unser Ziel-Laufwerk zu schreiben. Diese Software befindet sich auf der** [**Raspberry Pi Webseite**](https://www.raspberrypi.org/software/)**. Bitte laden Sie die korrekte Version für Ihren Computer herunter.**
 
