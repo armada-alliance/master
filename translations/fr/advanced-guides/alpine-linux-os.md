@@ -122,7 +122,7 @@ addgroup cardano video
 3\) Pour une synchronisation plus rapide, considérez cette commande optionnelle pour télécharger la dernière base de données hébergée par l'un des membres de l'Alliance.
 
 ```text
-    wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/ -P ~/cnode
+    wget -r -np -nH -R "index.html*" -e robots=off https://mainnet.adamantium.online/db/ -P ~/cnode
 ```
 
 4\) Suivez le guide **README.txt** contenu dans le répertoire **$HOME** après avoir installé **cnode**, scripts et services.
