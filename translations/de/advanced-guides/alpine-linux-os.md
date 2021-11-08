@@ -122,7 +122,7 @@ addgroup cardano video
 3\) Um die Synchronisierung zu beschleunigen, sollten Sie diesen optionalen Befehl zum Herunterladen des neuesten db Ordners, der von einem unserer Alliance-Mitglieder gehostet wird, in Betracht ziehen.
 
 ```text
-    wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/ -P ~/cnode
+    wget -r -np -nH -R "index.html*" -e robots=off https://mainnet.adamantium.online/db/ -P ~/cnode
 ```
 
 4\) Folgen Sie der Anleitung in **README.txt** im **$HOME** Verzeichnis nach erfolgreicher Installation von **cnode**, Skripten und Dienste.
