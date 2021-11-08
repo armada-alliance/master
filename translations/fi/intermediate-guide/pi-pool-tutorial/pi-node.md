@@ -1,6 +1,6 @@
 ---
 description: >-
-  Quickly bootstrap a synced configured node in a few hours.
+  Asenna synkattu ja konfiguroitu node, jopa tunnissa.
 ---
 
 # Pi-Node (pikaopas)
