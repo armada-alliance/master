@@ -5,7 +5,7 @@ description: >-
 
 # Pi-Node Image & Ohjeet
 
-The [Pi-Node.img.gz](https://mainnet.adamantium.online/Pi-Node.img.gz) is a pre configured Cardano node that can be used for minting NFT's, submitting transactions and can be further configured into a relay or core node for stake pool creation. Se on konfiguroitu kaikella mitä tarvitset asentaaksesi nopeasti synkronoidun noden sisältäen Nginx proxypass Grafanan TLS salaukselle itse allekirjoitetulla varmenteella, toimintavalmiin topology updaterin ja gLiveView-ohjelman.
+[Pi-Node.img.gz](https://mainnet.adamantium.online/Pi-Node.img.gz) on ennalta määritetty Cardano Node, jota voidaan käyttää NFT:n luomiseen, lähettämään tapahtumia tai edelleen konfiguroida relay tai ydin nodeksi stake pool käyttöön. Se on konfiguroitu kaikella mitä tarvitset asentaaksesi nopeasti synkronoidun noden sisältäen Nginx proxypass Grafanan TLS salaukselle itse allekirjoitetulla varmenteella, toimintavalmiin topology updaterin ja gLiveView-ohjelman.
 
 ![](../../../.gitbook/assets/photo\_2021-03-09-13.40.29.jpeg)
 
