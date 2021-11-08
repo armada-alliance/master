@@ -286,7 +286,7 @@ Korvaa `<tag>` uusimmalla tunnisteella seuraavassa komennossa.
 3) Nopeampaa synkronointia varten, harkitse tätä valinnaista komentoa uusimman db-kansion lataamiseen yhden Alliance-jäsenemme ylläpitämältä serveriltä.
 
 ```
-    wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/ -P ~/cnode
+    wget -r -np -nH -R "index.html*" -e robots=off https://mainnet.adamantium.online/db/ -P ~/cnode
 ```
 
 4) Asennettuasi **cnode**, skriptit ja palvelut, noudata **$HOME** hakemiston **README.txt** tiedoston sisältämää opasta.
