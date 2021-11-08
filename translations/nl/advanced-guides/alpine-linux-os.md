@@ -122,7 +122,7 @@ addgroup cardano video
 3\) For faster syncing, consider this optional command for downloading the latest db folder hosted by one of our Alliance members.
 
 ```text
-    wget -r -np -nH -R "index.html*" -e robots=off https://db.adamantium.online/db/ -P ~/cnode
+    wget -r -np -nH -R "index.html*" -e robots=off https://mainnet.adamantium.online/db/ -P ~/cnode
 ```
 
 4\) Follow the guide written in **README.txt** contained in the **$HOME** directory after installing **cnode**, scripts, and services.
