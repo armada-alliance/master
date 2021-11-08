@@ -6,7 +6,7 @@ description: 'Retrieve Raspbian image, write image to target drive, create user.
 
 ## Installing the RaspiNode OS
 
-**1. Download the Armada Alliance's pre-configured Raspbian 64bit OS Cardano-node image** [**here**](https://db.adamantium.online/RasPi-Node.img.gz) **and save it in an accessible location for now on your computer.**
+**1. Download the Armada Alliance's pre-configured Raspbian 64bit OS Cardano-node image** [**here**](https://mainnet.adamantium.online/RasPi-Node.img.gz) **and save it in an accessible location for now on your computer.**
 
 **2. Next, download the Raspberry Pi Imager software that we will use in order to write the OS image onto our target drive. Ce logiciel est situé sur le site** [**Raspberry Pi**](https://www.raspberrypi.org/software/)**. Veuillez télécharger la version correcte pour votre ordinateur.**
 
