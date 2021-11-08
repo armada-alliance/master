@@ -42,5 +42,5 @@ sudo pishrink.sh -az pi-node.img Pi-Node.img.gz
 
 Ja siellä on se! 🧙♂
 
-Lataa [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz)
+Download [Pi-Node.img.gz](https://mainnet.adamantium.online/Pi-Node.img.gz)
 
