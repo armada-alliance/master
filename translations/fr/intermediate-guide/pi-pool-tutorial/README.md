@@ -5,7 +5,7 @@ description: >-
 
 # Pi-Node Image & Guide
 
-The [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz) is a pre configured Cardano node that can be used for minting NFT's, submitting transactions and can be further configured into a relay or core node for stake pool creation. It is configured with everything you need to quickly bootstrap a synced node with Nginx proxypass of Grafana for TLS encryption with a self signed certificate, working topology updater and gLiveView.
+The [Pi-Node.img.gz](https://mainnet.adamantium.online/Pi-Node.img.gz) is a pre configured Cardano node that can be used for minting NFT's, submitting transactions and can be further configured into a relay or core node for stake pool creation. It is configured with everything you need to quickly bootstrap a synced node with Nginx proxypass of Grafana for TLS encryption with a self signed certificate, working topology updater and gLiveView.
 
 ![](../../../.gitbook/assets/photo\_2021-03-09-13.40.29.jpeg)
 
@@ -59,7 +59,7 @@ The cardano-node & cardano-cli binaries linked to in this guide require aarch64 
 
 ## Downloads
 
-* [Pi-Node.img.gz](https://db.adamantium.online/Pi-Node.img.gz)
+* [Pi-Node.img.gz](https://mainnet.adamantium.online/Pi-Node.img.gz)
 * Latest unofficial [static arm binaries](https://ci.zw3rk.com/build/1758)
   * [Moritz Angermann](https://t.me/joinchat/FeKTCBu-pn5OUZUz4joF2w)
 * Raspberry Pi Imager ([rpi-imager](https://github.com/raspberrypi/rpi-imager))
