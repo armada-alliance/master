@@ -44,7 +44,7 @@ passwd ada
 Log out and back in as your new user with SSH. Test sudo by upgrading the system again.
 
 ```bash
-pacman -Syu
+sudo pacman -Syu
 ```
 
 {% hint style="info" %}
