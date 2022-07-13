@@ -67,7 +67,7 @@ Enter the default password associated with your img.gz.
 {% tabs %}
 {% tab title="Pi-Pool" %}
 ```bash
-ssh-copy-id -i <ed25519-keyname.pub> ada@<server-ip>
+ssh-copy-id -i <ed25519-keyname> ada@<server-ip>
 ```
 {% endtab %}
 

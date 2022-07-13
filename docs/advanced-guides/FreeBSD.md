@@ -201,10 +201,12 @@ cp -r freebsd-ports-haskell/net-p2p/cardano-node /usr/ports/net-p2p/cardano-node
  
 cd /usr/ports/ports-mgmt/portmaster && make install clean
  
-portmaster -fR /usr/ports/net-p2p/cardano-node --no-confirm
-
-exit
+portmaster -fR /usr/ports/net-p2p/cardano-node
 ```
+
+exit tmux ctrl+b then d
+
+Let it run..
  
 ```
 cardano-node --version
